@@ -76,7 +76,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
 
-    User.hasMany(models.Education, {
+    User.hasMany(models.Certification, {
       foreignKey: 'UserId',
       onDelete: 'CASCADE'
     });
