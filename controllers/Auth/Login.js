@@ -18,20 +18,20 @@ module.exports.GetLogin = (req, res, next) => {
             }
         )
     }
-    
+      
 };
 
 //perform login
 module.exports.DoLogin = async (req, res, next) => {
     let userAccount = {
-        username: req.body.username,
+        email: req.body.email,
         password: hashPassword(req.body.password)
     };
 
     //set logged in session to false
-    req.session.loggedIn = false;
+    req.session.loggedIn = false; 
     let ret_userAccount = await User.findOne({
-        where: {email: userAccount.username},
+        where: {email: userAccount.email},
         include: [UserAccount]
     });
     if (ret_userAccount !== null) {
