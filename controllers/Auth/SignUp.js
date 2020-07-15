@@ -105,7 +105,6 @@ module.exports.DoSignUp = async (req, res, next) => {
 
         let user_type = 2;
 
-
         console.log(user_type);
         console.log(req.originalUrl)
 
@@ -114,6 +113,7 @@ module.exports.DoSignUp = async (req, res, next) => {
         mobile: req.body.mobile || '',
         UserAccount: [
             {
+                email: req.body.email,
                 username: '',
                 password: hashPassword(req.body.password),
                 RoleId: req.body.role,
@@ -211,6 +211,7 @@ module.exports.DoBusinessSignUp = async (req, res, next) => {
         mobile: req.body.mobile || '',
         UserAccount: [
             {
+                email: req.body.email,
                 username: '',
                 password: hashPassword(req.body.password),
                 RoleId: req.body.role,
