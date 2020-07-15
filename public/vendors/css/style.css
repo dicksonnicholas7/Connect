@@ -13405,7 +13405,7 @@ textarea.form-control {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding-left: 0;
+  padding-left: 25px;
 }
 
 .header--2 .header__left .ps-logo {
@@ -13442,6 +13442,7 @@ textarea.form-control {
   -webkit-box-pack: end;
   -ms-flex-pack: end;
   justify-content: flex-end;
+  padding-right: 25px;
 }
 
 .header--2.dark .header__link {

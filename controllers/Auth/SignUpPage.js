@@ -14,9 +14,6 @@ module.exports.GetSignUpPage = (req, res, next ) => {
 
     //render sign up page
 
-    if(req.session.loggedIn===true){
-        res.redirect('/');
-    }else{ 
         res.render(
                 'auth/signup-page',
                 {
@@ -25,5 +22,5 @@ module.exports.GetSignUpPage = (req, res, next ) => {
                     page:'signup-page'
                 }
             )
-    }
+
 };
