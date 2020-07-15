@@ -9,6 +9,9 @@ module.exports.GetSignUpPage = (req, res, next ) => {
          usertype = res.locals.user.UserAccount.RoleId;
     }
     
+
+    console.log(usertype);
+
     //render sign up page
 
     if(req.session.loggedIn===true){
@@ -19,7 +22,8 @@ module.exports.GetSignUpPage = (req, res, next ) => {
                 {
                     usertype,
                     show,
-                    page:'signup-page',
+                    page:'signup-page'
+                }
             )
     }
 };
