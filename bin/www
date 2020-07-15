@@ -7,6 +7,7 @@
 var app = require('../app');
 var debug = require('debug')('connect:server');
 var http = require('http');
+const errorLog = require('../logger/logger').logger;
 
 /**
  * Get port from environment and store in Express.
@@ -75,6 +76,7 @@ function onError(error) {
     default:
       throw error;
   }
+  errorLog.info(`Error Message : ${error}`);
 }
 
 /**
@@ -87,4 +89,5 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+  errorLog.info(`Listening: ${addr.port}`);
 }
