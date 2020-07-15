@@ -1,19 +1,17 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-<div class="site-section bg-light">
-    <div class="container">
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); ">
+    <div class="container" style="padding:83px";>
         <div class="row">
             <div class="col-md-12 col-lg-5 mb-5" style="margin: auto;">
                 <form action="#" method="post" class="p-5 bg-white">
-                    <p style="text-align: center;font-weight: bold;font-size: 20px;">Complete Registration</p>
-                    <p style="text-align: center;">A verification message has been sent to your email. Click on the link to verify your email address.</p>
-                    <p style="text-align: center;"><a class="alink" href="/send-verification">Send another verification link</a></p>
+                    <p style="text-align: center;font-weight: bold;font-size: 20px;">Verify Your Account</p>
+                    <p style="text-align: center;">You're almost done! An email has been sent to you. Check your inbox and follow the confirmation link to verify  your account.</p><br>
+                    <p style="text-align: center;">Email not received? Check your spam or<a href="/send-verification"> click here</a> to resend</p>
                 </form>
-            </div>
-
+            </div>    
         </div>
     </div>
 </div>
-
-<% include ../layout/footer-public.ejs %>
