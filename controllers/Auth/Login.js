@@ -39,7 +39,8 @@ module.exports.DoLogin = async (req, res, next) => {
             req.session.user = ret_userAccount;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
-            res.send({loginRes:"success"});
+          //  res.send({loginRes:"success"});
+            res.redirect('/coming-soon');
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";
