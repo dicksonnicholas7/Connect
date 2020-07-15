@@ -6,65 +6,77 @@
  <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); padding: 60px 0; ">
      <div class="container" id="sign-card" style="padding: 25px 0;">
       
-         <form class="ps-form--signin" action="" method="post">
-             <div class="ps-form__header">
-                 <h3>Individual Account</h3>
+        <form action="/signup" method="post" class="p-5 bg-white" style="margin: auto;text-align: center;">
+            <h3 style="text-align: center;">Sign Up</h3>
+            <% if(signUpErrorMessage){ %>
+            <div class="alert alert-danger"  role="alert">
+                <strong id="errorMessage"><%=signUpErrorMessage%></strong>
+            
+                    <button type="button" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+       
+            </div>
+            <% }else if(signUpSuccessMessage){%>
+            <div class="alert alert-success" role="alert">
+                <strong id="errorMessage"><%=signUpSuccessMessage%></strong>
+            
+                    <button type="button" class="close" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+            
+            </div>
+            <% } %>
+            
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <input type="email" autocomplete="off" id="email" name="email" class="form-control" placeholder="Email Address" required>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                        <input type="password" autocomplete="off" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" title="Password must contain at least 6 characters, including UPPER/lowercase and numbers"
+                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                               onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                            if(this.checkValidity()) form.conpassword.pattern = RegExp.escape(this.value);" required/>
+                    <div id="strengthMessage"></div>
+                </div>
+            </div>
+            <div class="row form-group">
+                <div class="col-md-12">
+                    <input type="password" autocomplete="off" name="conpassword" id="conpassword" class="form-control input-lg" placeholder="Confirm Password" tabindex="6"
+                           title="Please enter the same Password as above" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{6,}"
+                           onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required/>
+                    <div id="matchMessage"></div>
+                </div>
+            </div>
 
-             </div>
-             <div class="ps-form__content">
+            <div class="ps-select-role row justify-content-center">
 
-                 <div class="form-group">
-                     <div class="col-md-12">
-                         <input class="form-control" type="email" name="email" value="" placeholder="Email"
-                                required="required" />
-                     </div>
-                 </div>
-
-                 <div class="form-group">
-                     <div class="col-md-12">
-                        <input class="form-control" type="password" name="password" minlength="8" value=""
-                         placeholder="Password" required="required" />
-                     </div>
-                 </div>
-                  <div class="form-group">
-                      <div class="col-md-12">
-                         <input class="form-control" type="password" name="password" minlength="8" value=""
-                          placeholder="Confirm Password" required="required" />
-                      </div>
-                  </div>
-
-                 <div class="ps-select-role row justify-content-center">
-
-                     <div class="form-group" id="">
-                         <input type="radio" id="client" name="role" value="client">
-                         <label for="client">Client</label>
-                     </div>
-                     <div class="form-group">
-                         <input type="radio" id="freelancer" name="role" value="freelancer">
-                         <label for="freelancer">Freelancer</label>
-                     </div>
+                <div class="form-group" id="">
+                    <input type="radio" name="role" id="role" value="1">
+                    <label for="client">Client</label>
+                </div>
+                <div class="form-group">
+                    <input type="radio" name="role" id="role" value="1">
+                    <label for="freelancer">Freelancer</label>
+                </div>
 
 
-                 </div>
+            </div>
 
 
 
-                 <!--p><i class="fa fa-shield"></i> Your password must be at least 8 characters long.</p-->
 
+            <div class="ps-form__footer">
+                <p>By signing up,you confirm that you accept Connect <br> <a href="#">Terms and Conditions </a> and
+                    <a href="#">Privacy Policy </a></p>
+               <button name="register_user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Sign up</button>
+               <p>Already a member?<a href="/login"> Log In</a></p>
+              
+           </div>
 
-             </div>
-             <div class="ps-form__footer">
-
-                 <p>By clicking <a href="/signup">Sign Up</a>,you agree to the <a href="#">Terms and Conditions </a> and<br>
-                      <a href="#">Privacy Policy </a></p>
-                 <div class="col-md-12">
-                     <button name="register_user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Sign up</button>
-                 </div>
-                 <p>Already a Member?<a href="/login"> Log In</a></p>
-                
-                
-             </div>
-         </form>
+        </form>
 
      </div>
  </div>

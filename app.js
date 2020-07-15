@@ -30,7 +30,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 
 app.use(session({
-  secret: 'group3',
+  secret: 'connect',
   resave: true,
   saveUninitialized: true,
   rolling: true,
