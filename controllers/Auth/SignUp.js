@@ -1,9 +1,6 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const BusinessUser = require('../../models').BusinessUser;
-const Portfolio = require('../../models').Portfolio;
-const Education = require('../../models').Education;
-const Qualification = require('../../models').Qualification;
 const crypto = require('crypto');
 let secret = "group3";
 const jwt = require('jsonwebtoken');
@@ -77,7 +74,16 @@ module.exports.GetSignUp = (req, res, next ) => {
     }
 };
 
-//perform signup operation. Also set up a portfolio for freelancers with empty data
+
+
+
+
+
+/**
+ * sign up for individual
+ * **/
+
+
 module.exports.DoSignUp = async (req, res, next) => {
     let usertype = 0
     let show = false;
@@ -97,13 +103,8 @@ module.exports.DoSignUp = async (req, res, next) => {
         'connect',
         { expiresIn: '24h' });
 
-        let user_type = 0;
+        let user_type = 2;
 
-        if(req.originalUrl=='/signup'){
-            user_type = 2;
-        }else if(req.originalUrl=='/business-signup'){
-            user_type = 1;
-        }
 
         console.log(user_type);
         console.log(req.originalUrl)
@@ -174,6 +175,13 @@ module.exports.DoSignUp = async (req, res, next) => {
 
 
 
+
+
+
+/**
+ * sign up for business
+ * **/
+
 module.exports.DoBusinessSignUp = async (req, res, next) => {
     let usertype = 0
     let show = false;
@@ -193,13 +201,7 @@ module.exports.DoBusinessSignUp = async (req, res, next) => {
         'connect',
         { expiresIn: '24h' });
 
-        let user_type = 0;
-
-        if(req.originalUrl=='/signup'){
-            user_type = 2;
-        }else if(req.originalUrl=='/business-signup'){
-            user_type = 1;
-        }
+        let user_type = 1;
 
         console.log(user_type);
         console.log(req.originalUrl)
