@@ -6,7 +6,6 @@ let secret = "group3";
 const path = require('path');
 const multer = require('multer');
 
-
 module.exports.GetAllPortfolios = async (req, res, next) => {
     let user_portfolios = await Portfolio.findAll({where:{UserId:res.locals.user.id} });
     req.session.user.Portfolio  = user_portfolios;
@@ -46,18 +45,6 @@ module.exports.GetAddPortfolio = async (req, res, next) =>{
 };
 
 module.exports.AddPortfolio = async (req, res, next) =>{
-    let ft = false;
-    Portfolio.findAll({ where:{id:res.locals.user.id}}).then(row=>{
-        console.log(row.length)
-        if(row.length===0){
-            ft = true;
-        }else{
-            ft = false;
-        }
-        console.log(row);
-    }).catch(e=>{
-        console.log(e);
-    })
     let filenameGlobal='';
     const storage = multer.diskStorage({
         destination:'./public/images/',
@@ -88,16 +75,18 @@ module.exports.AddPortfolio = async (req, res, next) =>{
                 delete userPortfolio.picture
             }
             Portfolio.create(userPortfolio).then(response =>{
-                if(ft==true){
-                    res.redirect('/user/add-education');
-                }else{
-                    res.redirect('/user/portfolios');
-                }
+                req.session.portfoilioChangeMessage = response != null;
+                Portfolio.findAll({
+                    where:{UserId:res.locals.user.id}
+                }).then(rows=>{
+                    req.session.user.Portfolio = rows;
+                    console.log(response);
+                });
             });
 
         }
     });
-    
+    res.redirect('/user/portfolios');
 };
 
 
@@ -139,25 +128,12 @@ module.exports.UpdatePortfolio = async (req, res, next) => {
                     req.session.user.Portfolio = rows;
                     console.log(response);
                     res.redirect('/user/portfolio/'+req.body.id+"/success");
-                    //res.redirect('/user/educations');
                 });
             });
 
         }
     });
 
-};
-
-
-
-module.exports.DeletePortfolio = async (req, res, next) => {
-    let portfolioId = req.body.id;
-    let portfolio_deleted = await Portfolio.destroy({where:{id:portfolioId}});
-    if(portfolio_deleted !== null) {
-      res.send("success");
-    }else{
-      res.send("error");
-    }
 };
 
 //hash password

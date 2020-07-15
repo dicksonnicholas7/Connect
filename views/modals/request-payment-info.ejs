@@ -1,0 +1,35 @@
+<!-- Modal -->
+<div class="modal fade" id="request-payment-info" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Payment Information</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <form action="/user/get-paid" method="post">
+                            <div class="position-relative form-group">
+                                <label for="id">Amount:</label>
+                                <input type="text" id="amount" name="amount" class="form-control" value="<%=amountToPay%>" readonly />
+                            </div>
+                            <!-- <div class="position-relative form-group">
+                                <label for="id">Stripe Account ID:</label>
+                                <input type="text" id="acc_id" name="acc_id" class="form-control" value="" />
+                            </div> -->
+                            <div class="position-relative form-group justify-content-center">
+                                <input type="submit" class="btn btn-success" name="submit" class="form-control" value="Proceed" />
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

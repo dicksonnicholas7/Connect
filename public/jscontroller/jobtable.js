@@ -115,10 +115,6 @@ $(document).ready(function() {
         window.location = "/user/award-job/"+appId;
     });
 
-    $("#btnwithdraw").click((e)=>{
-        window.location = "/user/withdraw-job/"+appId;
-    });
-
     $("#jobview_tb").DataTable({
         "pagingType": "numbers",
         "pageLength": 1,

@@ -7,19 +7,6 @@ const crypto = require('crypto');
 let secret = "group3";
 
 module.exports.GetLogin = (req, res, next) => {
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-    
-
-    console.log(usertype);
     //render login page
     if(req.session.loggedIn===true){
         res.redirect('/');
@@ -27,8 +14,6 @@ module.exports.GetLogin = (req, res, next) => {
         res.render(
             'auth/login',
             {
-                usertype,
-                show,
                 page:'login'
             }
         )
@@ -58,14 +43,12 @@ module.exports.DoLogin = async (req, res, next) => {
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";
-            res.send({loginRes:"Wrong email or password"});
-
-            
+            res.send({loginRes:"Wrong Password"});
         }
     } else {
         console.log("Wrong Username Or User does not exist");
         req.session.loginErrorMessage = "Wrong Username Or User does not exist";
-        res.send({loginRes:"Wrong email or password"});
+        res.send({loginRes:"Wrong email"});
     }
 };
 //logout

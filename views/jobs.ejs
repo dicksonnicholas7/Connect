@@ -1,0 +1,108 @@
+<% include ./layout/header-public.ejs %>
+<% include ./layout/menu-public.ejs %>
+
+
+<div class="site-section bg-light">
+    <div class="container">
+                <div class="col-md-12">
+                    <form action="/jobs" method="post" >
+                        <div class="row form-group">
+                            <div class="col-md-4 ">
+                                <input type="text" id="keyword" name="keyword" class="form-control rounded" placeholder="eg. Website" />
+                            </div>
+                            <div class="col-md-4">
+                                <div class="select-wrap">
+                                    <span class="icon-keyboard_arrow_down arrow-down"></span>
+                                    <select name="category" id="category" class="form-control rounded">
+                                        <option value="all" >All</option>
+                                        <% category.map(cat =>{ %>
+                                        <option value="<%=cat.id%>" ><%=cat.name%></option>
+                                        <% }); %>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-4 ">
+                                <input type="submit" class="btn btn-success btn-block rounded" style="height: 45px;" value="Search">
+                            </div>
+                        </div>
+                    </form>
+                    <div class="justify-content-start">
+                        <div class="dropdown">
+                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                              <i class="fa fa-filter"></i>Filter
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                <form class="px-4 py-3" action="/filter-jobs" method="post">
+                                    <div class="form-group">
+                                      <label for="exampleDropdownFormEmail1">Date</label>
+                                      <input type="date" class="form-control" id="filter_date" name="filter_date">
+                                    </div>
+                                    <div class="form-group">
+                                      <label for="exampleDropdownFormPassword1">Price Range</label>
+                                      <div class="">
+                                        <input style="margin-bottom: 5px;" type="number" class="form-control" id="filter_price_min" name="filter_price_min" min="0" placeholder="From" value="0" />
+                                        <input style="margin-bottom: 20px;" type="number" class="form-control" id="filter_price_max" name="filter_price_max" max="20000" value="20000" placeholder="To"/>
+                                      </div>
+                                      <div style="margin:auto; width:50px;">
+                                        <input type="submit" class="btn btn-success " value="Apply" >
+                                    </div>
+                                    </div>
+                                    <div class="row form-group">
+                                        
+                                    </div>
+                                  </form>
+                          </div>
+                    </div>
+                    <h5><%=searchResult%></h5>
+                <% jobs.map( job => { %>
+                    
+                <div class="row" data-aos="fade">
+                    <div class="col-md-12">
+
+                        <div class="job-post-item bg-white p-4 d-block d-md-flex align-items-center">
+
+                            <div class="mb-4 mb-md-0 mr-5 row">
+                                <div class="job-post-item-header d-flex align-items-center col-md-8">
+                                    <h2 class="mr-3 text-black h6"><%=job.title %></h2>
+                                </div>
+                                <div class="job-post-item-body d-block d-md-flex" style="position:absolute;left:50%;bottom:35px;">
+                                    <div class="mr-3"><span class="fl-bigmug-line-portfolio23 alink"></span> <a style="color: #0b0b0b" href="#"><%=job.JobCategory.name %>.</a></div>
+                                    <div><span class="alink">$</span> <span style="color: #0b0b0b" href="#"><%=job.price %></span></div>
+                                </div>
+                            </div>
+
+                            <div class="ml-auto">
+                                <a href="/job/<%=job.id %>" class="btn btn-success py-2">View Job</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <% }); %>
+
+
+
+                </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                    <ul>
+                        <% let num = parseInt(jobCount / 10) ; %>
+                        <%if(page_no>1 && jobCount>10){ let prev = parseInt(page_no-1); %>
+                            <li><a href="/jobs/<%=prev%>"><i class="icon-keyboard_arrow_left h5"></i></a></li>
+                        <% } %>
+                        <%if(page_no!==jobCount && jobCount>10){ let nextp = parseInt(page_no+1); %>
+                            <li><a href="/jobs/<%=nextp%>"><i class="icon-keyboard_arrow_right h5"></i></a></li>
+                        <% } %>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<% include ./layout/footer-public.ejs %>

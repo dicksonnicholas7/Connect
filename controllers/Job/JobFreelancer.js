@@ -5,9 +5,6 @@ const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
-const SelectedJobs = require('../../models').SelectedJobs;
-
-
 
 module.exports.ApplyJob = async (req, res, next) => {
     let hostname = req.headers.host;
@@ -37,61 +34,47 @@ module.exports.ApplyJob = async (req, res, next) => {
 };
 
 
+module.exports.ContactApplyJob = async (req, res, next) => {
+    let hostname = req.headers.host;
+    let appInfo = {
+        JobId: req.params.id || '00',
+        FreelanceId: res.locals.user.id || '00'
+    };
+    const job_created= await JobApplication.create(appInfo);
+    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: User });
 
-
+    let notifyParts = {
+        title: res.locals.user.firstname+" applied for a job you posted",
+        message: "/user/my-jobs/all",
+        ReceiverId: jobOwnerInfo.ClientId
+    };
+    let notifyMailParts = {
+        title: res.locals.user.firstname+" applied for a job you posted",
+        message: '<div style="background-color:white;color:black;">'+
+                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
+                 '<p>Congratulations, '+req.session.user.firstname+ ' applied for a job you posted.</p>'+
+                '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
+        ReceiverEmail: jobOwnerInfo.User.email
+    };
+    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+    NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
+    res.redirect('/user/message-room/'+jobOwnerInfo.User.id);
+};
 
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
-
-    let jobs = [];
-
-    if(req.params.category === "all"){
-        let jobType = 1;
-
-            jobs = await Job.findAll( { where:{jobType:jobType},
-            include: [
-                {
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                {
-                    model: User,
-                    as: 'User'
-                }
-            ],
-            order:[['createdAt', 'DESC']]
-        });
-
-    }else if(req.params.category === "selected"){
-
-        console.log(res.locals.user.id)
-
-
-       let selected_jobs = await SelectedJobs.findAll( {where:{FreelancerId:res.locals.user.id} });
-
-       for(i=0;i<selected_jobs.length;i++){
-        let jobId = selected_jobs[i].JobId;
-
-        jobs = await Job.findAll( { where:{id:jobId},
-            include: [
-                {
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                {
-                    model: User,
-                    as: 'User'
-                }
-            ],
-            order:[['createdAt', 'DESC']]
-        });
-
-       }
-
-    }
-
-
-    console.log("console log "+jobs)
-
+    let jobs = await Job.findAll( {
+        include: [
+            {
+                model: JobCategory,
+                as: 'JobCategory'
+            },
+            {
+                model: User,
+                as: 'User'
+            }
+        ],
+        order:[['createdAt', 'DESC']]
+    });
     let category = await JobCategory.findAll();
     let jobCount = await Job.count();
     let searchResult = "All Jobs";
@@ -106,9 +89,6 @@ module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
         }
     )
 }
-
-
-
 
 module.exports.GetJobsFilterFreel = async (req, res, next)=>{
     let jobs = {};
@@ -175,86 +155,70 @@ module.exports.GetJobsFilterFreel = async (req, res, next)=>{
     )
 };
 
-
-
-
 module.exports.SingleJobDetail = async (req, res, next) => {
     let jobId = req.params.id;
-
-    let jobs = await Job.findOne({where:{id:jobId}});
-
-        let job = await Job.findOne({
-            where:{id:jobId},
-            include: [
-                {
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                {
-                    model: User,
-                    as: 'User'
-                }
-            ]
-        });
-        let related_jobs = await Job.findAll( {
-            where:{CatId:job.CatId},
-            include: [
-                {
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                {
-                    model: User,
-                    as: 'User'
-                }
-            ],
-            limit: 2
-        });
-        let user_applied = false;
-        let user_application = {};
-        if(!req.session.loggedIn){
-    
-        }else {
-            user_application = await JobApplication.findOne({
-                where: {
-                    [Op.and]: [
-                        {JobId: jobId},
-                        {FreelanceId: res.locals.user.id}
-                    ]
-                }
-            });
-            if (user_application) {
-                user_applied = true;
-            }
-        }
-        res.render(
-            'job/job-view',
+    let job = await Job.findOne({
+        where:{id:jobId},
+        include: [
             {
-                job,
-                related_jobs,
-                user_application,
-                user_applied,
-                page:'jobs'
+                model: JobCategory,
+                as: 'JobCategory'
+            },
+            {
+                model: User,
+                as: 'User'
             }
-        )
+        ]
+    });
+    let related_jobs = await Job.findAll( {
+        where:{CatId:job.CatId},
+        include: [
+            {
+                model: JobCategory,
+                as: 'JobCategory'
+            },
+            {
+                model: User,
+                as: 'User'
+            }
+        ],
+        limit: 2
+    });
+    let user_applied = false;
+    let user_application = {};
+    if(!req.session.loggedIn){
+
+    }else {
+        user_application = await JobApplication.findOne({
+            where: {
+                [Op.and]: [
+                    {JobId: jobId},
+                    {FreelanceId: res.locals.user.id}
+                ]
+            }
+        });
+        if (user_application) {
+            user_applied = true;
+        }
+    }
+    res.render(
+        'job/job-view',
+        {
+            job,
+            related_jobs,
+            user_application,
+            user_applied,
+            page:'jobs'
+        }
+    )
 };
 
 module.exports.GetAppliedJobs = async (req, res, next) => {
     let jobCat = req.params.category;
     let title = "Applied Jobs";
-    console.log(title)
-    let jobApps = {};
+    let jobApps = await JobApplication.findAll({where: {FreelanceId: res.locals.user.id}, include:Job });
     if (jobCat === "all") {
-
-        jobApps = await JobApplication.findAll({
-            where:{FreelanceId: res.locals.user.id},
-            include: [
-                {
-                    model: Job,
-                    as: 'Job',
-                }
-            ]
-        });
+        jobApps = await JobApplication.findAll({where: {FreelanceId: res.locals.user.id}, include:Job });
     } else if (jobCat === "awarded") {
         jobApps = await JobApplication.findAll({
             where: {
@@ -271,7 +235,6 @@ module.exports.GetAppliedJobs = async (req, res, next) => {
             include:Job
         });
         title = "Awarded Jobs";
-        console.log(title)
     } else if (jobCat === "accepted") {
         jobApps = await JobApplication.findAll({
             where: {
@@ -283,10 +246,8 @@ module.exports.GetAppliedJobs = async (req, res, next) => {
             include:Job
         });
         title = "Accepted Jobs";
-        console.log(title)
     }
     console.log(jobApps);
-    console.log(title)
     res.render(
         'job/freelancer-jobs',
         {
@@ -329,9 +290,6 @@ module.exports.AcceptJob = async (req, res, next) => {
 
     res.redirect('/user/workspace/'+job_just_awarded.id);
 };
-
-
-
 
 module.exports.RejectJob = async (req, res, next) => {
     let hostname = req.headers.host;

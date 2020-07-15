@@ -9,11 +9,9 @@ const Contract = require('../../models').Contract;
 const JobReport = require('../../models').JobReport;
 const db = require("../../models");
 const { QueryTypes } = require('sequelize');
-const SelectedJobs = require('../../models').SelectedJobs;
 
 module.exports.GetDashboardClient = async (req, res, next) =>{
     let jobs = Job.findAll({ where:{ClientId:res.locals.user.id} });
-
     let jobsAwarded = Job.findAll({
         where:{
             [Op.and]: [
@@ -22,7 +20,6 @@ module.exports.GetDashboardClient = async (req, res, next) =>{
             ]
         }
     });
-
     let jobApps = await JobApplication.findAll({
         include: [
             {
@@ -42,13 +39,10 @@ module.exports.GetDashboardClient = async (req, res, next) =>{
     });
 
     let jobCount = 0;
-    let jobAllCount = 0;
     let jobAwarded = 0;
     jobs.map(jb=>{
-        jobCount++;
+       jobCount++;
     });
-
-
     jobsAwarded.map(jsa =>{
         jobAwarded++;
     });
@@ -59,7 +53,7 @@ module.exports.GetDashboardClient = async (req, res, next) =>{
                 model: Job,
                 as: 'Job',
                 where: {ClientId: res.locals.user.id},
-            }
+            },
         ]
     }).then(result=>{
         let jobDoneCount = result.count;

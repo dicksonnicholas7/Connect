@@ -10,7 +10,6 @@ const JobReport = require('../../models').JobReport;
 const Notification = require('../../models').Notification;
 const db = require("../../models");
 const { QueryTypes } = require('sequelize');
-const SelectedJobs = require('../../models').SelectedJobs;
 
 module.exports.GetDashboardFreelancer = async (req, res, next) =>{
     let jobsAppCount = JobApplication.findAll({ 

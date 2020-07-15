@@ -1,27 +1,10 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
-const UserAccount = require('../../models').UserAccount;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
 
-
-
 module.exports.GetIndex = async (req, res, next) => {
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-    
-
-    console.log(usertype);
-
     let jobs = await Job.findAll( {
         include: [
             {
@@ -34,7 +17,7 @@ module.exports.GetIndex = async (req, res, next) => {
             }
         ],
         order:[['createdAt', 'DESC']],
-        limit:7,
+        limit:5,
         offset:0
     });
     let category = await JobCategory.findAll();
@@ -43,8 +26,6 @@ module.exports.GetIndex = async (req, res, next) => {
         'index',
         {
             jobs,
-            usertype,
-            show,
             category,
             searchResult,
             page: 'index'
@@ -52,19 +33,7 @@ module.exports.GetIndex = async (req, res, next) => {
     )
 };
 
-
 module.exports.GetAllJobs = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-    
-
     let jobs = await Job.findAll( {
         include: [
             {
@@ -87,8 +56,6 @@ module.exports.GetAllJobs = async (req, res, next) => {
         'jobs',
         {
             jobs,
-            usertype,
-            show,
             jobCount,
             category,
             searchResult,
@@ -99,17 +66,6 @@ module.exports.GetAllJobs = async (req, res, next) => {
 };
 
 module.exports.GetPageAllJobs = async (req, res, next)=>{
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     let page = req.params.page;
     page = parseInt(page);
     let offset = (page - 1) * 10;
@@ -135,8 +91,6 @@ module.exports.GetPageAllJobs = async (req, res, next)=>{
         'jobs',
         {
             jobs,
-            usertype,
-            show,
             jobCount,
             category,
             searchResult,
@@ -148,30 +102,14 @@ module.exports.GetPageAllJobs = async (req, res, next)=>{
 
 
 module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     let searchParams = {};
     let jobs= {};
     let category = await JobCategory.findAll();
     let searchResult = "All Jobs";
-    let keyword = '';
-    try{
-        keyword = req.body.keyword
-    }catch (e) {
-        console.log(e)
-    }
-    if(req.body.category!=="" && keyword!=="") {
+    if(req.body.category!=="" && req.body.keyword!=="") {
         searchParams = {
             CatId: req.body.category || '',
-            title: '%'+keyword+'%' || '',
+            title: '%'+req.body.keyword+'%' || '',
         };
         if(req.body.category==="all"){
             jobs = await Job.findAll({
@@ -182,7 +120,7 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
                 },
                 include: JobCategory
             });
-            searchResult = "'"+keyword + "' search results";
+            searchResult = "'"+req.body.keyword + "' search results";
         }else {
             jobs = await Job.findAll({
                 where: {
@@ -197,7 +135,7 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
                 },
                 include: JobCategory
             });
-            searchResult = "'"+keyword + "' search results";
+            searchResult = "'"+req.body.keyword + "' search results";
         }
     }else if(req.body.category!==""){
         searchParams = {
@@ -211,8 +149,8 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
             searchResult =  "Search results";
         }
 
-    }else if(keyword!==""){
-        let title = '%'+keyword+'%' || '';
+    }else if(req.body.keyword!==""){
+        let title = '%'+req.body.keyword+'%' || '';
         jobs = await Job.findAll({
             where: {
                 title: {
@@ -221,7 +159,7 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
             },
             include: JobCategory
         });
-        searchResult = "'"+keyword + " search results";
+        searchResult = "'"+req.body.keyword + " search results";
     }else{
         jobs = await Job.findAll({include: JobCategory});
     }
@@ -232,8 +170,6 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
         'jobs',
         {
             jobs,
-            usertype,
-            show,
             jobCount,
             category,
             page: 'jobs',
@@ -244,17 +180,6 @@ module.exports.GetJobsCategoryAndSearch = async (req, res, next) => {
 };
 
 module.exports.JobDetail = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     let jobId = req.params.id;
     let job = await Job.findOne({
         where:{id:jobId},
@@ -312,8 +237,6 @@ module.exports.JobDetail = async (req, res, next) => {
         'single-job-info',
         {
             job,
-            usertype,
-            show,
             related_jobs,
             user_application,
             user_applied,
@@ -324,18 +247,6 @@ module.exports.JobDetail = async (req, res, next) => {
 
 
 module.exports.GetJobsFilter = async (req, res, next) => {
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     let jobs = {};
     let searchResult = "";
     if(req.body.filter_date!==null && req.body.filter_price_min && req.body.filter_price_max){
@@ -373,8 +284,6 @@ module.exports.GetJobsFilter = async (req, res, next) => {
         'jobs',
         {
             jobs,
-            usertype,
-            show,
             jobCount,
             category,
             searchResult,

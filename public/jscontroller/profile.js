@@ -1,18 +1,4 @@
 $(document).ready(function(){
-    let id = $("#id").val().trim();
-    if( id !== ""){
-    $.ajax({
-        url:'/user/profile',
-        type:'get',
-        data:{id: id},
-        success:function(response){
-            alert(data["201"]);
-        },
-        error:function(response){
-            alert(data["409"]);
-        }
-    });
-}
 
     $('#fmprofile input').removeClass('form-control');
     $('#fmprofile select').removeClass('form-control');

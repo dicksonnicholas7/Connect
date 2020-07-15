@@ -1,75 +1,40 @@
-<div class="site-wrap">
+<header class="header header--2 dark page" data-sticky="true">
+    <div class="header__left">
+        <a class="ps-logo" href="/index.php"><img src="/vendors/img/logo-nav2.svg" width="200px" height="90px" alt="Connect Logo"></a>
 
-    <div class="site-mobile-menu">
-        <div class="site-mobile-menu-header">
-            <div class="site-mobile-menu-close mt-3">
-                <span class="icon-close2 js-menu-toggle"></span>
-            </div>
-        </div>
-        <div class="site-mobile-menu-body"></div>
     </div>
+    <div class="header__right">
+        <ul class="menu">
+           
+            <li class="menu-item-has-children"><a href="/login">Sign In</a><span class="sub-toggle"></span>
+            <li class="menu-item-has-children"><a href="/signup">Sign up</a><span class="sub-toggle"></span>
 
-    <header class="site-navbar py-1" role="banner">
+            </li>
 
-        <div class="container">
-            <div class="row align-items-center">
-
-                <div class="col-6 col-xl-2">
-                    <h1 class="mb-0"><a href="/" class="text-black h2 mb-0"><img src="/img/amalogo.png" width="150px" height="110px"/></a></h1>
-                </div>
-
-                <div class="col-10 col-xl-10 d-none d-xl-block">
-                    <nav class="site-navigation text-right" role="navigation">
-                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
-                            <li>
-                                
-                                <a href="/">Home</a>
-                            </li>
-                            <li>
-                                
-                                <a href="/jobs">View Jobs</a>
-                            </li>
-                            <li>
-                            
-
-                                <a href="/freelancers">View Freelancers</a>
-                            </li>
-                            <li>
-                                
-
-                                <a href="/how-it-works">How It Works</a>
-                            </li>
-                                <li>
-                                    <div class="dropdown">
-                                    <a href="#" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><span class="rounded bg-success py-2 px-3 text-white dropdown-toggle">User</span></a>
-                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                            <a class="dropdown-item" href="#">Account</a>
-                                            <hr />
-                                            <a class="dropdown-item" href="/user/">Dashboard</a>
-                                            <a class="dropdown-item" href="/user/profile">View Profile</a>
-                                            <a class="dropdown-item" href="/logout">Logout</a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li>
-                                    
-                                    <a href="/signup">Sign Up</a>
-                                </li>
-                                <li>
-                                    
-                                    <a href="/login">Login</a>
-                                </li>
-                        </ul>
-                    </nav>
-                </div>
-
-                <div class="col-6 col-xl-2 text-right d-block">
-
-                    <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-black"><span class="icon-menu h3"></span></a></div>
-
-                </div>
-
-            </div>
+        </ul>
+        <div class="header__actions"><a class="ps-btn" href="/login">POST A JOB</a></div>
+    </div>
+</header>
+<header class="header header--mobile" data-sticky="false">
+    <div class="header__content">
+        <div class="header__left"><a class="ps-toggle--sidebar" href="#navigation-mobile"><i class="fa fa-bars"></i></a>
         </div>
+        <div class="header__center"><a class="ps-logo" href="#"><img src="/vendors/img/logo-nav2.svg" width="150px"
+                    height="70px" alt="Connect Logo"></a>
+        </div>
+        <div class="header__right">
+            <div class="header__actions"><a class="ps-search-btn" href=""><i class="fa fa-search"></i></a></div>
+        </div>
+    </div>
+</header>
+<div class="ps-panel--sidebar" id="navigation-mobile">
+    <div class="ps-panel__header">
+        <h3>Menu</h3>
+    </div>
+    <div class="ps-panel__content">
+        <ul class="menu--mobile">
+            <li><a href="/">Freelancers</a></li>
 
-    </header>
+        </ul>
+    </div>
+</div>

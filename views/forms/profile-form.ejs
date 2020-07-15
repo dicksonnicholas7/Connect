@@ -1,0 +1,119 @@
+<div class="main-card mb-3 card col-md-12">
+    <div class="card-header">
+        <h5 class="card-title" style="color:#4d4d4d!important">Personal Details</h5>
+    </div>
+    <div class="card-body">
+        <% if(profileChangeMessage === true){%>
+            <div class="alert alert-success" role="alert">
+                Update Successful
+            </div>
+        <% } else if(profileChangeMessage === false){%>
+            <div class="alert alert-danger" role="alert">
+                Error Updating
+            </div>
+        <% } %>
+        
+        <div class="justify-content-end" style="float:right;">
+            <a id="edit"  class="btn btn-success" href="#">Edit</a>
+        </div>
+        <form class="" action="/user/update-profile" method="post" enctype = "multipart/form-data" id="fmprofile">
+            <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
+
+            <div class="form-row justify-content-center">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <label style="cursor:pointer" title="Select A picture">
+                        <%if(user.picture!==null){%>
+                        <img src="/images/<%=user.picture%>" class="rounded-circle" width="150px" height="150px" alt="No picture" style="margin-bottom:10px;"/>
+                        <% }else{ %> 
+                            <img src="/img/avatar.jpg" alt="No picture" style="margin-bottom:10px;"/>  
+                        <% } %> 
+                        <input name="picture" id="picture" type="file" title="Select A Picture" style="display:none" accept="image/*" />
+                    </label>
+                    </div>                   
+                </div>
+            </div><br/>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="firstname" class="">First Name: </label>
+                        <input name="firstname" id="firstName" value="<%=user.firstname%>" placeholder="" type="text" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="lastname" class="">Last Name: </label>
+                        <input name="lastname" id="lastName" value="<%=user.lastname%>" placeholder="" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="dob" class="">Date Of Birth: </label>
+                        <input name="dob" id="dob" value="<%=user.dob%>" type="date" class="form-control">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="gender" class="">Gender: </label>
+                        <select id="gender" name="gender" class="custom-select">
+                            <option value="male" <%if(user.gender == "male"){%>
+                                    selected<%}%> >Male</option>
+                            <option value="female" <%if(user.gender == "female"){%>
+                                    selected<%}%> >Female</option>
+                            <option value="p" <%if(user.gender == "p"){%>
+                                    selected<%}%> >Prefer not to disclose </option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="email" class="">Email: </label>
+                        <input name="email" id="email" value="<%=user.email%>" placeholder="" type="email" class="form-control" readonly >
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="mobile" class="">Mobile(001 201 211 121)</label>
+                        <input name="mobile" id="mobile" value="<%=user.mobile%>" placeholder="" type="tel" pattern="[0-9]{3}[0-9]{3}[0-9]{3}[0-9]{3}" 
+                               title="Enter a valid phone number eg. 001 201 211 121" class="form-control"
+                               oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" >
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <%if(user.UserAccount.RoleId===1){}else{%>
+                <div class="col-md-6" hidden>
+                    <div class="position-relative form-group">
+                        <label for="jobTitle" class="">Job Title: </label>
+                        <input name="jobTitle" id="jobTitle" value="<%=user.jobTitle%>" placeholder="eg. Website Developer" type="text" class="form-control">
+                    </div>
+                </div>
+                <%}%>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="country" class="">Country: </label>
+                        <select name="country" id="country" class="custom-select">
+                            <option value="<%=user.country%>" selected><%=user.country%></option>
+                            <% country.map(c =>{ %>
+                            <option value="<%=c.name%>"><%=c.name%></option>
+                            <% }); %>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="position-relative form-group">
+                        <label for="city" class="">City: </label>
+                        <input name="city" id="city" value="<%=user.city%>" placeholder="" type="text" class="form-control">
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="mt-2 btn btn-success py-2 px-4" value="Update">
+            </div>
+        </form>
+    </div>
+</div>

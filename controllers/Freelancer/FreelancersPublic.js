@@ -5,18 +5,8 @@ const UserAccount = require('../../models').UserAccount;
 const Portfolio = require('../../models').Portfolio;
 const Education = require('../../models').Education;
 const Contract = require('../../models').Contract;
-  
+
 module.exports.GetFreelancers = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     let frees = await User.findAll( {
         include: [
             {
@@ -43,8 +33,6 @@ module.exports.GetFreelancers = async (req, res, next) => {
     res.render(
         'freelancers',
         {
-            usertype,
-            show,
             frees,
             countries,
             searchResult,
@@ -54,17 +42,6 @@ module.exports.GetFreelancers = async (req, res, next) => {
 };
 
 module.exports.GetSingleFreelancer = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-    
-
     let free_id = req.params.id;
     let free = await User.findOne({
         where :{id:free_id}
@@ -79,8 +56,6 @@ module.exports.GetSingleFreelancer = async (req, res, next) => {
     res.render(
         'single-freelancer',
         {
-            usertype,
-            show,
             free,
             freePortfolio,
             freeEducation,
@@ -91,18 +66,6 @@ module.exports.GetSingleFreelancer = async (req, res, next) => {
 }
 
 module.exports.GetFreelancerCountryAndSearch = async (req, res, next) => {
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     let searchParams = {};
     let frees= {};
     let countries = await User.findAll({
@@ -222,8 +185,6 @@ module.exports.GetFreelancerCountryAndSearch = async (req, res, next) => {
     res.render(
         'freelancers',
         {
-            usertype,
-            show,
             frees,
             freeCount,
             countries,

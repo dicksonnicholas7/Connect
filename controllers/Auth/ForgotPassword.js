@@ -7,42 +7,27 @@ const {SendMailResetPassword} = require('./ForgotPasswordMaill');
 
 //render forgot password page
 module.exports.GetForgotPassword = async (req, res, next) => {
-
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     res.locals.display = false;
     res.render(
         'auth/forgot-password',
         {
-            usertype,
-            show,
             page: 'forgot-password'
         }
     );
-};  
+};
+
+//render forgot password page
+module.exports.GetReset = async (req, res, next) => {
+    res.locals.display = false;
+    res.render(
+        'auth/reset-password', {
+            page: 'reset-password'
+        }
+    );
+};
 
 //render reset password page
 module.exports.GetResetPassword = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     res.locals.display = false;
     let token = req.params.token;
     let email = req.params.email;
@@ -52,8 +37,6 @@ module.exports.GetResetPassword = async (req, res, next) => {
     res.render(
         'auth/reset-password',
         {
-            usertype,
-            show,
             correct:res.locals.correct,
             page: 'reset-password'
         }
@@ -62,17 +45,6 @@ module.exports.GetResetPassword = async (req, res, next) => {
 
 // perform password reset by generating a token plus a link amd sending to user email if email exists
 module.exports.forgotPasswordEmail = async (req,res,next)=>{
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
     res.locals.display = true;
     let userAccount = {
         email: req.body.email
@@ -97,8 +69,6 @@ module.exports.forgotPasswordEmail = async (req,res,next)=>{
         res.render(
             'auth/forgot-password',
             {
-                usertype,
-                show,
                 emailNotFound: res.locals.emailNotFound,
                 page: 'forgot-password'
             }
@@ -108,16 +78,6 @@ module.exports.forgotPasswordEmail = async (req,res,next)=>{
 
 //perform password
 module.exports.DoResetPassword = async (req,res,next)=>{
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     res.locals.display = true;
     res.locals.correct = true;
     let email = req.body.email;
@@ -132,8 +92,6 @@ module.exports.DoResetPassword = async (req,res,next)=>{
     res.render(
         'auth/reset-password',
         {
-            usertype,
-            show,
             changed:res.locals.changed,
             page: 'reset-password'
         }

@@ -1,7 +1,6 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const Education = require('../../models').Education;
-const Certificate = require('../../models').Certificate;
 const crypto = require('crypto');
 let secret = "group3";
 const path = require('path');
@@ -52,22 +51,29 @@ module.exports.GetAddEducation = async (req, res, next) => {
 };
 
 module.exports.AddEducation = async (req, res, next) =>{
-    let ft = false;
-    Education.findAll({ where:{id:res.locals.user.id}}).then(row=>{
-        if(row.length===0){
-            ft = true;
-        }else{
-            ft = false;
-        }
-    }).catch(e=>{
-        console.log(e);
-    })
-
-
     let country = {};
+    let userEducation = {
+        UserId: res.locals.user.id,
+        country: req.body.edu_country,
+        uni: req.body.uni,
+        cert: req.body.cert,
+        start_year: req.body.start_year,
+        endyear: req.body.end_year
+    };
     axios.get('https://restcountries.eu/rest/v2/all')
         .then(response => {
-            country = response.data;        
+            country = response.data;
+            Education.create(userEducation).then(rows=>{
+                Education.findAll({
+                    where:{UserId:res.locals.user.id}
+                }).then(rows=>{
+                    req.session.user.Education = rows;
+                    console.log(response);
+                });
+            }).catch(e=>{
+                console.log(e);
+            });
+            
         }).catch(error => {
             //api fails, add some countries
             console.log(error);
@@ -76,41 +82,8 @@ module.exports.AddEducation = async (req, res, next) =>{
                 {name: 'Germany'},
             ];
         });
-
-
-
-        let userEducation = {
-            UserId: res.locals.user.id,
-            country: req.body.edu_country,
-            city: req.body.edu_city,
-            institution_name: req.body.edu_name,
-            qualification: req.body.edu_qualification
-        };
-
-
-        if(!req.body.cert){
-
-            console.log('no certificate entry')
-
-        }else{
-
-            let userCertificate = {
-                UserId: res.locals.user.id,
-                cert_name: req.body.cert
-            }
-
-            Certificate.create(userCertificate);
-        }
-        
-        Education.create(userEducation).then(rows=>{
-            if(ft==true){
-                res.redirect('/user/payment');
-            }else{
-                res.redirect('/user/educations');
-            }
-        }).catch(e=>{
-            console.log(e);
-        });
+        res.redirect('/user/educations');
+    
 };
 
 //update user education
@@ -121,24 +94,11 @@ module.exports.UpdateEducation = async (req, res, next) => {
     ];
     let userEducation = {
         country: req.body.edu_country,
-        city: req.body.edu_city,
-        institution_name: req.body.edu_name,
-        qualification: req.body.edu_qualification
+        uni: req.body.uni,
+        cert: req.body.cert,
+        start_year: req.body.start_year,
+        endyear: req.body.end_year
     };
-
-    if(!req.body.cert){
-
-        console.log('no certificate entry')
-
-    }else{
-
-        let userCertificate = {
-            cert_name: req.body.cert
-        }
-
-        Certificate.update(userCertificate, {where:{UserId:res.locals.user.id}});
-    }
-
     Education.update(userEducation, { where: {id:req.body.id} }).then(response =>{
         req.session.educationChangeMessage = response != null;
         Education.findAll({
@@ -151,22 +111,8 @@ module.exports.UpdateEducation = async (req, res, next) => {
         });
     });
     res.redirect('/user/educations');
-   // res.redirect('/user/payment');
 
 };
-
-
-module.exports.DeleteEducation = async (req, res, next) => {
-    let educationId = req.body.id;
-    let education_deleted = await Education.destroy({where:{id:educationId}});
-    if(education_deleted !== null) {
-      res.send("success");
-    }else{
-      res.send("error");
-    }
-};
-
-
 
 //hash password
 hashPassword = (password) =>{

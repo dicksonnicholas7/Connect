@@ -36,7 +36,6 @@ module.exports.GetAllPostedJob = async (req, res, next) => {
 };
 
 module.exports.GetSingleJob = async (req, res, next) => {
-    let freelancerId = '';
     let jobId = req.params.id;
     let category = await JobCategory.findAll();
     let job = await Job.findOne( {where: {id:jobId}, include:JobCategory });
@@ -49,16 +48,12 @@ module.exports.GetSingleJob = async (req, res, next) => {
     jobDetail.map(app=>{
        if((app.status==='awarded' || app.status==='accepted') && job_contract){
            jobAppAwardId = app.id;
-           freelancerId = app.FreelanceId;
        }
-    });  
-     freelancer = await User.findOne({where:{id:freelancerId}});
-
+    });
     console.log("Job app id: "+jobAppAwardId);
     res.render(
         'job/view-single-job',
         {
-            freelancer,
             job,
             category,
             jobDetail,
@@ -72,7 +67,7 @@ module.exports.GetFreelancerProfile = async (req, res, next) =>{
     let user_portfolio = await Portfolio.findOne({where:{UserId:freelanceId}, include:User});
     res.send(user_portfolio);
 }
-  
+
 module.exports.AwardJob = async (req, res, next) => {
     let appId = req.params.id;
     let status = {
@@ -98,35 +93,6 @@ module.exports.AwardJob = async (req, res, next) => {
         ReceiverEmail: JobApp.User.email
     };
     Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
-    NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
-
-    res.redirect('/user/view-job/'+JobApp.JobId);
-};
-
-
-
-
-module.exports.WithdrawAwardedJob = async (req, res, next) => {
-    let appId = req.params.id;
-    let status = {
-        status: null
-    };
-
-    let hostname = req.headers.host;
-    let job_withdrawn = JobApplication.update(status,{where:{id:appId} });
-    let JobApp = await JobApplication.findOne({where:{id:appId}, include:User });
-    let job_updated = Job.update(status, {where: {id:JobApp.JobId} });
-    let jobOwnerInfo = await Job.findOne({ where:{id:JobApp.JobId}, include: User });
-
-
-    let notifyMailParts = {
-        title: "Freelancer Job Withdrawal",
-        message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Amalitech-Freelancer.</p>'+ 
-                 '<p>Sorry, '+jobOwnerInfo.title+ ' has withdrawn the Job from you.</p>',
-        ReceiverEmail: JobApp.User.email
-    };
-
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
     res.redirect('/user/view-job/'+JobApp.JobId);

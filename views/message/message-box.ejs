@@ -1,0 +1,35 @@
+<% include ../layout/header-portal.ejs %>
+<div class="app-main__outer">
+    <div class="app-main__inner">
+        <div class="app-page-title">
+            <div class="page-title-wrapper">
+                <div class="page-title-heading">
+                    <div>Message Room
+                        <div class="page-title-subheading">Click on a message to start chatting
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-10 col-lg-8 mb-5 card">
+                <div class="card-header">
+                    <ul class="nav nav-justified">
+                        <li class="nav-item"><a data-toggle="tab" href="#tab-eg7-0" class="active nav-link">Inbox</a></li>
+                        <li class="nav-item"><a data-toggle="tab" href="#tab-eg7-1" class="nav-link">Sent</a></li>
+                    </ul>
+                </div>
+                <div class="card-body" style="max-height: 350px;min-height:500px;overflow-y: scroll;">
+                    <div class="tab-content">
+                        <div class="tab-pane active" id="tab-eg7-0" role="tabpanel">
+                            <% include ../forms/inbox.ejs %>
+                        </div>
+                        <div class="tab-pane" id="tab-eg7-1" role="tabpanel">
+                            <% include ../forms/outbox.ejs %>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+<% include ../layout/footer-portal.ejs %>

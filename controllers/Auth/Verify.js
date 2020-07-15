@@ -5,23 +5,10 @@ const {SendMailVerify} = require('./VerificationEmail');
 
 //render verification status page
 module.exports.GetVerify = (req, res, next) => {
-        
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     res.locals.verify = "empty";
     res.render(
         'auth/verify',
         {
-            usertype,
-            show,
             verify: res.locals.verify,
             page: 'verify'
         }
@@ -30,61 +17,17 @@ module.exports.GetVerify = (req, res, next) => {
 
 //user not verified
 module.exports.NotVerified = (req, res, next) =>{
-    
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-    
-    res.render("auth/success-register",
-    {
-        usertype,
-        show,
-        page:'signup'
-    } 
-    );
+    res.render("auth/success-register",{page:'signup'});
 };
 
 //send another verification message
 module.exports.SendVerificationAgain = (req, res, next) =>{
-        
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
     SendMailVerify(req.session.uemail, req.session.utoken, req.headers.host);
-    res.render("auth/success-register",
-    {
-        usertype,
-        show,
-        page:'signup'
-    });
+    res.render("auth/success-register",{page:'signup'});
 };
 
 //perform verification process
 module.exports.DoVerification = async (req, res, next) => {
-        
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-
     let email = req.params.email;
     let token = req.params.token;
 
@@ -108,8 +51,6 @@ module.exports.DoVerification = async (req, res, next) => {
     res.render(
         'auth/verify',
         {
-            usertype,
-            show,
             verify: res.locals.verify,
             page: 'verify'
         }

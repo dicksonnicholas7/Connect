@@ -6,9 +6,6 @@ const UserAccount = require('../../models').UserAccount;
 const UserPaymentInfo = require('../../models').UserPaymentInfo;
 const crypto = require('crypto');
 let secret = "group3";
-const { GetDashboardClient } = require('../Dashboard/DashBoardClient');
-const { GetDashboardFreelancer } = require('../Dashboard/DashBoardFreelancer');
-
 
 module.exports.GetPaymentDetails = async (req, res, next) => {
     let user_payment = await UserPaymentInfo.findOne({where:{UserId:res.locals.user.id} });
@@ -25,15 +22,6 @@ module.exports.GetPaymentDetails = async (req, res, next) => {
 };
 
 module.exports.CreateStripeAccount = async (req, res, next) => {
-
-    let user_account = await UserAccount.findOne({where:{UserId:res.locals.user.id} });
-    req.session.user.UserAccount = user_account;
-
-    let role = user_account.RoleId;
-
-    console.log(role);
-
-
     let user_payment = await UserPaymentInfo.findOne({where:{UserId:res.locals.user.id} });
     req.session.user.UserPaymentInfo  = user_payment;
     let account_rec_id;
@@ -116,7 +104,6 @@ module.exports.CreateStripeAccount = async (req, res, next) => {
                 success:'Stripe Account Created and Payment Details Added',
                 error:'',
                 accountNumber:account_rec_id,
-                role
             }
         )
       });
@@ -137,26 +124,15 @@ module.exports.AddPaymentDetails = async (req, res, next) => {
         user_pay = await UserPaymentInfo.create(paymentdetails);
     }
     let user_payment2 = await UserPaymentInfo.findOne({where:{UserId:res.locals.user.id} });
-
-    let user_account = await UserAccount.findOne({where:{UserId:res.locals.user.id} });
-    req.session.user.UserAccount = user_account;
-
-    let role = user_account.RoleId;
-
-    console.log(role);
-
-
-if( role === 1){
-
-    GetDashboardClient(req, res, next)
-
-}else if( role === 2){
-
-    GetDashboardFreelancer(req, res, next)
-
-}
-
-
+    res.render(
+        "profile/payment-details",
+        {
+            page:'payment',
+            success:'Payment Details Added',
+            error:'',
+            accountNumber:user_payment2.accountNumber
+        }
+    )
 };
 
 hashPassword = (password) =>{
