@@ -3,47 +3,46 @@
 
 
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
-    <div class="container" id="sign-card">
-
-
-
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding: 80px 0; ">
+    <div class="container" id="sign-card" style="padding: 42px 0";>
 
         <form class="ps-form--signin" action="" method="post">
             <div class="ps-form__header">
 
-
-
-
-                <h3>Sign In</h3>
-
-
-
+                <h3>Log In</h3>
 
             </div>
             <div class="ps-form__content">
                 <div class="form-group">
-                    <input class="form-control" type="email" name="email" value="" placeholder="Email"
+                    <div class="col-md-12">
+                     <input class="form-control" type="email" name="email" value="" placeholder="Email"
                         required="required" />
+                    </div>
                 </div>
                 <div class="form-group">
+                    <div class="col-md-12">
                     <input class="form-control" type="password" name="password" value="" placeholder="Password"
                         required="required" />
+                    </div>
                 </div>
             </div>
-            <div class="ps-form__actions">
-                <div class="ps-checkbox ps-checkbox--circle">
-                    <input class="form-control" type="checkbox" id="newsletter" name="newsletters"/>
-              <label for="newsletter">Remember me</label>
-                </div><a href="/forgot-password">Forgot password?</a>
+            <div class="col-md-12">
+                <div class="ps-form__actions">
+                        <div class="ps-checkbox ps-checkbox--circle">
+                            <input class="form-control" type="checkbox" id="newsletter" name="newsletters"/>
+                         <label for="newsletter">Remember me</label>
+                        </div><a href="/forgot-password">Forgot password?</a>
+                </div>
             </div>
             <div class="ps-form__footer">
-                <button name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Login</button>
-                <p>Not a member yet?<a href="/signup"> Sign up now!</a></p>
+                <div class="col-md-12">
+                    <button name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Login</button>
+                    <p>Not a member yet?<a href="/signup"> Sign up</a></p>
+                </div>
             </div>
         </form>
     </div>
 </div>
 
 
-<% include ../layout/footer-public.ejs %>
+
