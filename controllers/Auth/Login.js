@@ -1,10 +1,9 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
-const Portfolio = require('../../models').Portfolio;
-const Education = require('../../models').Education;
-const Qualification = require('../../models').Qualification;
+const BusinessUser = require('../../models').BusinessUser;
 const crypto = require('crypto');
 let secret = "group3";
+
 
 module.exports.GetLogin = (req, res, next) => {
     //render login page
@@ -34,6 +33,8 @@ module.exports.DoLogin = async (req, res, next) => {
         where: {email: userAccount.email},
         include: [UserAccount]
     });
+    
+
     if (ret_userAccount !== null) {
         if (userAccount.password === ret_userAccount.UserAccount.password) {           
             req.session.user = ret_userAccount;
