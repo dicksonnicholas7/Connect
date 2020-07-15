@@ -10,6 +10,7 @@ const {GetIndex, GetAllJobs, GetPageAllJobs, GetJobsCategoryAndSearch, GetJobsFi
 const { ApplyJob } = require('../controllers/Job/JobFreelancer');
 const {GetVerify, DoVerification, SendVerificationAgain, NotVerified} = require('../controllers/Auth/Verify');
 const {GetHowItWorks} = require('../controllers/Public');
+const {GetComingSoonUpPage} = require('../controllers/ComingSoon');
 const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = require('../controllers/Freelancer/FreelancersPublic');
 
 
@@ -31,6 +32,9 @@ router.get('/reset', GetReset);
 router.get('/verify', GetVerify);
 router.get('/send-verification', SendVerificationAgain);
 router.get('/verification/:email/:token', DoVerification);
+router.get('/coming-soon', GetComingSoonUpPage);
+
+
 
 
 
