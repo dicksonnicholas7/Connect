@@ -1,7 +1,7 @@
 const express = require('express');
 let router = express.Router();
 const {GetLogin, DoLogin, Logout} = require('../controllers/Auth/Login');
-const { GetSignUp, DoSignUp, GetBusinessSignUp } = require('../controllers/Auth/SignUp');
+const { GetSignUp, DoSignUp, GetBusinessSignUp, DoBusinessSignUp } = require('../controllers/Auth/SignUp');
 const { GetSignUpPage } = require('../controllers/SignUpPage');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
@@ -42,6 +42,7 @@ router.get('/job-apply/:id', ApplyJob);
 
 //POST requests
 router.post('/signup', DoSignUp);
+router.post('/business-signup', DoBusinessSignUp);
 router.post('/login', DoLogin);
 router.post('/forgot-password', forgotPasswordEmail);
 router.post('/reset-password', DoResetPassword);
