@@ -2,7 +2,7 @@ const express = require('express');
 let router = express.Router();
 const {GetLogin, DoLogin, Logout} = require('../controllers/Auth/Login');
 const { GetSignUp, DoSignUp, GetBusinessSignUp } = require('../controllers/Auth/SignUp');
-const { GetSignUpPage } = require('../controllers/Auth/SignUpPage');
+const { GetSignUpPage } = require('../controllers/SignUpPage');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
         } = require('../controllers/Auth/ForgotPassword');

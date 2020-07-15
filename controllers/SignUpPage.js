@@ -9,18 +9,12 @@ module.exports.GetSignUpPage = (req, res, next ) => {
          usertype = res.locals.user.UserAccount.RoleId;
     }
     
-
-    console.log(usertype);
-
-    //render sign up page
-
         res.render(
-                'auth/signup-page',
+                'signup-page',
                 {
                     usertype,
                     show,
                     page:'signup-page'
                 }
             )
-
 };
