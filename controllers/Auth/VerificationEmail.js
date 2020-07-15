@@ -34,8 +34,8 @@ module.exports.SendMailVerify = (emailReceiver, token, hostname)=>{
         from: 'Connect',
         subject: 'Connect - Verify your email',
         html: '<div style="background-color:white;color:black;">'+
-        '<p style="font-weight: bold;">Welcome to Connect.</p><p>Click on the following link to verify your email address.</p>+
-        '<a href="http://' + hostname + '/verification/' + emailReceiver + '/' + token + '">Click here to verify</a></div>',
+        '<p style="font-weight: bold;">Welcome to Connect.<p></p>Click on the following link to verify your email address.<p>'+
+        '<a href="http://'+hostname+'/verification/'+emailReceiver+'/'+token+'">Click here to verify</a></div>',
     };
     transporter.sendMail(mailOptions)
         .then(() => {
