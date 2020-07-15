@@ -1,7 +1,7 @@
 const express = require('express');
 let router = express.Router();
 const {GetLogin, DoLogin, Logout} = require('../controllers/Auth/Login');
-const { GetSignUp, DoSignUp } = require('../controllers/Auth/SignUp');
+const { GetSignUp, DoSignUp, GetBusinessSignUp } = require('../controllers/Auth/SignUp');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
         } = require('../controllers/Auth/ForgotPassword');
@@ -21,6 +21,7 @@ router.get('/', GetIndex);
 router.get('/how-it-works', GetHowItWorks);
 router.get('/login', GetLogin);
 router.get('/signup', GetSignUp);
+router.get('/business-signup', GetBusinessSignUp);
 router.get('/logout', Logout);
 router.get('/forgot-password', GetForgotPassword);
 router.get('/reset-password/:token/:email', GetResetPassword);

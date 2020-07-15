@@ -11,6 +11,40 @@ const {SendMailVerify} = require('./VerificationEmail');
 const validator = require("email-validator");
 
 
+
+module.exports.GetBusinessSignUp = (req, res, next ) => {
+    let usertype = 0
+    let show = false;
+
+    if(!res.locals.user){
+        show = false;
+    }else{
+        show = true;
+        usertype = res.locals.user.UserAccount.RoleId;
+    }
+
+
+    console.log(usertype);
+
+    //render sign up page
+
+    if(req.session.loggedIn===true){
+        res.redirect('/');
+    }else{
+        res.render(
+            'auth/signup',
+            {
+                usertype,
+                show,
+                page:'business-signup',
+                signUpErrorMessage:'',
+                signUpSuccessMessage:''
+            }
+        )
+    }
+};
+
+
 module.exports.GetSignUp = (req, res, next ) => {
     let usertype = 0
     let show = false;
