@@ -58,16 +58,32 @@
 .ps-form--signin .ps-form__footer p a{
     color:#0c4767;
 }
+
 .ps-footer{
     background-color: #0c4767;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1px;
+    padding-top: 0px;
 }
 
 .ps-footer a{
     color: #ffffff;
 }
 
+.ps-footer p{
+    color: #ffffff;
+    margin-top: 0px;
+}
+
+.ps-footer__bottom{
+    padding-bottom: 30px;
+}
+
 .ps-form__footer p{
     padding-bottom: 20px;
+    padding-top: 0px;
 }
 
 .widget_footer .widget-title{
