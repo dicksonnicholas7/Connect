@@ -1,33 +1,34 @@
+
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
 
 
- <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); padding: 60px 0; ">
-     <div class="container" id="sign-card" style="padding: 25px 0;">
-      
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); padding: 60px 0; ">
+    <div class="container" id="sign-card" style="padding: 25px 0;">
+
         <form action="/signup" method="post" class="p-5 bg-white" style="margin: auto;text-align: center;">
-            <h3 style="text-align: center;">Individual Account</h3>
+            <h3 style="text-align: center;">Business Account</h3>
             <% if(signUpErrorMessage){ %>
             <div class="alert alert-danger"  role="alert">
                 <strong id="errorMessage"><%=signUpErrorMessage%></strong>
-            
-                    <button type="button" class="close" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-       
+
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
             </div>
             <% }else if(signUpSuccessMessage){%>
             <div class="alert alert-success" role="alert">
                 <strong id="errorMessage"><%=signUpSuccessMessage%></strong>
-            
-                    <button type="button" class="close" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-            
+
+                <button type="button" class="close" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+
             </div>
             <% } %>
-            
+
             <div class="row form-group">
                 <div class="col-md-12">
                     <input type="email" autocomplete="off" id="email" name="email" class="form-control" placeholder="Email Address" required>
@@ -35,9 +36,9 @@
             </div>
             <div class="row form-group">
                 <div class="col-md-12">
-                        <input type="password" autocomplete="off" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers"
-                               pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
-                               onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
+                    <input type="password" autocomplete="off" name="password" id="password" class="form-control input-lg" placeholder="Password" tabindex="5" title="Password must contain at least 8 characters, including UPPER/lowercase and numbers"
+                           pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
+                           onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
                             if(this.checkValidity()) form.conpassword.pattern = RegExp.escape(this.value);" required/>
                     <div id="strengthMessage"></div>
                 </div>
@@ -71,15 +72,15 @@
             <div class="ps-form__footer">
                 <p>By signing up,you confirm that you accept Connect <br> <a href="#">Terms and Conditions </a> and
                     <a href="#">Privacy Policy </a></p>
-               <button name="register_user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Sign Up</button><hr>
-               <p>Already a member?<a href="/login"> Sign In</a></p>
-              
-           </div>
+                <button name="register_user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Sign Up</button><hr>
+                <p>Already a member?<a href="/login"> Sign In</a></p>
+
+            </div>
 
         </form>
 
-     </div>
- </div>
+    </div>
+</div>
 
 
 

@@ -15286,3 +15286,31 @@ html .bg--parallax {
 .ps-post--list > *, .ps-post--sidebar > *, .ps-post--detail .ps-post__footer > *, .ps-job > *, .ps-job--review > *, .ps-employer > *, .ps-freelancer > *, .ps-block--user-profile > .ps-block__content > *, .ps-block--comment > *, .ps-block--user > *, .ps-block--people > *, .ps-block--hire-freelancer > *, .ps-block--icon > *, .ps-block--author-2 > *, .ps-block--testimonials > *, .ps-block--job-detail-top.detail > *, .ps-block--message > *, .ps-block--job-feed > *, .ps-block--notification > *, .ps-form__method > *, .ps-form--post-a-job .ps-form__rule > *, .ps-form--settings .form-group--avatar > *, .ps-home-features > *, .ps-home-services .ps-tab-list > *, .ps-home-services-2 > *, .ps-home-hire-freelancer .ps-section__content > *, .ps-home-connection > *, .ps-home-slogan-2 .container > *, .ps-about--founder > *, .ps-services-introduction > .container > *, .ps-services-estimate > *, .ps-section--sidebar .ps-section__container > *, #homepage-3 .ps-home-banner .ps-section__content > *, #homepage-6 .ps-home-services-3 .ps-section__content > *, .header--1 > *, .header--2 > *, .header--signin > *, .header--mobile > *, .header--mobile .header__content > *, .ps-footer__top > *, .ps-footer__bottom > * {
   width: 100%;
 }
+
+.Weak {
+  width: 100%;
+  background-color: #ffc107;
+  margin-top: 5px;
+  height: 3px;
+  color: #ffc107;
+  font-weight: 500;
+  font-size: 12px;
+}
+.Good {
+  width: 100%;
+  background-color: #3AC6F8;
+  margin-top: 5px;
+  height: 3px;
+  color: #3AC6F8;
+  font-weight: 500;
+  font-size: 12px;
+}
+.Strong {
+  width: 100%;
+  background-color: green;
+  margin-top: 5px;
+  height: 3px;
+  color: green;
+  font-weight: 500;
+  font-size: 12px;
+}
