@@ -20,9 +20,9 @@ module.exports.GetBusinessSignUp = (req, res, next ) => {
         show = false;
     }else{
         show = true;
-        usertype = res.locals.user.UserAccount.RoleId;
+         usertype = res.locals.user.UserAccount.RoleId;
     }
-
+    
 
     console.log(usertype);
 
@@ -30,17 +30,17 @@ module.exports.GetBusinessSignUp = (req, res, next ) => {
 
     if(req.session.loggedIn===true){
         res.redirect('/');
-    }else{
+    }else{ 
         res.render(
-            'auth/signup',
-            {
-                usertype,
-                show,
-                page:'business-signup',
-                signUpErrorMessage:'',
-                signUpSuccessMessage:''
-            }
-        )
+                'auth/business-signup',
+                {
+                    usertype,
+                    show,
+                    page:'business-signup',
+                    signUpErrorMessage:'',
+                    signUpSuccessMessage:''
+                }
+            )
     }
 };
 
