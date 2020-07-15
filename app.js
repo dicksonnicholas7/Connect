@@ -1,13 +1,22 @@
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
+const session = require('express-session');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+const adminRouter = require('./routes/admin');
+
+
+//middleware
+const {checkLoggedIn} = require('./middlewares/checklogin');
 
 var app = express();
+
+const db = require("./models");
+db.sequelize.sync();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -19,8 +28,29 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+app.use(session({
+  secret: 'group3',
+  resave: true,
+  saveUninitialized: true,
+  rolling: true,
+  cookie: {maxAge: 60*60*1000}
+}));
+
+
+app.use( (req, res, next) => {
+  res.locals.loginSuccessMessage = req.session.loginSuccessMessage;
+  res.locals.loginErrorMessage = req.session.loginErrorMessage;
+  res.locals.profileChangeMessage = req.session.profileChangeMessage;
+  res.locals.portfoilioChangeMessage = req.session.portfoilioChangeMessage;
+  res.locals.passwordChangeMessage = req.session.passwordChangeMessage;
+  res.locals.user = req.session.user;
+  next();
+});
+
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/admin', checkLoggedIn, adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
