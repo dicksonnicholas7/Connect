@@ -36,9 +36,6 @@ router.get('/coming-soon', GetComingSoonUpPage);
 
 
 
-
-
-
 router.get('/jobs',GetAllJobs);
 router.get('/jobs/:page',GetPageAllJobs);
 router.get('/job/:id', JobDetail);
