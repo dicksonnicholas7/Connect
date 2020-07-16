@@ -8,40 +8,6 @@ const {SendMailVerify} = require('./VerificationEmail');
 const validator = require("email-validator");
 
 
-
-module.exports.GetBusinessSignUp = (req, res, next ) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-        usertype = res.locals.user.UserAccount.RoleId;
-    }
-
-
-    console.log(usertype);
-
-    //render sign up page
-
-    if(req.session.loggedIn===true){
-        res.redirect('/');
-    }else{
-        res.render(
-            'auth/business-signup',
-            {
-                usertype,
-                show,
-                page:'business-signup',
-                signUpErrorMessage:'',
-                signUpSuccessMessage:''
-            }
-        )
-    }
-};
-
-
 module.exports.GetSignUp = (req, res, next ) => {
     let usertype = 0
     let show = false;
@@ -56,6 +22,19 @@ module.exports.GetSignUp = (req, res, next ) => {
 
     console.log(usertype);
 
+   let  signUpTypeBusiness = ''
+    let signUpTypeIndividual = ''
+ 
+
+    if(req.params.type === 'individual'){
+
+        signUpTypeBusiness = ''
+        signUpTypeIndividual = 'Individual Account'
+    }else{
+        signUpTypeBusiness = 'Business Account'
+        signUpTypeIndividual = ''
+    }
+
     //render sign up page
 
     if(req.session.loggedIn===true){
@@ -64,6 +43,8 @@ module.exports.GetSignUp = (req, res, next ) => {
         res.render(
                 'auth/signup',
                 {
+                    signUpTypeBusiness,
+                    signUpTypeIndividual,
                     usertype,
                     show,
                     page:'signup',
@@ -95,6 +76,9 @@ module.exports.DoSignUp = async (req, res, next) => {
          usertype = res.locals.user.UserAccount.RoleId;
     }
     
+let type = req.params.type;
+
+
     //generate a token for email verification
     if(validator.validate(req.body.email)){
         
@@ -103,28 +87,35 @@ module.exports.DoSignUp = async (req, res, next) => {
         'connect',
         { expiresIn: '24h' });
 
-        let user_type = 2;
+        
 
-        console.log(user_type);
+        
         console.log(req.originalUrl)
+        console.log(req.params.type)
 
-    let userInfo = {
-        email: req.body.email || '',
-        mobile: req.body.mobile || '',
-        UserAccount: [
-            {
-                email: req.body.email,
-                username: '',
-                password: hashPassword(req.body.password),
-                RoleId: req.body.role,
-                UserTypeId: user_type,
-                verified: false,
-                token: token,
-            }
-        ]
-    };
+        if(req.params.type ==='individual'){
 
-            //check if email is already used
+            let user_type = 2;
+
+            console.log(user_type);
+
+            let userInfo = {
+                email: req.body.email || '',
+                mobile: req.body.mobile || '',
+                UserAccount: [
+                    {
+                        email: req.body.email,
+                        username: '',
+                        password: hashPassword(req.body.password),
+                        RoleId: req.body.role,
+                        UserTypeId: user_type,
+                        verified: false,
+                        token: token,
+                    }
+                ]
+            };
+
+                        //check if email is already used
     let user = await User.findOne({ where:{email:req.body.email} });
     if(user!==null && user.email===req.body.email){
         console.log("User already exists. Log in");
@@ -164,48 +155,15 @@ module.exports.DoSignUp = async (req, res, next) => {
             getSignUpPage(req, res, next, error, success );
         }
     }
-    }else{
-        let error = 'Please enter a valid email address';
-        let success = '';
-        getSignUpPage(req, res, next, error, success );
-
-    }
-};
 
 
+        }else if(req.params.type==='business'){
 
+            let user_type = 1;
 
+            console.log(user_type);
 
-
-
-/**
- * sign up for business
- * **/
-
-module.exports.DoBusinessSignUp = async (req, res, next) => {
-    let usertype = 0
-    let show = false;
-
-    if(!res.locals.user){
-        show = false;
-    }else{
-        show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
-    }
-    
-    //generate a token for email verification
-    if(validator.validate(req.body.email)){
-        
-    const token = jwt.sign(
-        { userId: req.body.email },
-        'connect',
-        { expiresIn: '24h' });
-
-        let user_type = 1;
-
-        console.log(user_type);
-        console.log(req.originalUrl)
-
+            
     let userInfo = {
         email: req.body.email || '',
         mobile: req.body.mobile || '',
@@ -255,13 +213,19 @@ module.exports.DoBusinessSignUp = async (req, res, next) => {
             );
         }
     }
+
+
+            
+        }
+
     }else{
-        let error = 'Please enter a valid Business email address';
+        let error = 'Please enter a valid email address';
         let success = '';
         getSignUpPage(req, res, next, error, success );
 
     }
 };
+
 
 
 
