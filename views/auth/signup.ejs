@@ -23,23 +23,15 @@
             <% } %>
 
             <% if(signUpErrorMessage){ %>
-            <div class="alert alert-danger"  role="alert">
-                <strong id="errorMessage"><%=signUpErrorMessage%></strong>
-            
-                    <button type="button" class="close" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-       
-            </div>
+                <div class="alert alert-danger alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><%=signUpErrorMessage%></strong> 
+                  </div>
             <% }else if(signUpSuccessMessage){%>
-            <div class="alert alert-success" role="alert">
-                <strong id="errorMessage"><%=signUpSuccessMessage%></strong>
-            
-                    <button type="button" class="close" aria-label="Close">
-                      <span aria-hidden="true">&times;</span>
-                    </button>
-            
-            </div>
+                <div class="alert alert-success alert-dismissible">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                    <strong><%=signUpSuccessMessage%></strong> 
+                  </div>
             <% } %>
             
             <div class="row form-group">

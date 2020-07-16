@@ -93,8 +93,6 @@ module.exports.DoSignUp = async (req, res, next) => {
             {
                 signUpTypeBusiness:'',
                 signUpTypeIndividual:'Individual',
-                usertype,
-                show,
                 page:'signup',
                 signUpErrorMessage:'User by that email already exists',
                 signUpSuccessMessage:''
@@ -136,8 +134,6 @@ module.exports.DoSignUp = async (req, res, next) => {
                     "auth/success-register",
                     
                     {
-                        usertype,
-                        show,
                         page:'signup',
                         signUpSuccessMessage:'An email has been sent to your account to verify.'
                     });
