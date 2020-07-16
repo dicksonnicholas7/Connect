@@ -40,6 +40,8 @@ router.get('/jobs/:page',GetPageAllJobs);
 router.get('/job/:id', JobDetail);
 router.get('/job-apply/:id', ApplyJob);
 
+
+
 //POST requests
 router.post('/signup/:type', DoSignUp);
 router.post('/login', DoLogin);

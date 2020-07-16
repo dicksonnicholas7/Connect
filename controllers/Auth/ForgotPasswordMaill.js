@@ -27,7 +27,7 @@ module.exports.SendMailResetPassword = (emailReceiver, token, hostname)=>{
             clientSecret: client_secret,
             refreshToken: refresh_token,
             accessToken: accessToken
-        }
+        }  
     });
     const mailOptions = {
         to: emailReceiver,

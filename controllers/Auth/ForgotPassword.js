@@ -50,7 +50,7 @@ module.exports.forgotPasswordEmail = async (req,res,next)=>{
         email: req.body.email
     };
 
-    let ret_user = await User.findOne({ where:{email:userAccount.email} });
+    let ret_user = await UserAccount.findOne({ where:{email:userAccount.email} });
     if(ret_user!==null) {
         let token = hashPassword(userAccount.email);
         console.log("Token:  " + token);
@@ -58,10 +58,10 @@ module.exports.forgotPasswordEmail = async (req,res,next)=>{
         //send reset link to email
         res.locals.emailSent = !!SendMailResetPassword(userAccount.email, token, hostname);
         res.render(
-            'auth/forgot-password',
+            'auth/reset-password-mail',
             {
                 emailSent: res.locals.emailSent,
-                page: 'forgot-password'
+                page: 'reset-password-mail'
             }
         )
     }else{
@@ -84,8 +84,8 @@ module.exports.DoResetPassword = async (req,res,next)=>{
     let newPassword = {
         password: hashPassword(req.body.password)
     };
-    let user_info = await User.findOne({ where:{email:email} });
-    let upd_userAccount = await UserAccount.update(newPassword,{ where: {UserId: user_info.id} });
+
+    let upd_userAccount = await UserAccount.update(newPassword,{ where:{email:email}});
     res.locals.changed = false;
     (upd_userAccount!==null) ? res.locals.changed = true : res.locals.changed = false;
     console.log("changed");
