@@ -8,34 +8,13 @@ const axios = require('axios');
 
 //render profile page. Also get list of countries from an external api
 module.exports.GetProfile = async (req, res, next) => {
-    //Get list of countries from an external api
-    let country = [];
-    axios.get('https://restcountries.eu/rest/v2/all')
-        .then(response => {
-            country = response.data;
-            req.session.profileChangeMessage = "";
-            res.render(
-                'profile/profile',
-                {
-                    country
-                }
-            )
-        })
-        .catch(error => {
-            //api fails, add some countries
-            console.log(error);
-            country = [
-                {name: 'Ghana'},
-                {name: 'Germany'},
-            ];
-            res.render(
-                'profile/profile',
-                {
-                    country
-                }
-            )
-        });
 
+            res.render(
+                'profile/freelancer-profile',
+                {
+                    page: 'profile/freelancer-profile'
+                }
+            )
 };
 
 //render profile page if update successful and show response
