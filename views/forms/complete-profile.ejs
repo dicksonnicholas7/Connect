@@ -1,0 +1,75 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+<div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#">Personal Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" aria-disabled="true">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Skills & Experience</a>
+        </li>
+      </ul>
+    </div>
+    <div class="card-body">
+        <form>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="firstName">First Name</label>
+                <input type="text" class="form-control" id="fname" placeholder="">
+              </div>
+              <div class="form-group col-md-6">
+                <label for="lastName">Last Name</label>
+                <input type="text" class="form-control" id="lname" placeholder="">
+              </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="job">Job Title</label>
+                  <input type="text" class="form-control" id="job" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="availability">Availability</label>
+                  <select id="availabilityState" class="form-control">
+                    <option selected>Part-time</option>
+                    <option>Full time</option>
+                  </select>
+                </div>
+              </div>
+            <div class="form-group">
+              <label for="about">Golden Paragraph</label>
+              <input type="text" class="form-control" id="about" placeholder="Write a personal summary here...">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="dob">Date of Birth</label>
+                  <input type="text" class="form-control" id="dob" placeholder="">
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="gender">Gender</label>
+                  <select id="gender" class="form-control">
+                    <option selected>Male</option>
+                    <option>Female</option>
+                    <option>Rather Not Say</option>
+                  </select>
+                </div>
+              </div>
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="inputCity">City</label>
+                <input type="text" class="form-control" id="inputCity" placeholder="Accra, Ghana">
+              </div>
+              <div class="form-group col-md-4">
+                <label for="phone">Phone</label>
+                <input type="text" class="form-control" id="phone" placeholder="">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">NEXT</button>
+          </form>
+    </div>
+  </div>
+  <% include ../layout/footer-public.ejs %>
