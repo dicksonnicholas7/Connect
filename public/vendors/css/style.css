@@ -1683,12 +1683,9 @@ button {
 
 .ps-btn--white, button.ps-btn--white {
   color: #000;
-  background-color: #ffffff;
+  background-color: #ffffff
 }
 
-.ps-btn--white:hover, button.ps-btn--white:hover {
- 
-}
 
 .ps-btn--black, button.ps-btn--black {
   background-color: #000;
@@ -1701,8 +1698,8 @@ button {
 }
 
 .ps-btn--black.ps-btn--outline:hover, button.ps-btn--black.ps-btn--outline:hover {
-  background-color: #000;
-  color: #ffffff;
+  background-color: #A41201;
+  color: #A41201;
 }
 
 .ps-btn--outline, button.ps-btn--outline {
@@ -1715,9 +1712,9 @@ button {
 }
 
 .ps-btn--outline:hover, button.ps-btn--outline:hover {
-  background-color: #0c4767;
-  border-color: #0c4767;
-  color: #ffffff;
+  background-color: #A41201;
+  border-color: #A41201;
+  color: #A41201;
 }
 
 .ps-btn--outline.ps-btn--white, button.ps-btn--outline.ps-btn--white {
@@ -1726,8 +1723,8 @@ button {
 }
 
 .ps-btn--outline.ps-btn--white:hover, button.ps-btn--outline.ps-btn--white:hover {
-  color: #000;
-  background-color: #ffff;
+  color: #A41201;
+  background-color: #A41201;
 }
 
 .ps-btn--shadow, button.ps-btn--shadow {
@@ -1815,7 +1812,7 @@ button {
 }
 
 .ps-btn.ps-btn--reverse:hover, button.ps-btn.ps-btn--reverse:hover {
-  background-color: #4f4f6f;
+  background-color: #A41201;
 }
 
 .ps-btn.ps-btn--gray, button.ps-btn.ps-btn--gray {
@@ -1826,11 +1823,11 @@ button {
 
 .ps-btn:hover, .ps-btn:active, button.ps-btn:hover, button.ps-btn:active {
   color: #fff;
-  background-color: #6684f2;
+  background-color: #A41201;
 }
 
 .ps-btn:hover.ps-btn--black, .ps-btn:active.ps-btn--black, button.ps-btn:hover.ps-btn--black, button.ps-btn:active.ps-btn--black {
-  background-color: #0c4767;
+  background-color: #A41201;
 }
 
 @media (max-width: 767px) {
@@ -1900,7 +1897,7 @@ button {
 }
 
 .ps-btn--close:hover:before, .ps-btn--close:hover:after {
-  background-color: #f44336;
+  background-color: #A41201;
   -webkit-transition-delay: 0.3s;
   -moz-transition-delay: 0.3s;
   -o-transition-delay: 0.3s;
@@ -2157,26 +2154,33 @@ textarea.form-control {
 .ps-checkbox--circle label:before {
   border-radius: 50%;
   border-color: #595959;
+  width: 13px;
+  height: 13px;
 }
 
 .ps-checkbox--circle label:after {
   top: 3px;
   left: 3px;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   border-radius: 50%;
 }
 
 .ps-checkbox--circle input[type=checkbox]:checked ~ label:before {
   background-color: transparent;
+   top: 3px;
+  left: 3px;
+  border: none;
+  width: 13px;
+  height: 13px;
 }
 
 .ps-checkbox--circle input[type=checkbox]:checked ~ label:after {
   top: 3px;
   left: 3px;
   border: none;
-  width: 14px;
-  height: 14px;
+  width: 13px;
+  height: 13px;
   background-color: #0c4767;
 }
 
@@ -4193,7 +4197,7 @@ textarea.form-control {
 
 .ps-freelancer figure .ps-btn:hover {
   color: #ffffff;
-  background-color: #0c4767;
+  background-color: #A41201;
 }
 
 .ps-freelancer .ps-freelancer__thumbnail {
@@ -4587,7 +4591,7 @@ textarea.form-control {
 }
 
 .ps-block--user-profile .ps-block__footer .ps-btn--white:hover {
-  background-color: #0c4767;
+  background-color: #A41201;
   color: #ffffff;
 }
 
@@ -5367,7 +5371,7 @@ textarea.form-control {
 }
 
 .ps-block--hire-freelancer .ps-block__content .ps-btn:hover {
-  border-color: #6684f2;
+  border-color: #A41201;
 }
 
 .ps-block--hire-freelancer:hover .ps-btn {
@@ -5647,7 +5651,7 @@ textarea.form-control {
 
 .ps-block--service.blue .ps-btn:hover {
   color: #000;
-  background-color: #ffffff;
+  background-color: #A41201;
 }
 
 .ps-block--service.box-shadow {
@@ -5835,7 +5839,7 @@ textarea.form-control {
 
 .ps-block--project .ps-btn:hover {
   color: #000;
-  background-color: #ffffff;
+  background-color: #A41201;
 }
 
 .ps-block--project .ps-block__content {
@@ -7316,7 +7320,7 @@ textarea.form-control {
 }
 
 .ps-banner--2 .ps-btn:hover {
-  background-color: #ffffff;
+  background-color: #A41201;
   color: #000 !important;
 }
 
@@ -11041,7 +11045,7 @@ textarea.form-control {
 }
 
 .ps-services-success .ps-btn:hover {
-  background-color: #ffff;
+  background-color: #A41201;
   color: #000;
 }
 
@@ -11424,7 +11428,7 @@ textarea.form-control {
 }
 
 .ps-profile-info .ps-section__thumbnail > .ps-btn:hover {
-  background-color: #0c4767;
+  background-color: #A41201;
   color: #ffffff;
 }
 
@@ -13241,7 +13245,7 @@ textarea.form-control {
 
 .header--1 .ps-btn.ps-btn--outline:hover {
   color: #ffffff;
-  background-color: #0c4767;
+  background-color: #A41201;
 }
 
 .header--1 .header__actions {
@@ -13363,7 +13367,7 @@ textarea.form-control {
 
 .header--2 .ps-btn.ps-btn--outline:hover {
   border-color: #6684f2;
-  background-color: #6684f2;
+  background-color: #A41201;
 }
 
 .header--2 .menu > li {
@@ -13457,8 +13461,8 @@ textarea.form-control {
 
 .header--2.dark .ps-btn--outline:hover {
   color: #ffffff;
-  background-color: #0c4767;
-  border-color: #0c4767;
+  background-color: #A41201;
+  border-color: #A41201;
 }
 
 .header--2.dark .menu > li > a {
@@ -13504,8 +13508,8 @@ textarea.form-control {
 }
 
 .header--2.page .ps-btn.ps-btn--outline:hover {
-  border-color: #0c4767;
-  background-color: #0c4767;
+  border-color: #A41201;
+  background-color: #A41201;
 }
 
 .header--2.page.header--sticky {
