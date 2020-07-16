@@ -1,0 +1,54 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
+    <div class="container" id="sign-card">
+    <div class="card-header" style="background-color: #0C4767;">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-disabled="true">Personal Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Skills & Experience</a>
+        </li>
+      </ul>
+    </div>
+
+<div class="container col-md-4">
+
+</div>
+<div>
+<form>
+    <div class="form-row">
+        <div class="col-md-12">
+            <div class="position-relative form-group">
+                <label for="title" class="">Title</label>
+                <input name="title" id="title"  placeholder="Eg. E-Commerce Website" type="text" class="form-control" required>            
+            </div>
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col-md-12">
+            <div class="position-relative form-group">
+                <label for="description" class="">Description</label>
+                <textarea class="form-control" id="about" name="about"placeholder="Write a description here" required></textarea>             
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-row">
+        <div class="col-md-12">
+            <div class="position-relative form-group">
+                <label for="links" class="">Project Links</label>
+                <textarea class="form-control" id="links" name="links" placeholder="Eg. www.github.com/raphael9830" required></textarea>             
+            </div>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">NEXT</button>
+  </form>
+</div>
+<% include ../layout/footer-public.ejs %>
