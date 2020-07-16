@@ -84,8 +84,8 @@ module.exports.DoResetPassword = async (req,res,next)=>{
     let newPassword = {
         password: hashPassword(req.body.password)
     };
-    let user_info = await UserAccount.findOne({ where:{email:email} });
-    let upd_userAccount = await UserAccount.update(newPassword,{ where: {UserId: user_info.id} });
+
+    let upd_userAccount = await UserAccount.update(newPassword,{ where:{email:email}});
     res.locals.changed = false;
     (upd_userAccount!==null) ? res.locals.changed = true : res.locals.changed = false;
     console.log("changed");
