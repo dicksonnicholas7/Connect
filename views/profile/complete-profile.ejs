@@ -21,7 +21,7 @@
 
         </div>
         <div>
-        <form>
+        <!--form>
             <div class="form-row">
               <div class="form-group col-md-6">
                 <label for="firstName">First Name</label>
@@ -74,100 +74,138 @@
               </div>
             </div>
             <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">NEXT</button>
-          </form>
-        </div> 
+          </form-->
+
+          <!--form id="fmprofile" class="" action="/user/add-education" method="post">
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="title" class="">Title</label>
+                        <input name="title" id="title"  placeholder="" type="text" class="form-control" required>            
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="description" class="">Description: </label>
+                        <textarea class="form-control" id="about" name="about" required></textarea>             
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="links" class="">Project Links: </label>
+                        <textarea class="form-control" id="links" name="links" required></textarea>             
+                    </div>
+                </div>
+            </div>
+            <div>
+            <button class="accordion">Add New Porfolio</button>
+            <div class="panel">
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="position-relative form-group">
+                            <label for="cert" class="">Title: </label>
+                            <textarea class="form-control" id="title" name="title"></textarea>             
+                        </div>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="position-relative form-group">
+                            <label for="cert" class="">Description: </label>
+                            <textarea class="form-control" id="about" name="about"></textarea>             
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-row">
+                    <div class="col-md-12">
+                        <div class="position-relative form-group">
+                            <label for="cert" class="">Project Links: </label>
+                            <textarea class="form-control" id="links" name="links"></textarea>             
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="cert" class="">Skills: </label>
+                        <textarea class="form-control" id="skills" name="skills" required></textarea>             
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center">
+                <input type="submit" class="mt-2 btn btn-success py-2 px-4" value="Add">
+            </div>
+        </form-->
+
+        <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding: 80px 0; ">
+            <div class="container" id="sign-card">
         
-        <div class="container col-md-4">
-
-        </div>
-        <div hidden>
-        <form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="fname" placeholder="">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="">
-              </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="job">Job Title</label>
-                  <input type="text" class="form-control" id="job" placeholder="">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="availability">Availability</label>
-                  <select id="availabilityState" class="form-control">
-                    <option selected>Part-time</option>
-                    <option>Full time</option>
-                  </select>
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="about">Golden Paragraph</label>
-              <textarea name="about" id="about" placeholder="Write a personal summary here..."></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="dob">Date of Birth</label>
-                  <input type="text" class="form-control" id="dob" placeholder="">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="gender">Gender</label>
-                  <select id="gender" class="form-control">
-                    <option selected>Male</option>
-                    <option>Female</option>
-                    <option>Rather Not Say</option>
-                  </select>
-                </div>
-              </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="Accra, Ghana">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">NEXT</button>
-          </form>
-        </div>
-
-        <div hidden>
-            <form>
-                <div class="form-row">
-                  <div class="form-group col-md-12">
-                    <label for="skills">Skills</label>
-                    <input type="text" class="form-control" id="skills" placeholder="Type a skill and select the list">
-                  </div>
-                </div>
-                <div class="form-row">
-                    <div class="form-group col-md-8">
-                      <label for="experience">Experience</label>
-                      <input type="text" class="form-control" id="experience" placeholder="Eg. Web Designer">
+                <form class="ps-form--signin" action="/login" method="post">
+                    <div class="ps-form__header">
+        
+                        <h3>Log In</h3>
+        
                     </div>
-                    <div class="form-group col-md-4">
-                      <label for="years">Years</label>
-                      <select id="years" class="form-control">
-                        <option selected>Below 1</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                        <option>More</option>
-                      </select>
+                    <div class="ps-form__content">
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="title" class="">Title</label>
+                                        <input name="title" id="title"  placeholder="" type="text" class="form-control" required>            
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="form-row">
+                                    <div class="col-md-12">
+                                        <div class="position-relative form-group">
+                                            <label for="description" class="">Description: </label>
+                                            <textarea class="form-control" id="about" name="about" required></textarea>             
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="form-row">
+                                <div class="col-md-12">
+                                    <div class="position-relative form-group">
+                                        <label for="links" class="">Project Links: </label>
+                                        <textarea class="form-control" id="links" name="links" required></textarea>             
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                  </div>
-                <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">SAVE</button>
-              </form>
+                    <div class="col-md-12">
+                        <div class="ps-form__actions">
+                                <div class="ps-checkbox ps-checkbox--circle">
+                                    <input class="form-control" type="checkbox" id="newsletter" name="newsletters"/>
+                                 <label for="newsletter">Remember me</label>
+                                </div><a href="/forgot-password">Forgot password?</a>
+                        </div>
+                    </div>
+                    <div class="ps-form__footer">
+                        <div class="col-md-12">
+                            <button type="submit" id="btnlogin" name="btnlogin" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Log In</button>
+                            <p style="padding-top: 0px;">Not a member yet?<a href="/signup-page"> Sign up</a></p>
+                        </div>
+                    </div>
+                </form>
             </div>
-
-
+        </div>
+        </div> 
     </div>
   </div>
 </div>  
