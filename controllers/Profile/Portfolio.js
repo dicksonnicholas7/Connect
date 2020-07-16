@@ -15,15 +15,15 @@ module.exports.GetAllPortfolios = async (req, res, next) => {
 }
 
 //render portfolio page
-module.exports.GetPortfolio = async (req, res, next) => {
-    let portfolio_id = req.params.id;
-    let user_portfolio = await Portfolio.findOne({where:{id:portfolio_id} });
-    res.render(
-        'profile/portfolio',
-        {
-            user_portfolio
-        }
-    )
+module.exports.GetCompletePortfolio = async (req, res, next) => {
+
+        res.render(
+            'portfolio/complete-portfolio',
+            {
+                page: 'portfolio/complete-portfolio'
+            }
+        )
+ 
 };
 
 //render portfolio page with response

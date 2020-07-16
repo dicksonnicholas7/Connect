@@ -18,6 +18,8 @@ module.exports.GetProfile = async (req, res, next) => {
 };
 
 
+
+
 module.exports.GetCompleteProfile = async (req, res, next) => {
 
     res.render(
