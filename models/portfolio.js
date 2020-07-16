@@ -8,13 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Portfolio.associate = function(models) {
     // associations can be defined here
-    Portfolio.belongsTo(models.User, {
+    Portfolio.belongsTo(models.UserAccount, {
       foreignKey: 'UserId',
-      onDelete: 'CASCADE'
-    });
-
-    Portfolio.belongsTo(models.BusinessUser, {
-      foreignKey: 'BusinessPortId',
       onDelete: 'CASCADE'
     });
   };

@@ -5,12 +5,12 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Chat.associate = function(models) {
     // associations can be defined here
-    Chat.belongsTo(models.User, {
+    Chat.belongsTo(models.UserAccount, {
       foreignKey: 'SenderId',
       onDelete: 'CASCADE'
     });
 
-    Chat.belongsTo(models.User, {
+    Chat.belongsTo(models.UserAccount, {
       foreignKey: 'ReceiverId',
       onDelete: 'CASCADE'
     });

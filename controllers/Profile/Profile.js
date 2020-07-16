@@ -17,6 +17,19 @@ module.exports.GetProfile = async (req, res, next) => {
             )
 };
 
+
+module.exports.GetCompleteProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-profile',
+        {
+            page: 'profile/complete-profile'
+        }
+    )
+};
+
+
+
 //render profile page if update successful and show response
 module.exports.GetProfileSuccess = async (req, res, next) => {
     //Get list of countries from an external api

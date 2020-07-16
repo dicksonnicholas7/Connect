@@ -5,7 +5,10 @@ module.exports = (sequelize, DataTypes) => {
     apikey: DataTypes.STRING
   }, {});
   PaymentDetails.associate = function(models) {
-    // associations can be defined here
+    PaymentDetails.belongsTo(models.UserAccount, {
+        foreignKey: 'UserId',
+        onDelete: 'CASCADE'
+      });
   };
   return PaymentDetails;
 };
