@@ -4,12 +4,12 @@
 }
 
 #sign-card {
-    max-width: 600px;
+    max-width: 450px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
-
-    padding-top: 50px;
-    padding-bottom: 50px;
+    
+    padding-left: 30px;
+    padding-right: 30px;
     background-color: #ffffff;
 }
 
@@ -20,30 +20,30 @@
 .ps-form--signin .ps-form__header h3{
     font-size: 32px;
     font-weight: 300;
+    
 }
 
+.ps-form__header h3{
+    padding-top: 30px;
+    padding-bottom: 0px;
+}
 .form-control{
     border: 1px solid grey;
     border-radius: 3px;
+    height: 40px;
 }
 
 .ps-select{
     border: 1px solid #02353C;
 }
 
-.ps-btn{
-    border-radius: 3px;
-}
-
-.ps-btn {
-    color:#ffffff;
-}
-
-
-
 .ps-btn, button.ps-btn {
     background-color: #0c4767;
     border-radius: 3px;
+}
+
+.ps-btn, button.ps-btn:hover{
+    background-color: #A41201; 
 }
 
 .ps-form--signin .ps-form__actions a{
@@ -58,16 +58,32 @@
 .ps-form--signin .ps-form__footer p a{
     color:#0c4767;
 }
+
 .ps-footer{
     background-color: #0c4767;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    padding-bottom: 1px;
+    padding-top: 0px;
 }
 
 .ps-footer a{
     color: #ffffff;
 }
 
+.ps-footer p{
+    color: #ffffff;
+    margin-top: 0px;
+}
+
+.ps-footer__bottom{
+    padding-bottom: 0px;
+}
+
 .ps-form__footer p{
     padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .widget_footer .widget-title{
@@ -108,16 +124,21 @@
     color:#ffffff;
 }
 
+hr.border-top{
+    margin-top: 0px;
+}
+
 .ps-list--social li a:hover{
     background-color: #0c4767;
     color:#ffffff;
 }
 .ps-btn{
     background-color: #0c4767;
+    border-radius: 3px;
 }
 
 .ps-btn:hover{
-    background-color: #0c4767;
+    background-color: #A41201;
 }
 
 .ps-search:before{
@@ -463,9 +484,6 @@
     color: #ffffff;
 }
 
-.ps-btn, button.ps-btn:hover{
-    background-color: #0c4767;
-}
 
 .ps-footer__bottom .ps-list--social li a i{
     color:#02353C;
