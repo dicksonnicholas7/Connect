@@ -4,31 +4,13 @@ module.exports = {
     return queryInterface.createTable('UserAccounts', {
       id: {
         allowNull: false,
-        autoIncrement: true,
         primaryKey: true,
-        type: Sequelize.INTEGER
-      },
-      UserId:{
         type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      BusinessId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
-          key:'id'
-        }
+        defaultValue: Sequelize.UUIDV4
       },
       email: {
-        type: Sequelize.STRING
-      },
-      username: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        unique: true
       },
       password: {
         type: Sequelize.STRING
@@ -60,7 +42,7 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATEONLY
       },
       updatedAt: {
         allowNull: false,

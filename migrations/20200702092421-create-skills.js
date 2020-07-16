@@ -14,19 +14,11 @@ module.exports = {
       details: {
         type: Sequelize.STRING
       },
-      SkillUserId:{
+      UserId:{
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      SkillBusId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
+          model: 'UserAccounts',
           key:'id'
         }
       },
@@ -59,19 +51,11 @@ module.exports = {
       details: {
         type: Sequelize.STRING
       },
-      SkillUserId:{
+      UserId:{
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      SkillBusId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
+          model: 'UserAccounts',
           key:'id'
         }
       },
