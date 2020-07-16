@@ -22,7 +22,7 @@ module.exports.SendMailVerify = (emailReceiver, token, hostname)=>{
         service: "gmail",
         auth: {
             type: "OAuth2",
-            user: "jay4node@gmail.com",
+            user: "nicholas.dickson@amalitech.com",
             clientId: client_id,
             clientSecret: client_secret,
             refreshToken: refresh_token,
@@ -31,10 +31,10 @@ module.exports.SendMailVerify = (emailReceiver, token, hostname)=>{
     });
     const mailOptions = {
         to: emailReceiver,
-        from: 'Group 3 Freelancer',
-        subject: 'Verify your email',
+        from: 'Connect',
+        subject: 'Connect - Verify your email',
         html: '<div style="background-color:white;color:black;">'+
-        '<p style="font-weight: bold;">Welcome to Group 3 freelancer.Click on the following link to verify your email address.<p>'+
+        '<p style="font-weight: bold;">Welcome to Connect.<p></p>Click on the following link to verify your email address.<p>'+
         '<a href="http://'+hostname+'/verification/'+emailReceiver+'/'+token+'">Click here to verify</a></div>',
     };
     transporter.sendMail(mailOptions)
@@ -42,7 +42,7 @@ module.exports.SendMailVerify = (emailReceiver, token, hostname)=>{
             console.log("Email sent successfully");
             return 1;
         }).catch((err) => {
-        console.log(err.message);
+        console.log("email not sent "+err.message);
         return (err.message);
     });
 

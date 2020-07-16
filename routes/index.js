@@ -10,6 +10,7 @@ const {GetIndex, GetAllJobs, GetPageAllJobs, GetJobsCategoryAndSearch, GetJobsFi
 const { ApplyJob } = require('../controllers/Job/JobFreelancer');
 const {GetVerify, DoVerification, SendVerificationAgain, NotVerified} = require('../controllers/Auth/Verify');
 const {GetHowItWorks} = require('../controllers/Public');
+const {GetComingSoonUpPage} = require('../controllers/ComingSoon');
 const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = require('../controllers/Freelancer/FreelancersPublic');
 
 
@@ -21,9 +22,8 @@ router.get('/freelancer/:id', GetSingleFreelancer);
 router.get('/', GetIndex);
 router.get('/how-it-works', GetHowItWorks);
 router.get('/login', GetLogin);
-router.get('/signup', GetSignUp);
+router.get('/signup/:type', GetSignUp);
 router.get('/signup-page', GetSignUpPage);
-router.get('/business-signup', GetBusinessSignUp);
 router.get('/logout', Logout);
 router.get('/forgot-password', GetForgotPassword);
 router.get('/reset-password/:token/:email', GetResetPassword);
@@ -31,7 +31,7 @@ router.get('/reset', GetReset);
 router.get('/verify', GetVerify);
 router.get('/send-verification', SendVerificationAgain);
 router.get('/verification/:email/:token', DoVerification);
-
+router.get('/coming-soon', GetComingSoonUpPage);
 
 
 
@@ -41,8 +41,7 @@ router.get('/job/:id', JobDetail);
 router.get('/job-apply/:id', ApplyJob);
 
 //POST requests
-router.post('/signup', DoSignUp);
-router.post('/business-signup', DoBusinessSignUp);
+router.post('/signup/:type', DoSignUp);
 router.post('/login', DoLogin);
 router.post('/forgot-password', forgotPasswordEmail);
 router.post('/reset-password', DoResetPassword);

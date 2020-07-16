@@ -1,15 +1,23 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-<div class="ps-page--signin">
-    <div class="container" id="sign-card">
-
-        
-
-              
-         
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); ">
+    <div class="container" style="padding:83px";>
+        <div class="row">
+            <div class="col-md-12 col-lg-5 mb-5" style="margin: auto;">
+                <form action="#" method="post" class="p-5 bg-white">
+                    <%if(verify === "success"){%>
+                        <p style="text-align: center;font-weight: bold;font-size: 20px;">Account Verification Successful</p>
+                        <p style="text-align: center;">You're all set! Log in now to experience the best of all that Connect offers.</p><br>
+                        <p name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient"><a href="/login">Login</a></p>
+                    <% }else{ %>
+                        <h4 style="text-align: center;font-weight: bold;">Error</h4>
+                        <p style="text-align: center;"><%=verify%></p>
+                    <% } %>
+                </form>
+            </div>    
+        </div>
     </div>
 </div>
-
 
 <% include ../layout/footer-public.ejs %>

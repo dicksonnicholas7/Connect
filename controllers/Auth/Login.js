@@ -1,10 +1,9 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
-const Portfolio = require('../../models').Portfolio;
-const Education = require('../../models').Education;
-const Qualification = require('../../models').Qualification;
+const BusinessUser = require('../../models').BusinessUser;
 const crypto = require('crypto');
 let secret = "group3";
+
 
 module.exports.GetLogin = (req, res, next) => {
     //render login page
@@ -18,28 +17,31 @@ module.exports.GetLogin = (req, res, next) => {
             }
         )
     }
-    
+      
 };
 
 //perform login
 module.exports.DoLogin = async (req, res, next) => {
     let userAccount = {
-        username: req.body.username,
+        email: req.body.email,
         password: hashPassword(req.body.password)
     };
 
     //set logged in session to false
-    req.session.loggedIn = false;
+    req.session.loggedIn = false; 
     let ret_userAccount = await User.findOne({
-        where: {email: userAccount.username},
+        where: {email: userAccount.email},
         include: [UserAccount]
     });
+    
+
     if (ret_userAccount !== null) {
         if (userAccount.password === ret_userAccount.UserAccount.password) {           
             req.session.user = ret_userAccount;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
-            res.send({loginRes:"success"});
+          //  res.send({loginRes:"success"});
+            res.redirect('/coming-soon');
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";

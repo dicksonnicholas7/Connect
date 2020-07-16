@@ -22,7 +22,7 @@ module.exports.SendMailResetPassword = (emailReceiver, token, hostname)=>{
         service: "gmail",
         auth: {
             type: "OAuth2",
-            user: "jay4node@gmail.com",
+            user: "nicholas.dickson@amalitech.com",
             clientId: client_id,
             clientSecret: client_secret,
             refreshToken: refresh_token,

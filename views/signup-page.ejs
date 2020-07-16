@@ -1,2 +1,122 @@
 <% include ./layout/header-public.ejs %>
 <% include ./layout/menu-public.ejs %>
+
+
+<style>
+
+.card {
+    background: none !important;
+
+
+}
+.card-title h3 {
+    color: #ffffff;
+    font-size: 25px;
+    margin-bottom: 30px !important;
+}
+
+.card-title1 {
+    color: #ffffff;
+    font-size: 25px;
+
+}
+.card-title1:hover {
+
+}
+.card-body {
+    background: #0C4767 !important;
+    width: 40rem;
+}
+
+.card-body:hover {
+}
+
+.sign-up-page {
+    padding: 132px;
+}
+
+.overlay {
+    opacity: 0.8;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #A41201;
+    overflow: hidden;
+    width: 100%;
+    height: 0;
+    transition: .5s ease;
+
+}
+
+.card-body:hover .overlay {
+    height: 80%;
+}
+
+.connect-button {
+    width: 110px;
+    height: 30px;
+    background-color: #A41201;
+    border-color: #ffffff;
+    border-radius: 2px;
+    color: #ffffff;
+    text-align: center;
+    text-decoration: none;
+}
+
+
+
+</style>
+
+
+<div class="sign-up-page  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); ">
+
+    <div class="card-title justify-content-center">
+        <h3 class="text-center">Choose an account to continue</h3>
+    </div>
+    <div class="row justify-content-center">
+        <div class="card-group" style="margin: auto">
+            <div class="col-md-6">
+                <div class="card ml-5 mr-5" >
+                    <img src='../../vendors/img/individual account.jpg' class="card-img-top" alt="..." style="width: 40rem; height: 25rem; background-size: cover; ">
+                    <div class="card-body">
+                        <h5 class="card-title1 text-center">Individual Account</h5>
+                        <div class="overlay">
+                            <div class="text-center mt-5">
+                                <h3 style="color: #ffffff">Individual Account</h3>
+                                <p style="color: #ffffff">Create a business account if you're are a registered<br>
+                                    entity looking for services or want to provide services<br>
+                                    to other business entities...<a href="#" style="color: #ffffff; font-weight: bold; text-decoration: underline">read more</a></p>
+                                <a href="/signup/individual"><button class="connect-button">Let's Connect</button></a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mr-5 ml-5" >
+                    <img src='../../vendors/img/business account.jpg' class="card-img-top" alt="..." style="width: 40rem; height: 25rem">
+                    <div class="card-body" >
+                        <h5 class="card-title1 text-center">Business Account</h5>
+                        <div class="overlay">
+                            <div class="text-center mt-5">
+                                <h3 style="color: #ffffff">Business Account</h3>
+                                <p style="color: #ffffff">Create a business account if you're are a registered<br>
+                                    entity looking for services or want to provide services<br>
+                                    to other business entities...<a href="#" style="color: #ffffff; font-weight: bold; text-decoration: underline">read more</a></p>
+                                <a href="/signup/business"><button class="connect-button">Let's Connect</button></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+
+
+
+</div>
