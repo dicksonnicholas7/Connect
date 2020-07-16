@@ -35,19 +35,34 @@ module.exports.DoLogin = async (req, res, next) => {
     });
     
 
+    let ret_busAccount = await BusinessUser.findOne({
+        where: {email: userAccount.email},
+        include: [UserAccount]
+    });
+
     if (ret_userAccount !== null) {
         if (userAccount.password === ret_userAccount.UserAccount.password) {           
             req.session.user = ret_userAccount;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
-          //  res.send({loginRes:"success"});
-            res.redirect('/coming-soon');
+            res.send({loginRes:"success"});
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";
             res.send({loginRes:"Wrong Password"});
         }
-    } else {
+    } else if (ret_busAccount !== null)  {
+        if (userAccount.password === ret_busAccount.UserAccount.password) {           
+            req.session.user = ret_busAccount;
+            req.session.loginSuccessMessage = "Login Successful";
+            req.session.loggedIn = true;
+            res.send({loginRes:"success"});
+        } else {
+            console.log("Wrong Password");
+            req.session.loginErrorMessage = "Wrong Password";
+            res.send({loginRes:"Wrong Password"});
+        }
+    }else{
         console.log("Wrong Username Or User does not exist");
         req.session.loginErrorMessage = "Wrong Username Or User does not exist";
         res.send({loginRes:"Wrong email"});
