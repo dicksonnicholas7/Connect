@@ -9,7 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'CatId',
       onUpdate: 'CASCADE'
     });
-
   };
   return JobCategory;
 };

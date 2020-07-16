@@ -63,15 +63,7 @@ module.exports = {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      BusinessPortId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
+          model: 'UserAccounts',
           key:'id'
         }
       },

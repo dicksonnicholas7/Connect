@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
-          model: 'Users',
+          model: 'UserAccounts',
           key:'id'
         }
       },
@@ -20,7 +20,7 @@ module.exports = {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
-          model: 'Users',
+          model: 'UserAccounts',
           key:'id'
         }
       },

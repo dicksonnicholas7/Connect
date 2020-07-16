@@ -6,13 +6,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Skills.associate = function(models) {
     // associations can be defined here
-    Skills.belongsTo(models.User,{
-      foreignKey: 'SkillUserId',
-      onDelete:'CASCADE'
-    });
-
-    Skills.belongsTo(models.BusinessUser,{
-      foreignKey: 'SkillBusId',
+    Skills.belongsTo(models.UserAccount,{
+      foreignKey: 'UserId',
       onDelete:'CASCADE'
     });
   };
