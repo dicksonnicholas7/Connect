@@ -4,7 +4,7 @@
 }
 
 #sign-card {
-    max-width: 450px;
+    max-width: 500px;
     box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.2), 0 4px 15px 0 rgba(0, 0, 0, 0.19);
     text-align: center;
     
@@ -46,6 +46,10 @@
     background-color: #A41201; 
 }
 
+.ps-footer__bottom{
+    border-top: 1px solid #ffffff;
+    border-bottom: 1px solid #ffffff;
+}
 .ps-form--signin .ps-form__actions a{
     color: #0c4767;
     font-weight: 400;
@@ -65,7 +69,7 @@
     bottom: 0;
     width: 100%;
     padding-bottom: 1px;
-    padding-top: 0px;
+
 }
 
 .ps-footer a{
@@ -79,6 +83,7 @@
 
 .ps-footer__bottom{
     padding-bottom: 0px;
+    padding-top: 0px;
 }
 
 .ps-form__footer p{
