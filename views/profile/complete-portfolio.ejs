@@ -1,0 +1,93 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
+    <div class="container" id="sign-card">
+    <div class="card-header" style="background-color: #0C4767;">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active" href="#" aria-disabled="true">Personal Details</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Portfolio</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Skills & Experience</a>
+        </li>
+      </ul>
+    </div>
+
+<div class="container col-md-4">
+
+</div>
+<div>
+    <form id="fmprofile" class="" action="/user/add-education" method="post">
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="position-relative form-group">
+                    <label for="cert" class="">Title: </label>
+                    <input name="title" id="title"  placeholder="" type="text" class="form-control" required>            
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="position-relative form-group">
+                    <label for="cert" class="">Description: </label>
+                    <textarea class="form-control" id="about" name="about" required></textarea>             
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="position-relative form-group">
+                    <label for="cert" class="">Project Links: </label>
+                    <textarea class="form-control" id="links" name="links" required></textarea>             
+                </div>
+            </div>
+        </div>
+        <div>
+        <button class="accordion">Add New Porfolio</button>
+        <div class="panel">
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="cert" class="">Title: </label>
+                        <textarea class="form-control" id="title" name="title"></textarea>             
+                    </div>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="cert" class="">Description: </label>
+                        <textarea class="form-control" id="about" name="about"></textarea>             
+                    </div>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="col-md-12">
+                    <div class="position-relative form-group">
+                        <label for="cert" class="">Project Links: </label>
+                        <textarea class="form-control" id="links" name="links"></textarea>             
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+        <div class="form-row">
+            <div class="col-md-12">
+                <div class="position-relative form-group">
+                    <label for="cert" class="">Skills: </label>
+                    <textarea class="form-control" id="skills" name="skills" required></textarea>             
+                </div>
+            </div>
+        </div>
+        <div class="d-flex justify-content-center">
+            <input type="submit" class="mt-2 btn btn-success py-2 px-4" value="Add">
+        </div>
+    </form>
+</div>
+<% include ../layout/footer-public.ejs %>
