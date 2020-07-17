@@ -1,7 +1,8 @@
 const express = require('express');
 let router = express.Router();
 const { GetProfile, UpdateProfile, GetProfileSuccess, GetCompleteProfile } = require('../controllers/Profile/Profile');
-const  {GetPortfolio, UpdatePortfolio, GetPortfolioSuccess, GetAllPortfolios,GetAddPortfolio,AddPortfolio} = require('../controllers/Profile/Portfolio');
+const { GetCompleteSkills } = require('../controllers/Profile/Skills');
+const  {GetPortfolio, UpdatePortfolio, GetPortfolioSuccess, GetAllPortfolios,GetAddPortfolio,AddPortfolio, GetCompletePortfolio } = require('../controllers/Profile/Portfolio');
 const  {GetEducation, UpdateEducation, GetAllEducations, AddEducation,GetAddEducation} = require('../controllers/Profile/Education');
 const  {GetQualification, UpdateQualification, GetQualificationSuccess} = require('../controllers/Profile/Qualification');
 const  {GetSelectMessageUsers, GetMessageRoom, GetRandomMessageRoom, SendMessageUser} = require('../controllers/Messaging/Message');
@@ -32,10 +33,14 @@ router.get('/notverified', NotVerified);
 //GET requests
 router.get('/profile', GetProfile);
 router.get('/complete-profile', GetCompleteProfile);
+router.get('/complete-portfolio', GetCompletePortfolio);
+router.get('/complete-skills', GetCompleteSkills);
+
+
 router.get('/profile/:success', GetProfileSuccess);
 router.get('/add-portfolio', GetAddPortfolio);
 router.get('/portfolios', GetAllPortfolios);
-router.get('/portfolio/:id', GetPortfolio);
+//router.get('/portfolio/:id', GetPortfolio);
 router.get('/portfolio/:id/:success', GetPortfolioSuccess);
 router.get('/add-education', GetAddEducation)
 router.get('/education/:id', GetEducation);

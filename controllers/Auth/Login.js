@@ -1,8 +1,7 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
-const BusinessUser = require('../../models').BusinessUser;
 const crypto = require('crypto');
-let secret = "group3";
+let secret = "connect";
 
 
 module.exports.GetLogin = (req, res, next) => {
