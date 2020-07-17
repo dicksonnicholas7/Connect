@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
-let secret = "group3";
+let secret = "connect";
 const {SendMailResetPassword} = require('./ForgotPasswordMaill');
 
 //render forgot password page
