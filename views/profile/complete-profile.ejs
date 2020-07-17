@@ -1,7 +1,7 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
+<!--div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
     <div class="container" id="sign-card">
     <div class="card-header" style="background-color: #0C4767;">
       <ul class="nav nav-tabs card-header-tabs">
@@ -16,197 +16,116 @@
         </li>
       </ul>
     </div>
-    <div class="card-body" style="background-color: white;">
-        <div class="container col-md-4">
-
-        </div>
-        <div>
-        <!--form>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="firstName">First Name</label>
-                <input type="text" class="form-control" id="fname" placeholder="">
-              </div>
-              <div class="form-group col-md-6">
-                <label for="lastName">Last Name</label>
-                <input type="text" class="form-control" id="lname" placeholder="">
-              </div>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="job">Job Title</label>
-                  <input type="text" class="form-control" id="job" placeholder="">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="availability">Availability</label>
-                  <select id="availabilityState" class="form-control">
-                    <option selected>Part-time</option>
-                    <option>Full time</option>
-                  </select>
-                </div>
-              </div>
-            <div class="form-group">
-              <label for="about">Golden Paragraph</label>
-              <textarea name="about" id="about" placeholder="Write a personal summary here..."></textarea>
-            </div>
-            <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="dob">Date of Birth</label>
-                  <input type="text" class="form-control" id="dob" placeholder="">
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="gender">Gender</label>
-                  <select id="gender" class="form-control">
-                    <option selected>Male</option>
-                    <option>Female</option>
-                    <option>Rather Not Say</option>
-                  </select>
-                </div>
-              </div>
-            <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="inputCity">City</label>
-                <input type="text" class="form-control" id="inputCity" placeholder="Accra, Ghana">
-              </div>
-              <div class="form-group col-md-4">
-                <label for="phone">Phone</label>
-                <input type="text" class="form-control" id="phone" placeholder="">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">NEXT</button>
-          </form-->
-
-          <!--form id="fmprofile" class="" action="/user/add-education" method="post">
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="position-relative form-group">
-                        <label for="title" class="">Title</label>
-                        <input name="title" id="title"  placeholder="" type="text" class="form-control" required>            
-                    </div>
-                </div>
-            </div>
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="position-relative form-group">
-                        <label for="description" class="">Description: </label>
-                        <textarea class="form-control" id="about" name="about" required></textarea>             
-                    </div>
-                </div>
-            </div>
-            
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="position-relative form-group">
-                        <label for="links" class="">Project Links: </label>
-                        <textarea class="form-control" id="links" name="links" required></textarea>             
-                    </div>
-                </div>
-            </div>
-            <div>
-            <button class="accordion">Add New Porfolio</button>
-            <div class="panel">
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="position-relative form-group">
-                            <label for="cert" class="">Title: </label>
-                            <textarea class="form-control" id="title" name="title"></textarea>             
-                        </div>
-                    </div>
-                </div>
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="position-relative form-group">
-                            <label for="cert" class="">Description: </label>
-                            <textarea class="form-control" id="about" name="about"></textarea>             
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="form-row">
-                    <div class="col-md-12">
-                        <div class="position-relative form-group">
-                            <label for="cert" class="">Project Links: </label>
-                            <textarea class="form-control" id="links" name="links"></textarea>             
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-            <div class="form-row">
-                <div class="col-md-12">
-                    <div class="position-relative form-group">
-                        <label for="cert" class="">Skills: </label>
-                        <textarea class="form-control" id="skills" name="skills" required></textarea>             
-                    </div>
-                </div>
-            </div>
-            <div class="d-flex justify-content-center">
-                <input type="submit" class="mt-2 btn btn-success py-2 px-4" value="Add">
-            </div>
-        </form-->
-
-        <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding: 80px 0; ">
-            <div class="container" id="sign-card">
-        
-                <form class="ps-form--signin" action="/login" method="post">
-                    <div class="ps-form__header">
-        
-                        <h3>Log In</h3>
-        
-                    </div>
-                    <div class="ps-form__content">
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="position-relative form-group">
-                                        <label for="title" class="">Title</label>
-                                        <input name="title" id="title"  placeholder="" type="text" class="form-control" required>            
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="form-row">
-                                    <div class="col-md-12">
-                                        <div class="position-relative form-group">
-                                            <label for="description" class="">Description: </label>
-                                            <textarea class="form-control" id="about" name="about" required></textarea>             
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="form-row">
-                                <div class="col-md-12">
-                                    <div class="position-relative form-group">
-                                        <label for="links" class="">Project Links: </label>
-                                        <textarea class="form-control" id="links" name="links" required></textarea>             
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="ps-form__actions">
-                                <div class="ps-checkbox ps-checkbox--circle">
-                                    <input class="form-control" type="checkbox" id="newsletter" name="newsletters"/>
-                                 <label for="newsletter">Remember me</label>
-                                </div><a href="/forgot-password">Forgot password?</a>
-                        </div>
-                    </div>
-                    <div class="ps-form__footer">
-                        <div class="col-md-12">
-                            <button type="submit" id="btnlogin" name="btnlogin" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Log In</button>
-                            <p style="padding-top: 0px;">Not a member yet?<a href="/signup-page"> Sign up</a></p>
-                        </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-        </div> 
+    
+         
     </div>
   </div>
-</div>  
+</div-->
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); height: 100%!important;">
+    
+   <div class="text-center">
+    <h2>Add Profile</h2>
+    <p>Your profile says a lot about you to clients. Complete your profile to get started on Connect!</p>
+   </div>
+    <div class="card" style="max-width:60%; margin:auto;margin-top: 10px;">
+        <div class="individual-card-header" style="background-color: #0C4767; ">
+          <h4>Personal Details</h4>
+        </div>
+        <form>
+        <div class="individual-card-body" style="background-color: #fff; ">
+            <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                           <img src="../../vendors/img/avatar.jpg" alt="Profile Photo" id="profile" width="150" height="150"> 
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="left:13%;color:blue;">
+                            <label >
+                                <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                Add Photo
+                            </label>    
+                        </div>
+
+                    </div>
+                  
+                  
+                </div>
+                <div class="col-md-8">
+
+                    <div class="form-row mt-4">
+                        <div class="form-group col-md-6">
+                          <label for="firstName">First Name</label>
+                          <input type="text" class="form-control" id="fname" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" class="form-control" id="lname" placeholder="">
+                        </div></div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="job">Job Title</label>
+                            <input type="text" class="form-control" id="job" placeholder="">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="availability">Availability</label>
+                            <select id="availabilityState" class="form-control">
+                              <option selected>Part-time</option>
+                              <option>Full time</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-row">
+                            
+                          <label for="about">Golden Paragraph</label>
+                        </div>
+                        <div class="form-row">
+                            <textarea name="about" id="about" class="form-control" rows="2" placeholder="Write a personal summary here..."></textarea></div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="dob">Date of Birth</label>
+                              <input type="date"   max="2002-12-31" class="form-control" id="dob" placeholder="">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="gender">Gender</label>
+                              <select id="gender" class="form-control">
+                                <option selected>Male</option>
+                                <option>Female</option>
+                                <option>Rather Not Say</option>
+                              </select>
+                            </div>
+                          </div>
+                          <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputCity">City</label>
+                              <input type="text" class="form-control" id="inputCity" placeholder="Accra, Ghana">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="country">Country</label>
+                              <input type="text" class="form-control" id="country" placeholder="">
+                              <select name="Afghanistan" id="country"></select>
+                            </div>
+                            </div>
+                          <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="" readonly>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="">
+                              </div>
+                              </div>
+                      </div>
+                      </div>
+                </div>
+            <div>  
+            </div>
+    
+        </div>
+    </div>
+</form>
+    
+</div>
   <% include ../layout/footer-public.ejs %>
