@@ -10,7 +10,7 @@ const axios = require('axios');
 module.exports.GetProfile = async (req, res, next) => {
 
             res.render(
-                'profile/individual/freelancer-profile',
+                'profile/freelancer-profile',
                 {
                     page: 'profile/individual/freelancer-profile'
                 }
@@ -23,7 +23,7 @@ module.exports.GetProfile = async (req, res, next) => {
 module.exports.GetCompleteProfile = async (req, res, next) => {
 
     res.render(
-        'profile/individual/complete-profile',
+        'profile/complete-profile',
         {
             page: 'profile/individual/complete-freelancer-profile'
         }

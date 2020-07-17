@@ -1,7 +1,7 @@
 module.exports.GetBusinessCompletePortfolio = async (req, res, next) => {
 
     res.render(
-        'portfolio/business/complete-business-portfolio',
+        'portfolio/complete-business-portfolio',
         {
             page: 'complete-business-portfolio'
         }
@@ -14,7 +14,7 @@ module.exports.GetBusinessCompletePortfolio = async (req, res, next) => {
 module.exports.GetBusinessPortfolio = async (req, res, next) => {
 
     res.render(
-        'portfolio/business/business-portfolio',
+        'portfolio/business-portfolio',
         {
             page: 'business-portfolio'
         }
