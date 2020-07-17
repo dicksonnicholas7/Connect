@@ -1,7 +1,7 @@
 module.exports.GetBusinessCompleteSkills = async (req, res, next) => {
 
     res.render(
-        'skills/business/complete-business-skills',
+        'skills/complete-business-skills',
         {
             page: 'complete-business-skills'
         }
@@ -14,7 +14,7 @@ module.exports.GetBusinessCompleteSkills = async (req, res, next) => {
 module.exports.GetBusinessSkills = async (req, res, next) => {
 
     res.render(
-        'skills/business/business-skills',
+        'skills/business-skills',
         {
             page: 'business-skills'
         }
