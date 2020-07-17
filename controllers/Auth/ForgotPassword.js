@@ -90,10 +90,10 @@ module.exports.DoResetPassword = async (req,res,next)=>{
     (upd_userAccount!==null) ? res.locals.changed = true : res.locals.changed = false;
     console.log("changed");
     res.render(
-        'auth/reset-password',
+        'auth/reset-password-success',
         {
             changed:res.locals.changed,
-            page: 'reset-password'
+            page: 'reset-password-success'
         }
     );
 };
