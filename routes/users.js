@@ -47,10 +47,10 @@ router.get('/business-skills', GetBusinessSkills);
 //Private  routes
 //(Both client and freelancers)
 //GET requests
-router.get('/profile', GetProfile);
-router.get('/complete-profile', GetCompleteProfile);
-router.get('/complete-portfolio', GetCompletePortfolio);
-router.get('/complete-skills', GetCompleteSkills);
+router.get('/individual-profile', GetProfile);
+router.get('/complete-individual-profile', GetCompleteProfile);
+router.get('/complete-individual-portfolio', GetCompletePortfolio);
+router.get('/complete-individual-skills', GetCompleteSkills);
 
 
 router.get('/profile/:success', GetProfileSuccess);

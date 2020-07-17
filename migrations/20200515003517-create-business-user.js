@@ -8,7 +8,7 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      BusinessUserId:{
+      UserId:{
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
@@ -16,10 +16,28 @@ module.exports = {
           key:'id'
         }
       },
-      name: {
+      businessname: {
         type: Sequelize.STRING
       },
-      location: {
+      service: {
+        type: Sequelize.STRING
+      },
+      availability: {
+        type: Sequelize.STRING
+      },
+      golden_paragraph: {
+        type: Sequelize.STRING
+      },
+      country: {
+        type: Sequelize.STRING
+      },
+      city: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      picture: {
         type: Sequelize.STRING
       },
       certificate: {

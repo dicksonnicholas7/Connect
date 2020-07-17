@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Skills', {
+    return queryInterface.createTable('Experiences', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -19,6 +19,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      years: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -30,12 +33,12 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Skills');
+    return queryInterface.dropTable('Experiences');
   }
 };'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Skills', {
+    return queryInterface.createTable('Experiences', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -53,6 +56,9 @@ module.exports = {
       name: {
         type: Sequelize.STRING
       },
+      years: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
@@ -64,6 +70,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Skills');
+    return queryInterface.dropTable('Experiences');
   }
 };
