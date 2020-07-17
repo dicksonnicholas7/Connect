@@ -1,14 +1,20 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const BusinessUser = sequelize.define('BusinessUser', {
-    name: DataTypes.STRING,
-    location: DataTypes.STRING,
+    businessname: DataTypes.STRING,
+    service: DataTypes.STRING,
+    availability: DataTypes.STRING,
+    golden_paragraph: DataTypes.STRING,
+    country: DataTypes.STRING,
+    city: DataTypes.STRING,
+    phone: DataTypes.STRING,
+    picture: DataTypes.STRING,
     certificate: DataTypes.STRING
   }, {});
   BusinessUser.associate = function(models) {
     // associations can be defined here
     BusinessUser.belongsTo(models.UserAccount,{
-        foreignKey: 'BusinessUserId',
+        foreignKey: 'UserId',
         onDelete: 'CASCADE'
       });
   };

@@ -223,7 +223,7 @@ module.exports.DoSignUp = async (req, res, next) => {
             if(user_Account.id!==null){
     
                 let business_user_info = {
-                    BusinessUserId: user_Account.id,
+                    UserId: user_Account.id,
                     name: '',
                     location: '',
                     certificate: ''

@@ -16,13 +16,20 @@ module.exports = {
           key:'id'
         }
       },
-      username: {
-        type: Sequelize.STRING
-      },
       firstname: {
         type: Sequelize.STRING
       },
       lastname: {
+        type: Sequelize.STRING
+      },
+      
+      jobtitle: {
+        type: Sequelize.STRING
+      },  
+      availability: {
+        type: Sequelize.STRING
+      },   
+      golden_paragraph: {
         type: Sequelize.STRING
       },
       gender: {
@@ -31,13 +38,19 @@ module.exports = {
       dob: {
         type: Sequelize.DATEONLY
       },
-      specialization: {
+      phone: {
         type: Sequelize.STRING
       },
-      about: {
+      country: {
         type: Sequelize.STRING
       },
-      mobile: {
+      city: {
+        type: Sequelize.STRING
+      },
+      country_code: {
+        type: Sequelize.STRING
+      },
+      picture:{
         type: Sequelize.STRING
       },
       createdAt: {
