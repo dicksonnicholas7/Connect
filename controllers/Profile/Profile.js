@@ -12,7 +12,7 @@ module.exports.GetProfile = async (req, res, next) => {
             res.render(
                 'profile/freelancer-profile',
                 {
-                    page: 'profile/freelancer-profile'
+                    page: 'profile/individual/freelancer-profile'
                 }
             )
 };
@@ -25,7 +25,7 @@ module.exports.GetCompleteProfile = async (req, res, next) => {
     res.render(
         'profile/complete-profile',
         {
-            page: 'profile/complete-profile'
+            page: 'profile/individual/complete-freelancer-profile'
         }
     )
 };

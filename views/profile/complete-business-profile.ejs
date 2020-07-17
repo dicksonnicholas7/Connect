@@ -1,0 +1,317 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+
+<style>
+    .text-center h2 {
+        color: #ffffff;
+    }
+
+    .text-center p {
+        color: whitesmoke ;
+    }
+
+    .card {
+        width: 850px;
+        height: 25px;
+        margin: auto;
+        float: none;
+    }
+
+    .nav-link h4 {
+        color: #ffffff;
+    }
+
+    .nav-tabs {
+        border-bottom: none !important;
+        height: 50px;
+    }
+
+    .card-business {
+        background-color: #ffffff;
+        width: 849px;
+        height: auto;
+        float: none;
+        margin-left: 2px !important;
+        margin-top: 0px !important;
+
+    }
+    .profile-btn{
+        width: 150px;
+        margin: auto;
+        color: #fff;
+        background-color: #0c4767
+    }
+
+   .fa {
+       color: #0c4767;
+       font-size: 20px;
+   }
+
+    .image-border {
+        border: 1px solid black;
+    }
+
+
+</style>
+
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
+
+            <div class="col-md-12">
+                <div class="text-center justify-content-center">
+                    <h2>Add Profile</h2>
+                    <p class="text-center ">Let clients know about your business. Complete your profile to get started on Connect</p>
+                </div>
+            </div>
+
+
+
+    <div class="col-md-12">
+        <div class="card justify-content-center">
+            <div class="card text-white mb-3">
+
+                <div class="card-header justify-content-center mb-3" style="background-color: #0c4767; height: 50px; padding: 0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <a class="nav-item nav-link mr-5 ml-5" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
+                            <a class="nav-item nav-link mr-5 ml-5" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Portfolio</a>
+                            <a class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Skills & Certificate</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+                            <form class="form-row justify-content-center">
+                                <div class="card-business ml-3 mt-1" >
+
+                                    <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <div class="col-md-3 mt-5">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="color:blue;">
+                                                    <label class="">
+                                                        <input class="text-center m-auto" hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                        Add business logo
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-9">
+
+                                            <div class="form-row mt-4">
+                                                <div class="form-group col-md-12">
+                                                    <label for="businessName">Freelancer Business Name</label>
+                                                    <input type="text" class="form-control" id="bname" placeholder="">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="serviceName">Service</label>
+                                                    <input type="text" onautocomplete="off" name="service" id="service" class="form-control" placeholder="Eg: Web Designer" required>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="availName">Availability</label>
+                                                    <select type="text" onautocomplete="off" name="service" id="avail" class="form-control" placeholder="" required>
+                                                        <option selected>Part-time</option>
+                                                        <option>Full time</option>
+                                                    </select>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="goldenName">Golden Paragraph</label>
+                                                    <textarea type="text" class="form-control" id="goldname" placeholder="Write your company profile here..."></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="serviceName">City</label>
+                                                    <input type="text" name="city" id="city" class="form-control" placeholder="Eg: Takoradi" required>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="availName">Country</label>
+                                                    <input type="text" name="country" id="country" class="form-control" placeholder="Eg: Afganistan" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="serviceName">Email</label>
+                                                    <input type="text" name="email" id="email" class="form-control" placeholder="Eg: Takoradi" readonly>
+                                                </div>
+
+                                                <div class="form-group col-md-6">
+                                                    <label for="availName">Phone</label>
+                                                    <input type="text" name="phone" id="phone" class="form-control">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-md-12 mb-5">
+                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+
+                        </div>
+                        <!--BUSINESS FREELANCER PORTFOLIO COME HERE-->
+                        <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                            <form class="form-row">
+                                <div class="card-business ml-3 mt-1" >
+
+                                    <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <div class="col-md-3 mt-5">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <img class="image-border" src="../../vendors/img/portfolio.png" alt="Profile Photo" id="portfolio-profile" width="120" height="120">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="color:blue;">
+                                                    <label class="" >
+                                                        <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                        Upload picture
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-md-9">
+
+                                            <div class="form-row mt-4">
+                                                <div class="form-group col-md-12">
+                                                    <label for="title">Title</label>
+                                                    <input type="text" class="form-control" id="portfolioTitle" placeholder="Eg: E-Commerce Website" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="projectDesc">Description</label>
+                                                    <textarea type="text" class="form-control" id="projectDesc" placeholder="Project Description here..."></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="links">Project Link</label>
+                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add another portfolio</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-md-12 mb-5">
+                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+
+                        <!--BUSINESS FREELANCER CERTIFICATE AND SKILLS COME HERE-->
+                        <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                            <form class="form-row">
+                                <div class="card-business ml-3 mt-1" >
+
+                                    <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <div class="col-md-9 m-auto">
+
+                                            <div class="form-row mt-4">
+                                                <div class="form-group col-md-12">
+                                                    <label for="title">Skills</label>
+                                                    <input type="text" class="form-control" id="Skills" placeholder="Eg: Full Stack Development" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="links">Certification</label>
+
+                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add other relevant document</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-md-12 mb-5">
+                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+
+    <%include ../layout/footer-public.ejs %>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

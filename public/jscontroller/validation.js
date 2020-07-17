@@ -7,7 +7,7 @@ $(document).ready(function () {
     });
     function checkEquals(password){
         if(password!==$('#password').val()){
-            $('#matchMessage').removeClass();
+            $('#matchMessage').removeClass(); 
             $('#matchMessage').addClass('Short');
             return 'Passwords do not match'
         }else if(password===$('#password').val()){

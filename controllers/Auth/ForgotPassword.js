@@ -2,7 +2,7 @@ const { Op } = require('sequelize');
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
-let secret = "group3";
+let secret = "connect";
 const {SendMailResetPassword} = require('./ForgotPasswordMaill');
 
 //render forgot password page
@@ -90,10 +90,10 @@ module.exports.DoResetPassword = async (req,res,next)=>{
     (upd_userAccount!==null) ? res.locals.changed = true : res.locals.changed = false;
     console.log("changed");
     res.render(
-        'auth/reset-password',
+        'auth/reset-password-success',
         {
             changed:res.locals.changed,
-            page: 'reset-password'
+            page: 'reset-password-success'
         }
     );
 };
