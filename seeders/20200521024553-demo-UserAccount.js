@@ -25,9 +25,9 @@ module.exports = {
     const usersRows = userAccounts[0];
 
     return queryInterface.bulkInsert('Users', [
-      {username: 'admin1', UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
+      {UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
         updatedAt:'2020-05-25 00:00:00'},
-      {username: 'admin2', UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
+      {UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
         updatedAt:'2020-05-25 00:00:00'},
     ], {});
   },

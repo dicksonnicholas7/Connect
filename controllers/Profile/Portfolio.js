@@ -18,9 +18,9 @@ module.exports.GetAllPortfolios = async (req, res, next) => {
 module.exports.GetCompletePortfolio = async (req, res, next) => {
 
         res.render(
-            'portfolio/complete-portfolio',
+            'portfolio/complete-individual-portfolio',
             {
-                page: 'portfolio/complete-individual-portfolio'
+                page: 'complete-individual-portfolio'
             }
         )
  

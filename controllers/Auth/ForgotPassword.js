@@ -15,7 +15,7 @@ module.exports.GetForgotPassword = async (req, res, next) => {
         }
     );
 };
-
+   
 //render forgot password page
 module.exports.GetReset = async (req, res, next) => {
     res.locals.display = false;
@@ -46,34 +46,40 @@ module.exports.GetResetPassword = async (req, res, next) => {
 // perform password reset by generating a token plus a link amd sending to user email if email exists
 module.exports.forgotPasswordEmail = async (req,res,next)=>{
     res.locals.display = true;
-    let userAccount = {
-        email: req.body.email
-    };
+    
+let users = await UserAccount.findOne({where:{email:req.body.email}});
 
-    let ret_user = await UserAccount.findOne({ where:{email:userAccount.email} });
-    if(ret_user!==null) {
-        let token = hashPassword(userAccount.email);
-        console.log("Token:  " + token);
-        let hostname = req.headers.host;
-        //send reset link to email
-        res.locals.emailSent = !!SendMailResetPassword(userAccount.email, token, hostname);
-        res.render(
-            'auth/reset-password-mail',
-            {
-                emailSent: res.locals.emailSent,
-                page: 'reset-password-mail'
-            }
-        )
-    }else{
-        res.locals.emailNotFound = true;
-        res.render(
-            'auth/forgot-password',
-            {
-                emailNotFound: res.locals.emailNotFound,
-                page: 'forgot-password'
-            }
-        )
-    }
+if(!req.body.email || !users ){
+
+    res.locals.emailNotFound = true;
+    res.render(
+        'auth/forgot-password',
+        {
+            emailNotFound: res.locals.emailNotFound,
+            page: 'forgot-password'
+        }
+    )
+
+}else{
+
+    let token = hashPassword(req.body.email);
+    console.log("Token:  " + token);
+    let hostname = req.headers.host;
+    //send reset link to email
+    res.locals.emailSent = !!SendMailResetPassword(req.body.email, token, hostname);
+    res.render(
+        'auth/reset-password-mail',
+        {
+            emailSent: res.locals.emailSent,
+            page: 'reset-password-mail'
+        }
+    )
+
+
+}
+
+ 
+    
 };
 
 //perform password

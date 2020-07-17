@@ -100,7 +100,12 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     UserAccount.hasMany(models.Skills,{
-      foreignKey: 'SkillUserId',
+      foreignKey: 'UserId',
+      onDelete:'CASCADE'
+    });
+
+    UserAccount.hasMany(models.Experience,{
+      foreignKey: 'UserId',
       onDelete:'CASCADE'
     });
 

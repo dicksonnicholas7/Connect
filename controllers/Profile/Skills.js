@@ -1,8 +1,8 @@
 module.exports.GetCompleteSkills = async (req, res, next) => {
     res.render(
-        'skills/complete-skills',
+        'skills/complete-individual-skills',
         {
-            page: 'skills/complete-skills'
+            page: 'complete-individual-skills'
         }
     )
 };
