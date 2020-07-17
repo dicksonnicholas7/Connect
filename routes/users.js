@@ -1,8 +1,11 @@
 const express = require('express');
 let router = express.Router();
 const { GetProfile, UpdateProfile, GetProfileSuccess, GetCompleteProfile } = require('../controllers/Profile/Profile');
+const { GetBusinessCompleteProfile, GetBusinessProfile } = require('../controllers/Profile/Business-Profile/Profile');
 const { GetCompleteSkills } = require('../controllers/Profile/Skills');
 const  {GetPortfolio, UpdatePortfolio, GetPortfolioSuccess, GetAllPortfolios,GetAddPortfolio,AddPortfolio, GetCompletePortfolio } = require('../controllers/Profile/Portfolio');
+const  { GetBusinessPortfolio, GetBusinessCompletePortfolio } = require('../controllers/Profile/Business-Profile/Portfolio');
+const  { GetBusinessCompleteSkills, GetBusinessSkills } = require('../controllers/Profile/Business-Profile/Skills');
 const  {GetEducation, UpdateEducation, GetAllEducations, AddEducation,GetAddEducation} = require('../controllers/Profile/Education');
 const  {GetQualification, UpdateQualification, GetQualificationSuccess} = require('../controllers/Profile/Qualification');
 const  {GetSelectMessageUsers, GetMessageRoom, GetRandomMessageRoom, SendMessageUser} = require('../controllers/Messaging/Message');
@@ -25,6 +28,19 @@ const {GetPaymentDetails, AddPaymentDetails, CreateStripeAccount} = require('../
 /* GET users listing. */
 router.get('/', GetDashboardSwitch);
 router.get('/notverified', NotVerified);
+
+
+
+
+//business get requests
+router.get('/complete-business-profile', GetBusinessCompleteProfile);
+router.get('/business-profile', GetBusinessProfile);
+router.get('/business-portfolio', GetBusinessPortfolio);
+router.get('/complete-business-portfolio', GetBusinessCompletePortfolio);
+router.get('/complete-business-skills', GetBusinessCompleteSkills);
+router.get('/business-skills', GetBusinessSkills);
+
+
 
 
 
