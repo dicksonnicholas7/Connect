@@ -7,28 +7,49 @@ const multer = require('multer');
 const axios = require('axios');
 
 //render profile page. Also get list of countries from an external api
-module.exports.GetProfile = async (req, res, next) => {
+module.exports.GetIndividualClientProfile = async (req, res, next) => {
 
             res.render(
-                'profile/individual-profile',
+                'profile/individual-client-profile',
                 {
-                    page: 'individual-profile'
+                    page: 'individual-client-profile'
                 }
             )
 };
 
-
-
-
-module.exports.GetCompleteProfile = async (req, res, next) => {
+module.exports.GetIndividualFreelancerProfile = async (req, res, next) => {
 
     res.render(
-        'profile/complete-individual-profile',
+        'profile/individual-freelancer-profile',
         {
-            page: 'complete-individual-profile'
+            page: 'individual-freelancer-profile'
         }
     )
 };
+
+
+
+
+module.exports.GetCompleteClientProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-client-profile',
+        {
+            page: 'complete-individual-client-profile'
+        }
+    )
+};
+
+module.exports.GetCompleteFreelancerProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-freelancer-profile',
+        {
+            page: 'complete-individual-freelancer-profile'
+        }
+    )
+};
+
 
 
 
