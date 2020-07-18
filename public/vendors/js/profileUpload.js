@@ -69,3 +69,13 @@ function secondPortfolio(){
 
       }
 }
+
+
+function handleChange(specific) {
+    let checkBox = document.getElementById("specificFreelancers");
+    if(specific.checked == true){
+       checkBox.style.display ="block";
+    }else{
+        checkBox.style.display ="none";
+   }
+}
