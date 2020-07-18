@@ -1,14 +1,24 @@
 const Job = require('../../models').Job;
 const JobCategory = require('../../models').JobCategory;
 
-module.exports.GetPostJob = async (req, res, next) => {
-    let category = await JobCategory.findAll();
+module.exports.GetBusinessPostJob = async (req, res, next) => {
+ 
     res.render(
-        'job/post-job',
+        'job/business-post-job',
         {
-            category,
-            successMessage:'',
-            errorMessage:''
+            page:'business-post-job'
+        }
+    );
+};
+
+
+
+module.exports.GetIndividualPostJob = async (req, res, next) => {
+
+    res.render(
+        'job/individual-post-job',
+        {
+            page:'individual-post-job'
         }
     );
 };
