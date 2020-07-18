@@ -1,60 +1,9 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-
 <style>
-    .text-center h2 {
-        color: #ffffff;
-    }
-
-    .text-center p {
-        color: whitesmoke ;
-    }
-
-    .card {
-        width: 850px;
-        height: 25px;
-        margin: auto;
-        float: none;
-    }
-
-    .nav-link h4 {
-        color: #ffffff;
-    }
-
-    .nav-tabs {
-        border-bottom: none !important;
-        height: 50px;
-    }
-
-    .card-business {
-        background-color: #ffffff;
-        width: 849px;
-        height: auto;
-        float: none;
-        margin-left: 2px !important;
-        margin-top: 0px !important;
-
-    }
-    .profile-btn{
-        width: 150px;
-        margin: auto;
-        color: #fff;
-        background-color: #0c4767
-    }
-
-   .fa {
-       color: #0c4767;
-       font-size: 20px;
-   }
-
-    .image-border {
-        border: 1px solid black;
-    }
-
-
+   
 </style>
-
 
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
@@ -64,7 +13,6 @@
                     <p class="text-center ">Let clients know about your business. Complete your profile to get started on Connect</p>
                 </div>
             </div>
-
 
 
     <div class="col-md-12">
@@ -102,7 +50,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="col-md-9">
 
                                             <div class="form-row mt-4">
@@ -126,7 +73,6 @@
                                                     </select>
                                                 </div>
                                             </div>
-
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
@@ -180,19 +126,74 @@
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <img class="image-border" src="../../vendors/img/portfolio.png" alt="Profile Photo" id="portfolio-profile" width="120" height="120">
+                                                    <img class="image-border" src="../../vendors/img/portfolio.png" alt="Profile Photo" id="portfolio-profile1" width="120" height="120">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="color:blue;">
                                                     <label class="" >
-                                                        <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                        <input hidden type="file" id="img" name="img" onchange="portfolioProfile1(this)" value="Add Photo" accept="image/*">
                                                         Upload picture
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
 
+                                        <div class="col-md-9">
+
+                                            <div class="form-row mt-4">
+                                                <div class="form-group col-md-12">
+                                                    <label for="title">Title</label>
+                                                    <input type="text" class="form-control" id="portfolioTitle" placeholder="Eg: E-Commerce Website" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="projectDesc">Description</label>
+                                                    <textarea type="text" class="form-control" id="projectDesc" placeholder="Project Description here..."></textarea>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="links">Project Link</label>
+                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                </div>
+                                            </div>
+
+                                            <div class="accordionButton" id="accordionButton" style="display: block;">
+                                                <div class="form-row">
+                                                    <div class="form-group col-md-12">
+                                                        <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  <a onclick="secondPortfolio()">Add another portfolio</a></p>
+                                                    </div>
+                                                </div>
+
+                                                <div class="form-row justify-content-center">
+                                                    <div class="col-md-12 mb-5">
+                                                        <button name="next" class="form-control profile-btn">NEXT</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="portfolio2" id="portfolio2" style="display: none;">
+                                    <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <div class="col-md-3 mt-5">
+                                            <div class="row">
+                                                <div class="col-md-12">
+                                                    <img class="image-border" src="../../vendors/img/portfolio.png" alt="Profile Photo" id="portfolio-profile2" width="120" height="120">
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-md-12" style="color:blue;">
+                                                    <label class="" >
+                                                        <input hidden type="file" id="img" name="img" onchange="portfolioProfile2(this)" value="Add Photo" accept="image/*">
+                                                        Upload picture
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
 
                                         <div class="col-md-9">
 
@@ -218,7 +219,7 @@
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add another portfolio</p>
+                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-minus-circle"></i>  <a onclick="secondPortfolio()">Remove portfolio</a></p>
                                                 </div>
                                             </div>
 
@@ -229,6 +230,7 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
 
                                 </div>
                             </form>
@@ -281,37 +283,4 @@
     </div>
 
 </div>
-
     <%include ../layout/footer-public.ejs %>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
