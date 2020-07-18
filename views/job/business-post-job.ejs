@@ -1,14 +1,69 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-<style>
-   
-
-
-</style>
 
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
+    <div class="row">
+        <div class="col-md-12">
+            <div class="text-center justify-content-center">
+                 <h2>Post a Job</h2>
+             <p class="text-center ">What do you need? Post your and get skilled freelancers to work on it for you. You make payment <br> only when you award job a freelancer. </p>
+            </div>
+         </div>
+        <div class="col-md-12">
+            <div class="card">
+                <div class="text-center justify-content-center">
+                    Job Details
+                </div>
+                <form class="form-row justify-content-center">
+                    <div class="card-business ml-3 mt-1" >
+                        <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                            <div class="col-md-9 m-auto">
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                    <label for="businessName">Give your project a name</label>
+                                    <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="goldenName">Description</label>
+                                        <textarea type="text" class="form-control" id="goldname" placeholder="Write a description here..."></textarea>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <label for="duration">Estimated Duration</label>
+                                        <label for="price">Price</label>
+                                        <div class="row">
+                                            <div class="col-md-2"><input  type="number" price="days_num" min="1" class="form-control"></div>
+                                            <div class="col-md-2">
+                                                <select class="form-control" name="days" >
+                                                     <option  value="days">day(s)</option>
+                                                     <option  value="months">months(s)</option>
+                                                </select>
+                                            </div>
+                                            <div class="col-md-2">
+                                                <input type="text" class="form-control"  value="USD" id="" readonly>
+                                            </div> 
+                                            <div class="col-md-2">
+                                                <div class="col-md-3"><input  type="number" name="price" min="1" class="form-control"></div>
+                                            </div>  
+                                                  
+                                            
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>    
+                </form>
+            </div>
+
+        </div>
+    </div>
 </div>
 
     <%include ../layout/footer-public.ejs %>
