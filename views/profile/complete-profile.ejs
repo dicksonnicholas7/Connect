@@ -1,6 +1,112 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
+
+<!--div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); height: 100%!important;">
+    
+   <div class="text-center">
+    <h2 style="color: #fff;">Add Profile</h2>
+    <p style="color: #fff;">Your profile says a lot about you to clients. Complete your profile to get started on Connect!</p>
+   </div>
+    <div class="card" style="max-width:60%; margin:auto;margin-top: 10px;">
+        <div class="individual-card-header" style="background-color: #0C4767; ">
+          <h4>Personal Details</h4>
+        </div>
+        <form>
+        <div class="individual-card-body" style="background-color: #fff; ">
+            <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                <div class="col-md-4">
+                    <div class="row">
+                        <div class="col-md-12">
+                           <img src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="150" height="150"> 
+                        </div> 
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12" style="left:13%;color:#0C4767;">
+                            <label >
+                                <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                Add Photo
+                            </label>    
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                    <div class="form-row mt-4">
+                        <div class="form-group col-md-6">
+                          <label for="firstName">First Name</label>
+                          <input type="text" class="form-control" id="fname" placeholder="">
+                        </div>
+                        <div class="form-group col-md-6">
+                          <label for="lastName">Last Name</label>
+                          <input type="text" class="form-control" id="lname" placeholder="">
+                        </div>
+                    </div>
+                        <div class="form-row">
+                          <div class="form-group col-md-6">
+                            <label for="job">Job Title</label>
+                            <input type="text" class="form-control" id="job" placeholder="">
+                          </div>
+                          <div class="form-group col-md-6">
+                            <label for="availability">Availability</label>
+                            <select id="availabilityState" class="form-control">
+                              <option selected>Part-time</option>
+                              <option>Full time</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="form-row">  
+                          <label for="about">Golden Paragraph</label>
+                        </div>
+                        <div class="form-row">
+                            <textarea name="about" id="about" class="form-control" rows="2" placeholder="Write a personal summary here..."></textarea></div>
+                       <p></p>
+                            <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="dob">Date of Birth</label>
+                              <input type="date"   max="2002-12-31" class="form-control" id="dob" placeholder="">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="gender">Gender</label>
+                              <select id="gender" class="form-control">
+                                <option selected>Male</option>
+                                <option>Female</option>
+                                <option>Rather Not Say</option>
+                              </select>
+                            </div>
+                          </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                              <label for="inputCity">City</label>
+                              <input type="text" class="form-control" id="inputCity" placeholder="Accra, Ghana">
+                            </div>
+                            <div class="form-group col-md-6">
+                              <label for="country">Country</label>
+                              <input type="text" class="form-control" id="country" placeholder="">
+                              <select name="Afghanistan" id="country"></select>
+                            </div>
+                            </div>
+                        <div class="form-row">
+                              <div class="form-group col-md-6">
+                                <label for="email">Email</label>
+                                <input type="text" class="form-control" id="email" placeholder="" readonly>
+                              </div>
+                              <div class="form-group col-md-6">
+                                <label for="phone">Phone</label>
+                                <input type="text" class="form-control" id="phone" placeholder="">
+                              </div>
+                              </div>
+                    </div>
+                    <a class="btn btn-primary" href="#" role="button" style="background-color: #0C4767;margin-left: auto;margin-right: auto;margin-bottom: 4rem;width: 100px;height: 35px;text-align: center;font-size: 20px; border-color: #0C4767;">NEXT</a>
+                      </div>
+                </div>
+        </form>        
+    
+        </div>
+    </div-->
+
+  
+
+
 <style>
     .text-center h2 {
         color: #ffffff;
@@ -73,7 +179,7 @@
                 <div class="card-header justify-content-center mb-3" style="background-color: #0c4767; height: 50px; padding: 0">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link mr-5 ml-5" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
+                            <a class="nav-item nav-link mr-5 ml-5" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Details</a>
                             <a class="nav-item nav-link mr-5 ml-5" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Portfolio</a>
                             <a class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Skills & Certificate</a>
                         </div>
@@ -88,56 +194,74 @@
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
+                                                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="120" height="120">
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" style="color:blue;">
-                                                    <label class="">
-                                                        <input class="text-center m-auto" hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                        Add business logo
-                                                    </label>
-                                                </div>
+                                              <div class="col-md-12" style="left:13%;color:#0C4767;">
+                                                <label >
+                                                    <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                    Add Photo
+                                                </label>    
+                                            </div>
                                             </div>
                                         </div>
 
 
                                         <div class="col-md-9">
 
-                                            <div class="form-row mt-4">
+                                          <div class="form-row mt-4">
+                                            <div class="form-group col-md-6">
+                                              <label for="firstName">First Name</label>
+                                              <input type="text" class="form-control" id="fname" placeholder="">
+                                            </div>
+                                            <div class="form-group col-md-6">
+                                              <label for="lastName">Last Name</label>
+                                              <input type="text" class="form-control" id="lname" placeholder="">
+                                            </div>
+                                          </div>
+
+                                            <div class="form-row">
+                                              <div class="form-group col-md-6">
+                                                <label for="job">Job Title</label>
+                                                <input type="text" class="form-control" id="job" placeholder="">
+                                              </div>
+                                              <div class="form-group col-md-6">
+                                                <label for="availability">Availability</label>
+                                                <select id="availabilityState" class="form-control">
+                                                  <option selected>Part-time</option>
+                                                  <option>Full time</option>
+                                                </select>
+                                              </div>
+                                            </div>
+
+
+                                            <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="businessName">Freelancer Business Name</label>
-                                                    <input type="text" class="form-control" id="bname" placeholder="">
+                                                    <label for="about">Golden Paragraph</label>
+                                                    <textarea type="text" class="form-control" id="about" placeholder="Write a personal summary here..."></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="serviceName">Service</label>
-                                                    <input type="text" onautocomplete="off" name="service" id="service" class="form-control" placeholder="Eg: Web Designer" required>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="availName">Availability</label>
-                                                    <select type="text" onautocomplete="off" name="service" id="avail" class="form-control" placeholder="" required>
-                                                        <option selected>Part-time</option>
-                                                        <option>Full time</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="goldenName">Golden Paragraph</label>
-                                                    <textarea type="text" class="form-control" id="goldname" placeholder="Write your company profile here..."></textarea>
-                                                </div>
+                                              <div class="form-group col-md-6">
+                                                <label for="dob">Date of Birth</label>
+                                                <input type="date"   max="2002-12-31" class="form-control" id="dob" placeholder="">
+                                              </div>
+                                              <div class="form-group col-md-6">
+                                                <label for="gender">Gender</label>
+                                                <select id="gender" class="form-control">
+                                                  <option selected>Male</option>
+                                                  <option>Female</option>
+                                                  <option>Rather Not Say</option>
+                                                </select>
+                                              </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="serviceName">City</label>
-                                                    <input type="text" name="city" id="city" class="form-control" placeholder="Eg: Takoradi" required>
+                                                    <input type="text" name="city" id="city" class="form-control" placeholder="" required>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
@@ -149,7 +273,7 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
                                                     <label for="serviceName">Email</label>
-                                                    <input type="text" name="email" id="email" class="form-control" placeholder="Eg: Takoradi" readonly>
+                                                    <input type="text" name="email" id="email" class="form-control" placeholder="" readonly>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
@@ -170,7 +294,7 @@
                             </form>
 
                         </div>
-                        <!--BUSINESS FREELANCER PORTFOLIO COME HERE-->
+                        <!--START OF FREELANCER'S PORTFOLIO-->
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <form class="form-row">
                                 <div class="card-business ml-3 mt-1" >
@@ -183,7 +307,7 @@
                                                 </div>
                                             </div>
                                             <div class="row">
-                                                <div class="col-md-12" style="color:blue;">
+                                                <div class="col-md-12" style="left:10%;color:#0C4767;">
                                                     <label class="" >
                                                         <input hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
                                                         Upload picture
@@ -204,14 +328,14 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="projectDesc">Description</label>
-                                                    <textarea type="text" class="form-control" id="projectDesc" placeholder="Project Description here..."></textarea>
+                                                    <textarea type="text" class="form-control" id="projectDesc" placeholder="Write a description here..."></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="links">Project Link</label>
-                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.github.com/raphael9830">
                                                 </div>
                                             </div>
 
@@ -233,7 +357,7 @@
                             </form>
                         </div>
 
-                        <!--BUSINESS FREELANCER CERTIFICATE AND SKILLS COME HERE-->
+                        <!--START OF FREELANCER'S KILLS AND CERTIFICATE-->
                         <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
                             <form class="form-row">
                                 <div class="card-business ml-3 mt-1" >
@@ -244,26 +368,37 @@
                                             <div class="form-row mt-4">
                                                 <div class="form-group col-md-12">
                                                     <label for="title">Skills</label>
-                                                    <input type="text" class="form-control" id="Skills" placeholder="Eg: Full Stack Development" required>
+                                                    <input type="text" class="form-control" id="Skills" placeholder="Type a skill and select the list" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label for="links">Certification</label>
-
-                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
-                                                </div>
-                                            </div>
+                                              <div class="form-group col-md-8">
+                                                 <label for="experience">Experience</label>
+                                                 <input type="text" class="form-control" id="experience" placeholder="Eg. Web Designer">
+                                               </div>
+                                              <div class="form-group col-md-4">
+                                               <label for="years">Years</label>
+                                               <select id="years" class="form-control">
+                                                 <option selected>Below 1</option>
+                                                 <option>1</option>
+                                                 <option>2</option>
+                                                 <option>3</option>
+                                                 <option>4</option>
+                                                 <option>5</option>
+                                                 <option>More</option>
+                                               </select>
+                                              </div>
+                                         </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add other relevant document</p>
+                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add another experience</p>
                                                 </div>
                                             </div>
 
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12 mb-5">
-                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                    <button name="next" class="form-control profile-btn">SAVE</button>
                                                 </div>
                                             </div>
                                         </div>
