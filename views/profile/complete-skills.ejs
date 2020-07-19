@@ -1,49 +1,53 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg');">
-    <div class="container" id="sign-card">
-    <div class="card-header" style="background-color: #0C4767;">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#" aria-disabled="true">Personal Details</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#" aria-disabled="true">Portfolio</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="#" tabindex="-1" >Skills & Experience</a>
-        </li>
-      </ul>
-    </div>
-
-<div>
-    <form>
-        <div class="form-row">
-          <div class="form-group col-md-12">
-            <label for="skills">Skills</label>
-            <input type="text" class="form-control" id="skills" placeholder="Type a skill and select the list">
-          </div>
+    <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); height: 100%!important;">
+    
+        <div class="text-center">
+         <h2>Add Skills & Experience</h2>
+         <p>Let clients know your skills and experience. This helps them know you're the right person for the job.</p>
         </div>
-        <div class="form-row">
-            <div class="form-group col-md-8">
-              <label for="experience">Experience</label>
-              <input type="text" class="form-control" id="experience" placeholder="Eg. Web Designer">
-            </div>
-            <div class="form-group col-md-4">
-              <label for="years">Years</label>
-              <select id="years" class="form-control">
-                <option selected>Below 1</option>
-                <option>1</option>
-                <option>2</option>
-                <option>3</option>
-                <option>4</option>
-                <option>5</option>
-                <option>More</option>
-              </select>
-            </div>
-          </div>
-        <button type="submit" class="btn btn-primary" style="background-color: #0C4767;">SAVE</button>
-      </form>
-    </div>
+         <div class="card" style="max-width:60%; margin:auto;margin-top: 10px;">
+             <div class="individual-card-header" style="background-color: #0C4767; ">
+               <h4>Skills & Experience</h4>
+             </div>
+             <form>
+              <div class="individual-card-body" style="background-color: #fff; ">
+                 <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                     <div class="col-md-12"> 
+                             <div class="form-group col-md-12">
+                              <label for="job">Skills </label>
+                              <input type="skills" class="form-control" id="skills" placeholder="Type a skill and select the list">
+                            </div>
+                             <div class="form-row">
+                                   <div class="form-group col-md-8">
+                                      <label for="experience">Experience</label>
+                                      <input type="text" class="form-control" id="experience" placeholder="Eg. Web Designer">
+                                    </div>
+                                   <div class="form-group col-md-4">
+                                    <label for="years">Years</label>
+                                    <select id="years" class="form-control">
+                                      <option selected>Below 1</option>
+                                      <option>1</option>
+                                      <option>2</option>
+                                      <option>3</option>
+                                      <option>4</option>
+                                      <option>5</option>
+                                      <option>More</option>
+                                    </select>
+                                   </div>
+                              </div>
+                         </div>
+                         <div class="ps-form__footer">
+                          <div class="d-flex justify-content-center">
+                              <input type="submit" class="mt-2 btn btn-success py-2 px-4" value="Add">
+                          </div>
+                      </div>
+                      <a class="btn btn-primary" href="#" role="button" style="background-color: #0C4767;margin-left: auto;margin-right: auto;margin-bottom: 4rem;width: 100px;height: 35px;text-align: center;font-size: 20px; border-color: #0C4767;">SAVE</a>
+                           </div>
+                     </div>
+             </form>        
+         
+             </div>
+         </div>
     <% include ../layout/footer-public.ejs %>    
