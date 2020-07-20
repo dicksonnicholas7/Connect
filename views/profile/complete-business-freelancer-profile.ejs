@@ -26,8 +26,10 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            <form class="form-row justify-content-center">
-                                <div class="card-business ml-3 mt-1" >
+                            <form action="update-business-freelancer-profile" method="post" class="form-row justify-content-center" enctype = "multipart/form-data" >
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="" hidden><br />
+
+                                <div class="card-business ml-3 mt-1" >  
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
                                         <div class="col-md-3 mt-5">
@@ -50,23 +52,24 @@
 
                                             <div class="form-row mt-4">
                                                 <div class="form-group col-md-12">
-                                                    <label for="businessName">Freelancer Business Name</label>
-                                                    <input type="text" class="form-control" id="bname" placeholder="">
+                                                    <label for="businessname">Freelancer Business Name</label>
+                                                    <input name="businessname" id="businessname" value="" placeholder="" type="text" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="serviceName">Service</label>
-                                                    <input type="text" onautocomplete="off" name="service" id="service" class="form-control" placeholder="Eg: Web Designer" required>
+                                                    <label for="service">Service</label>
+                                                    <input  name="service" id="service" value="" placeholder="" type="text" class="form-control" required>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="availName">Availability</label>
-                                                    <select type="text" onautocomplete="off" name="service" id="avail" class="form-control" placeholder="" required>
-                                                        <option selected>Part-time</option>
-                                                        <option>Full time</option>
-                                                    </select>
+                                                    <label for="availability">Availability</label>
+                                                    <select  name="availability" id="availability" class="custom-select" required>
+                                                    <option value="Part-time" <%if(user.availability == "Part-time"){%>
+                                                            selected<%}%> >Part-time</option>
+                                                    <option value="Full-time" <%if(user.gender == "Full-time"){%>
+                                                            selected<%}%> >Full-time</option>
                                                 </div>
                                             </div>
 
