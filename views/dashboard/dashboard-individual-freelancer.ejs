@@ -14,27 +14,10 @@
         height: 50px;
     }
 
-
-    .card-body-dashboard  {
-        background-color: #ffffff;
-        border: 1px solid black ;
-        margin: 1rem;
-        
-        border-radius: 3px;
-        
-
-    }
-
-
-    .card-recent {
-        border-radius: 3px;
-        border: 1px solid black;
+    .card-body-recent {
         text-align: center;
-        margin: 3rem;
-        
-       
-        
     }
+
 
     .card-footer-button {
         background-color: #ffffff;
@@ -55,6 +38,9 @@
         border-radius: 50%;
         width: 100px;
         height: 100px;
+        margin-left: 70px;
+        margin-right: 70px; 
+        margin-top: 10px;   
     }
 
     .card-profile-view {
@@ -91,18 +77,21 @@
    }
 
    .card {
-       margin: 2rem;
+       
+       box-shadow: none;
+       border: 1px solid black;
+       
    }
 
   
 
+  
 
-   
 
 </style>
 
 
-    <div class="container-connect-dashboard justify-content-center m-auto">
+    <div class="container-connect-dashboard justify-content-center">
 
         
             <div class="row">
@@ -163,7 +152,7 @@
 
                 <div class="card widget-content mt-3 mb-3   justify-content-center col-md-2">
                     
-                    <div class="row widget-content-wrapper p-4 justify-content-around border-0">
+                    <div class="row widget-content-wrapper p-4 justify-content-around">
                         <div class="widget-content-left mt-3">
                             <div class="widget-heading">
                                 <i class="fa fa-dashboard" style="font-size: 25px"></i>
@@ -185,7 +174,7 @@
 
                 <div class="card widget-content mt-3 mb-3   justify-content-center col-md-2">
                     
-                    <div class="row widget-content-wrapper p-4 justify-content-around border-0">
+                    <div class="row widget-content-wrapper p-4 justify-content-around">
                         <div class="widget-content-left mt-3">
                             <div class="widget-heading">
                                 <i class="fa fa-dashboard" style="font-size: 25px"></i>
@@ -209,7 +198,7 @@
 
                 <div class="card widget-content mt-3 mb-3  justify-content-center col-md-2">
                     
-                    <div class="row widget-content-wrapper p-4 justify-content-around border-0">
+                    <div class="row widget-content-wrapper p-4 justify-content-around">
                         <div class="widget-content-left mt-3">
                             <div class="widget-heading">
                                 <i class="fa fa-dashboard" style="font-size: 25px"></i>
@@ -233,16 +222,13 @@
             </div>  
 
 
-            <div class="row">
-                
-            </div>
 
                   <!-- THE RECOMMENDED JOBS GOES HERE -->
 
-            <div class="row justify-content-center mb-5">
+            <!-- <div class="row justify-content-center mb-5">
 
 
-                <div class="card mt-3 mb-5 col-md-2 justify-content-center">
+                <div class="card mt-3 mb-5 col-2 justify-content-center col-md-2">
                     <img class="card-img-top mt-5" src='../../vendors/img/1.jpg' alt="Card image cap">
                     <br>
                     <div class="card-body-recent mt-5">
@@ -255,21 +241,7 @@
                     </div>
                 </div>
 
-                <div class="card mt-3 mb-5 col-md-2 justify-content-center">
-                    <img class="card-img-top mt-5" src='../../vendors/img/1.jpg' alt="Card image cap">
-                    <br>
-                    <div class="card-body-recent mt-5">
-                        <h5 class="card-title text-muted">Design Mobile App UI</h5>
-                        <p class="card-text">Fiifi Gordon</p>
-                        <p class="card-text"><small>USD 300.00</small></p>
-                    </div>
-                    <div class=".card-footer-button mt-3 mb-3">
-                        <button class="form-control profile-btn-more">See more</button>
-                    </div>
-                </div>
-
-
-                <div class="card mt-3 mb-5 col-md-2 justify-content-center">
+                <div class="card mt-3 mb-5 col-2 justify-content-center col-md-2">
                     <img class="card-img-top mt-5" src='../../vendors/img/1.jpg' alt="Card image cap">
                     <br>
                     <div class="card-body-recent mt-5">
@@ -283,54 +255,66 @@
                 </div>
 
 
-                <div class="card mt-3 col-md-2 justify-content-center">
-
-                    <div class="row">
-                        <!-- <div class="card  mb-5 col-md-12">
-                            <div class="money text-center">
-                                <h3 class="text-center text-muted mt-2">$0.00</h3>
-                                <p class="text-center text-muted">Total Earnings</p>
-                            </div>
-    
-                        </div> -->
+                <div class="card mt-3 mb-5 col-2 justify-content-center col-md-2">
+                    <img class="card-img-top mt-5" src='../../vendors/img/1.jpg' alt="Card image cap">
+                    <br>
+                    <div class="card-body-recent mt-5">
+                        <h5 class="card-title text-muted">Design Mobile App UI</h5>
+                        <p class="card-text">Fiifi Gordon</p>
+                        <p class="card-text"><small>USD 300.00</small></p>
                     </div>
-                    <div class="row">
-                        <div class="card mb-5 col-md-12">
-                            <!-- <div class="money text-center">
-                                <h5 class="text-center mt-4" style="color: #0c4767;">Profile Viewed by (5)</h5>
-                            </div> -->
-    
-                            <!-- <div class="image-profile">
-                               <span class="text-muted"><img class="card-profile-view" src='../../vendors/img/1.jpg' alt="Card image cap">     Abdul Manaf Sulley</span> 
-                               <p class="duration" style="margin-left: 50px;">2 days ago</p>
-                                    
-                            </div>
-    
-                            <div class="image-profile">
-                                <span class="text-muted"><img class="card-profile-view" src='../../vendors/img/1.jpg' alt="Card image cap">     Abdul Manaf Sulley</span> 
-                                <p class="duration" style="margin-left: 50px;">2 days ago</p>
-    
-                               
-                                     
-                             </div> -->
-    
-                             
-     
-    
-                        </div>
+                    <div class=".card-footer-button mt-3 mb-3">
+                        <button class="form-control profile-btn-more">See more</button>
                     </div>
-                    
-                    
-                        
-                        
                 </div>
-                        
+
                 
 
             </div>
-        
+         -->
 
     </div>
+
+
+
+
+    <!-- <div class="row">
+        <div class="card col-md-12 mt-0">
+
+            <div class="earnings">
+                <h4 class="text-center text-muted mt-4">$0.00</h4>
+                
+                <p class="text-center text-muted mt-4">Total Earnings</p>
+
+            </div>
+
+        </div>
+
+    </div> -->
+
+    <!-- <div class="card col-md-12 mt-0">
+
+        <div class="money text-center">
+            <h5 class="text-center mt-4" style="color: #0c4767;">Profile Viewed by (5)</h5>
+        </div>
+
+        <div class="image-profile">
+            <span class="text-muted"><img class="card-profile-view" src='../../vendors/img/1.jpg' alt="Card image cap">     Abdul Manaf Sulley</span> 
+            <p class="duration" style="margin-left: 50px;">2 days ago</p>
+                 
+         </div>
+
+         <div class="image-profile">
+             <span class="text-muted"><img class="card-profile-view" src='../../vendors/img/1.jpg' alt="Card image cap">     Abdul Manaf Sulley</span> 
+             <p class="duration" style="margin-left: 50px;">2 days ago</p>
+
+            
+                  
+          </div>
+        
+        
+
+    </div> -->
 
 
 
