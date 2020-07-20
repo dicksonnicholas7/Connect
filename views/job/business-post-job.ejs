@@ -1,8 +1,17 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
+<style>
+    .job-title{
+        background-color:#0C4767;
+        height: 400px;
+        color: #ffffff;
+        font-size: medium;
+        font-weight: 700;
+    }
+</style>
 
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/macbookPro.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
     <div class="row">
         <div class="col-md-12">
@@ -13,7 +22,7 @@
          </div>
         <div class="col-md-12">
             <div class="card">
-                <div class="text-center justify-content-center">
+                <div class="job-title text-center justify-content-center">
                     Job Details
                 </div>
                 <form class="form-row justify-content-center">
@@ -32,33 +41,55 @@
                                         <textarea type="text" class="form-control" id="goldname" placeholder="Write a description here..."></textarea>
                                     </div>
                                 </div>
-
                                 <div class="form-row">
                                     <div class="form-group col-md-6">
-                                        <label for="Duration">Estimated Duration</label>
+                                        <label for="serviceName">Estimated Duration</label>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="number" name="" id="" class="form-control" value="1" >
+                                            <div class="col">
+                                            <input type="number" class="form-control" min="1" max="7">
                                             </div>
-                                            <div class="col-md-6">
-                                                <select type="text" onautocomplete="off" name="service" id="avail" class="form-control" placeholder="" required>
-                                                    <option selected>Part-time</option>
-                                                    <option>Full time</option>
+                                            <div class="col">
+                                                <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
+                                                    <option selected>day(s)</option>
+                                                    <option>weeks</option>
+                                                    <option>months</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
 
                                     <div class="form-group col-md-6">
-                                        <label for="Price">Price</label>
+                                        <label for="serviceName">Price</label>
                                         <div class="row">
-                                            <div class="col-md-6">
-                                                <input type="text" value="USD" class="form-control" readonly>
+                                            <div class="col">
+                                            <input type="text" class="form-control" value="USD" readonly>
                                             </div>
-                                            <div class="col-md-6">
-                                                <input type="number" value="1" class="form-control" id="price">
+                                            <div class="col">
+                                            <input type="number" name="amount" class="form-control" min="1">
                                             </div>
                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                    <label for="businessName">Enter Skills Needed</label>
+                                    <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group col-md-12">
+                                        <input type="checkbox" onchange="handleChange(this)" id="specific" name="specific" value="specific">
+                                        <label for="specific">Send to specific businesses</label>
+                                    </div>
+                                </div>
+                                <div class="form-row" id="specificFreelancers" style="display: none;">
+                                    <div class="form-group col-md-12">
+                                    <input type="text" class="form-control" id="" placeholder="Eg: Logo Design">
+                                    </div>
+                                </div>
+                                <div class="form-row justify-content-center">
+                                    <div class="col-md-12 mb-5">
+                                        <button name="next" class="form-control profile-btn">POST</button>
                                     </div>
                                 </div>
                             </div>

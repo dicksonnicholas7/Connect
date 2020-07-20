@@ -34,6 +34,9 @@ module.exports = {
       city: {
         type: Sequelize.STRING
       },
+      alpha2code: {
+        type: Sequelize.STRING
+      },
       phone: {
         type: Sequelize.STRING
       },

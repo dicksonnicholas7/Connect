@@ -13,6 +13,7 @@ module.exports = (sequelize, DataTypes) => {
     },
     password: DataTypes.STRING,
     verified: DataTypes.BOOLEAN,
+    firstTime: DataTypes.BOOLEAN,
     blocked: DataTypes.BOOLEAN,
     token: DataTypes.STRING,
   }, {});
@@ -35,7 +36,7 @@ module.exports = (sequelize, DataTypes) => {
     });
 
     UserAccount.hasOne(models.BusinessUser,{
-        foreignKey: 'BusinessUserId',
+        foreignKey: 'UserId',
         onDelete: 'CASCADE'
       });
 

@@ -105,6 +105,7 @@ module.exports.DoSignUp = async (req, res, next) => {
                     RoleId: req.body.role,
                     UserTypeId: user_type,
                     verified: false,
+                    firstTime: true,
                     blocked: false,
                     token: token,
                 }
@@ -195,6 +196,7 @@ module.exports.DoSignUp = async (req, res, next) => {
             RoleId: req.body.role,
             UserTypeId: user_type,
             verified: false,
+            firstTime: true,
             blocked: false,
             token: token,
         }
