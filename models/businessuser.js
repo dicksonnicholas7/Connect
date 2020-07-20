@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     golden_paragraph: DataTypes.STRING,
     country: DataTypes.STRING,
     city: DataTypes.STRING,
+    alpha2code: DataTypes.STRING,
     phone: DataTypes.STRING,
     picture: DataTypes.STRING,
     certificate: DataTypes.STRING
