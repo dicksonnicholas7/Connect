@@ -4,7 +4,7 @@ let router = express.Router();
 
 
 const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile } = require('../controllers/Profile/Profile');
-const { GetBusinessFreelancerCompleteProfile, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile } = require('../controllers/Profile/Business-Profile/Profile');
+const { GetBusinessFreelancerCompleteProfile, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessFreelancerProfile, UpdateBusinessClientProfile } = require('../controllers/Profile/Business-Profile/Profile');
 const  { GetBusinessPortfolio } = require('../controllers/Profile/Business-Profile/Portfolio');
 const  { GetBusinessSkills } = require('../controllers/Profile/Business-Profile/Skills');
 const { GetBusinessPostJob, GetIndividualPostJob} = require('../controllers/Job/PostJob');
@@ -15,7 +15,7 @@ const {GetDashboardBusinessFreelancer} = require('../controllers/Dashboard/Dashb
 const {GetDashboardIndividualClient} = require('../controllers/Dashboard/DashboardIndividualClient');
 const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
 
-
+  
 
 
 
@@ -37,6 +37,9 @@ router.get('/dashboard-individual-freelancer', GetDashboardIndividualFreelancer)
 //complete profile
 router.get('/complete-business-client-profile', GetBusinessClientCompleteProfile);
 router.get('/complete-business-freelancer-profile', GetBusinessFreelancerCompleteProfile);
+router.get('/update-business-freelancer-profile', UpdateBusinessFreelancerProfile);
+router.get('/update-business-client-profile', UpdateBusinessClientProfile);
+
 
 
 
