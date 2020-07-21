@@ -52,3 +52,15 @@ module.exports.GetBusinessFreelancerProfile = async (req, res, next) => {
         }
     )
 };
+
+
+module.exports.UpdateBusinessFreelancerProfile = async (req, res, next ) => {
+
+
+
+}
+
+
+module.exports.UpdateBusinessClientProfile = async (req, res, next ) => {
+    
+}

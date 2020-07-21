@@ -35,6 +35,9 @@ module.exports = {
       gender: {
         type: Sequelize.STRING
       },
+      alpha2code: {
+        type: Sequelize.STRING
+      },
       dob: {
         type: Sequelize.DATEONLY
       },

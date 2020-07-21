@@ -6,27 +6,30 @@
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding-bottom: 230px; padding-top: 150px ">
     <div class="col-md-12">
         <div class="container" id="sign-card">
+        
+        <form action="#" method="post" class="ps-form--signin">
 
-        <form class="ps-form--signin" action="/login" method="post">
             <div class="ps-form__header">
 
                 <h3>Log In to Connect</h3>
 
             </div>
+
             <div class="ps-form__content">
-                <div class="form-group">
-                    <div class="col-md-12">
-                     <input autocomplete="off" class="form-control" type="email" name="email" placeholder="Email"
-                        required="required" />
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-md-12">
-                    <input autocomplete="off" class="form-control" type="password" name="password" placeholder="Password"
-                        required="required" />
-                    </div>
+         
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input autocomplete="off" type="text" id="email" name="email" class="form-control" placeholder="Email" required="required"/>
                 </div>
             </div>
+            <div class="form-group">
+                <div class="col-md-12">
+                    <input autocomplete="off" type="password" id="password" name="password" class="form-control" placeholder="Password" required="required"/>
+                </div>
+            </div>
+
+            </div>
+
             <div class="col-md-12">
                 <div class="ps-form__actions">
                         <div class="ps-checkbox ps-checkbox--circle">
@@ -35,17 +38,36 @@
                         </div><a href="/forgot-password">Forgot password?</a>
                 </div>
             </div>
+
+
             <div class="ps-form__footer">
-                <div class="col-md-12">
-                    <button type="submit" id="btnlogin" name="btnlogin" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Log In</button>
-                    <p style="padding-top: 0px;">Not a member yet?<a href="/signup-page"> Sign up</a></p>
+                <div class="col-md-12" >
+                  
+                        <input type="submit" id="btnlogin" name="btnlogin" value="Log In" class="ps-btn ps-btn--fullwidth ps-btn--gradient">
+                        <p style="padding-top: 0px;">Not a member yet?<a href="/signup-page"> Sign up</a></p>
                 </div>
             </div>
+
         </form>
     </div>
     </div>
 </div>
+<script src="/jscontroller/hideShow.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/jquery-migrate-3.0.1.min.js"></script>
+<script src="/js/jquery-ui.js"></script>
+<script src="/js/popper.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/owl.carousel.min.js"></script>
+<script src="/js/jquery.stellar.min.js"></script>
+<script src="/js/jquery.countdown.min.js"></script>
+<script src="/js/jquery.magnific-popup.min.js"></script>
+<script src="/js/bootstrap-datepicker.min.js"></script>
+<script src="/js/aos.js"></script>
+<script src="/js/main.js"></script>
 <script src="/vendors/plugins/jquery-1.12.4.min.js"></script>
 <script src="/vendors/plugins/bootstrap4/js/bootstrap.min.js"></script>
+<script src="/jscontroller/auth.js"></script>
+
 
 

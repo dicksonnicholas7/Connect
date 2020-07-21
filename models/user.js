@@ -7,6 +7,7 @@ module.exports = (sequelize, DataTypes) => {
     availability: DataTypes.STRING,
     golden_paragraph: DataTypes.STRING,
     gender: DataTypes.STRING,
+    alpha2code: DataTypes.STRING,
     dob: DataTypes.DATEONLY,
     phone: {
       type: DataTypes.STRING
