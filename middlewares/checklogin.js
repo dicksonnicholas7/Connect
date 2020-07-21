@@ -1,34 +1,12 @@
-const { GetProfile, UpdateProfile, GetProfileSuccess, CompleteProfile } = require('../controllers/Profile/Profile');
-
 module.exports.checkLoggedIn = function(req, res, next) {
     if(req.session.loggedIn){
-        if(req.session.user.UserAccount.verified===true){
-            console.log(req.originalUrl);
-            if(req.session.user.firstname!=null || req.originalUrl=='/user/profile' || req.originalUrl=='/user/update-profile'){
-                next();
-            }else{
-                CompleteProfile(req, res, next);
-            }            
+        if(req.session.user.verified===true){
+            next();
         }else{
-            if(req.session.user.UserAccount.RoleId===3){
+            if(req.session.user.RoleId===3){
                 next();
             }else{
-                let usertype = 0
-                let show = false;
-            
-                if(!res.locals.user){
-                    show = false;
-                }else{
-                    show = true;
-                     usertype = res.locals.user.UserAccount.RoleId;
-                }
-                res.render("auth/success-register",
-                {
-                    usertype,
-                    show,
-                    page:'signup'
-                }
-                );
+                res.render("auth/success-register",{page:'signup'});
             }
         }       
     } else{

@@ -13,7 +13,7 @@ module.exports.GetSignUp = (req, res, next ) => {
    let  signUpTypeBusiness = ''
     let signUpTypeIndividual = ''
  
-
+  
     if(req.params.type === 'individual'){
 
         signUpTypeBusiness = ''
@@ -105,6 +105,7 @@ module.exports.DoSignUp = async (req, res, next) => {
                     RoleId: req.body.role,
                     UserTypeId: user_type,
                     verified: false,
+                    firstTime: true,
                     blocked: false,
                     token: token,
                 }
@@ -128,20 +129,29 @@ module.exports.DoSignUp = async (req, res, next) => {
             )
     
         }else{
+
             let user_Account = await UserAccount.create(userInfo);
+
             if(user_Account.id!==null){
     
                 let individual_info = {
                     UserId: user_Account.id,
-                    username: '',
-                    firstname:'',
+                    firstname: '',
                     lastname:'',
+                    jobtitle:'',
+                    availability:'',
+                    golden_paragraph:'',
                     gender:'',
+                    alpha2code:'',
                     dob:'',
-                    specialization:'',
-                    about:'',
-                    mobile:''
+                    phone:'',
+                    country:'',
+                    city:'',
+                    country_code:'',
+                    picture:''
                 };
+
+
                 let individual_user_details = User.create(individual_info);
     
                 if(individual_user_details.id !== null){
@@ -154,6 +164,8 @@ module.exports.DoSignUp = async (req, res, next) => {
                     }catch(e){
                         console.log(e);
                     }
+
+
                     //send verification email
                     SendMailVerify(userInfo.email, token, hostname);
         
@@ -195,6 +207,7 @@ module.exports.DoSignUp = async (req, res, next) => {
             RoleId: req.body.role,
             UserTypeId: user_type,
             verified: false,
+            firstTime: true,
             blocked: false,
             token: token,
         }
@@ -224,9 +237,15 @@ module.exports.DoSignUp = async (req, res, next) => {
     
                 let business_user_info = {
                     UserId: user_Account.id,
-                    name: '',
-                    location: '',
-                    certificate: ''
+                    businessname: '',
+                    service: '',
+                    availability: '',
+                    golden_paragraph:'',
+                    country:'',
+                    city:'',
+                    alpha2code:'',
+                    phone:'',
+                    picture:''
                 }
     
                 let business_user_details = BusinessUser.create(business_user_info);

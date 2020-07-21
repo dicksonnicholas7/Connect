@@ -1,4 +1,5 @@
 const User = require('../../models').User;
+const BusinessUser = require('../../models').BusinessUser;
 const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
 let secret = "connect";
@@ -29,21 +30,19 @@ module.exports.DoLogin = async (req, res, next) => {
     //set logged in session to false
     req.session.loggedIn = false; 
     let ret_userAccount = await UserAccount.findOne({
-        where: {email: userAccount.email}
+        where: {email: userAccount.email},
+        include: [User, BusinessUser]
     });
     
-
-    // let ret_busAccount = await BusinessUser.findOne({
-    //     where: {email: userAccount.email},
-    //     include: [UserAccount]
-    // });
-
+  
     if (ret_userAccount !== null) {
         if (userAccount.password === ret_userAccount.password) {           
             req.session.user = ret_userAccount;
+            req.session.businessuser = ret_userAccount.BusinessUser;
+            req.session.individualuser = ret_userAccount.User;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
-            res.send({loginRes:"success"});
+            res.send({loginRes:"success", RedirectUrl:"/user/"});
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";

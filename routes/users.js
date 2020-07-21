@@ -3,10 +3,10 @@ let router = express.Router();
 
 
 
-const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile } = require('../controllers/Profile/Profile');
-const { GetBusinessFreelancerCompleteProfile, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile } = require('../controllers/Profile/Business-Profile/Profile');
-const  { GetBusinessPortfolio } = require('../controllers/Profile/Business-Profile/Portfolio');
-const  { GetBusinessSkills } = require('../controllers/Profile/Business-Profile/Skills');
+const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile, GetCompleteFreelancerPortfolio, GetCompleteFreelancerSkills } = require('../controllers/Profile/Profile');
+const { GetBusinessFreelancerCompleteProfile,GetBusinessFreelancerCompletePortfolio, GetBusinessFreelancerCompleteSkills, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessFreelancerProfile, UpdateBusinessClientProfile } = require('../controllers/Profile/BusinessProfile');
+const  { GetBusinessPortfolio } = require('../controllers/Profile/BusinessPortfolio');
+const  { GetBusinessSkills } = require('../controllers/Profile/BusinessSkills');
 const { GetBusinessPostJob, GetIndividualPostJob} = require('../controllers/Job/PostJob');
 const { GetDashboardSwitch } = require('../controllers/Dashboard/DashboardSwitch');
 const {NotVerified} = require('../controllers/Auth/Verify');
@@ -14,8 +14,11 @@ const {GetDashboardBusinessClient} = require('../controllers/Dashboard/Dashboard
 const {GetDashboardBusinessFreelancer} = require('../controllers/Dashboard/DashboardBusinessFreelancer');
 const {GetDashboardIndividualClient} = require('../controllers/Dashboard/DashboardIndividualClient');
 const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
+const {AddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
 
 
+
+  
 
 
 
@@ -37,6 +40,21 @@ router.get('/dashboard-individual-freelancer', GetDashboardIndividualFreelancer)
 //complete profile
 router.get('/complete-business-client-profile', GetBusinessClientCompleteProfile);
 router.get('/complete-business-freelancer-profile', GetBusinessFreelancerCompleteProfile);
+router.get('/complete-business-freelancer-portfolio', GetBusinessFreelancerCompletePortfolio);
+router.get('/complete-business-freelancer-skills', GetBusinessFreelancerCompleteSkills);
+router.get('/complete-individual-client-profile', GetCompleteClientProfile);
+router.get('/complete-individual-freelancer-profile', GetCompleteFreelancerProfile);
+router.get('/complete-individual-freelancer-portfolio', GetCompleteFreelancerPortfolio);
+router.get('/complete-individual-freelancer-skills', GetCompleteFreelancerSkills);
+
+
+
+
+
+router.get('/update-business-freelancer-profile', UpdateBusinessFreelancerProfile);
+router.get('/update-business-client-profile', UpdateBusinessClientProfile);
+
+
 
 
 
@@ -56,9 +74,15 @@ router.get('/individual-post-job', GetIndividualPostJob);
 
 router.get('/individual-client-profile', GetIndividualClientProfile);
 router.get('/individual-freelancer-profile', GetIndividualFreelancerProfile);
-router.get('/complete-individual-client-profile', GetCompleteClientProfile);
-router.get('/complete-individual-freelancer-profile', GetCompleteFreelancerProfile);
 
+
+
+
+router.post('/update-business-freelancer', UpdateBusinessFreelancerProfile);
+router.post('/update-business-client', UpdateBusinessClientProfile);
+
+
+router.post('/add-business-portfolio', AddBusinessPortfolio);
 
 
 
