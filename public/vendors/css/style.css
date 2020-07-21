@@ -4429,7 +4429,7 @@ textarea.form-control {
 .ps-block--portfolio:hover .ps-block__overlay .ps-block__content {
   visibility: visible;
   opacity: 1;
-  transitio-delay: .25s;
+  transition-delay: .25s;
   -webkit-transform: translateY(0);
   -moz-transform: translateY(0);
   -ms-transform: translateY(0);
@@ -13451,7 +13451,7 @@ textarea.form-control {
 }
 
 .header--2.dark .header__link {
-  color: #000;
+  color: #0c4767;
   font-weight: 600;
 }
 
@@ -13467,7 +13467,7 @@ textarea.form-control {
 }
 
 .header--2.dark .menu > li > a {
-  color: #000;
+  color: #0c4767;
 }
 
 .header--2.dark .menu > li > a:before {

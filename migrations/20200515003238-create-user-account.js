@@ -18,6 +18,9 @@ module.exports = {
       verified: {
         type: Sequelize.BOOLEAN
       },
+      firstTime: {
+        type: Sequelize.BOOLEAN
+      },
       blocked:{
         type: Sequelize.BOOLEAN
       },
