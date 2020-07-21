@@ -1,0 +1,52 @@
+.card {
+    width: 850px;
+    height: 25px;
+    margin: auto;
+    float: none;
+  }
+  
+  .nav-link h4 {
+    color: #ffffff;
+  }
+  
+  .nav-tabs {
+    border-bottom: none !important;
+    height: 50px;
+  }
+  
+  .card-business {
+    background-color: #ffffff;
+    width: 849px;
+    height: auto;
+    float: none;
+    margin-left: 2px !important;
+    margin-top: 0px !important;
+  
+  }
+  .profile-btn{
+    width: 150px;
+    margin: auto;
+    color: #fff;
+    background-color: #0c4767
+  }
+  
+  .fa {
+   color: #0c4767;
+   font-size: 20px;
+  }
+  
+  .image-border {
+    border: 1px solid black;
+  }
+  .nav-tabs .nav-link.active{
+    text-decoration: underline !important;
+    background-color: transparent !important;
+    color: #ffffff;
+    border-color: transparent !important;
+  }
+  .nav-tabs .nav-link:hover{
+    color: #ffffff !important;
+    border-color: transparent !important;
+  }
+  
+  
