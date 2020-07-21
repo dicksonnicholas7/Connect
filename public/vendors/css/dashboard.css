@@ -1,12 +1,13 @@
 
    .dashboard-background {
        background-color:#E8E8E8;
+       height: 700px;
    }
     
     .card-header-dashboard {
         width: 100%;
         background-color: #0c4767;
-        height: 50px;
+        height: 70px;
     }
 
     .card-body-recent {
