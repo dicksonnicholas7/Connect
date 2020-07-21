@@ -15,6 +15,7 @@ const {GetDashboardBusinessFreelancer} = require('../controllers/Dashboard/Dashb
 const {GetDashboardIndividualClient} = require('../controllers/Dashboard/DashboardIndividualClient');
 const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
 const {AddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
+const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin');
 
 
 
@@ -33,6 +34,7 @@ router.get('/dashboard-business-freelancer', GetDashboardBusinessFreelancer);
 router.get('/dashboard-business-client', GetDashboardBusinessClient);
 router.get('/dashboard-individual-client', GetDashboardIndividualClient);
 router.get('/dashboard-individual-freelancer', GetDashboardIndividualFreelancer);
+router.get('/dashboard-admin', GetDashboardAdmin);
 
 
 
