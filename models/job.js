@@ -11,7 +11,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Job.associate = function(models) {
     // associations can be defined here
-    Job.belongsTo(models.User,{
+    Job.belongsTo(models.UserAccount,{
       foreignKey: 'ClientId',
       onDelete: 'CASCADE'
     });

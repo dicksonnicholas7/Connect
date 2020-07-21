@@ -1,15 +1,16 @@
 <% include ../layout/header-public.ejs %>
-<% include ../layout/menu-public.ejs %>
+<% include ../layout/menu-sign-in.ejs %>
 
 
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding: 80px 0; ">
-    <div class="container" id="sign-card" style="padding: 42px 0";>
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/log_in.jpg'); padding-bottom: 230px; padding-top: 150px ">
+    <div class="col-md-12">
+        <div class="container" id="sign-card">
 
         <form class="ps-form--signin" action="/login" method="post">
             <div class="ps-form__header">
 
-                <h3>Log In</h3>
+                <h3>Log In to Connect</h3>
 
             </div>
             <div class="ps-form__content">
@@ -36,13 +37,15 @@
             </div>
             <div class="ps-form__footer">
                 <div class="col-md-12">
-                    <button type="submit" id="btnlogin" name="btnlogin" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Login</button>
-                    <p>Not a member yet?<a href="/signup-page"> Sign up</a></p>
+                    <button type="submit" id="btnlogin" name="btnlogin" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Log In</button>
+                    <p style="padding-top: 0px;">Not a member yet?<a href="/signup-page"> Sign up</a></p>
                 </div>
             </div>
         </form>
     </div>
+    </div>
 </div>
-
+<script src="/vendors/plugins/jquery-1.12.4.min.js"></script>
+<script src="/vendors/plugins/bootstrap4/js/bootstrap.min.js"></script>
 
 

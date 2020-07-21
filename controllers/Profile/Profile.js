@@ -7,36 +7,51 @@ const multer = require('multer');
 const axios = require('axios');
 
 //render profile page. Also get list of countries from an external api
-module.exports.GetProfile = async (req, res, next) => {
-    //Get list of countries from an external api
-    let country = [];
-    axios.get('https://restcountries.eu/rest/v2/all')
-        .then(response => {
-            country = response.data;
-            req.session.profileChangeMessage = "";
-            res.render(
-                'profile/profile',
-                {
-                    country
-                }
-            )
-        })
-        .catch(error => {
-            //api fails, add some countries
-            console.log(error);
-            country = [
-                {name: 'Ghana'},
-                {name: 'Germany'},
-            ];
-            res.render(
-                'profile/profile',
-                {
-                    country
-                }
-            )
-        });
+module.exports.GetIndividualClientProfile = async (req, res, next) => {
 
+            res.render(
+                'profile/individual-client-profile',
+                {
+                    page: 'individual-client-profile'
+                }
+            )
 };
+
+module.exports.GetIndividualFreelancerProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/individual-freelancer-profile',
+        {
+            page: 'individual-freelancer-profile'
+        }
+    )
+};
+
+
+
+
+module.exports.GetCompleteClientProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-client-profile',
+        {
+            page: 'complete-individual-client-profile'
+        }
+    )
+};
+
+module.exports.GetCompleteFreelancerProfile = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-freelancer-profile',
+        {
+            page: 'complete-individual-freelancer-profile'
+        }
+    )
+};
+
+
+
 
 //render profile page if update successful and show response
 module.exports.GetProfileSuccess = async (req, res, next) => {

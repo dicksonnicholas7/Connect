@@ -6,12 +6,10 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Notification.associate = function(models) {
     // associations can be defined here
-    Notification.belongsTo(models.User,{
+    Notification.belongsTo(models.UserAccount,{
       foreignKey:'ReceiverId',
       onDelete: 'CASCADE'
     });
-
-
   };
   return Notification;
 };

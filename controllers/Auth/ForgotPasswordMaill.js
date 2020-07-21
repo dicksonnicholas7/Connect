@@ -27,11 +27,11 @@ module.exports.SendMailResetPassword = (emailReceiver, token, hostname)=>{
             clientSecret: client_secret,
             refreshToken: refresh_token,
             accessToken: accessToken
-        }
+        }  
     });
     const mailOptions = {
         to: emailReceiver,
-        from: 'Group 3 Freelancer',
+        from: 'Connect',
         subject: 'Reset Password',
         html: '<div style="background-color:white;color:black;">'+
         '<p style="font-weight: bold;">You requested to resest your password. Click on the link below to reset your password.<p>'+

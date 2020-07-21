@@ -1,8 +1,7 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
-const BusinessUser = require('../../models').BusinessUser;
 const crypto = require('crypto');
-let secret = "group3";
+let secret = "connect";
 
 
 module.exports.GetLogin = (req, res, next) => {
@@ -29,25 +28,28 @@ module.exports.DoLogin = async (req, res, next) => {
 
     //set logged in session to false
     req.session.loggedIn = false; 
-    let ret_userAccount = await User.findOne({
-        where: {email: userAccount.email},
-        include: [UserAccount]
+    let ret_userAccount = await UserAccount.findOne({
+        where: {email: userAccount.email}
     });
     
 
+    // let ret_busAccount = await BusinessUser.findOne({
+    //     where: {email: userAccount.email},
+    //     include: [UserAccount]
+    // });
+
     if (ret_userAccount !== null) {
-        if (userAccount.password === ret_userAccount.UserAccount.password) {           
+        if (userAccount.password === ret_userAccount.password) {           
             req.session.user = ret_userAccount;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
-          //  res.send({loginRes:"success"});
-            res.redirect('/coming-soon');
+            res.send({loginRes:"success"});
         } else {
             console.log("Wrong Password");
             req.session.loginErrorMessage = "Wrong Password";
             res.send({loginRes:"Wrong Password"});
         }
-    } else {
+    }else{
         console.log("Wrong Username Or User does not exist");
         req.session.loginErrorMessage = "Wrong Username Or User does not exist";
         res.send({loginRes:"Wrong email"});

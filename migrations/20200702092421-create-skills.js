@@ -8,27 +8,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      UserId:{
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references:{
+          model: 'UserAccounts',
+          key:'id'
+        }
+      },
       name: {
         type: Sequelize.STRING
-      },
-      details: {
-        type: Sequelize.STRING
-      },
-      SkillUserId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      SkillBusId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
-          key:'id'
-        }
       },
       createdAt: {
         allowNull: false,
@@ -53,27 +42,16 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      UserId:{
+        type: Sequelize.UUID,
+        onDelete: 'CASCADE',
+        references:{
+          model: 'UserAccounts',
+          key:'id'
+        }
+      },
       name: {
         type: Sequelize.STRING
-      },
-      details: {
-        type: Sequelize.STRING
-      },
-      SkillUserId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'Users',
-          key:'id'
-        }
-      },
-      SkillBusId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'BusinessUsers',
-          key:'id'
-        }
       },
       createdAt: {
         allowNull: false,

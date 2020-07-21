@@ -7,7 +7,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Certification.associate = function(models) {
     // associations can be defined here
-    Certification.belongsTo(models.User,{
+    Certification.belongsTo(models.UserAccount,{
       foreignKey: 'UserId',
       onDelete: 'CASCADE'
     });

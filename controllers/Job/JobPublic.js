@@ -3,6 +3,7 @@ const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
+const UserAccount = require('../../models').UserAccount;
 
 module.exports.GetIndex = async (req, res, next) => {
     let jobs = await Job.findAll( {
@@ -12,8 +13,8 @@ module.exports.GetIndex = async (req, res, next) => {
                 as: 'JobCategory'
             },
             {
-                model: User,
-                as: 'User'
+                model: UserAccount,
+                as: 'UserAccount'
             }
         ],
         order:[['createdAt', 'DESC']],
@@ -41,8 +42,8 @@ module.exports.GetAllJobs = async (req, res, next) => {
                 as: 'JobCategory'
             },
             {
-                model: User,
-                as: 'User'
+                model: UserAccount,
+                as: 'UserAccount'
             }
         ],
         order:[['createdAt', 'DESC']],
@@ -77,8 +78,8 @@ module.exports.GetPageAllJobs = async (req, res, next)=>{
                 as: 'JobCategory'
             },
             {
-                model: User,
-                as: 'User'
+                model: UserAccount,
+                as: 'UserAccount'
             }
         ],
         limit:10,
@@ -189,8 +190,8 @@ module.exports.JobDetail = async (req, res, next) => {
                 as: 'JobCategory'
             },
             {
-                model: User,
-                as: 'User'
+                model: UserAccount,
+                as: 'UserAccount'
             }
         ]
     });
@@ -210,8 +211,8 @@ module.exports.JobDetail = async (req, res, next) => {
                 as: 'JobCategory'
             },
             {
-                model: User,
-                as: 'User'
+                model: UserAccount,
+                as: 'UserAccount'
             }
         ],
         limit: 2

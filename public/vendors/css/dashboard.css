@@ -1,0 +1,177 @@
+
+   .dashboard-background {
+       background-color:#E8E8E8;
+       height: 700px;
+   }
+    
+    .card-header-dashboard {
+        width: 100%;
+        background-color: #0c4767;
+        height: 70px;
+    }
+
+    .card-body-recent {
+        text-align: center;
+    }
+
+
+    .card-footer-button {
+        background-color: #ffffff;
+        border: none;
+        width: 50px;
+    } 
+
+    .profile-btn-more {
+        width: 110px;
+        height: 30px;
+        margin: auto;
+        color: #fff;
+        background-color: #0c4767;
+        
+    }
+
+    .card-img-top {
+        border-radius: 50%;
+        width: 80px;
+        height: 80px;
+        margin-left: 70px;
+        margin-right: 70px; 
+        margin-top: 10px;   
+    }
+
+
+   .card-header-dash {
+       background-color: #0c4767;
+       width: 100%;
+       color: #ffffff;
+       height: 45px;
+   }
+
+   .nav {
+       padding: 5px 20px 5px 20px;
+       margin-left: 30px;
+   }
+
+   .nav-link {
+       padding: .7rem 1rem;
+   }
+
+   .nav-item:hover a {
+       color: #ffffff;
+   }
+
+
+   .welcome {
+    color: #0c4767 !important;
+    font-weight: 200;
+
+   }
+
+  
+   .dash-card{
+       background: #ffffff !important;
+   }
+
+  .card-body {
+      border-radius: 3px;
+      
+      
+  }
+
+  .card {
+      
+  }
+
+  .section-card {
+      height: 70px;
+      
+  }
+
+  .earnings {
+      height: 70px ;
+      
+  }
+
+  .profile {
+      height: 170px;
+  }
+
+  .job-icons {
+      font-size: 20px;
+      
+  }
+
+  .numbers-section {
+      font-size: 25px;
+  }
+
+  .job-types {
+      font-size: 20px;
+  }
+  
+  .rec-buttons {
+    width: 110px;
+    margin: auto;
+    background-color: #0c4767;
+    color: #ffffff;
+    height: 30px;
+    
+  }
+
+  .money {
+      font-size: 20px;
+  }
+
+  .client-name {
+      font-size: medium;
+  }
+
+  .price {
+      font-size: 14px;
+  }
+
+  .profile-img {
+      border-radius: 50%;
+      height: 40px;
+      width: 40px;
+
+  }
+
+  .viewed {
+      font-size: 15px;
+      color: #0c4767;
+  }
+
+  .view-all  {
+      color: #0c4767;
+      font-size: 15px;
+  }
+
+  .view-all:hover {
+      color:red;
+  }
+
+  .job-filter {
+      float: right;
+      font-size: 25px;
+     
+      
+  }
+
+  .filters {
+      width: 55px;
+      height: 40px;
+      margin: 10px;
+      
+  } 
+
+  .rec-jobs {
+      margin-bottom: 50px;
+  }
+
+  .para-text {
+      color: black;
+      font-size: 18px;
+  }
+  
+  

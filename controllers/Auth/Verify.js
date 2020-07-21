@@ -31,10 +31,10 @@ module.exports.DoVerification = async (req, res, next) => {
     let email = req.params.email;
     let token = req.params.token;
 
-    let ret_userAccount = await User.findOne({where: {email: email}, include: UserAccount});
+    let ret_userAccount = await UserAccount.findOne({where: {email: email}});
     if(ret_userAccount!==null){
-        if(ret_userAccount.UserAccount.token===token){
-            let verify_user = UserAccount.update({verified:true}, {where:{id: ret_userAccount.UserAccount.id}});
+        if(ret_userAccount.token===token){
+            let verify_user = UserAccount.update({verified:true}, {where:{id: ret_userAccount.id}});
             if(verify_user!==null){
                 res.locals.verify = "success";
                 //SendMailConfirmVerify(ret_userAccount.email, token);

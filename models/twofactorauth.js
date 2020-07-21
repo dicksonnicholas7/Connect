@@ -6,7 +6,7 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   TwoFactorAuth.associate = function(models) {
     // associations can be defined here
-    TwoFactorAuth.belongsTo(models.User,{
+    TwoFactorAuth.belongsTo(models.UserAccount,{
       foreignKey: 'UserId',
       onDelete:'CASCADE'
     });
