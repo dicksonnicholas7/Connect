@@ -6,20 +6,22 @@ const { GetSignUpPage } = require('../controllers/SignUpPage');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
         } = require('../controllers/Auth/ForgotPassword');
-const {GetIndex, GetAllJobs, GetPageAllJobs, GetJobsCategoryAndSearch, GetJobsFilter, JobDetail} = require('../controllers/Job/JobPublic');
 const { ApplyJob } = require('../controllers/Job/JobFreelancer');
 const {GetVerify, DoVerification, SendVerificationAgain, NotVerified} = require('../controllers/Auth/Verify');
 const {GetHowItWorks} = require('../controllers/Public');
 const {GetComingSoonUpPage} = require('../controllers/ComingSoon');
 const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = require('../controllers/Freelancer/FreelancersPublic');
-
+const {GetJobs} = require('../controllers/Job/JobPublic');
 
 //Public routes
 // GET requests
 
+router.get('/jobs', GetJobs);
+
+
 router.get('/freelancers', GetFreelancers);
 router.get('/freelancer/:id', GetSingleFreelancer);
-router.get('/', GetIndex);
+
 router.get('/how-it-works', GetHowItWorks);
 router.get('/login', GetLogin);
 router.get('/signup/:type', GetSignUp);
@@ -35,9 +37,9 @@ router.get('/coming-soon', GetComingSoonUpPage);
 
 
 
-router.get('/jobs',GetAllJobs);
-router.get('/jobs/:page',GetPageAllJobs);
-router.get('/job/:id', JobDetail);
+//router.get('/jobs',GetAllJobs);
+//router.get('/jobs/:page',GetPageAllJobs);
+//router.get('/job/:id', JobDetail);
 router.get('/job-apply/:id', ApplyJob);
 
 
@@ -47,9 +49,9 @@ router.post('/signup/:type', DoSignUp);
 router.post('/login', DoLogin);
 router.post('/forgot-password', forgotPasswordEmail);
 router.post('/reset-password', DoResetPassword);
-router.post('/jobs', GetJobsCategoryAndSearch);
-router.post('/freelancers', GetFreelancerCountryAndSearch);
-router.post('/filter-jobs', GetJobsFilter);
+//router.post('/jobs', GetJobsCategoryAndSearch);
+//router.post('/freelancers', GetFreelancerCountryAndSearch);
+//router.post('/filter-jobs', GetJobsFilter);
 
 
 module.exports = router;
