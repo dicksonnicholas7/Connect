@@ -1,6 +1,7 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
+
 <link rel="stylesheet" type="text/css" media="all" href="/vendors/css/profile_style.css" />
 
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
@@ -28,84 +29,111 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            <form class="form-row justify-content-center">
+                            <form action="/user/update-business-freelancer" method="POST" enctype="multipart/form-data" class="form-row justify-content-center">
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <%if(user.picture!==null){%>
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
+                                                    <img class="image-border" src="../../images/<%=user.BusinessUser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="color:blue;">
                                                     <label class="">
-                                                        <input class="text-center m-auto" hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                        <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
                                                         Add business logo
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
+                                        <% }else{ %>
+
+                                            <div class="col-md-3 mt-5">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="color:blue;">
+                                                        <label class="">
+                                                            <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                            Add business logo
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %> 
 
                                         <div class="col-md-9">
 
                                             <div class="form-row mt-4">
                                                 <div class="form-group col-md-12">
-                                                    <label for="businessName">Freelancer Business Name</label>
-                                                    <input type="text" class="form-control" id="bname" placeholder="">
+                                                    <label for="businessname">Freelancer Business Name</label>
+                                                    <input type="text" class="form-control" name="businessname" id="businessname" value="<%=businessuser.businessname%>" placeholder="" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="serviceName">Service</label>
-                                                    <input type="text" onautocomplete="off" name="service" id="service" class="form-control" placeholder="Eg: Web Designer" required>
+                                                    <label for="service">Service</label>
+                                                    <input type="text" onautocomplete="off" name="service" id="service" value="<%=businessuser.service%>" class="form-control" placeholder="Eg: Web Designer" required>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="availName">Availability</label>
-                                                    <select type="text" onautocomplete="off" name="service" id="avail" class="form-control" placeholder="" required>
-                                                        <option selected>Part-time</option>
-                                                        <option>Full time</option>
+                                                    <label for="availability">Availability</label>
+                                                    <select id="availability" name="availability" class="custom-select form-control">
+                                                        <option value="Full-Time" <%if(user.BusinessUser.availability == "Full-Time"){%>
+                                                                selected<%}%> >Full-Time</option>
+                                                        <option value="Part-Time" <%if(user.BusinessUser.availability == "Part-Time"){%>
+                                                                selected<%}%> >Part-Time</option>
                                                     </select>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="goldenName">Golden Paragraph</label>
-                                                    <textarea type="text" class="form-control" id="goldname" placeholder="Write your company profile here..."></textarea>
+                                                    <label for="golden_paragraph">Golden Paragraph</label>
+                                                    <textarea type="text" class="form-control" id="golden_paragraph" name="golden_paragraph" value="<%=businessuser.golden_paragraph%>" placeholder="Write your company profile here..." required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="serviceName">City</label>
-                                                    <input type="text" name="city" id="city" class="form-control" placeholder="Eg: Takoradi" required>
+                                                    <label for="country">Country</label>>
+                                                    <select name="country" id="country" class="custom-select form-control">
+                                                        <option value="<%=user.BusinessUser.country%>" selected><%=businessuser.country%></option>
+                                                        <% country.map(c =>{ %>
+                                                        <option value="<%=c.name%>"><%=c.name%></option>
+                                                        <% }); %>
+                                                    </select>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="availName">Country</label>
-                                                    <input type="text" name="country" id="country" class="form-control" placeholder="Eg: Afganistan" required>
+                                                    <label for="city">City</label>
+                                                    <input type="text" name="city" id="city" class="form-control" value="<%=businessuser.city%>" placeholder="Eg: Munich" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="serviceName">Email</label>
-                                                    <input type="text" name="email" id="email" class="form-control" placeholder="Eg: Takoradi" readonly>
+                                                    <label for="email">Email</label>
+                                                    <input type="text" name="email" id="email" class="form-control" value="<%=user.email%>" readonly>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="availName">Phone</label>
-                                                    <input type="text" name="phone" id="phone" class="form-control">
+                                                    <label for="phone">Phone</label>
+                                                    <input type="text" name="phone" id="phone" value="<%=businessuser.phone%>" class="form-control" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12 mb-5">
-                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                    <button type="submit" name="next" class="form-control profile-btn">NEXT</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -118,6 +146,7 @@
                         <!--BUSINESS FREELANCER PORTFOLIO COME HERE-->
                         <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
                             <form class="form-row">
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
@@ -130,7 +159,7 @@
                                             <div class="row">
                                                 <div class="col-md-12" style="color:blue;">
                                                     <label class="" >
-                                                        <input hidden type="file" id="img" name="img" onchange="portfolioProfile1(this)" value="Add Photo" accept="image/*">
+                                                        <input hidden type="file" id="picture" name="picture" onchange="portfolioProfile1(this)" value="Add Photo" accept="image/*">
                                                         Upload picture
                                                     </label>
                                                 </div>
@@ -142,20 +171,20 @@
                                             <div class="form-row mt-4">
                                                 <div class="form-group col-md-12">
                                                     <label for="title">Title</label>
-                                                    <input type="text" class="form-control" id="portfolioTitle" placeholder="Eg: E-Commerce Website" required>
+                                                    <input type="text" class="form-control" id="title" name="title" placeholder="Eg: E-Commerce Website" required>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="projectDesc">Description</label>
-                                                    <textarea type="text" class="form-control" id="projectDesc" placeholder="Project Description here..."></textarea>
+                                                    <label for="description">Description</label>
+                                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Project Description here..."></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="links">Project Link</label>
-                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                    <label for="projectLinks">Project Link</label>
+                                                    <input type="text" class="form-control" id="projectLinks" name="projectLinks" placeholder="Eg: www.connect.org">
                                                 </div>
                                             </div>
 
@@ -281,4 +310,4 @@
     </div>
 
 </div>
-    <%include ../layout/footer-public.ejs %>
+<%include ../layout/footer-public.ejs %>
