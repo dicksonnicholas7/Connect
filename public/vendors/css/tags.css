@@ -2,20 +2,23 @@
 .tags-input{
     border: 1px solid #333;
     display: inline-block;
+    width: 100%;
 }
 .tags-input .tag{
     font-size: 85%;
     padding: 0.5em 0.75em;
     margin: 0.25em 0.1em;
     display: inline-block;
-    background-color: #6c757d;;
+    background-color: #0C4767;;
     transition: all 0.2s, linear;
     cursor: pointer;
-}
-.tags-input .tag:hover{
-    background-color: #3af;
     color: white;
-}
+    border-radius: 15px;
+}   
+/* .tags-input .tag:hover{
+    background-color: #0C4767;
+    color: white;
+} */
 .tags-input .tag .close::after{
     content: '×';
     font-weight: bold;
