@@ -3,6 +3,7 @@
     height: 25px;
     margin: auto;
     float: none;
+    box-shadow: none;
   }
   
   .nav-link h4 {
