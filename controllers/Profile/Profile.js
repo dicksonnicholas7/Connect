@@ -1,7 +1,7 @@
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
-let secret = "group3";
+let secret = "connect";
 const path = require('path');
 const multer = require('multer');
 const axios = require('axios');
@@ -31,23 +31,68 @@ module.exports.GetIndividualFreelancerProfile = async (req, res, next) => {
 
 
 module.exports.GetCompleteClientProfile = async (req, res, next) => {
-
-    res.render(
-        'profile/complete-individual-client-profile',
-        {
-            page: 'complete-individual-client-profile'
-        }
-    )
+                   //Get list of countries from an external api
+                   let country = [];
+                   axios.get('https://restcountries.eu/rest/v2/all')
+                       .then(response => {
+                           country = response.data;
+                           req.session.profileChangeMessage = "";
+                           res.render(
+                            'profile/complete-individual-client-profile',
+                            {
+                                country,
+                                page: 'complete-individual-client-profile'
+                            }
+                        )
+                       })
+                       .catch(error => {
+                           //api fails, add some countries
+                           console.log(error);
+                           country = [
+                               {name: 'Ghana'},
+                               {name: 'Germany'},
+                           ];
+                           res.render(
+                            'profile/complete-individual-client-profile',
+                            {
+                                country,
+                                page: 'complete-individual-client-profile'
+                            }
+                        )
+                       });
 };
 
 module.exports.GetCompleteFreelancerProfile = async (req, res, next) => {
+               //Get list of countries from an external api
+               let country = [];
+               axios.get('https://restcountries.eu/rest/v2/all')
+                   .then(response => {
+                       country = response.data;
+                       req.session.profileChangeMessage = "";
+                       res.render(
+                        'profile/complete-individual-freelancer-profile',
+                        {
+                            country,
+                            page: 'complete-individual-freelancer-profile'
+                        }
+                    )
+                   })
+                   .catch(error => {
+                       //api fails, add some countries
+                       console.log(error);
+                       country = [
+                           {name: 'Ghana'},
+                           {name: 'Germany'},
+                       ];
+                       res.render(
+                        'profile/complete-individual-freelancer-profile',
+                        {
+                            country,
+                            page: 'complete-individual-freelancer-profile'
+                        }
+                    )
+                   });
 
-    res.render(
-        'profile/complete-individual-freelancer-profile',
-        {
-            page: 'complete-individual-freelancer-profile'
-        }
-    )
 };
 
 

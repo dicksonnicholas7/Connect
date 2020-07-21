@@ -213,7 +213,13 @@ module.exports.UpdateBusinessFreelancerProfile = async (req, res, next ) => {
                 UserAccount.findOne({ where:{id:res.locals.user.id}}).then(rows=>{
                      req.session.user = rows;
                      console.log(response);
-                    console.log('updated')
+                     console.log('updated')
+                     if(rows.firstTime){
+                        res.redirect('/user/complete-business-freelancer-portfolio')
+                     }else{
+
+                     }
+
                  });
             });
         }

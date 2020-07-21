@@ -16,6 +16,9 @@ const {GetDashboardIndividualClient} = require('../controllers/Dashboard/Dashboa
 const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
 const {AddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
 const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin');
+const { AddBusinessSkills } = require('../controllers/Profile/BusinessSkills');
+
+
 
 
 
@@ -85,6 +88,8 @@ router.post('/update-business-client', UpdateBusinessClientProfile);
 
 
 router.post('/add-business-portfolio', AddBusinessPortfolio);
+router.post('/add-business-skills', AddBusinessSkills);
+
 
 
 
