@@ -45,11 +45,13 @@ app.use( (req, res, next) => {
   res.locals.portfoilioChangeMessage = req.session.portfoilioChangeMessage;
   res.locals.passwordChangeMessage = req.session.passwordChangeMessage;
   res.locals.user = req.session.user;
+  res.locals.businessuser = req.session.businessuser;
+  res.locals.individualuser = req.session.individualuser;
   next();
 });
 
 app.use('/', indexRouter);
-app.use('/user', usersRouter);
+app.use('/user',checkLoggedIn,  usersRouter);
 app.use('/admin', checkLoggedIn, adminRouter);
 
 // catch 404 and forward to error handler

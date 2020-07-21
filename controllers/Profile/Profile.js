@@ -51,6 +51,27 @@ module.exports.GetCompleteFreelancerProfile = async (req, res, next) => {
 };
 
 
+module.exports.GetCompleteFreelancerPortfolio = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-freelancer-portfolio',
+        {
+            page: 'complete-individual-freelancer-portfolio'
+        }
+    )
+};
+
+module.exports.GetCompleteFreelancerSkills = async (req, res, next) => {
+
+    res.render(
+        'profile/complete-individual-freelancer-skills',
+        {
+            page: 'complete-individual-freelancer-skills'
+        }
+    )
+};
+
+
 
 
 //render profile page if update successful and show response
