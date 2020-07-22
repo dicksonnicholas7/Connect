@@ -34,10 +34,12 @@ module.exports.DoLogin = async (req, res, next) => {
         include: [User, BusinessUser]
     });
     
-
+  
     if (ret_userAccount !== null) {
         if (userAccount.password === ret_userAccount.password) {           
             req.session.user = ret_userAccount;
+            req.session.businessuser = ret_userAccount.BusinessUser;
+            req.session.individualuser = ret_userAccount.User;
             req.session.loginSuccessMessage = "Login Successful";
             req.session.loggedIn = true;
             res.send({loginRes:"success", RedirectUrl:"/user/"});

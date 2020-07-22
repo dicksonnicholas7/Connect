@@ -15320,4 +15320,7 @@ html .bg--parallax {
   font-weight: 500;
   font-size: 12px;
 }
+label{
+  color: #373833 !important;
+}
 
