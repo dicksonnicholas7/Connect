@@ -11,9 +11,9 @@ const Contract = require('../../models').Contract;
 module.exports.GetPublicFreelancers = (req, res, next) => {
 
     res.render(
-        'freelancers',
+        'find-freelancers',
         {
-            page:'freelancer'
+            page:'find-freelancer'
 
         }
         )
