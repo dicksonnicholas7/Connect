@@ -1,13 +1,20 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
 
+<style>
+    img{
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+</style>
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); ">
     <div class="container" style="padding:83px";>
-        <div class="row">
+        <div class="row justify-content-center">
             <div class="col-md-12 col-lg-5 mb-5" style="margin: auto;">
                 <form action="#" method="post" class="p-5 bg-white">
                     <%if(verify === "success"){%>
-                        <img src="../../vendors/img.noun_success_1708313.png" style="width: 50px;height: 50px;">
+                        <img src="../../vendors/img/Icon feather-check-circle.png" style="width: 30px;height: 30px;">
                         <p style="text-align: center;font-weight: bold;font-size: 20px;">Account Verification Successful</p>
                         <p style="text-align: center;">You're all set! Log in now to experience the best of all that Connect offers.</p><br>
                         <p name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient"><a href="/login">Login</a></p>
