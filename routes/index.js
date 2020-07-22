@@ -17,6 +17,8 @@ const {GetJobs} = require('../controllers/Job/JobPublic');
 // GET requests
 
 router.get('/jobs', GetJobs);
+router.get('/', GetComingSoonUpPage);
+
 
 
 router.get('/freelancers', GetFreelancers);

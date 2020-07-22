@@ -28,6 +28,11 @@ module.exports.GetBusinessPortfolio = async (req, res, next) => {
             page: 'business-portfolio'
         }
     )
+}; 
+
+
+module.exports.GetAddBusinessPortfolio = async (req, res, next) =>{
+
 };
 
 
@@ -36,7 +41,7 @@ module.exports.AddBusinessPortfolio = async (req, res, next ) => {
 
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/',
+        destination:'./public/images/portfolio',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -69,7 +74,11 @@ module.exports.AddBusinessPortfolio = async (req, res, next ) => {
 
         }
     });
-   
+}
+
+
+module.exports.UpdateBusinessPortfolio = async (req, res, next ) => {
+
 
 }
 
