@@ -112,6 +112,9 @@
     margin: auto;
     background-color: #0c4767;
     color: #ffffff;
+    height: 35px;
+    border-radius: 4px;
+    
   }
 
   .close-button {
@@ -119,12 +122,24 @@
     margin: auto;
     background-color: #ffffff;
     color: #373833;
-
+    height: 35px;
+    border-radius: 4px;
   }
    
-    
-
+   ul,li{
+       text-decoration: none;
+       list-style: none;
+       font-weight: 500;
+       display: block;
+       font-size: 17px;
+   }
+   ul,li:hover{
+       border-left-color: #0c4767;
+   }
    
+   .job-details{
+       text-align: center;
+   }
 
 </style>
 
@@ -145,10 +160,10 @@
                     <hr>
                     <div class="filter-contents">
                         <ul class="filter-list">
-                            <li>Category</li>
-                            <li>Location</li>
-                            <li>Price</li>
-                            <li>Skills</li>
+                            <a href=""> <li>Category</li></a>
+                            <a href=""><li>Location</li></a>
+                            <a href=""><li>Price</li></a>
+                            <a href=""><li>Skills</li></a>
                         </ul>
                     </div>
                 </div>
@@ -233,106 +248,115 @@
         </div>
 </div>
 </div>
-
-    
+ 
 
 <!-- Modal -->
-<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade modal-height " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg" role="document">
       <div class="modal-content">
-        <div class="modal-header">
-          <h3 class="modal-title text-center" id="exampleModalLabel">Apply for this job</h3>
-        </div>
-        <div class="modal-body">
-          <div class="row ">
-              <div class="col-md-3 m-auto modal-col-1">
-                  <div>
-                <img src='../../vendors/img/2.jpg' class="default-job-img" alt="...">
-                  </div>
-                  <div>
-                    <h5 class="title-job ">Design Mobile App UI</h5>
-                    <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
+        <div class="card">
+            <div class="card-header text-center" style="background-color: #0c4767;">
+                   <h4 style="color: #ffffff;">Appy for this job</h4> 
                 </div>
 
-                <div>
-                    <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card border-0">
+                        <div class="card-body border-0 flex-column text-center">
+                            <div class="">
+                                <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
+                            </div>
+                            <div>
+                                <h5 class="title-job ">Design Mobile App UI</h5>
+                                <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
+                            </div>
+                            <div>
+                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
+                            </div>
+                            <div>
+                                <h6 class="price-sidebar mb-5 ">$ 300.00</h6>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-              </div>
-              <div class="cold-md-9 m-auto">
-                <div>
-                    <h4>We value your interest in this job</h4>
-                    <p>Tell the client why you are the best <br> candidate</p>
+
+                <div class="col-md-7">
+                    <div class="card border-0 justify-content-center" style="margin-left: 10px;">
+                        <div class="card-body border-0 flex-column">
+                            <div>
+                                <h4 style="color: #0c4767;">We value your interest in this job</h4>
+                                <p>Tell the client why you are the best candidate</p>
+                            </div>
+                            <div class="form-row m-auto">
+                                <form>
+                                    <textarea placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
+                                    <div class="mt-3 ">
+                                        <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
+                                        <button type="button" class="send-button">Send Application</button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
                 </div>
-                <div class="form-row">
-                    <form>
-                    <textarea placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
-                    </form>
+
+            </div>
+
+
+
+
+
+        </div>
+        <!-- <div class="card">
+            
+                
+                <div class="row mb-5">
+                    <div class="col-md-4 mt-5">
+                    <div class="card-body job-details flex-column">
+                        
+                            <div class="">
+                                <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
+                            </div>
+                            <div>
+                                <h5 class="title-job ">Design Mobile App UI</h5>
+                                <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
+                            </div>
+                            <div>
+                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
+                            </div>
+                            <div>
+                                <h6 class="price-sidebar mb-5 ">$ 300.00</h6>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    <div class="card-body flex-column">
+                        <div class="col-md-8 mt-5">
+                            <div>
+                                <h4 style="color: #0c4767;">We value your interest in this job</h4>
+                                <p>Tell the client why you are the best candidate</p>
+                            </div>
+                            <div class="form-row m-auto">
+                                <form>
+                                <textarea placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
+                                <div class="mt-3 ">
+                                    <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
+                                    <button type="button" class="send-button">Send Application</button>
+                                </div>
+                            </form>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="mt-3 justify-content-around ">
-                    <button type="button" class="form-control  close-button" data-dismiss="modal">Cancel</button>
-                    <button type="button" class="form-control  send-button">Send Application</button>
-                </div>
-              </div>
-          </div>
+            </div> -->
+          
         </div>
       </div>
     </div>
   </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </div>
 
 
