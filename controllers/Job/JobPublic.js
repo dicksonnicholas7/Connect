@@ -5,6 +5,17 @@ const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 
+
+module.exports.GetPublicJobs = (req, res, next ) => {
+    res.render(
+        'find-jobs',
+        {
+                page:'find-jobs'
+        }
+        )
+}
+
+
 module.exports.GetIndex = async (req, res, next) => {
     let jobs = await Job.findAll( {
         include: [
