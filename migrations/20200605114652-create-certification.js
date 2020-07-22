@@ -16,13 +16,10 @@ module.exports = {
           key:'id'
         }
       },
-      discipline: {
+      name: {
         type: Sequelize.STRING
       },
-      type: {
-        type: Sequelize.STRING
-      },
-      year: {
+      filename: {
         type: Sequelize.STRING
       },
       createdAt: {

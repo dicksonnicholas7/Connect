@@ -1,0 +1,84 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+<link rel="stylesheet" type="text/css" media="all" href="/vendors/css/profile_style.css" />
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 700px; padding-top: 80px ">
+
+    <div class="container" style="width: fit-content; height: max-content;">
+            <div class="col-md-12">
+                <div class="text-center justify-content-center">
+                    <h2 style="color: #fff;">Add Profile</h2>
+                    <p class="text-center " style="color: #fff;">Let clients know about your business. Complete your profile to get started on Connect</p>
+                </div>
+            </div>
+            
+    
+
+    <div class="col-md-12">
+        <div class="card justify-content-center">
+            <div class="card text-white mb-3">
+
+                <div class="card-header justify-content-center mb-3" style="background-color: #0c4767; height: 50px; padding: 0">
+                    <nav>
+                        <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                            <p class="nav-item nav-link mr-5 ml-5 " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
+                            <p class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" aria-selected="false">Portfolio</a>
+                                <p class="nav-item nav-link mr-5 ml-5 active" id="nav-contact-tab" aria-selected="false">Skills & Certificate</a>
+                        </div>
+                    </nav>
+                    <div class="tab-content" id="nav-tabContent">
+                        <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+
+
+                            <form class="form-row">
+                                <div class="card-business ml-3 mt-1" >
+
+                                    <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <div class="col-md-9 m-auto">
+
+                                            <div class="form-row mt-4">
+                                                <div class="form-group col-md-12">
+                                                    <label for="title">Skills</label>
+                                                    <input type="text" class="form-control" id="Skills" placeholder="Eg: Full Stack Development" required>
+                                                </div>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="links">Certification</label>
+
+                                                    <input type="text" class="form-control" id="link" placeholder="Eg: www.connect.org">
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  Add other relevant document</p>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row justify-content-center">
+                                                <div class="col-md-12 mb-5">
+                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </form>
+ 
+
+
+                        </div>
+             
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+    <%include ../layout/footer-public.ejs %>
