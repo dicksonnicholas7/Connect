@@ -28,7 +28,12 @@ module.exports.GetBusinessPortfolio = async (req, res, next) => {
             page: 'business-portfolio'
         }
     )
-};   
+}; 
+
+
+module.exports.GetAddBusinessPortfolio = async (req, res, next) =>{
+
+};
 
 
 module.exports.AddBusinessPortfolio = async (req, res, next ) => {
@@ -69,6 +74,12 @@ module.exports.AddBusinessPortfolio = async (req, res, next ) => {
 
         }
     });
+}
+
+
+module.exports.UpdateBusinessPortfolio = async (req, res, next ) => {
+
+
 }
 
 

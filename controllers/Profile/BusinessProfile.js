@@ -165,7 +165,7 @@ module.exports.GetBusinessFreelancerProfile = async (req, res, next) => {
 
 
 
-module.exports.UpdateBusinessFreelancerProfile = async (req, res, next ) => {
+module.exports.UpdateBusinessProfile = async (req, res, next ) => {
 
     let user_account = await UserAccount.findOne({where:{id:res.locals.user.id} });
     req.session.UserAccount = user_account;
@@ -175,7 +175,7 @@ module.exports.UpdateBusinessFreelancerProfile = async (req, res, next ) => {
     //use multer to upload file to public/images folder
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/',
+        destination:'./public/images/users/business',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -229,9 +229,6 @@ module.exports.UpdateBusinessFreelancerProfile = async (req, res, next ) => {
 }
 
 
-module.exports.UpdateBusinessClientProfile = async (req, res, next ) => {
-    
-}
 
 
 hashPassword = (password) =>{

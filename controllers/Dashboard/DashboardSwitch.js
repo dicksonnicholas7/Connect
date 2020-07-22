@@ -40,11 +40,25 @@ module.exports.GetDashboardSwitch = async (req, res, next) =>{
 
     }else{
         if(res.locals.user.RoleId===1){
-            res.redirect('/user/dashboard-client');
+            //client
+            if(res.locals.user.UserTypeId === 1){
+                //business client dashboard
+                res.redirect('/user/dashboard-business-client');
+            }else{
+               //individual client dashboard
+                res.redirect('/user/dashboard-individual-client');
+            }
         }
     
         if(res.locals.user.RoleId===2){
-            res.redirect('/user/dashboard-freelancer');
+                        //freelancer
+                        if(res.locals.user.UserTypeId === 1){
+                            //individual freelancer dashboard
+                            res.redirect('/user/dashboard-business-freelancer');
+                        }else{
+                           //individual freelancer dashboard
+                            res.redirect('/user/dashboard-individual-freelancer');
+                        }
         }
     
         if(res.locals.user.RoleId===3){

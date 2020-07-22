@@ -29,16 +29,16 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            <form action="/user/update-business-freelancer" method="POST" enctype="multipart/form-data" class="form-row justify-content-center">
+                            <form action="/user/update-business-profile" method="POST" enctype="multipart/form-data" class="form-row justify-content-center">
                                 <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
-                                        <%if(user.picture!==null){%>
+                                        <%if(user.picture!==null && user.RoleId === 2){%>
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <img class="image-border" src="../../images/<%=user.BusinessUser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
+                                                    <img class="image-border" src="../../images/users/business/<%=businessuser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
                                                 </div>
                                             </div>
                                             <div class="row">
@@ -87,9 +87,9 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="availability">Availability</label>
                                                     <select id="availability" name="availability" class="custom-select form-control">
-                                                        <option value="Full-Time" <%if(user.BusinessUser.availability == "Full-Time"){%>
+                                                        <option value="Full-Time" <%if(businessuser.availability == "Full-Time"){%>
                                                                 selected<%}%> >Full-Time</option>
-                                                        <option value="Part-Time" <%if(user.BusinessUser.availability == "Part-Time"){%>
+                                                        <option value="Part-Time" <%if(businessuser.availability == "Part-Time"){%>
                                                                 selected<%}%> >Part-Time</option>
                                                     </select>
                                                 </div>
@@ -106,7 +106,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="country">Country</label>>
                                                     <select name="country" id="country" class="custom-select form-control">
-                                                        <option value="<%=user.BusinessUser.country%>" selected><%=businessuser.country%></option>
+                                                        <option value="<%=businessuser.country%>" selected><%=businessuser.country%></option>
                                                         <% country.map(c =>{ %>
                                                         <option value="<%=c.name%>"><%=c.name%></option>
                                                         <% }); %>
@@ -138,7 +138,7 @@
                                             </div>
                                         </div>
                                     </div>
-
+  
                                 </div>
                             </form>
 
