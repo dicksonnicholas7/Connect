@@ -5,12 +5,14 @@
 
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
+    <div class="container" style="width: fit-content; height: max-content;">
             <div class="col-md-12">
                 <div class="text-center justify-content-center">
                     <h2>Add Profile</h2>
                     <p class="text-center ">Let clients know about your business. Complete your profile to get started on Connect</p>
                 </div>
-            </div>  
+            </div>
+            
 
 
     <div class="col-md-12">
@@ -20,119 +22,83 @@
                 <div class="card-header justify-content-center mb-3" style="background-color: #0c4767; height: 50px; padding: 0">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <a class="nav-item nav-link mr-5 ml-5" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
-                            <a class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">Certificate</a>
+                            <p class="nav-item nav-link mr-5 ml-5 active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
+                            <p class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" aria-selected="false">Certificate</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            
-                            <form action="/user/update-business-profile" method="POST" enctype="multipart/form-data" class="form-row justify-content-center">
-                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
+                            <form class="form-row justify-content-center">
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
-                                        <%if(user.picture!==null && user.RoleId === 1){%>
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
-                                                    <img class="image-border" src="../../images/users/business/<%=businessuser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
+                                                    <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
                                                 </div>
                                             </div>
                                             <div class="row">
                                                 <div class="col-md-12" style="color:blue;">
                                                     <label class="">
-                                                        <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                        <input class="text-center m-auto" hidden type="file" id="img" name="img" onchange="readURL(this)" value="Add Photo" accept="image/*">
                                                         Add business logo
                                                     </label>
                                                 </div>
                                             </div>
                                         </div>
-                                        <% }else{ %>
-
-                                            <div class="col-md-3 mt-5">
-                                                <div class="row">
-                                                    <div class="col-md-12">
-                                                        <img class="image-border" src="../../vendors/img/business-logo.png" alt="Profile Photo" id="profile" width="120" height="120">
-                                                    </div>
-                                                </div>
-                                                <div class="row">
-                                                    <div class="col-md-12" style="color:blue;">
-                                                        <label class="">
-                                                            <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                            Add business logo
-                                                        </label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <% } %> 
 
                                         <div class="col-md-9">
 
                                             <div class="form-row mt-4">
                                                 <div class="form-group col-md-12">
-                                                    <label for="businessname">Business Name</label>
-                                                    <input type="text" class="form-control" name="businessname" id="businessname" value="<%=businessuser.businessname%>" placeholder="" required>
-                                                </div>
-                                            </div>
-
-                                            <div class="form-row">
-                                                <div class="form-group col-md-6">
-                                                    <label for="service">Service</label>
-                                                    <input type="text" onautocomplete="off" name="service" id="service" value="<%=businessuser.service%>" class="form-control" placeholder="Eg: Web Designer" required>
-                                                </div>
-
-                                                <div class="form-group col-md-6">
-                                                    <label for="availability">Availability</label>
-                                                    <select id="availability" name="availability" class="custom-select form-control">
-                                                        <option value="Full-Time" <%if(businessuser.availability == "Full-Time"){%>
-                                                                selected<%}%> >Full-Time</option>
-                                                        <option value="Part-Time" <%if(businessuser.availability == "Part-Time"){%>
-                                                                selected<%}%> >Part-Time</option>
-                                                    </select>
+                                                    <label for="businessName">Business Name</label>
+                                                    <input type="text" class="form-control" id="bname" placeholder="" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="golden_paragraph">Golden Paragraph</label>
-                                                    <textarea type="text" class="form-control" id="golden_paragraph" name="golden_paragraph" value="<%=businessuser.golden_paragraph%>" placeholder="Write your company profile here..." required></textarea>
+                                                    <label for="serviceName">Service</label>
+                                                    <input type="text" onautocomplete="off" name="service" id="service" class="form-control" placeholder="Eg: Web Designer" required>
+                                                </div>
+                                            </div>
+
+                                            <div class="form-row">
+                                                <div class="form-group col-md-12">
+                                                    <label for="goldenName">Golden Paragraph</label>
+                                                    <textarea type="text" class="form-control" id="goldname" placeholder="Write your company profile here..."></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="country">Country</label>>
-                                                    <select name="country" id="country" class="custom-select form-control">
-                                                        <option value="<%=businessuser.country%>" selected><%=businessuser.country%></option>
-                                                        <% country.map(c =>{ %>
-                                                        <option value="<%=c.name%>"><%=c.name%></option>
-                                                        <% }); %>
-                                                    </select>
+                                                    <label for="serviceName">City</label>
+                                                    <input type="text" name="city" id="city" class="form-control" placeholder="Eg: Takoradi" required>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="city">City</label>
-                                                    <input type="text" name="city" id="city" class="form-control" value="<%=businessuser.city%>" placeholder="Eg: Munich" required>
+                                                    <label for="availName">Country</label>
+                                                    <input type="text" name="country" id="country" class="form-control" placeholder="Eg: Afganistan" required>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-6">
-                                                    <label for="email">Email</label>
-                                                    <input type="text" name="email" id="email" class="form-control" value="<%=user.email%>" readonly>
+                                                    <label for="serviceName">Email</label>
+                                                    <input type="text" name="email" id="email" class="form-control" placeholder="Eg: Takoradi" readonly>
                                                 </div>
 
                                                 <div class="form-group col-md-6">
-                                                    <label for="phone">Phone</label>
-                                                    <input type="text" name="phone" id="phone" value="<%=businessuser.phone%>" class="form-control" required>
+                                                    <label for="availName">Phone</label>
+                                                    <input type="text" name="phone" id="phone" class="form-control">
                                                 </div>
                                             </div>
 
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12 mb-5">
-                                                    <button type="submit" name="next" class="form-control profile-btn">NEXT</button>
+                                                    <button name="next" class="form-control profile-btn">NEXT</button>
                                                 </div>
                                             </div>
                                         </div>
@@ -140,7 +106,6 @@
 
                                 </div>
                             </form>
-
 
                         </div>
                        
@@ -151,7 +116,7 @@
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
-                                        <div class="col-md-9 m-auto">
+                                        
                                             <div class="form-row">
                                                 <div class="form-group col-md-9">
                                                     <label for="links">Certification</label>
@@ -171,7 +136,7 @@
                                                     <button name="next" class="form-control profile-btn">NEXT</button>
                                                 </div>
                                             </div>
-                                        </div>
+                                       
                                     </div>
 
                                 </div>
@@ -183,7 +148,7 @@
             </div>
         </div>
     </div>
-
+    </div>
 </div>
 
     <%include ../layout/footer-public.ejs %>
