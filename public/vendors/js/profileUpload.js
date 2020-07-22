@@ -69,6 +69,22 @@ function secondPortfolio(){
 
       }
 }
+function secondExperience(){
+    
+    let accordionBtn = document.getElementById("accordionButton");
+    let second = document.getElementById("experience2");
+
+    if (second.style.display === "none") {
+        second.style.display = "block";
+        accordionBtn.style.display = "none";
+      
+      } else {
+        second.style.display = "none";
+        accordionBtn.style.display = "block";
+
+      }
+}
+
 
 
 function handleChange(specific) {
