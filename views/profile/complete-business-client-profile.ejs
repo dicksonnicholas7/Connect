@@ -35,7 +35,7 @@
 
                                      <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
 
-                                        <%if(user.picture!==null && user.RoleId === 2){%>
+                                        <%if(user.picture!==null && user.RoleId === 1){%>
                                             <div class="col-md-3 mt-5">
                                                 <div class="row">
                                                     <div class="col-md-12">
@@ -122,15 +122,6 @@
                                                     <input type="text" name="phone" id="phone" value="<%=businessuser.phone%>" class="form-control" required>
                                                 </div>
                                             </div>
-                                            <div class="form-row">
-                                                <div class="form-group col-md-12">
-                                                    <label class="btn btn-primary" style="color:white;">
-                                                        <input class="text-center m-auto" hidden type="file" id="certificate" name="certificate"> Upload Certificate
-                                                    </label>
-                                              
-                                                </div>
-                                            </div>
-                                            
 
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12 mb-5">
