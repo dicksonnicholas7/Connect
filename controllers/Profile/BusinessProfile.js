@@ -160,12 +160,15 @@ module.exports.GetBusinessFreelancerProfile = async (req, res, next) => {
         {
             page: 'business-freelancer-profile'
         }
-    )
+    ) 
 };
 
 
 
 module.exports.UpdateBusinessProfile = async (req, res, next ) => {
+
+
+
 
     let user_account = await UserAccount.findOne({where:{id:res.locals.user.id} });
     req.session.UserAccount = user_account;
@@ -175,7 +178,7 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
     //use multer to upload file to public/images folder
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/users/business',
+        destination:'./public/images/users/business/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -201,6 +204,7 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
                 city: req.body.city,
                 email: req.body.email,
                 phone: req.body.phone,
+                certificate:req.body.certificate,
                 picture: filenameGlobal
             };
 
@@ -215,7 +219,11 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
                      console.log(response);
                      console.log('updated')
                      if(rows.firstTime){
-                        res.redirect('/user/complete-business-freelancer-portfolio')
+                         if(res.locals.user.RoleId === 2){
+                            res.redirect('/user/complete-business-freelancer-portfolio');
+                         }else if(res.locals.user.RoleId === 1){
+                            res.redirect('/user/dashboard-business-client');
+                         }
                      }else{
 
                      }

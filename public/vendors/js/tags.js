@@ -4,6 +4,7 @@
     tags =[];
 
     hiddenInput.setAttribute('type','hidden');
+    hiddenInput.setAttribute('required', true);
     hiddenInput.setAttribute('name',el.getAttribute('data-name'));
 
     mainInput.setAttribute('type', 'text');

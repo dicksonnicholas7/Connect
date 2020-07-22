@@ -45,9 +45,10 @@ module.exports.GetAddPortfolio = async (req, res, next) =>{
 };
 
 module.exports.AddPortfolio = async (req, res, next) =>{
+    
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/',
+        destination:'./public/images/users/individual/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -61,11 +62,11 @@ module.exports.AddPortfolio = async (req, res, next) =>{
     upload(req,res,(err)=>{
         if(err){
             console.log(err.toString());
-            res.redirect('/user/portfolios');
+            res.redirect('/user/portfolios');  
         }else{
             console.log("uploaded");
             let userPortfolio = {
-                UserId: res.locals.user.id,
+                UserId: req.body.id,
                 title: req.body.title,
                 description: req.body.description,
                 projectLinks: req.body.projectLinks,
@@ -75,18 +76,11 @@ module.exports.AddPortfolio = async (req, res, next) =>{
                 delete userPortfolio.picture
             }
             Portfolio.create(userPortfolio).then(response =>{
-                req.session.portfoilioChangeMessage = response != null;
-                Portfolio.findAll({
-                    where:{UserId:res.locals.user.id}
-                }).then(rows=>{
-                    req.session.user.Portfolio = rows;
-                    console.log(response);
-                });
+                res.redirect('/user/complete-individual-freelancer-skills');
             });
 
         }
     });
-    res.redirect('/user/portfolios');
 };
 
 

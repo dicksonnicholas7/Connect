@@ -3,7 +3,7 @@ let router = express.Router();
 
 
 
-const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile, GetCompleteFreelancerPortfolio, GetCompleteFreelancerSkills } = require('../controllers/Profile/Profile');
+const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile, GetCompleteFreelancerPortfolio, GetCompleteFreelancerSkills, UpdateProfile } = require('../controllers/Profile/Profile');
 const { GetBusinessFreelancerCompleteProfile,GetBusinessFreelancerCompletePortfolio, GetBusinessFreelancerCompleteSkills, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessProfile } = require('../controllers/Profile/BusinessProfile');
 const  { GetBusinessPortfolio } = require('../controllers/Profile/BusinessPortfolio');
 const  { GetBusinessSkills } = require('../controllers/Profile/BusinessSkills');
@@ -17,6 +17,12 @@ const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/Das
 const {AddBusinessPortfolio, UpdateBusinessPortfolio, GetAddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
 const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin');
 const { AddBusinessSkills } = require('../controllers/Profile/BusinessSkills');
+const { AddPortfolio } = require('../controllers/Profile/Portfolio');
+const { AddSkills } = require('../controllers/Profile/Skills');
+
+
+
+
 
 
 
@@ -82,6 +88,16 @@ router.post('/update-business-portfolio', UpdateBusinessPortfolio);
 
 router.post('/add-business-portfolio', AddBusinessPortfolio);
 router.post('/add-business-skills', AddBusinessSkills);
+
+
+router.post('/update-individual-profile', UpdateProfile);
+
+
+router.post('/add-individual-portfolio', AddPortfolio);
+router.post('/add-individual-skill', AddSkills);
+
+
+
 
 
 

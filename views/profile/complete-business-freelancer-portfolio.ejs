@@ -29,12 +29,12 @@
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
-
-                            <form class="form-row">
-                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="" hidden><br />
+                            <form action="/user/add-business-portfolio" method="POST" enctype="multipart/form-data" class="form-row">
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                        <%if(user.picture!==null){%>
                                         <div class="col-md-3 mt-5">
                                             <div class="row">
                                                 <div class="col-md-12">
@@ -50,6 +50,23 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <% }else{ %>
+                                            <div class="col-md-3 mt-5">
+                                                <div class="row">
+                                                    <div class="col-md-12">
+                                                        <img class="image-border" src="../../vendors/img/portfolio.png" alt="Profile Photo" id="portfolio-profile1" width="120" height="120">
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12" style="color:blue;">
+                                                        <label class="" >
+                                                            <input hidden type="file" id="picture" name="picture" onchange="portfolioProfile1(this)" value="Add Photo" accept="image/*">
+                                                            Upload picture
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <% } %> 
 
                                         <div class="col-md-9">
 
@@ -62,33 +79,29 @@
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="description">Description</label>
-                                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Project Description here..."></textarea>
+                                                    <textarea type="text" class="form-control" id="description" name="description" placeholder="Project Description here..." required></textarea>
                                                 </div>
                                             </div>
 
                                             <div class="form-row">
                                                 <div class="form-group col-md-12">
                                                     <label for="projectLinks">Project Link</label>
-                                                    <input type="text" class="form-control" id="projectLinks" name="projectLinks" placeholder="Eg: www.connect.org">
+                                                    <input type="text" class="form-control" id="projectLinks" name="projectLinks" placeholder="Eg: www.connect.org" required>
                                                 </div>
                                             </div>
 
-                                            <div class="accordionButton" id="accordionButton" style="display: block;">
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  <a onclick="secondPortfolio()">Add another portfolio</a></p>
-                                                    </div>
-                                                </div>
 
                                                 <div class="form-row justify-content-center">
                                                     <div class="col-md-12 mb-5">
-                                                        <button name="next" class="form-control profile-btn">NEXT</button>
+                                                        <button type="submit" name="next" class="form-control profile-btn">NEXT</button>
                                                     </div>
                                                 </div>
-                                            </div>
+                                            
                                         </div>
                                     </div>
 
+
+<!--                                     
                                     <div class="portfolio2" id="portfolio2" style="display: none;">
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
                                         <div class="col-md-3 mt-5">
@@ -142,10 +155,15 @@
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
+                                
                                 </div>
                             </form>
+
+
+
+
                         </div>
              
                     </div>
