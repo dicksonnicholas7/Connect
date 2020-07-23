@@ -1654,7 +1654,7 @@ button {
   padding: 15px 45px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 8px;
   border: none;
   font-weight: 400;
   border-radius: 5px;
@@ -15323,4 +15323,6 @@ html .bg--parallax {
 label{
   color: #373833 !important;
 }
-
+body{
+  line-height: 0 !important;
+}
