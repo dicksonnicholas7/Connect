@@ -109,9 +109,18 @@ module.exports.GetBusinessFreelancerCompletePortfolio = async (req, res, next) =
          )
         });
 
-
-
 };
+
+module.exports.GetBusinessCertificate = async (req, res, next ) => {
+
+    res.render(
+        'profile/complete-business-certificate',
+        {
+            page:'complete-business-certificate'
+        }
+        )
+
+}
 
 
 module.exports.GetBusinessFreelancerCompleteSkills = async (req, res, next) => {
@@ -160,12 +169,15 @@ module.exports.GetBusinessFreelancerProfile = async (req, res, next) => {
         {
             page: 'business-freelancer-profile'
         }
-    )
+    ) 
 };
 
 
 
 module.exports.UpdateBusinessProfile = async (req, res, next ) => {
+
+
+
 
     let user_account = await UserAccount.findOne({where:{id:res.locals.user.id} });
     req.session.UserAccount = user_account;
@@ -175,7 +187,7 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
     //use multer to upload file to public/images folder
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/users/business',
+        destination:'./public/images/users/business/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -215,7 +227,11 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
                      console.log(response);
                      console.log('updated')
                      if(rows.firstTime){
-                        res.redirect('/user/complete-business-freelancer-portfolio')
+                         if(res.locals.user.RoleId === 2){
+                            res.redirect('/user/complete-business-freelancer-portfolio');
+                         }else if(res.locals.user.RoleId === 1){
+                            res.redirect('/user/complete-business-certificate');
+                         }
                      }else{
 
                      }
@@ -227,6 +243,64 @@ module.exports.UpdateBusinessProfile = async (req, res, next ) => {
 
 
 }
+
+
+
+module.exports.UploadBusinessCertificate = async (req, res, next ) => {
+
+        //use multer to upload file to public/images folder
+        let filenameGlobal='';
+        const storage = multer.diskStorage({
+            destination:'./public/images/users/business/',
+            filename: function(req,file,cb){
+                filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
+                cb(null,filenameGlobal);
+            }
+        });
+    
+        const upload = multer({
+            storage:storage
+        }).single('certificate');
+    
+        upload(req,res,(err)=>{
+            if(err){
+                console.log(err.toString());
+            }else{
+                
+                console.log("uploaded");
+                let userCert = {
+                    certificate: filenameGlobal
+                };
+    
+                console.log(userCert)
+                if(filenameGlobal===""){
+                    delete userDetails.picture
+                }
+                BusinessUser.update(userCert, { where: {UserId:req.body.id} }).then(response =>{
+                   // req.session.profileChangeMessage = response != null;
+                    console.log('certificate uploaded');
+
+                    if(res.locals.user.RoleId === 1){
+                        //client
+
+                        UserAccount.update({firstTime:false}, {where:{id:res.locals.user.id}})
+                        res.redirect('/user/dashboard-business-client');
+
+                    }else if (res.locals.user.RoleId === 2){
+                        //freelancer
+                        UserAccount.update({firstTime:false}, {where:{id:res.locals.user.id}})
+                        res.redirect('/user/dashboard-business-freelancer');
+                    }
+
+                    
+                });
+            }
+        });
+
+}
+
+
+
 
 
 

@@ -51,7 +51,7 @@ app.use( (req, res, next) => {
 });
 
 app.use('/', indexRouter);
-app.use('/user', checkLoggedIn, usersRouter);
+app.use('/user', checkLoggedIn,  usersRouter);
 app.use('/admin', checkLoggedIn, adminRouter);
 
 // catch 404 and forward to error handler

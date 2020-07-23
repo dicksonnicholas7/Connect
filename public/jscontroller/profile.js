@@ -35,27 +35,37 @@ $(document).ready(function(){
 
 
     $('#country').change(function(){
+        var countryCode = "";
+        var currentCities=[];
+        var BATTUTA_KEY="7dbace1e554e8f281f61eb59228cb719";
         var code = $("#country option:selected").text();
+    
         
     $.ajax({ type: "GET",   
              url: "https://restcountries.eu/rest/v2/name/"+code+"/?fields=callingCodes",   
              async: false,
              success : function(text)
              {
+
                  var arr = text; 
                  var arrayToString = JSON.stringify(Object.assign({}, arr));  // convert array to string
                  var stringToJsonObject = JSON.parse(arrayToString);  // convert string to json 
     
                 var res = $.map(text, function(stringToJsonObject, i){
+                    countryCode = stringToJsonObject.alpha2code;
                     return stringToJsonObject.callingCodes;
                  });
+ 
     
                  $("#phone").val('+'+ res);
     
                  console.log(res);
+                 console.log(countryCode);
     
              }
     });
+
+
     
     });
     

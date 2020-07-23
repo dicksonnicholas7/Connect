@@ -30,41 +30,40 @@ module.exports.GetBusinessSkills = async (req, res, next) => {
 
 module.exports.AddBusinessSkills = async (req, res, next) => {
 
+    
+let skills = req.body.tagsinput;
+
+let skillsArr = skills.split(',');
+
+console.log(skillsArr);
+
+for(i=0;i<skillsArr.length;i++){
 
     let userSkills = {
         UserId: req.body.id,
-        name: req.body.name
+        name: skillsArr[i]
     };
 
+    Skills.create(userSkills);
+}
 
+    user_skills = await Skills.findAll({where:{UserId:req.body.id}});
 
-    let filenameGlobal='';
-    const storage = multer.diskStorage({
-        destination:'./public/jobfiles/',
-        filename: function(req,file,cb){
-            filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
-            cb(null,filenameGlobal);
-        }
-    });
+    if(user_skills!==null){
+        console.log('skills added successfully');
 
-    const upload = multer({
-        storage:storage
-    }).single('certificate');
-
-    upload(req,res,(err)=>{
-        if(err){
-            console.log(err.toString());
+        if(res.locals.user.firstTime){
+            res.redirect('/user/complete-business-certificate')
         }else{
-            console.log("document uploaded");
-            let userCertification = {
-                UserId: req.body.id,
-                discipline:req.body.discipline,
-                type:req.body.type,
-                year:req.body.year
-            };
-            Certification.create(userCertification).then(response =>{
-               //redirect to page
-            });
+
         }
-    });
+
+
+    }else{
+        console.log('error adding user skills');
+    }
+
+
+
+
 }
