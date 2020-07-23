@@ -57,7 +57,7 @@ $(document).ready(function(){
                  });
  
     
-                 $("#phone").val('+'+ res);
+                 $("#phone").val('+'+ res + '  ');
     
                  console.log(res);
                  console.log(countryCode);

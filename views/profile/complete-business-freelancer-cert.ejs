@@ -22,31 +22,32 @@
                 <div class="card-header justify-content-center mb-3" style="background-color: #0c4767; height: 50px; padding: 0">
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                            <p class="nav-item nav-link mr-5 ml-5 " id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Business Details</a>
-                            <p class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" aria-selected="false">Portfolio</a>
-                                <p class="nav-item nav-link mr-5 ml-5 active" id="nav-contact-tab" aria-selected="false">Skills & Certificate</a>
+                            <p class="nav-item nav-link mr-5 ml-5 " id="nav-home-tab" data-toggle="tab" role="tab" aria-controls="nav-home" aria-selected="false">Business Details</a>
+                                <p class="nav-item nav-link mr-5 ml-5 active" id="nav-contact-tab" aria-selected="true">Upload Business Certificate</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
 
-                            <form action="/user/add-business-skills" method="POST" enctype="multipart/form-data"  class="form-row">
+                            <form action="/user/upload-business-certificate" method="POST" enctype="multipart/form-data"  class="form-row">
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
                                         <div class="col-md-9 m-auto">
 
-                                            <div class="form-row mt-4">
+                                            <div class="form-row">
                                                 <div class="form-group col-md-12">
-                                                    <label for="title">Skills</label>
-                                                    <input type="text" class="form-control" id="Skills" placeholder="Eg: Full Stack Development" required>
+                                                    <label class="btn btn-primary" style="color:white;">
+                                                        <input class="text-center m-auto" hidden type="file" id="certificate" name="certificate"> Upload Certificate
+                                                    </label>
                                                 </div>
                                             </div>
 
                                             <div class="form-row justify-content-center">
                                                 <div class="col-md-12 mb-5">
-                                                    <button name="next" class="form-control profile-btn">NEXT</button>
+                                                    <button type="submit" name="next" class="form-control profile-btn">NEXT</button>
                                                 </div>
                                             </div>
                                         </div>
