@@ -1,9 +1,5 @@
 
-   .dashboard-background {
-       background-color:#E8E8E8;
-
-       padding-bottom: 30px;
-   }
+   
     
     .card-header-dashboard {
         width: 100%;
@@ -33,8 +29,8 @@
 
     .card-img-top {
         border-radius: 50%;
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         margin-left: 70px;
         margin-right: 70px; 
         margin-top: 10px;   
@@ -46,15 +42,18 @@
        width: 100%;
        color: #ffffff;
        height: 45px;
+       
    }
 
    .nav {
        padding: 5px 20px 5px 20px;
-       margin-left: 30px;
+       margin-left: 10px;
    }
 
    .nav-link {
-       padding: .7rem 1rem;
+       padding: 1rem !important;
+       margin-left: 2px;
+       margin-right: 2px;
    }
 
    .nav-item:hover a {
@@ -71,25 +70,29 @@
   
    .dash-card{
        background: #ffffff !important;
+       height: 350px;
+       
+       
    }
 
   .card-body {
       border-radius: 3px;
+      box-shadow: none;
       
       
   }
-  .section-card {
+  .section-card { 
       height: 70px;
       
   }
 
   .earnings {
-      height: 70px ;
+      height: 80px ;
       
   }
 
   .profile {
-      height: 170px;
+      height: 240px;
   }
 
   .job-icons {
@@ -174,4 +177,12 @@
   .title-job {
     color: #373833;
 }
+ 
+
+
+
+
+
   
+
+ 

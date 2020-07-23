@@ -1,204 +1,207 @@
 
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
+
 <link rel="stylesheet" type="text/css" media="all" href="/vendors/css/dashboard.css" />
-<% if(user){%>
-    <% include ../layout/menu-portal.ejs %>
-  <% } %>
-    <div class="dashboard-background">
-        <div class="container" style="width: fit-content; height: fit-content;">
+
+
+
+
+    
+    <div class="dashboard-background ">
+        <div class="container-fluid " style="padding-left: 50px; padding-right: 50px;">
             
             <!-- THE JOBS SECTION CARDS GOES HERE -->
-        <div class="row mb-5 ">
-            <div class="col-md-12 mt-3">
-                <h3 class="welcome mt-5">Welcome, Alex!</h3>
-            </div>
-            <div class="col-md-3">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body section-card d-flex dash-card justify-content-around">
-                        <div>
-                            <i class="fa fa-list job-icons mt-4" style="color: #A41201;"></i>
+            <div class="row mb-5 ">
+                <div class="col-md-12 mt-3">
+                    <h3 class="welcome mt-5">Welcome, Alex!</h3>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body section-card d-flex dash-card justify-content-around">
+                            <div>
+                                <i class="fa fa-list job-icons mt-4" style="color: #A41201;"></i>
+                            </div>
+                            <div class="mt-3 job-types">
+                                Jobs Applied
+                            </div>
+                            <div class="mt-2 numbers-section">
+                                <h3 class="mt-2" style="color: #A41201;">0</h3>
+                            </div>
+                            
                         </div>
-                        <div class="mt-3 job-types">
-                            Jobs Applied
-                        </div>
-                        <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #A41201;">0</h3>
-                        </div>
-                        
                     </div>
                 </div>
+                
+                <div class="col-md-3">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body section-card d-flex dash-card justify-content-around">
+                            <div>
+                                <i class="fa fa-list job-icons mt-4" style="color: #FC6D00;" ></i>
+                            </div>
+                            <div class="mt-3 job-types">
+                                Jobs Awarded
+                            </div>
+                            <div class="mt-2 numbers-section">
+                                <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body section-card d-flex dash-card justify-content-around">
+                            <div>
+                                <i class="fa fa-hourglass-half job-icons mt-4" style="color: #DEC109;"></i>
+                            </div>
+                            <div class="mt-3 job-types">
+                                Jobs In Progress
+                            </div>
+                            <div class="mt-2 numbers-section">
+                                <h3 class="mt-2" style="color: #DEC109;">0</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body section-card d-flex dash-card justify-content-around">
+                            <div>
+                                <i class="fa fa-check-circle job-icons1 mt-4" style="color: #0DC100; font-size: 25px;"></i>
+                            </div>
+                            <div class="mt-3 job-types">
+                                Jobs Completed
+                            </div>
+                            <div class="mt-2 numbers-section" >
+                                <h3 class="mt-2" style="color: #0DC100;">0</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="row mb-2">
+                <div class="col-md-6">
+                    <p class="para-text">Based on your profile and skills, these are some recommended jobs...</p>
+                    <p class="para-text">do for loop for client skills</p>
+                </div>
+
+                <div class="col-md-3">
+                    <div class="row job-filter d-flex justify-content-around">
+                        <div class="filters col-1">
+                            <i class="fa fa-sliders "></i>
+                        </div>
+
+                        <div class="filters col-1">
+                            <i class="fa fa-th "></i>
+                        </div>
+                    </div>
+                </div>
+
             </div>
+
+                <!-- RECOMMENDED JOBS GOES HERE -->
+            <div class="row mb-5 ">
+                <div class="col-md-3 rec-jobs">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body flex-column dash-card text-center">
+                            <div>
+                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                            </div>
+
+                            <div>
+                            <h5 class="mt-4">Design Mobile App UI</h5>
+                            <h6 class="client-name">Fifi Gordon</h5>
+                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
+                            </div>
+                        <div>
+                            <button class="form-control rec-buttons">See more</button>
+                        </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 rec-jobs">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body flex-column dash-card text-center">
+                            <div>
+                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                            </div>
+
+                            <div>
+                            <h5 class="mt-4">Design Mobile App UI</h5>
+                            <h6 class="client-name">Fifi Gordon</h5>
+                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
+                            </div>
+                        <div>
+                            <button class="form-control  rec-buttons">See more</button>
+                        </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3 rec-jobs">
+                    <div class="card mt-3 mb-3 border-0 bg-white">
+                        <div class="card-body flex-column dash-card text-center">
+                            <div>
+                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                            </div>
+
+                            <div>
+                            <h5 class="mt-4">Design Mobile App UI</h5>
+                            <h6 class="client-name">Fifi Gordon</h5>
+                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
+                            </div>
+                        <div>
+                            <button class="form-control  rec-buttons">See more</button>
+                        </div>
+                            
+                        </div>
+                    </div>
+                </div>
+
+                    <!-- SIDEBAR FOE EARNINGS AND PROFILE VIEW COMES HERE -->
+                <div class="col-md-3 rec-jobs">
+                    <div class="card mt-3 mb-5  border-0 bg-white mb-3">
+                        <div class="card-body earnings flex-column dash-card text-center">
+                            <h6 class="mt-1 mb-1 money ">$0.00</h6>
+                            <p class="">Total Earnings</p>
+                        </div>
+                    </div>
+                        
+                    <div class="card  mb-3 border-0 bg-white">
+                        <div class="card-body profile flex-column dash-card ">
+                            <h6 class="mt-3 viewed text-center">Profile Viewed By (5)</h6>
+                            <div class="mb-2">
+                                <img src='../../vendors/img/1.jpg' class="profile-img" alt="...">
+                                
+                                    Abdul Manaf Sulley
+                                
+                            </div>
+                            <div class="">
+                            
+                            </div>
+
+                            <div class="mb-2">
+                                <img src='../../vendors/img/1.jpg' class="profile-img" alt="...">
+                                
+                                    Abdul Manaf Sulley
+                                
+                            </div>
+
+                            <div class=" text-center">
+                                <a class="view-all"  href="#"> View all</a>
+                            </div>
+
+                        
+                        </div>
+
+                
+                    </div>
+                    </div>
             
-            <div class="col-md-3">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body section-card d-flex dash-card justify-content-around">
-                        <div>
-                            <i class="fa fa-list job-icons mt-4" style="color: #FC6D00;" ></i>
-                        </div>
-                        <div class="mt-3 job-types">
-                            Jobs Awarded
-                        </div>
-                        <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #FC6D00;">0</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body section-card d-flex dash-card justify-content-around">
-                        <div>
-                            <i class="fa fa-hourglass-half job-icons mt-4" style="color: #DEC109;"></i>
-                        </div>
-                        <div class="mt-3 job-types">
-                            Jobs In Progress
-                        </div>
-                        <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #DEC109;">0</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body section-card d-flex dash-card justify-content-around">
-                        <div>
-                            <i class="fa fa-check-circle job-icons1 mt-4" style="color: #0DC100; font-size: 25px;"></i>
-                        </div>
-                        <div class="mt-3 job-types">
-                            Jobs Completed
-                        </div>
-                        <div class="mt-2 numbers-section" >
-                            <h3 class="mt-2" style="color: #0DC100;">0</h3>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>  
-
-        <div class="row mb-2">
-            <div class="col-md-6">
-                <p class="para-text">Based on your profile and skills, these are some recommended jobs...</p>
-                <p class="para-text">do for loop for client skills</p>
-            </div>
-
-            <div class="col-md-3">
-                <div class="row job-filter d-flex justify-content-around">
-                    <div class="filters col-1">
-                        <i class="fa fa-sliders "></i>
-                    </div>
-
-                    <div class="filters col-1">
-                        <i class="fa fa-th "></i>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-            <!-- RECOMMENDED JOBS GOES HERE -->
-        <div class="row mb-5 ">
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                           <h5 class="mt-4">Design Mobile App UI</h5>
-                           <h6 class="client-name">Fifi Gordon</h5>
-                           <h6 class="mt-4 price">USD 300.00</h6>
-                        </div>
-                       <div>
-                           <button class="form-control rec-buttons">See more</button>
-                       </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                           <h5 class="mt-4">Design Mobile App UI</h5>
-                           <h6 class="client-name">Fifi Gordon</h5>
-                           <h6 class="mt-4 price">USD 300.00</h6>
-                        </div>
-                       <div>
-                           <button class="form-control  rec-buttons">See more</button>
-                       </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                           <h5 class="mt-4">Design Mobile App UI</h5>
-                           <h6 class="client-name">Fifi Gordon</h5>
-                           <h6 class="mt-4 price">USD 300.00</h6>
-                        </div>
-                       <div>
-                           <button class="form-control  rec-buttons">See more</button>
-                       </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-                <!-- SIDEBAR FOE EARNINGS AND PROFILE VIEW COMES HERE -->
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3  border-0 bg-white mb-3">
-                    <div class="card-body earnings flex-column dash-card text-center">
-                        <h6 class="mt-1 mb-1 money ">$0.00</h6>
-                        <p class="">Total Earnings</p>
-                    </div>
-                </div>
-                     
-                <div class="card  mb-3 border-0 bg-white">
-                    <div class="card-body profile flex-column dash-card ">
-                        <h6 class="mt-3 viewed text-center">Profile Viewed By (5)</h6>
-                        <div class="mb-2">
-                            <img src='../../vendors/img/1.jpg' class="profile-img" alt="...">
-                            
-                                Abdul Manaf Sulley
-                            
-                        </div>
-                        <div class="">
-                        
-                        </div>
-
-                        <div class="mb-2">
-                            <img src='../../vendors/img/1.jpg' class="profile-img" alt="...">
-                            
-                                Abdul Manaf Sulley
-                            
-                        </div>
-
-                        <div class=" text-center">
-                            <a class="view-all"  href="#"> View all</a>
-                        </div>
-
-                       
-                    </div>
-
-            
-                </div>
-                </div>
-         
-            
-        </div> 
+                
+            </div> 
 
     </div>
 </div>
