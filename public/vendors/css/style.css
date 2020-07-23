@@ -15321,3 +15321,19 @@ html .bg--parallax {
   font-size: 12px;
 }
 
+.homepage-dropdown {
+        height: 30px;
+        font-size: 16px;
+        
+    }
+
+    .homepage-dropdown:hover  {
+        color: darkblue;
+        
+    }
+
+    .index-homepage {
+        height: 100px;
+        width: 180px;
+    }
+
