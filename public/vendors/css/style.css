@@ -15324,3 +15324,19 @@ label{
   color: #373833 !important;
 }
 
+.homepage-dropdown {
+        height: 30px;
+        font-size: 16px;
+        
+    }
+
+    .homepage-dropdown:hover  {
+        color: darkblue;
+        
+    }
+
+    .index-homepage {
+        height: 100px;
+        width: 180px;
+    }
+

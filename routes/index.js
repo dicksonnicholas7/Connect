@@ -12,6 +12,9 @@ const {GetHowItWorks} = require('../controllers/Public');
 const {GetComingSoonUpPage} = require('../controllers/ComingSoon');
 const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = require('../controllers/Freelancer/FreelancersPublic');
 const {GetJobs} = require('../controllers/Job/JobPublic');
+const {GetPublicFreelancers} = require('../controllers/Freelancer/FreelancersPublic')
+const {GetPublicClients} = require('../controllers/Client/ClientPublic')
+const {GetPublicJobs} = require('../controllers/Job/JobPublic')
 
 //Public routes
 // GET requests
@@ -19,6 +22,9 @@ const {GetJobs} = require('../controllers/Job/JobPublic');
 router.get('/jobs', GetJobs);
 router.get('/', GetComingSoonUpPage);
 
+router.get('/find-freelancers', GetPublicFreelancers);
+router.get('/find-clients', GetPublicClients);
+router.get('/find-jobs', GetPublicJobs);
 
 
 router.get('/freelancers', GetFreelancers);

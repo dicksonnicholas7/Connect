@@ -31,8 +31,8 @@
                     <div class="tab-content" id="nav-tabContent">
                         <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
 
-                            <form class="form-row">
-                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="" hidden><br />
+                            <form action="/user/add-individual-skill" method="POST" class="form-row">
+                                <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
@@ -43,71 +43,32 @@
                                                 <p class="message"></p>
                                                 <div class="form-group col-md-12">
                                                     <label for="Skills">Enter Skills Needed (5 max)</label>
-                                                    <div class="tags-input" data-name="tags-input">
-                                                        <!-- <span class="tag">CSS<span class="close"></span></span>
-                                                        <span class="tag">HTML<span class="close"></span></span>
-                                                        <span class="tag">Javascript<span class="close"></span></span>
-                                                        <input type="text" class="main-input" id="bname"  placeholder="Eg: Logo Design"> -->
+                                                    <div class="tags-input" data-name="tagsinput">
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="form-row">
                                                 <div class="form-group col-md-9">
-                                                    <label for="description">Experience</label>
-                                                    <input type="text" class="form-control" id="experience1" name="experience1" placeholder="Eg: www.connect.org">
+                                                    <label for="name">Experience</label>
+                                                    <input type="text" class="form-control" id="name" name="name" placeholder="Eg: www.connect.org">
                                                 </div>
                                                 <div class="form-group col-md-3">
-                                                    <label for="description">Years</label>
+                                                    <label for="years">Years</label>
                                                    <select class="form-control" id="years" name="years">
-                                                    <option> Below 1</option>
-                                                    <option>Above 3</option>
-                                                    <option>Above 5</option>
+                                                    <option value="Below 1" selected> Below 1</option>
+                                                    <option value="Above 3" selected>Above 3</option>    
+                                                    <option value="Below 5" selected>Above 5</option>
                                                     </select>
                                                 </div>
                                             </div>
-                                            
-                                            <div id="experience2" style="display: none;">
-                                            <div class="form-row" >
-                                                <div class="form-group col-md-9">
-                                                    <label for="description">Experience</label>
-                                                    <input type="text" class="form-control" id="experience2" name="experience2" placeholder="Eg: www.connect.org">
-                                                </div>
-                                                <div class="form-group col-md-3">
-                                                    <label for="description">Years</label>
-                                                    <select class="form-control" id="years" name="years">
-                                                    <option> Below 1</option>
-                                                    <option>Above 3</option>
-                                                    <option>Above 5</option>
-                                                    </select>
-                                                </div>
-                                            </div>
-                                            <div class="form-row justify-content-center">
-                                                <div class="col-md-12 mb-5">
-                                                    <button name="next" class="form-control profile-btn">NEXT</button>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        
-                                            <div class="accordionButton" id="accordionButton" style="display: block none; cursor: pointer;">
-                                                <div class="form-row">
-                                                    <div class="form-group col-md-12">
-                                                        <p style="color: #0c4767" class="portfolio-accordion"><i class="fa fa-plus-circle"></i>  <a onclick="secondExperience()">Add another experience</a></p>
-                                                    </div>
-                                                </div>
-
                                                 <div class="form-row justify-content-center">
                                                     <div class="col-md-12 mb-5">
-                                                        <button name="next" class="form-control profile-btn">NEXT</button>
+                                                        <button type="submit" name="next" class="form-control profile-btn">NEXT</button>
                                                     </div>
-                                                </div>
-                                            </div>
+                                                </div>        
                                         </div>
                                     </div>
-
-                            
-
-                                       
+        
                                     </div>
                                 </div>
 
@@ -123,5 +84,4 @@
     </div>
     </div>
 </div>
-
-    <%include ../layout/footer-public.ejs %>
+<%include ../layout/footer-public.ejs %>

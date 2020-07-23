@@ -6,7 +6,7 @@ module.exports.GetComingSoonUpPage = (req, res, next ) => {
         show = false;
     }else{
         show = true;
-         usertype = res.locals.user.UserAccount.RoleId;
+         usertype = res.locals.user.RoleId;
     }
     
         res.render(

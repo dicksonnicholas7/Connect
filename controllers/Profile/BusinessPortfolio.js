@@ -28,7 +28,7 @@ module.exports.GetBusinessPortfolio = async (req, res, next) => {
             page: 'business-portfolio'
         }
     )
-}; 
+};  
 
 
 module.exports.GetAddBusinessPortfolio = async (req, res, next) =>{
@@ -56,7 +56,7 @@ module.exports.AddBusinessPortfolio = async (req, res, next ) => {
         if(err){
             console.log(err.toString());
             res.redirect('/user/');
-        }else{
+        }else{  
             console.log("uploaded");
             let userPortfolio = {
                 UserId: req.body.id,
@@ -70,6 +70,7 @@ module.exports.AddBusinessPortfolio = async (req, res, next ) => {
             }
             Portfolio.create(userPortfolio).then(response =>{
                 console.log('portfolio created')
+                res.redirect('/user/complete-business-freelancer-skills');
             });
 
         }
