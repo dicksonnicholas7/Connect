@@ -865,7 +865,7 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
-  color: #000;
+  color: #373833;
   margin-top: 0;
   margin-bottom: 10px;
   font-weight: lighter;
@@ -8247,11 +8247,11 @@ textarea.form-control {
 .ps-form--signin .ps-form__header h3 {
   font-size: 36px;
   font-weight: 400;
-  color: #000;
+  color: #373833;
 }
 
 .ps-form--signin .ps-form__header p {
-  color: #000;
+  color: #373833;
   margin-bottom: 15px;
 }
 
