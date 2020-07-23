@@ -1,13 +1,16 @@
 <% include ./layout/header-public.ejs %>
 <% include ./layout/menu-public.ejs %>
+<% if(user){%>
+    <% include ./layout/menu-portal.ejs %>
+  <% } %>
 
 <style>
    
 
     .freelancers-page-image {
         border-radius: 50%;
-        height: 70px;
-        width: 70px;
+       height: 75px;
+       width: 75px;
 
     }
 
@@ -24,7 +27,7 @@
     }
 
     .filtering {
-        height: 60px;
+        color: transparent;
         margin-bottom: 10px;
         
     }
@@ -36,9 +39,20 @@
     .freelancers-buttons {
         background-color: #0c4767;
         color: #FFFFFF;
-        width: 200px;
-        margin: auto;
+        
+    
     }
+
+    .sticky {
+        position: -webkit-sticky;
+        position: sticky;
+        top: -100;
+        
+
+    }
+
+
+   
 
   
 
@@ -48,9 +62,7 @@
 </style>
 
 <div class="color-for-background">
-    <div class="container-fluid ">
-
-    
+    <div class="container-fluid" style="padding-left: 70px; padding-right: 70px;">
 
         <div class="row">
     
@@ -59,69 +71,80 @@
             </div>
     
         </div>
-    
-        
-        
-    
-            <div class="row">
-    
-                <div class="col-md-6">
-                    <div class="card filtering">
-                        <div class="card-body">
-                            <div class="input-group">
-                                <div class="input-group-prepend border-0">
-                                  <span class="input-group-text border-0 bg-white mt-2 fa fa-search" style="font-size: large;" id="basic-addon1"></span>
-                                </div>
-                                <input type="text" class="form-control border-0" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
-                              </div>
-                        </div>
 
-                    </div>
-                </div>
+        <div class="row">
+
+            <div class="col-md-6">
+
+            </div>
+
+            <div class="col-md-2">
+                <h5 style="color: #0c4767;">Filter by</h5>
+
+            </div>
+            <div class="col-md-2">
+                
+            </div>
+            <div class="col-md-2">
+                
+            </div>
+            
+        </div>
     
-                <div class="col-md-2">
-                    <div class="card filtering">
-                        <div class="card-body">
-                            <input type="text" class="form-control border-0" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1">
+            
+                <div class="row sticky">
+    
+                    <div class="col-md-6">
+    
+                        <div class="card mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text border-0 bg-white mt-3 fa fa-search" id="basic-addon1"></span>
+                                <input type="text" class="form-control border-0" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+                            </div>
                         </div>
+                        
                     </div>
-                    
-                </div>
-    
-                <div class="col-md-2">
-                    <div class="card filtering">
-                        <div class="card-body">
-                            <input type="text" class="form-control border-0" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1">
+        
+                    <div class="col-md-2">
+                        <div class="card mb-3">
+                            <div class="card">
+                                <input type="text" class="form-control border-0" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1">
+                            </div>
                         </div>
+                        
                     </div>
-                    
-                </div>
-    
-                <div class="col-md-2">
-                    <div class="card filtering">
-                        <div class="card-body">
+        
+                    <div class="col-md-2 ">
+                        <div class="card mb-3">
+                                <input type="text" class="form-control border-0" placeholder="Location" aria-label="Location" aria-describedby="basic-addon1">
+                        </div>
+                        
+                    </div>
+        
+                    <div class="col-md-2">
+                        <div class="card mb-3">
                             <input type="text" class="form-control border-0" placeholder="Skills" aria-label="Skills" aria-describedby="basic-addon1">
                         </div>
                     </div>
-                    
+        
                 </div>
-    
-            </div>
+            
+            
             
         
     
             <div class="row mt-5 mb-5">
     
                 <div class="col-md-3 ">
-                    <div class="card">
+                    <div class="card mb-5">
                         <div class="card-body">
-                            <div class="row"> 
+                            <div class="row mb-3"> 
                                 <div class="card-body d-flex">
-                                    <div class="col-md-4">
+                                    <div class="col-md-5">
                                         <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
                                     </div>
                                    
-                                    <div class="col-md-8">
+                                    <div class="col-md-7">
                                         <h5>Micheal Larbo</h5>
         
                                         <div>
@@ -133,8 +156,17 @@
                                         </div>
                                     </div>
 
+                                </div>  
+                            </div>
+
+                            <div class=" row col-md-12">
+                                <div>
+                                    <h5>Description</h5>
                                 </div>
-                                    
+
+                                <div>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima cupiditate aperiam quisquam ipsa nostrum voluptatum.</p>
+                                </div>
                             </div>
     
                             <div class="row col-md-12 mt-3">
@@ -142,237 +174,321 @@
                                     <h5>Skills</h5>
                                 </div>
                             </div>
-    
-                            <div class="row col-md-12">
-                                <div>
-                                    Looping for skills
+
+                            <div class="row mb-5 justify-content-around ">
+
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    Java
                                 </div>
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    ASP.Net
+                                </div>
+                                <div class="col-md-3 mr-1 badge badge-secondary">
+                                    Python
+                                </div>
+                               
+                                
                             </div>
 
 
-                            <div class="row col-md-12 ">
-                                <div class=" card  border-0">
-                                    <div class="card-body justify-content-end border-0 d-flex ">
-                                        <div>
-                                            Project Count
-                                        </div>
+                            <div class="row mb-5 ">
+                                <div class="col-md-12">
+                                    <div class="justify-content-between border-0 d-flex">
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-briefcase" ></i>&nbsp; 5 Projects</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+        
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-stopwatch" ></i>&nbsp; Part-Time</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                            
+                                    <button class=" form-control btn-block  freelancers-buttons">Connect</button>
+                            
+                        </div>
+
+                    </div>
+                        
+                </div>
+
+                <div class="col-md-3 ">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <div class="row mb-3"> 
+                                <div class="card-body d-flex">
+                                    <div class="col-md-5">
+                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
+                                    </div>
+                                   
+                                    <div class="col-md-7">
+                                        <h5>Micheal Larbo</h5>
         
                                         <div>
-                                            Availability Option
+                                            <h5>Software Developer</h5>
                                         </div>
-
+                
+                                        <div>
+                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
+                                        </div>
                                     </div>
-                                    
+
+                                </div>  
+                            </div>
+
+                            <div class=" row col-md-12">
+                                <div>
+                                    <h5>Description</h5>
+                                </div>
+
+                                <div>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima cupiditate aperiam quisquam ipsa nostrum voluptatum.</p>
+                                </div>
+                            </div>
     
+                            <div class="row col-md-12 mt-3">
+                                <div>
+                                    <h5>Skills</h5>
                                 </div>
                             </div>
 
-                            <div class="row col-md-12">
+                            <div class="row mb-5 justify-content-around ">
+
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    Java
+                                </div>
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    ASP.Net
+                                </div>
+                                <div class="col-md-3 mr-1 badge badge-secondary">
+                                    Python
+                                </div>
+                               
+                                
+                            </div>
+
+
+                            <div class="row mb-5 ">
+                                <div class="col-md-12">
+                                    <div class="justify-content-between border-0 d-flex">
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-briefcase" ></i>&nbsp; 5 Projects</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+        
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-stopwatch" ></i>&nbsp; Part-Time</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                                    <button class=" form-control btn-block  freelancers-buttons">Connect</button>
+                            
+                        </div>
+
+                    </div>
+                        
+                </div>
+
+                <div class="col-md-3 ">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <div class="row mb-3"> 
+                                <div class="card-body d-flex">
+                                    <div class="col-md-5">
+                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
+                                    </div>
+                                   
+                                    <div class="col-md-7">
+                                        <h5>Micheal Larbo</h5>
+        
+                                        <div>
+                                            <h5>Software Developer</h5>
+                                        </div>
+                
+                                        <div>
+                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
+                                        </div>
+                                    </div>
+
+                                </div>  
+                            </div>
+
+                            <div class=" row col-md-12">
                                 <div>
-                                    <button class=" form-control text-center freelancers-buttons">Connect</button>
+                                    <h5>Description</h5>
+                                </div>
+
+                                <div>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima cupiditate aperiam quisquam ipsa nostrum voluptatum.</p>
                                 </div>
                             </div>
+    
+                            <div class="row col-md-12 mt-3">
+                                <div>
+                                    <h5>Skills</h5>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5 justify-content-around ">
+
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    Java
+                                </div>
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    ASP.Net
+                                </div>
+                                <div class="col-md-3 mr-1 badge badge-secondary">
+                                    Python
+                                </div>
+                               
+                                
+                            </div>
+
+
+                            <div class="row mb-5 ">
+                                <div class="col-md-12">
+                                    <div class="justify-content-between border-0 d-flex">
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-briefcase" ></i>&nbsp; 5 Projects</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+        
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-stopwatch" ></i>&nbsp; Part-Time</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                            
+                                    <button class=" form-control btn-block   freelancers-buttons">Connect</button>
+                            
+                        </div>
+
+                    </div>
+                        
+                </div>
+
+                <div class="col-md-3 ">
+                    <div class="card mb-5">
+                        <div class="card-body">
+                            <div class="row mb-3"> 
+                                <div class="card-body d-flex">
+                                    <div class="col-md-5">
+                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
+                                    </div>
+                                   
+                                    <div class="col-md-7">
+                                        <h5>Micheal Larbo</h5>
+        
+                                        <div>
+                                            <h5>Software Developer</h5>
+                                        </div>
+                
+                                        <div>
+                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
+                                        </div>
+                                    </div>
+
+                                </div>  
+                            </div>
+
+                            <div class=" row col-md-12">
+                                <div>
+                                    <h5>Description</h5>
+                                </div>
+
+                                <div>
+                                    <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Minima cupiditate aperiam quisquam ipsa nostrum voluptatum.</p>
+                                </div>
+                            </div>
+    
+                            <div class="row col-md-12 mt-3">
+                                <div>
+                                    <h5>Skills</h5>
+                                </div>
+                            </div>
+
+                            <div class="row mb-5 justify-content-around ">
+
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    Java
+                                </div>
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    ASP.Net
+                                </div>
+                                <div class="col-md-3 mr-1 badge badge-secondary">
+                                    Python
+                                </div>
+                               
+                                
+                            </div>
+
+
+                            <div class="row mb-5 ">
+                                <div class="col-md-12">
+                                    <div class="justify-content-between border-0 d-flex">
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-briefcase" ></i>&nbsp; 5 Projects</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+        
+                                        <span>
+                                            <small>
+                                                <div class="alert alert-dark">
+                                                <span ><i class="fa fa-stopwatch" ></i>&nbsp; Part-Time</span>
+                                                </div>
+                                            </small> 
+                                        </span>
+                                    </div>
+                                </div>
+                            
+                            </div>
+
+                            
+                                    <button class=" form-control btn-block  freelancers-buttons">Connect</button>
+                            
                         </div>
 
                     </div>
                         
                 </div>
                 
-    
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row"> 
-                                <div class="card-body d-flex">
-                                    <div class="col-md-4">
-                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
-                                    </div>
-                                   
-                                    <div class="col-md-8">
-                                        <h5>Micheal Larbo</h5>
-        
-                                        <div>
-                                            <h5>Software Developer</h5>
-                                        </div>
                 
-                                        <div>
-                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                    
-                            </div>
     
-                            <div class="row col-md-12 mt-3">
-                                <div>
-                                    <h5>Skills</h5>
-                                </div>
-                            </div>
-    
-                            <div class="row col-md-12">
-                                <div>
-                                    Looping for skills
-                                </div>
-                            </div>
-
-
-                            <div class="row col-md-12 ">
-                                <div class=" card  border-0">
-                                    <div class="card-body justify-content-end border-0 d-flex ">
-                                        <div>
-                                            Project Count
-                                        </div>
-        
-                                        <div>
-                                            Availability Option
-                                        </div>
-
-                                    </div>
-                                    
-    
-                                </div>
-                            </div>
-
-                            <div class="row col-md-12">
-                                <div>
-                                    <button class=" form-control text-center freelancers-buttons">Connect</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-    
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row"> 
-                                <div class="card-body d-flex">
-                                    <div class="col-md-4">
-                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
-                                    </div>
-                                   
-                                    <div class="col-md-8">
-                                        <h5>Micheal Larbo</h5>
-        
-                                        <div>
-                                            <h5>Software Developer</h5>
-                                        </div>
                 
-                                        <div>
-                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                    
-                            </div>
-    
-                            <div class="row col-md-12 mt-3">
-                                <div>
-                                    <h5>Skills</h5>
-                                </div>
-                            </div>
-    
-                            <div class="row col-md-12">
-                                <div>
-                                    Looping for skills
-                                </div>
-                            </div>
-
-
-                            <div class="row col-md-12 ">
-                                <div class=" card  border-0">
-                                    <div class="card-body justify-content-end border-0 d-flex ">
-                                        <div>
-                                            Project Count
-                                        </div>
-        
-                                        <div>
-                                            Availability Option
-                                        </div>
-
-                                    </div>
-                                    
-    
-                                </div>
-                            </div>
-
-                            <div class="row col-md-12">
-                                <div>
-                                    <button class=" form-control text-center freelancers-buttons">Connect</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
-    
-                <div class="col-md-3">
-                    <div class="card">
-                        <div class="card-body">
-                            <div class="row"> 
-                                <div class="card-body d-flex">
-                                    <div class="col-md-4">
-                                        <img src='../../vendors/img/2.jpg' class="freelancers-page-image img-fluid im-responsive mr-5" alt="...">
-                                    </div>
-                                   
-                                    <div class="col-md-8">
-                                        <h5>Micheal Larbo</h5>
-        
-                                        <div>
-                                            <h5>Software Developer</h5>
-                                        </div>
-                
-                                        <div>
-                                            <span ><i class="fa fa-map-marker" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
-                                        </div>
-                                    </div>
-
-                                </div>
-                                    
-                            </div>
-
-                            <div class="row col-md-12 mt-3">
-                                <div>
-                                    <h5>Skills</h5>
-                                </div>
-                            </div>
-    
-                            <div class="row col-md-12">
-                                <div>
-                                    Looping for skills
-                                </div>
-                            </div>
-
-
-                            <div class="row col-md-12 ">
-                                <div class=" card  border-0">
-                                    <div class="card-body justify-content-end border-0 d-flex ">
-                                        <div>
-                                            Project Count
-                                        </div>
-        
-                                        <div>
-                                            Availability Option
-                                        </div>
-
-                                    </div>
-                                    
-    
-                                </div>
-                            </div>
-
-                            <div class="row col-md-12">
-                                <div>
-                                    <button class=" form-control text-center freelancers-buttons">Connect</button>
-                                </div>
-                            </div>
-                        </div>
-
-                    </div>
-                </div>
     
             </div>
     

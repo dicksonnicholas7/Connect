@@ -76,7 +76,12 @@ module.exports.AddPortfolio = async (req, res, next) =>{
                 delete userPortfolio.picture
             }
             Portfolio.create(userPortfolio).then(response =>{
-                res.redirect('/user/complete-individual-freelancer-skills');
+                if(res.locals.user.firstTime){
+                    res.redirect('/user/complete-individual-freelancer-skills');
+                }else{
+                    
+                }
+                
             });
 
         }

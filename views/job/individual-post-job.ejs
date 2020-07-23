@@ -11,127 +11,153 @@
 
 
 </style>
-
 <link rel="stylesheet" href="../../vendors/css/tags.css">
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/macbookPro.jpg');padding-top: 80px ">
-    <div class="container" style="width: fit-content; height: max-content;">
-        <div class="row justify-content-center">
-                 <div class="col-md-9">
-                    <div class="text-center justify-content-center">
-                  <h2  style="color: #ffffff;">Post a Job</h2>
-                <p  style="color: #ffffff;" class="text-center ">What do you need? Post your and get skilled freelancers to work on it for you. You make payment <br> only when you award job a freelancer. </p>
-                </div>
-            </div>
+<link rel="stylesheet" type="text/css" media="all" href="/vendors/css/dashboard.css" />
+<div class="container-fluid" >
+    <div class="row">
+        <div class="card-header-dash">
+            <ul class="nav">
+                <li class="nav-item">
+                  <a class="nav-link active" href="#">Dashboard</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Profile</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Messages</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="#">Wallet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Post Jobs</a>
+                  </li>
+              </ul>
         </div>
+    </div>
+</div>
 
-    <div class="row justify-content-center">
-          <div class="col-md-9">
-            <div class="card">
-                <div class="job-title text-center justify-content-center">
-                    Job Details
-                </div>
-                <form class="form-row justify-content-center">
-                    <div class="card-business mt-1" >
-                        <div class="row-md-9 pt-4" style="padding-left: 5rem; padding-right: 5rem;">
-                            <div class="col-md-12">
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                    <label for="businessName">Give your project a name</label>
-                                    <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
+<div class="dashboard-background">
+    
+        <div class="container" style="width: fit-content; height: max-content;">
+            <div class="row justify-content-center">
+                <div class="col-md-9 mt-5">
+                   <div class="text-center justify-content-center">
+                 <h2  style="color:#0C4767;">Post a Job</h2>
+               <p  style="color: #0C4767;" class="text-center ">What do you need? Post your and get skilled freelancers to work on it for you. You make payment <br> only when you award job a freelancer. </p>
+               </div>
+           </div>
+       </div>
+    
+        <div class="row justify-content-center">
+              <div class="col-md-9">
+                <div class="card">
+                    <div class="job-title text-center justify-content-center">
+                        Job Details
+                    </div>
+                    <form class="form-row justify-content-center">
+                        <div class="card-business mt-1" >
+                            <div class="row-md-9 pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                <div class="col-md-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                        <label for="businessName">Give your project a name</label>
+                                        <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="goldenName">Description</label>
-                                        <textarea type="text" class="form-control" id="goldname" placeholder="Write a description here..."></textarea>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="goldenName">Description</label>
+                                            <textarea type="text" class="form-control" id="goldname" placeholder="Write a description here..."></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="serviceName">Estimated Duration</label>
-                                        <div class="row">
-                                            <div class="col">
-                                            <input type="number" class="form-control" min="1" max="7">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="serviceName">Estimated Duration</label>
+                                            <div class="row">
+                                                <div class="col">
+                                                <input type="number" class="form-control" min="1" max="7">
+                                                </div>
+                                                <div class="col">
+                                                    <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
+                                                        <option selected>day(s)</option>
+                                                        <option>weeks</option>
+                                                        <option>months</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
-                                                    <option selected>day(s)</option>
-                                                    <option>weeks</option>
-                                                    <option>months</option>
+                                        </div>
+    
+                                        <div class="form-group col-md-6">
+                                            <label for="serviceName">Price</label>
+                                            <div class="row">
+                                                <div class="col">
+                                                <input type="text" class="form-control" value="USD" readonly>
+                                                </div>
+                                                <div class="col">
+                                                <input type="number" name="amount" class="form-control" min="1">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p id="message"></p>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="Skills">Enter Skills Needed (5 max)</label>
+                                            <div class="tags-input" data-name="tags-input">
+                                                <!-- <span class="tag">CSS<span class="close"></span></span>
+                                                <span class="tag">HTML<span class="close"></span></span>
+                                                <span class="tag">Javascript<span class="close"></span></span>
+                                                <input type="text" class="main-input" id="bname"  placeholder="Eg: Logo Design"> -->
+                                            </div>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="categories"> Select Job Catogory</label>
+                                            <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
+                                                <option selected>day(s)</option>
+                                                <option>weeks</option>
+                                                <option>months</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="checkbox" onchange="handleChange(this)" id="specific" name="specific" value="specific">
+                                            <label for="specific">Send to specific freelancers</label>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <div class="form-group col-md-12" id="specificFreelancers" style="display: none;">
+                                                <select id="opt-freelancer" name="" multiple class="form-control" >
+                                                 <option value="Codeigniter">Codeigniter</option>
+                                                 <option value="CakePHP">CakePHP</option>
+                                                 <option value="Laravel">Laravel</option>
+                                                 <option value="YII">YII</option>
+                                                 <option value="Zend">Zend</option>
+                                                 <option value="Symfony">Symfony</option>
+                                                 <option value="Phalcon">Phalcon</option>
+                                                 <option value="Slim">Slim</option>
                                                 </select>
                                             </div>
                                         </div>
                                     </div>
-
-                                    <div class="form-group col-md-6">
-                                        <label for="serviceName">Price</label>
-                                        <div class="row">
-                                            <div class="col">
-                                            <input type="text" class="form-control" value="USD" readonly>
-                                            </div>
-                                            <div class="col">
-                                            <input type="number" name="amount" class="form-control" min="1">
-                                            </div>
+                        
+                                    <div class="form-row justify-content-center">
+                                        <div class="col-md-3 mb-5">
+                                            <button name="next" class="form-control profile-btn" style="background-color: #0C4767; color: #ffffff;">POST</button>
                                         </div>
-                                    </div>
-                                </div>
-                                <p id="message"></p>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="Skills">Enter Skills Needed (5 max)</label>
-                                        <div class="tags-input" data-name="tags-input">
-                                            <!-- <span class="tag">CSS<span class="close"></span></span>
-                                            <span class="tag">HTML<span class="close"></span></span>
-                                            <span class="tag">Javascript<span class="close"></span></span>
-                                            <input type="text" class="main-input" id="bname"  placeholder="Eg: Logo Design"> -->
-                                        </div>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="categories"> Select Job Catogory</label>
-                                        <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
-                                            <option selected>day(s)</option>
-                                            <option>weeks</option>
-                                            <option>months</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <input type="checkbox" onchange="handleChange(this)" id="specific" name="specific" value="specific">
-                                        <label for="specific">Send to specific businesses</label>
-                                    </div>
-                                    <div class="form-group col-md-6">
-                                        <div class="form-group col-md-12" id="specificFreelancers" style="display: none;">
-                                            <select id="opt-freelancer" name="" multiple class="form-control" >
-                                             <option value="Codeigniter">Codeigniter</option>
-                                             <option value="CakePHP">CakePHP</option>
-                                             <option value="Laravel">Laravel</option>
-                                             <option value="YII">YII</option>
-                                             <option value="Zend">Zend</option>
-                                             <option value="Symfony">Symfony</option>
-                                             <option value="Phalcon">Phalcon</option>
-                                             <option value="Slim">Slim</option>
-                                            </select>
-                                        </div>
-                                    </div>
-                                </div>
-                    
-                                <div class="form-row justify-content-center">
-                                    <div class="col-md-3 mb-5">
-                                        <button name="next" class="form-control profile-btn" style="background-color: #0C4767; color: #ffffff;">POST</button>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                    </div>    
-                </form>
-            </div>
-
-            </div>
-     </div>
-    </div>
-    </div>
-</div>
-
+                        </div>    
+                    </form>
+                </div>
+    
+                </div>
+         </div>
+        </div>
+        </div>
+    
+    
+</div>    
     <%include ../layout/footer-public.ejs %>

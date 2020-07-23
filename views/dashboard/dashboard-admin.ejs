@@ -1,0 +1,258 @@
+
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+<!--style>
+    .dashboard-background {
+       background-color:#E8E8E8;
+
+       padding-bottom: 30px;
+   }
+    
+    .card-header-dashboard {
+        width: 100%;
+        background-color: #0c4767;
+        height: 50px;
+    }
+
+    .card-body-recent {
+        text-align: center;    
+    }
+
+
+    .card-footer-button {
+        background-color: #ffffff;
+        border: none;
+        width: 5 0px;
+    } 
+
+    .sidenav {
+  height: 100%;
+  width: 200px;
+  position:absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #0C4767;
+  overflow-x: hidden;
+  padding-top: 20px;
+  margin-top: 90px;
+}
+
+.sidenav a {
+    margin-top: 10px;
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #fff;
+  display: block;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.main {
+  margin-left: 200px; /* Same as the width of the sidenav */
+  font-size: 28px; /* Increased text to enable scrolling */
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+p{
+    color: black;
+}
+</style-->
+<style>
+ 
+.sidebar{
+ position: absolute;
+ width: 250px;
+ height: 100%;
+ left: 0;
+ background: #0C4767;
+}
+.sidebar .text{
+ color: white;
+ font-size:25px;
+ font-weight:600;
+ line-height: 65px;
+ text-align: center;
+ background: #1e1e1e;
+ letter-spacing: 1px;
+
+}
+
+nav ul {
+ height: 100%;
+ width: 100%;
+ list-style: none;
+}
+
+nav ul li {
+ line-height: 60px;
+ border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+nav ul ul {
+ position: static;
+ display: none;
+}
+
+nav ul li a {
+ color: white;
+ text-decoration: none;
+ font-size: 18px;
+ padding-left: 40px;
+ font-weight: 500;
+ display: block;
+ width: 100%;
+ border-left:3px solid transparent;
+}
+
+nav ul ul li {
+ line-height: 42px;
+ border-bottom:none;
+}
+nav ul ul li a {
+ font-size: 12px;
+ color: #e6e6e6;
+ padding-left:80px;
+}
+.card {
+    box-shadow: none;
+}
+.background-color{
+    background-color: #e8e8e8;
+    padding-bottom: 200px;
+}
+</style>
+
+<div class="background-color">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-2">
+                <nav class="sidebar">
+                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="250" height="150">
+                    <ul>
+                        <li><a href="#">Dashboard</a></li>
+                        <li><a href="#">Users</a></li>
+                        <li><a href="#">Job Categories</a></li>
+                        <li><a href="#">Payments</a></li>
+                        <li><a href="#">Support</a></li>
+                    </ul>
+                </nav>
+            </div>
+        
+            <div class="col-md-10" style="margin-top: 50px;">
+                <div class="row mb-5">
+                    <div class="col-md-3">
+                        <div class="card mt-3 mb-3 border-0 bg-white">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                <div>
+                                    <i class="fa fa-list job-icons mt-4" style="color: #FC6D00;"></i>
+                                </div>
+                                <div class="mt-3 job-types">
+                                    Individual Freelancers
+                                </div>
+                                <div class="mt-2 numbers-section">
+                                    <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div> 
+                    <div class="col-md-3">
+                        <div class="card mt-3 mb-3 border-0 bg-white">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                <div>
+                                    <i class="fa fa-list job-icons mt-4" style="color: #FC6D00;" ></i>
+                                </div>
+                                <div class="mt-3 job-types">
+                                    Individual Clients
+                                </div>
+                                <div class="mt-2 numbers-section">
+                                    <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-3 mb-3 border-0 bg-white">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                <div>
+                                    <i class="fa fa-hourglass-half job-icons mt-4" style="color: #FC6D00;"></i>
+                                </div>
+                                <div class="mt-3 job-types">
+                                    Business Freelancers
+                                </div>
+                                <div class="mt-2 numbers-section">
+                                    <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="card mt-3 mb-3 border-0 bg-white">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                <div>
+                                    <i class="fa fa-check-circle job-icons1 mt-4" style="color: #FC6D00; font-size: 25px;"></i>
+                                </div>
+                                <div class="mt-3 job-types">
+                                    Business Clients
+                                </div>
+                                <div class="mt-2 numbers-section" >
+                                    <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        
+                <div class="row mb-5">
+                    <div class="col-md-8">
+                        <p>User Analytics</p>
+                        <div class="card mt-3 mb-3 border-0 bg-white" style="height: 200px;">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                               User Analytics
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Top 5 Performing Categories</p>
+                        <div class="card mt-3 mb-3 border-0 bg-white" style="height: 200px;">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                Top 5 Performing Categories
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="row mb-5">
+                    <div class="col-md-4">
+                        <p>Users (by country)</p>
+                        <div class="card mt-3 mb-3 border-0 bg-white" style="height: 200px;">
+                            
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                               Users (by country)
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-8">
+                        <p>Revenue</p>
+                        <div class="card mt-3 mb-3 border-0 bg-white" style="height: 200px;">
+                            <div class="card-body section-card d-flex dash-card justify-content-around">
+                                Revenue
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div> 
+        </div>
+        </div>
+
+</div>
+
