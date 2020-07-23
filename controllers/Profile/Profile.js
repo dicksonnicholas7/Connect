@@ -20,9 +20,9 @@ module.exports.GetIndividualClientProfile = async (req, res, next) => {
 module.exports.GetIndividualFreelancerProfile = async (req, res, next) => {
 
     res.render(
-        'profile/individual-freelancer-profile',
+        'profile/individual-freelancer',
         {
-            page: 'individual-freelancer-profile'
+            page: 'individual-freelancer'
         }
     )
 };
