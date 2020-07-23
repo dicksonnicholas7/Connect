@@ -1,3 +1,106 @@
+<<<<<<< HEAD
+<div class="container-fluid" >
+    <div class="row">
+        <div class="card-header-dash">
+            <ul class="nav">
+                <li class="nav-item">
+                    <% if(individualuser){%>
+                        <% if(user.RoleId === 2){%>
+                  <a class="nav-link active" href="#">Freelancer Dashboard</a>
+                        <% }else{ %>
+                            <a class="nav-link active" href="#">Client Dashboard</a>
+                            <%}%>
+                  <% }else{ %>
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link active" href="#">Business Freelancer Dashboard</a>
+                              <% }else{ %>
+                                  <a class="nav-link active" href="#">Business Client Dashboard</a>
+                             <%}%>
+                  <%}%>
+                </li>
+                <li class="nav-item">
+                    <% if(individualuser){%>
+
+                        <% if(user.RoleId === 2){%>
+                                    <a class="nav-link" href="/user/individual-freelancer-profile">Profile</a>
+                            <% }else{ %>
+
+                                    <a class="nav-link" href="/user/individual-client-profile">Profile</a>
+                                <%}%>
+
+                  <% }else{ %>
+
+                        <% if(user.RoleId === 2){%>
+                                    <a class="nav-link" href="/user/business-freelancer-profile">Profile</a>
+                            <% }else{ %>
+
+                                    <a class="nav-link" href="/user/business-client-profile">Profile</a>
+                                <%}%>
+                <%}%>
+                </li>
+                <li class="nav-item">
+                 
+                  <% if(individualuser){%>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Messages</a>
+                        <% }else{ %>
+
+                         <a class="nav-link" href="#">Messages</a>
+                            <%}%>
+
+                     <% }else{ %>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Messages</a> 
+                        <% }else{ %>
+
+                         <a class="nav-link" href="#">Messages</a>
+                            <%}%>
+                   <%}%>
+                </li>
+                <li class="nav-item">
+                  
+                  <% if(individualuser){%>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Wallet</a>
+                        <% }else{ %>
+
+                            <a class="nav-link" href="#">Wallet</a>a>
+                            <%}%>
+
+                     <% }else{ %>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Wallet</a>
+                        <% }else{ %>
+
+                            <a class="nav-link" href="#">Wallet</a>
+                            <%}%>
+                   <%}%>
+                </li>
+                <li class="nav-item">
+                    
+                  <% if(individualuser){%>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Browse Jobs</a>
+                        <% }else{ %>
+
+                            <a class="nav-link" href="#">Browse Jobs</a>
+                            <%}%>
+
+                     <% }else{ %>
+
+                    <% if(user.RoleId === 2){%>
+                        <a class="nav-link" href="#">Browse Jobs</a>
+                        <% }else{ %>
+
+                            <a class="nav-link" href="#">Browse Jobs</a>
+                            <%}%>
+                   <%}%>
+=======
 
 
 <div class="container-fluid fixed-top" >
@@ -18,8 +121,13 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="#">Browse Jobs</a>
+>>>>>>> origin/Charles-Kwame
                   </li>
               </ul>
         </div>
     </div>
+<<<<<<< HEAD
 </div>
+=======
+</div>
+>>>>>>> origin/Charles-Kwame

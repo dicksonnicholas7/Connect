@@ -59,7 +59,7 @@ router.get('/business-portfolio', GetBusinessPortfolio);
 router.get('/business-skills', GetBusinessSkills);
 router.get('/add-business-portfolio', GetAddBusinessPortfolio);
 
-
+  
 
 //post job
 router.get('/business-post-job', GetBusinessPostJob);
