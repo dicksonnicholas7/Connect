@@ -7,11 +7,17 @@
     </div>  
     <div class="header__right">
 
+       
+            <ul class="menu">
+               
+                <li class="menu-item-has-children mr-3"><a href="/">HOME</a><span class="sub-toggle"></span></li>
+                <li class="menu-item-has-children mr-3"><a href="/about">ABOUT</a><span class="sub-toggle"></span></li>    
+            </ul>
+
         <% if(user){%>
         <div class="header__center">
 
             <div class="dropdown">
-
                 <% if(individualuser){%>
                 <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <% if(individualuser.picture !== null ){%>
