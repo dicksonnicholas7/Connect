@@ -147,8 +147,7 @@ module.exports.DoSignUp = async (req, res, next) => {
                     phone:'',
                     country:'',
                     city:'',
-                    country_code:'',
-                    picture:''
+                    country_code:''
                 };
 
 
@@ -244,8 +243,7 @@ module.exports.DoSignUp = async (req, res, next) => {
                     country:'',
                     city:'',
                     alpha2code:'',
-                    phone:'',
-                    picture:''
+                    phone:''
                 }
     
                 let business_user_details = BusinessUser.create(business_user_info);
