@@ -86,7 +86,6 @@ function secondExperience(){
 }
 
 
-
 function handleChange(specific) {
     let checkBox = document.getElementById("specificFreelancers");
     if(specific.checked == true){
@@ -94,4 +93,26 @@ function handleChange(specific) {
     }else{
         checkBox.style.display ="none";
    }
+}
+
+function AgeValidate(){
+    let dob =document.getElementById("dob").value;
+
+    let dobArr = dob.split('-');
+
+    let today = new Date();
+    let todayYear = today.getFullYear();
+    let todayMonth = today.getMonth();
+    let todayDay = today.getDay();
+
+    let year = parseInt (dobArr[0]);
+    let month = parseInt(dobArr[1]);
+    let day = parseInt(dobArr[2]);
+
+    if (todayYear - year < 18){
+        document.getElementById("message").textContent = "Age must be greater than 18";
+        document.getElementById("dob").style.borderColor = "red";
+        document.getElementById("dob").focus();
+        document.getElementById("dob").required = true;
+    }
 }
