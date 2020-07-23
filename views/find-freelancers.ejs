@@ -1,5 +1,8 @@
 <% include ./layout/header-public.ejs %>
 <% include ./layout/menu-public.ejs %>
+<% if(user){%>
+    <% include ./layout/menu-portal.ejs %>
+  <% } %>
 
 <style>
    

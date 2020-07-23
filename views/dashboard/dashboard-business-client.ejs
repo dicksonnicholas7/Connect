@@ -1,6 +1,9 @@
 
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
+<% if(user){%>
+    <% include ../layout/menu-portal.ejs %>
+  <% } %>
 
 <link rel="stylesheet" type="text/css" media="all" href="/vendors/css/dashboard.css" />
 <style>
@@ -9,29 +12,6 @@
     }
 </style>
 
-    <div class="container-fluid" >
-        <div class="row">
-            <div class="card-header-dash">
-                <ul class="nav">
-                    <li class="nav-item">
-                      <a class="nav-link active" href="#">Dashboard</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Profile</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Messages</a>
-                    </li>
-                    <li class="nav-item">
-                      <a class="nav-link" href="#">Wallet</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Browse Jobs</a>
-                      </li>
-                  </ul>
-            </div>
-        </div>
-    </div>
     <div class="dashboard-background">
         <div class="container" style="width: fit-content; height: fit-content;">
             
