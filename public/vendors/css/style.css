@@ -865,10 +865,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
-  color: #373833;
+  color: #000;
   margin-top: 0;
   margin-bottom: 10px;
-  font-weight: lighter;
+  font-weight: 700;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1654,7 +1654,7 @@ button {
   padding: 15px 45px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 8px;
+  line-height: 20px;
   border: none;
   font-weight: 400;
   border-radius: 5px;
@@ -8247,11 +8247,11 @@ textarea.form-control {
 .ps-form--signin .ps-form__header h3 {
   font-size: 36px;
   font-weight: 400;
-  color: #373833;
+  color: #000;
 }
 
 .ps-form--signin .ps-form__header p {
-  color: #373833;
+  color: #000;
   margin-bottom: 15px;
 }
 
@@ -8280,7 +8280,7 @@ textarea.form-control {
 }
 
 .ps-form--signin .ps-form__footer .ps-btn {
-  margin-bottom: 30px;
+  margin-bottom: 50px;
 }
 
 .ps-form--signin .ps-form__footer p {
@@ -15323,6 +15323,25 @@ html .bg--parallax {
 label{
   color: #373833 !important;
 }
-body{
-  line-height: 0 !important;
+
+.homepage-dropdown {
+        height: 30px;
+        font-size: 16px;
+        
+    }
+
+    .homepage-dropdown:hover  {
+        color: darkblue;
+        
+    }
+
+    .index-homepage {
+        height: 100px;
+        width: 180px;
+    }
+
+    
+.fixed-top {
+  padding-top: 70px;
 }
+
