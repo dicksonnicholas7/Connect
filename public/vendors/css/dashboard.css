@@ -174,4 +174,6 @@
   .title-job {
     color: #373833;
 }
-  
+  .clickable{
+      cursor: pointer;
+  }
