@@ -45,6 +45,7 @@
 
 
 <!-- <script src="/vendors/plugins/jquery-1.12.4.min.js"></script> -->
+<script src="/vendors/js/BsMultiSelect.js"></script>
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-3-typeahead/4.0.2/bootstrap3-typeahead.min.js"></script>  
 <!-- <script src="/vendors/plugins/bootstrap4/js/bootstrap.min.js"></script> -->
@@ -60,6 +61,7 @@
 <!-- <script src="/vendors/plugins/anime.min.js"></script> -->
 <!-- <script src="/vendors/plugins/wow.min.js"></script> -->
 <script src="/vendors/js/main.js"></script>
+
 
 <script src="/js/jquery-3.3.1.min.js"></script>
 <script src="/vendor/jquery-1.12.4.min.js"></script>
@@ -82,20 +84,73 @@
 <script src="/vendors/js/profileUpload.js"></script>
 <script src="/vendors/js/tags.js"></script>
 <script src="/vendors/js/dashboard.js"></script>
-
+<script src="/vendors/js/bundle.min.js"></script>
 
 
 <script>
-    $(document).ready(function(){
-     $('#opt-freelancer').multiselect({
-      nonSelectedText: 'Select Freelancer...',
-      enableFiltering: true,
-      enableCaseInsensitiveFiltering: true,
-      buttonWidth:'100%'
-     });
-     
-     
-    });
+      var autocomplete = new SelectPure(".autocomplete-select", {
+        options: [
+          {
+            label: "Barbina",
+            value: "Barbina",
+          },
+          {
+            label: "Bigoli",
+            value: "bg",
+          },
+          {
+            label: "Bucatini",
+            value: "bu",
+          },
+          {
+            label: "Busiate",
+            value: "bus",
+          },
+          {
+            label: "Capellini",
+            value: "cp",
+          },
+          {
+            label: "Fedelini",
+            value: "fe",
+          },
+          {
+            label: "Maccheroni",
+            value: "ma",
+          },
+          {
+            label: "Spaghetti",
+            value: "sp",
+          },
+        ],
+        multiple: true,
+        autocomplete: true,
+        icon: "fa fa-times",
+        onChange: value => {
+          console.log(value); 
+             },
+        classNames: {
+          select: "form-control",
+          dropdownShown: "select-pure__select--opened",
+          multiselect: "select-pure__select--multiple",
+          label: "select-pure__label",
+          placeholder: "select-pure__placeholder",
+          dropdown: "select-pure__options",
+          option: "select-pure__option",
+          autocompleteInput: "select-pure__autocomplete",
+          selectedLabel: "select-pure__selected-label",
+          selectedOption: "select-pure__option--selected",
+          placeholderHidden: "select-pure__placeholder--hidden",
+          optionHidden: "select-pure__option--hidden",
+        }
+      });
+      var resetAutocomplete = function() {
+        autocomplete.reset();
+      };
+
+    $(function(){
+	  $("select").bsMultiSelect(); 
+	});
     </script>
 
 
