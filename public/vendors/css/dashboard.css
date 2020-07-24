@@ -1,5 +1,7 @@
 
-   
+   .dashboard-background{
+    background-color: #e8e8e8;
+   }
     
     .card-header-dashboard {
         width: 100%;
@@ -173,9 +175,37 @@
       font-size: 18px;
   }
   
-
   .title-job {
     color: #373833;
+}
+
+.clickable{
+cursor: pointer;
+}
+.thead-blue{
+    height: 50px;
+    background-color: #0c4767;
+    color: #fff;
+    font-size:24px;
+    font-weight: 700;
+}
+tr{
+    margin-bottom: 12px;
+}
+th{
+text-align: center;
+}
+td{
+    background-color: #fff;
+    height: 50px;
+    padding: 2rem !important;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 15px;
+    border-top:10px solid #e8e8e8 !important ;
+    text-align: center;
+  
+    
 }
  
 

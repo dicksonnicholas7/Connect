@@ -159,12 +159,61 @@
                     <h3 class="filter-by mt-5">Filter by</h3>
                     <hr>
                     <div class="filter-contents">
-                        <ul class="filter-list">
-                            <a href=""> <li>Category</li></a>
-                            <a href=""><li>Location</li></a>
-                            <a href=""><li>Price</li></a>
-                            <a href=""><li>Skills</li></a>
-                        </ul>
+                        <div class="accordion" id="accordionExample">
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                    Category
+                                  </button>
+                                </h2>
+                              </div>
+                          
+                              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+                                <div class="card-body">
+                                 <ul>
+                                     <li>Construction</li>
+                                     <li>Web Development</li>
+                                     <li>Software Engineering</li>
+                                 </ul> 
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingTwo">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                    Location
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul>
+                                        <li>Accra</li>
+                                        <li>Takoradi</li>
+                                        <li>Nkawkaw</li>
+                                    </ul>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="card">
+                              <div class="card-header" id="headingThree">
+                                <h2 class="mb-0">
+                                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                   Price
+                                  </button>
+                                </h2>
+                              </div>
+                              <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                <div class="card-body">
+                                    <ul>
+                                        <li></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                            </div>
+                          </div>
                     </div>
                 </div>
             </div>
