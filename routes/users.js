@@ -1,13 +1,12 @@
 const express = require('express');
 let router = express.Router();
 
-
-
 const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerProfile, GetCompleteFreelancerPortfolio, GetCompleteFreelancerSkills, UpdateProfile } = require('../controllers/Profile/Profile');
 const { GetBusinessFreelancerCompleteProfile,GetBusinessFreelancerCompletePortfolio, GetBusinessFreelancerCompleteSkills, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessProfile, UploadBusinessCertificate, GetBusinessCertificate } = require('../controllers/Profile/BusinessProfile');
 const  { GetBusinessPortfolio } = require('../controllers/Profile/BusinessPortfolio');
 const  { GetBusinessSkills } = require('../controllers/Profile/BusinessSkills');
-const { GetBusinessPostJob, GetIndividualPostJob} = require('../controllers/Job/PostJob');
+const { GetIndividualPostJob, DoIndividualPostJob} = require('../controllers/Job/PostJob');
+const { GetBusinessPostJob, DoBusinessPostJob} = require('../controllers/Job/BusinessPostJob');
 const { GetDashboardSwitch } = require('../controllers/Dashboard/DashboardSwitch');
 const {NotVerified} = require('../controllers/Auth/Verify');
 const {GetDashboardBusinessClient} = require('../controllers/Dashboard/DashboardBusinessClient');
@@ -19,6 +18,18 @@ const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin')
 const { AddBusinessSkills } = require('../controllers/Profile/BusinessSkills');
 const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
+const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
+
+
+
+
+router.get('/jobcategory', GetJobCat);
+router.get('/skills', GetSkills);
+
+
+
+router.post('/jobcategory', PostJobCategory);
+router.post('/skills', PostSkills);
 
 
 
@@ -88,6 +99,12 @@ router.post('/update-individual-profile', UpdateProfile);
 
 router.post('/add-individual-portfolio', AddPortfolio);
 router.post('/add-individual-skill', AddSkills);
+
+
+router.post('/post-individual-job', DoIndividualPostJob)
+router.post('/post-business-job', DoBusinessPostJob)
+
+
 
 
 
