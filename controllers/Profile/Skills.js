@@ -36,13 +36,14 @@ for(i=0;i<skillsArr.length;i++){
 
     let userSkills = {
         UserId: req.body.id,
+        SkillsCatId:2,
         name: skillsArr[i]
     };
 
     UserSkills.create(userSkills);
 }
 
-    user_skills = await Skills.findAll({where:{UserId:req.body.id}});
+    user_skills = await UserSkills.findAll({where:{UserId:req.body.id}});
 
     if(user_skills!==null){
         console.log('skills added successfully');
