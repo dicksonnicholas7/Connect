@@ -1,4 +1,4 @@
-const Skills = require('../../models').Skills;
+const UserSkills = require('../../models').UserSkills;
 const Experience = require('../../models').Experience;
 const UserAccount = require('../../models').UserAccount;
 
@@ -39,7 +39,7 @@ for(i=0;i<skillsArr.length;i++){
         name: skillsArr[i]
     };
 
-    Skills.create(userSkills);
+    UserSkills.create(userSkills);
 }
 
     user_skills = await Skills.findAll({where:{UserId:req.body.id}});

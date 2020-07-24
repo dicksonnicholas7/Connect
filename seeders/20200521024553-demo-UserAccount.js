@@ -17,19 +17,6 @@ module.exports = {
       {id:'56fe0cf3-d47d-492b-aae8-06d16a5fa410', email: 'admin2@gmail.com', password: hashPassword('admin'), verified:true, RoleId: 3 ,createdAt:'2020-05-25 00:00:00',
         updatedAt:'2020-05-25 00:00:00'}
     ], {});
-
-    const userAccounts = await queryInterface.sequelize.query(
-        `SELECT id from UserAccounts;`
-    );
-
-    const usersRows = userAccounts[0];
-
-    return queryInterface.bulkInsert('Users', [
-      {UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
-        updatedAt:'2020-05-25 00:00:00'},
-      {UserId: usersRows[0].id, createdAt:'2020-05-25 00:00:00',
-        updatedAt:'2020-05-25 00:00:00'},
-    ], {});
   },
 
   down: async (queryInterface, Sequelize) => {

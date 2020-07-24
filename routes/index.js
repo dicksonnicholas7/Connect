@@ -1,7 +1,7 @@
 const express = require('express');
 let router = express.Router();
 const {GetLogin, DoLogin, Logout} = require('../controllers/Auth/Login');
-const { GetSignUp, DoSignUp, GetBusinessSignUp, DoBusinessSignUp } = require('../controllers/Auth/SignUp');
+const { GetSignUp, DoSignUp, GetBusinessSignUp, DoBusinessSignUp, ResendVerificationEmail } = require('../controllers/Auth/SignUp');
 const { GetSignUpPage } = require('../controllers/SignUpPage');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
@@ -15,6 +15,9 @@ const {GetJobs} = require('../controllers/Job/JobPublic');
 const {GetPublicFreelancers} = require('../controllers/Freelancer/FreelancersPublic')
 const {GetPublicClients} = require('../controllers/Client/ClientPublic')
 const {GetPublicJobs} = require('../controllers/Job/JobPublic')
+
+const {GetSkills, GetJobCat} = require('../controllers/temp')
+
 
 //Public routes
 // GET requests
@@ -42,6 +45,16 @@ router.get('/verify', GetVerify);
 router.get('/send-verification', SendVerificationAgain);
 router.get('/verification/:email/:token', DoVerification);
 router.get('/coming-soon', GetComingSoonUpPage);
+
+
+
+router.get('/skills', GetSkills);
+router.get('/job-category', GetJobCat);
+
+
+
+router.post('/resend-verification', ResendVerificationEmail);
+
 
 
 

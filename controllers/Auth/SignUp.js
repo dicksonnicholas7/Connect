@@ -173,6 +173,9 @@ module.exports.DoSignUp = async (req, res, next) => {
                         "auth/success-register",
                         
                         {
+                            hostname:hostname,
+                            email:userInfo.email,
+                            token:token,
                             page:'signup',
                             signUpSuccessMessage:'An email has been sent to your account to verify.'
                         });
@@ -260,7 +263,14 @@ module.exports.DoSignUp = async (req, res, next) => {
     
                                 //send verification email
                 SendMailVerify(userInfo.email, token, hostname);
-                res.render("auth/success-register",{page:'business-signup',signUpSuccessMessage:'An email has been sent to your account to verify.'});
+                res.render("auth/success-register",
+                {
+                    hostname:hostname,
+                    email:userInfo.email,
+                    token:token,
+                    page:'business-signup',
+                    signUpSuccessMessage:'An email has been sent to your account to verify.'
+                });
     
                 }
                
@@ -301,6 +311,30 @@ module.exports.DoSignUp = async (req, res, next) => {
    }
 
 };
+
+
+module.exports.ResendVerificationEmail = async (req, res, next ) => {
+                        //send verification email
+
+                        let userInfo = {
+                            email:req.body.email,
+                            token:req.body.token,
+                            hostname:req.body.hostname
+                        }
+
+                        SendMailVerify(userInfo.email, userInfo.token, userInfo.hostname);
+        
+                        res.render(
+                            
+                            "auth/verification-resend",
+                            
+                            {
+                                email:userInfo.email,
+                                token:userInfo.token,
+                                hostname:userInfo.hostname,
+                                page:'verification-resend'
+                            });
+}
 
 
 
