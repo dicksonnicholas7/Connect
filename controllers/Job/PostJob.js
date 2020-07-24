@@ -1,5 +1,8 @@
+const { Op } = require("sequelize");
 const Job = require('../../models').Job;
 const JobCategory = require('../../models').JobCategory;
+const UserAccount = require('../../models').UserAccount;
+const User = require('../../models').User;
 
 module.exports.GetBusinessPostJob = async (req, res, next) => {
  
@@ -15,15 +18,33 @@ module.exports.GetBusinessPostJob = async (req, res, next) => {
 
 module.exports.GetIndividualPostJob = async (req, res, next) => {
 
+    let freelancers = await UserAccount.findAll({
+        where: {
+            [Op.and]: [
+                {RoleId:2},
+                {UserTypeId:2}
+            ]
+        },
+        include: [User]
+    });
+
+    let category = await JobCategory.findAll();
+
+    
     res.render(
         'job/individual-post-job',
         {
-            page:'individual-post-job'
+            category,
+            freelancers,
+            successMessage:'',
+            errorMessage:''
         }
     );
 };
 
-module.exports.DoPostJob = async (req, res, next) => {
+
+
+module.exports.DoIndividualPostJob = async (req, res, next) => {
 
     let hostname = req.headers.host;
 
