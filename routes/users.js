@@ -19,6 +19,9 @@ const { AddBusinessSkills } = require('../controllers/Profile/BusinessSkills');
 const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
 const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
+const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
+const {GetJobById} = require('../controllers/Job/JobFreelancer');
+
 
 
 
@@ -76,6 +79,8 @@ router.get('/add-business-portfolio', GetAddBusinessPortfolio);
 router.get('/business-post-job', GetBusinessPostJob);
 router.get('/individual-post-job', GetIndividualPostJob);
 
+router.get('/jobs', GetAllJobsFreelancer);
+router.get('/job/:id', GetJobById);
 
 
 router.get('/individual-client-profile', GetIndividualClientProfile);

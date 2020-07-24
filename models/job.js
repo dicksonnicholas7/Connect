@@ -22,6 +22,7 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE'
     });
 
+
     Job.hasMany(models.JobApplication,{
       foreignKey:'JobId',
       onDelete: 'CASCADE'
