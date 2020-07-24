@@ -45,6 +45,9 @@ module.exports = {
       jobType: {
         type: Sequelize.INTEGER
       },
+      UserType: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATEONLY

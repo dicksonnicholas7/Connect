@@ -1,7 +1,7 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Skills', {
+    return queryInterface.createTable('UserSkills', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -30,12 +30,12 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Skills');
+    return queryInterface.dropTable('UserSkills');
   }
 };'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Skills', {
+    return queryInterface.createTable('UserSkills', {
       id: {
         allowNull: false,
         autoIncrement: true,
@@ -47,6 +47,14 @@ module.exports = {
         onDelete: 'CASCADE',
         references:{
           model: 'UserAccounts',
+          key:'id'
+        }
+      },
+      SkillsCatId:{
+        type: Sequelize.INTEGER,
+        onUpdate: 'CASCADE',
+        references:{
+          model: 'JobCategories',
           key:'id'
         }
       },
@@ -64,6 +72,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Skills');
+    return queryInterface.dropTable('UserSkills');
   }
 };
