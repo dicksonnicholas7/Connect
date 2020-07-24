@@ -1,7 +1,9 @@
 .status-button{
+  padding: 1rem;
     color: white;
     outline: 0;
     border: 0;
+    border-radius: 2px;
 }
 .pending-button{
     background-color: #DEC109;
