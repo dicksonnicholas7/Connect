@@ -7,7 +7,8 @@ module.exports = (sequelize, DataTypes) => {
     price: DataTypes.DECIMAL(6, 2),
     skills: DataTypes.STRING,
     status: DataTypes.STRING,
-    jobType: DataTypes.INTEGER
+    jobType: DataTypes.INTEGER,
+    UserType:DataTypes.STRING
   }, {});
   Job.associate = function(models) {
     // associations can be defined here
@@ -20,6 +21,7 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'CatId',
       onUpdate: 'CASCADE'
     });
+
 
     Job.hasMany(models.JobApplication,{
       foreignKey:'JobId',

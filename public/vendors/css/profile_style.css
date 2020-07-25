@@ -4,6 +4,7 @@
     margin: auto;
     float: none;
     box-shadow: none;
+    background-color: transparent ;
   }
   
   .nav-link h4 {

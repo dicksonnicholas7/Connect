@@ -3,8 +3,15 @@ const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
+const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
+const TimeLapsed = require('timelapsed');
+const db = require("../../models");
+
+
+
+
 
 module.exports.ApplyJob = async (req, res, next) => {
     let hostname = req.headers.host;
@@ -61,33 +68,74 @@ module.exports.ContactApplyJob = async (req, res, next) => {
     res.redirect('/user/message-room/'+jobOwnerInfo.User.id);
 };
 
+
+
+
+module.exports.GetJobById = async (req, res, next ) => {
+
+    let job_id = req.params.id;
+
+    let job = await Job.findOne({where:{id:job_id}});
+
+    if(job_id !== null ){
+
+        let jobs = [];
+
+        jobs = await Job.findAll( {
+            include: [
+                { 
+                    model: JobCategory,
+                    as: 'JobCategory'
+                },
+                { 
+                    model: UserAccount,
+                    as: 'UserAccount',
+                }
+            ],
+        });
+    
+            res.render(
+                'job/jobs',
+                {
+                    job,
+                    jobs,
+                    page: 'jobs'
+                }
+            )
+
+    }else{
+        console.log('error')
+    }
+
+}
+
+
+
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
-    let jobs = await Job.findAll( {
-        include: [
+
+
+    let sql = "SELECT jobs.id, jobs.title, jobs.price, useraccounts.id, users.firstname, users.city, users.country "+ 
+        "FROM jobs "+
+        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+
+        const [jobs, metadata] = await db.sequelize.query(sql);
+        console.log(jobs[0].firstname);
+
+
+    let job_1 = jobs[0];
+
+    console.log(job_1)
+
+        res.render(
+            'job/jobs',
             {
-                model: JobCategory,
-                as: 'JobCategory'
-            },
-            {
-                model: User,
-                as: 'User'
+
+                job_1,
+                jobs,
+                page: 'jobs'
             }
-        ],
-        order:[['createdAt', 'DESC']]
-    });
-    let category = await JobCategory.findAll();
-    let jobCount = await Job.count();
-    let searchResult = "All Jobs";
-    res.render(
-        'job/jobs_all',
-        {
-            jobs,
-            jobCount,
-            category,
-            searchResult,
-            page: 'jobs'
-        }
-    )
+        )
 }
 
 module.exports.GetJobsFilterFreel = async (req, res, next)=>{

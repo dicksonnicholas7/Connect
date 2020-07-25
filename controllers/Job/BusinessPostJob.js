@@ -6,37 +6,19 @@ const User = require('../../models').User;
 
 
 
-
-
-module.exports.GetIndividualPostJob = async (req, res, next) => {
-
-    let freelancers = await UserAccount.findAll({
-        where: {
-            [Op.and]: [
-                {RoleId:2},
-                {UserTypeId:2}
-            ]
-        },
-        include: [User]
-    });
-
-    let category = await JobCategory.findAll();
-
-    
+module.exports.GetBusinessPostJob = async (req, res, next) => {
+ 
     res.render(
-        'job/individual-post-job',
+        'job/business-post-job',
         {
-            category,
-            freelancers,
-            successMessage:'',
-            errorMessage:''
+            page:'business-post-job'
         }
     );
-};
+}; 
 
 
 
-module.exports.DoIndividualPostJob = async (req, res, next) => {
+module.exports.DoBusinessPostJob = async (req, res, next) => {
 
     let hostname = req.headers.host;
 
@@ -55,7 +37,7 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
             skills: req.body.skills,
             CatId: req.body.category,
             jobType:jobType,
-            UserType:'individual',
+            UserType:'business',
             status:'new'
         };
 
@@ -69,13 +51,13 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 where: {
                     [Op.and]: [
                         {RoleId:2},
-                        {UserTypeId:2}
+                        {UserTypeId:1}
                     ]
                 },
                 include: [User]
             });
             res.render(
-                'job/individual-post-job',
+                'job/business-post-job',
                 {
                     category,
                     freelancers,
@@ -89,14 +71,14 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 where: {
                     [Op.and]: [
                         {RoleId:2},
-                        {UserTypeId:2}
+                        {UserTypeId:1}
                     ]
                 },
                 include: [User]
             });
             console.log("Error posting job");
             res.render(
-                'job/post-job',
+                'job/business-post-job',
                 {
                     category,
                     freelancers,
@@ -114,13 +96,13 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 where: {
                     [Op.and]: [
                         {RoleId:2},
-                        {UserTypeId:2}
+                        {UserTypeId:1}
                     ]
                 },
                 include: [User]
             });
             res.render(
-                'job/post-job',
+                'job/business-post-job',
                 {
                     category,
                     freelancers,
@@ -147,7 +129,7 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                     skills: req.body.skills,
                     CatId: req.body.category,
                     jobType:jobType,
-                    UserType:'individual',
+                    UserType:'business',
                     status:'new'
                 };
         
@@ -191,13 +173,13 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 where: {
                     [Op.and]: [
                         {RoleId:2},
-                        {UserTypeId:2}
+                        {UserTypeId:1}
                     ]
                 },
                 include: [User]
             });
             res.render(
-                'job/individual-post-job',
+                'job/business-post-job',
                 {
                     category,
                     freelancers,
@@ -211,13 +193,13 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 where: {
                     [Op.and]: [
                         {RoleId:2},
-                        {UserTypeId:2}
+                        {UserTypeId:1}
                     ]
                 },
                 include: [User]
             });
             res.render(
-                'job/individual-post-job',
+                'job/business-post-job',
                 {
                     category,
                     freelancers,

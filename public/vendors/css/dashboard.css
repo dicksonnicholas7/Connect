@@ -1,8 +1,6 @@
 
-   .dashboard-background {
-       background-color:#E8E8E8;
-
-       padding-bottom: 30px;
+   .dashboard-background{
+    background-color: #e8e8e8;
    }
     
     .card-header-dashboard {
@@ -33,8 +31,8 @@
 
     .card-img-top {
         border-radius: 50%;
-        width: 80px;
-        height: 80px;
+        width: 100px;
+        height: 100px;
         margin-left: 70px;
         margin-right: 70px; 
         margin-top: 10px;   
@@ -46,15 +44,18 @@
        width: 100%;
        color: #ffffff;
        height: 45px;
+       
    }
 
    .nav {
        padding: 5px 20px 5px 20px;
-       margin-left: 30px;
+       margin-left: 10px;
    }
 
    .nav-link {
-       padding: .7rem 1rem;
+       padding: 1rem !important;
+       margin-left: 2px;
+       margin-right: 2px;
    }
 
    .nav-item:hover a {
@@ -71,25 +72,29 @@
   
    .dash-card{
        background: #ffffff !important;
+       height: 350px;
+       
+       
    }
 
   .card-body {
       border-radius: 3px;
+      box-shadow: none;
       
       
   }
-  .section-card {
+  .section-card { 
       height: 70px;
       
   }
 
   .earnings {
-      height: 70px ;
+      height: 80px ;
       
   }
 
   .profile {
-      height: 170px;
+      height: 240px;
   }
 
   .job-icons {
@@ -170,8 +175,44 @@
       font-size: 18px;
   }
   
-
   .title-job {
     color: #373833;
 }
+
+.clickable{
+cursor: pointer;
+}
+.thead-blue{
+    height: 50px;
+    background-color: #0c4767;
+    color: #fff;
+    font-size:24px;
+    font-weight: 700;
+}
+tr{
+    margin-bottom: 12px;
+}
+th{
+text-align: center;
+}
+td{
+    background-color: #fff;
+    height: 50px;
+    padding: 2rem !important;
+    font-weight: 300;
+    font-size: 18px;
+    margin-left: 15px;
+    border-top:10px solid #e8e8e8 !important ;
+    text-align: center;
   
+    
+}
+ 
+
+
+
+
+
+  
+
+ 

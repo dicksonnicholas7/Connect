@@ -1,0 +1,22 @@
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+
+
+<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/signup-2.jpg'); ">
+    <div class="container" style="padding:83px";>
+        <div class="row">
+            <div class="col-md-12 col-lg-5 mb-5" style="margin: auto;">
+                <form action="#" method="post" class="p-5 bg-white">
+                    <input type="text" name="email" value="<%=email%>" hidden>
+                    <input type="text" name="token" value="<%=token%>" hidden>
+                    <input type="text" name="hostname" value="<%=hostname%>" hidden>
+                    <p style="text-align: center;font-weight: bold;font-size: 20px;">Verification Email Successfully Re-sent</p>
+                    <p style="text-align: center;">You're almost done! An email has been sent to you. Check your inbox and follow the confirmation link to verify  your account.</p><br>
+                    <p style="text-align: center;">Email not received? Check your spam or<a style="color: #0c4767;" href="#"><input type="submit" value="click here" style="border:none; background-color:rgba(0, 0, 0, 0); outline: none; color:blue;"></a> to resend</p>
+                </form>
+            </div>    
+        </div>
+    </div>
+</div>
+<script src="/vendors/plugins/jquery-1.12.4.min.js"></script>
+<script src="/vendors/plugins/bootstrap4/js/bootstrap.min.js"></script>

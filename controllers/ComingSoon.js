@@ -1,4 +1,13 @@
+const TimeLapsed = require('timelapsed');
+ 
+
+
 module.exports.GetComingSoonUpPage = (req, res, next ) => {
+
+
+ 
+   console.log(TimeLapsed.fromDateString('2020-07-24 14:48:46'));
+
     let usertype = 0
     let show = false;
 
