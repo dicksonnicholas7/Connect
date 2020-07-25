@@ -5,7 +5,7 @@
 
 <div class="row mb-2">
     <div class="col-md-12" id='jobApplied' style="display: none;">
-        <p>3 Jobs Applied</p>
+        <p><%=jobAppCount%> Jobs Applied</p>  
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -17,60 +17,31 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 1;
+              jobApps.map(j =>{ %>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>$3000</td>
+                <td><%=j.Job.title%></td>
+                <td><%=j.Job.createdAt.toDateString()%></td>
+                <td>$<%=j.Job.price%></td>
                 <td><button class="status-button pending-button">
-                    Pending
+                  <%=j.status%>
                 </button></td>
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
-                        <a href="#" class="" data-toggle="modal" data-target="#viewjobModal">View Details</a>
-                        <a href="#">Withdraw</a>
+                        <a href="/user/job-view/<%=j.Job.id%>">View Details</a>
+                        <a href="/user/delete-job-application/<%=j.Job.id%>">Delete</a>
                     </div>
                     </div> </td>
               </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>$3000</td>
-                <td><button class="status-button pending-button">
-                    Pending
-                </button></td>
-                <td><div class="dropdown">
-                <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
-                <div class="dropdown-content">
-                    <a href="#">View Details</a>
-                    <a href="#">Delete</a>
-                    
-                </div>
-                </div> </td>
-              </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>$3000</td>
-                <td><button class="status-button pending-button">
-                    Pending
-                </button></td>
-                <td><div class="dropdown">
-                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
-                    <div class="dropdown-content">
-                        <a href="#">View</a>
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                    </div> </td>
-              </tr>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
     
     
     <div class="col-md-12" id="jobAwarded" style="display: none;">
-        <p>2 Jobs Awarded</p>
+        <p><%=jobAwarded%> Jobs Awarded</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -82,10 +53,12 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 1;
+              jobsAwarded.map(j =>{ %>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>15/07/2020</td>
-                <td>$3000</td>
+                <td><%=j.Job.title%></td>
+                <td><%=j.Job.createdAt.toDateString()%></td>
+                <td>$<%=j.Job.price%></td>
                 <td><button class="status-button accepted-button">
                     Awarded
                 </button></td>
@@ -98,20 +71,12 @@
                     </div>
                     </div> </td>
               </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>15/07/2020</td>
-                <td>Ama Brobbey</td>
-                <td><button class="status-button accepted-button">
-                    Awarded
-                </button></td>
-                <td class="text-muted"><i class="fa fa-ellipsis-v"></i></td>
-              </tr>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
     <div class="col-md-12" id="jobProgress" style="display: none;">
-        <p>2 Jobs in progress</p>
+        <p><%=jobInproCount%> Jobs in progress</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -123,10 +88,12 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 1;
+              jobsInproCount.map(j =>{ %>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/03/2020</td>
-                <td>$3000</td>
+                <td><%=j.Job.title%></td>
+                <td><%=j.Job.createdAt.toDateString()%></td>
+                <td>$<%=j.Job.price%></td>
                 <td><button class="status-button pending-button">
                     Ongoing
                 </button></td>
@@ -140,12 +107,13 @@
                     </div>
                     </div> </td>
               </tr>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
     
     <div class="col-md-12" id="jobComplete" style="display: none;">
-        <p>1 Job completed</p>
+        <p><%=jobCompCount%>  Job completed</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -157,6 +125,8 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 1;
+              jobsCompCount.map(j =>{ %>
               <tr>
                 <td>Design Mobile App UI</td>
                 <td>15/07/2020</td>
@@ -174,6 +144,7 @@
                     </div>
                     </div> </td>
               </tr>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>    
