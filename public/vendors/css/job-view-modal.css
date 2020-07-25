@@ -1,0 +1,23 @@
+
+
+#viewjobModal {
+  top: 200px;
+  
+}
+
+.modal-title {
+  color: #ffffff;
+  background-color: #0c4767;
+  height: 50px;
+}
+
+.modal-job-view-img {
+  border-radius: 50%;
+  height: 120px;
+  width: 120px;
+}
+
+.view-modal-card {
+  box-shadow: none;
+  border: none;
+}
