@@ -15,7 +15,7 @@
 
 
 
-
+<link rel="stylesheet" type="text/css" href="/vendors/css/category-skills.css" />
 <div class="ps-page--signin  animated-img"
     style="background-image:url('../../vendors/img/macbookPro.jpg');padding-top: 80px ">
     <div class="container" style="width: fit-content; height: max-content;">
@@ -123,32 +123,24 @@
                                     </div>
 
                                     <div class="form-row">
-                                        <div class="form-group col-md-6">
+                                        <div class="form-group col-md-12">
                                             <input type="checkbox" onchange="handleChange(this)" id="specific"
                                                 name="specific" value="specific">
                                             <label for="specific">Send to specific freelancers</label>
                                         </div>
-                                        <div class="form-group col-md-6">
-                                            <!-- <div class="form-group col-md-12 input-group" id="specificFreelancers" style="display: none;">
-                                            <select multiple size="20" name="freelancers" id="freelancers" class="custom-select">
-                                                <% freelancers.map(f =>{ %>
-                                                    <option value="<%=f.id%>"><%=f.firstname%> <%=f.lastname%></option>
-                                                    <% }); %>
-                                                </select>
-                                        </div> -->
-                                            <div class="form-group col-md-12" id="specificFreelancers"
-                                                style="display: none;">
-                                               
-                                                <select id="freelancers" multiple class="form-control">
-                                                    <option value="Codeigniter">Codeigniter</option>
-                                                    <option value="CakePHP">CakePHP</option>
-                                                    <option value="Laravel">Laravel</option>
-                                                    <option value="YII">YII</option>
-                                                    <option value="Zend">Zend</option>
-                                                    <option value="Symfony">Symfony</option>
-                                                    <option value="Phalcon">Phalcon</option>
-                                                    <option value="Slim">Slim</option>
-                                                </select>
+                                    </div>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <div class="form-group col-md-12" id="specificFreelancers" style="display: none;">
+                                                <div class="row" >
+                                                    <div class="col-md-12 m-auto">
+                                                        <div class="form-row">
+                                                            <div class="form-group col-md-12">
+                                                                <span class="autocomplete-freelancers"></span> 
+                                                            </div>
+                                                        </div>
+                                                    </div> 
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -172,3 +164,4 @@
 </div>
 </div>
 <%include ../layout/footer-public.ejs %>
+
