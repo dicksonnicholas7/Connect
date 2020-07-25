@@ -100,7 +100,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
 
-    UserAccount.hasMany(models.UserSkills,{
+    UserAccount.hasMany(models.Skills,{
       foreignKey: 'UserId',
       onDelete:'CASCADE'
     });

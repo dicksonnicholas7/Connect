@@ -9,11 +9,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey: 'UserId',
       onDelete:'CASCADE'
     });
-
-    UserSkills.belongsTo(models.SkillsCategory,{
-      foreignKey: 'SkillsCatId',
-      onUpdate: 'CASCADE'
-    });
   };
   return UserSkills;
 };

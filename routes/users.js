@@ -20,11 +20,13 @@ const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
 const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
 const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
-const {GetJobById} = require('../controllers/Job/JobFreelancer');
+const {GetJobById, ApplyJob, DeleteJobApplication, GetSingleJobDetail} = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 
 
-router.get('/job-view', GetSingleJob);
+
+router.get('/single-job-details', GetSingleJobDetail);
+router.get('/job-view/:id', GetSingleJob);
 
 
 router.get('/jobcategory', GetJobCat);
@@ -50,6 +52,7 @@ router.get('/dashboard-business-client', GetDashboardBusinessClient);
 router.get('/dashboard-individual-client', GetDashboardIndividualClient);
 router.get('/dashboard-individual-freelancer', GetDashboardIndividualFreelancer);
 router.get('/dashboard-admin', GetDashboardAdmin);
+
 
 
 
@@ -109,6 +112,14 @@ router.post('/add-individual-skill', AddSkills);
 
 router.post('/post-individual-job', DoIndividualPostJob)
 router.post('/post-business-job', DoBusinessPostJob)
+
+
+router.post('/apply-job', ApplyJob);
+
+
+router.get('/delete-job-application/:id', DeleteJobApplication);
+
+
 
 
 
