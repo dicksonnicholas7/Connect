@@ -7,7 +7,18 @@ const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
 const db = require("../../models");
-const {GetDashboard} = require('../Dashboard/DashboardIndividualFreelancer')
+const {GetDashboard} = require('../Dashboard/DashboardIndividualFreelancer');
+
+
+
+module.exports.GetSingleJobDetail = async (req, res, next ) => {
+    res.render(
+        'job/single-job-details',
+        {
+            page:'single-job-details'
+        }
+    )
+}
 
 
 module.exports.DeleteJobApplication = async (req, res, next ) => {
