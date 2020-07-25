@@ -6,7 +6,6 @@ const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
-const TimeLapsed = require('timelapsed');
 const db = require("../../models");
 
 
