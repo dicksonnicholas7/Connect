@@ -15344,7 +15344,7 @@ body{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
-  border: 1px solid;
+
   border-radius: 1rem;
 }
 
@@ -15362,6 +15362,6 @@ body{
   -ms-user-select: none;
   user-select: none;
   background-color: #dee2e6;
-  border: 1px solid;
+ 
   border-radius: 1rem;
 }
