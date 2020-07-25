@@ -75,65 +75,62 @@ module.exports.GetJobById = async (req, res, next ) => {
 
     let job_id = req.params.id;
 
+    
+
     let job = await Job.findOne({where:{id:job_id}});
 
-    if(job_id !== null ){
-
-        let jobs = [];
-
-        jobs = await Job.findAll( {
-            include: [
-                { 
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                { 
-                    model: UserAccount,
-                    as: 'UserAccount',
-                }
-            ],
-        });
     
-            res.render(
-                'job/jobs',
-                {
-                    job,
-                    jobs,
-                    page: 'jobs'
-                }
-            )
 
-    }else{
-        console.log('error')
+     let sql = "SELECT jobs.id, jobs.title, jobs.price, users.firstname, users.city, users.country "+ 
+     "FROM jobs "+
+     "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+     "LEFT JOIN users ON useraccounts.id = users.UserId ";
+
+     let user = await User.findOne({where:{UserId:job.ClientId}});
+
+     const [jobs, metadata] = await db.sequelize.query(sql);
+  
+
+     let job_details = {
+        title:job.title,
+        firstname:user.firstname,
+        lastname:user.lastname,
+        country:user.country,
+        city:user.city,
+        details:job.details,
+        price:job.price,
     }
+     res.render(
+         'job/jobs',
+         {
+             job_details,
+             jobs,
+             page: 'single-jobs'
+         }
+     )
 
 }
 
 
-
+   
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
 
-    let sql = "SELECT jobs.id, jobs.title, jobs.price, useraccounts.id, users.firstname, users.city, users.country "+ 
+    let sql = "SELECT jobs.id, jobs.ClientId, jobs.details, jobs.title, jobs.price, users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
         const [jobs, metadata] = await db.sequelize.query(sql);
-        console.log(jobs[0].firstname);
 
-
-    let job_1 = jobs[0];
-
-    console.log(job_1)
-
+        console.log(jobs)
+        console.log(jobs.id)
+     
         res.render(
             'job/jobs',
             {
-
-                job_1,
                 jobs,
-                page: 'jobs'
+                page: 'all-jobs'
             }
         )
 }
