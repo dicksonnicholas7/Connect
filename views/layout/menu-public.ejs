@@ -15,13 +15,15 @@
         <% if(user){%>
         <div class="header__center">
 
-            <div class="dropdown">
+            <div class="dropdown show">
                 <% if(individualuser){%>
                 <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <% if(individualuser.picture !== null ){%>
-                    <img style="border-radius: 50%;" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
+                    <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
                     <% }else{ %>
-                        <img style="border-radius: 50%;" src="../../images/users/individual/avatar.png" width="50px" height="50px"  alt="Connect Logo">
+                </a>
+                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/avatar.png" width="50px" height="50px"  alt="Connect Logo">
                      <%}%>
                 </a>
                 <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">

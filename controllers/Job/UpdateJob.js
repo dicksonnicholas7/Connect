@@ -1,6 +1,17 @@
 const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
 
+
+module.exports.GetSingleJob = async (req, res, next ) => {
+    res.render(
+        'job/job_view',
+        {
+            page:'job_view'
+        }
+    )
+}
+
+
 module.exports.UpdateJob = async (req, res, next) => {
     let jobInfo = {
         title: req.body.title || '',

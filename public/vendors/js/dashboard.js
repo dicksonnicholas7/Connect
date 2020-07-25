@@ -47,3 +47,60 @@ function ShowAwarded(){
     } 
     
 }
+
+
+
+
+
+
+function showApplied(){
+    if(document.getElementById('jobApplied').style.display==='none'){
+        document.getElementById('jobApplied').style.display='block';
+        document.getElementById('jobAwarded').style.display='none';
+        document.getElementById('jobProgress').style.display='none';
+        document.getElementById('jobComplete').style.display='none';
+
+    }
+    else{
+        document.getElementById('jobApplied').style.display='none';
+    }
+        
+   
+}
+
+function showAwarded(){
+    if(document.getElementById('jobAwarded').style.display==='none'){
+        document.getElementById('jobAwarded').style.display='block';
+        document.getElementById('jobApplied').style.display='none';
+        document.getElementById('jobProgress').style.display='none';
+        document.getElementById('jobComplete').style.display='none';
+    }
+    else{
+        document.getElementById('jobAwarded').style.display='none';
+    }
+}
+
+function showProgress(){
+    if(document.getElementById('jobProgress').style.display==='none'){
+        document.getElementById('jobProgress').style.display='block';
+        document.getElementById('jobApplied').style.display='none';
+        document.getElementById('jobAwarded').style.display='none';
+        document.getElementById('jobComplete').style.display='none';
+    }
+    else{
+        document.getElementById('jobProgress').style.display='none';
+    }
+}
+
+function showComplete(){
+    if(document.getElementById('jobComplete').style.display==='none'){
+        document.getElementById('jobComplete').style.display='block';
+        document.getElementById('jobApplied').style.display='none';
+        document.getElementById('jobAwarded').style.display='none';
+        document.getElementById('jobProgress').style.display='none';
+    }
+    else{
+        document.getElementById('jobComplete').style.display='none';
+    }
+
+}
