@@ -23,7 +23,7 @@ const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
 const {GetJobById} = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 
-
+ 
 router.get('/job-view', GetSingleJob);
 
 
