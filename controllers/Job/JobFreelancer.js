@@ -6,39 +6,127 @@ const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
-const TimeLapsed = require('timelapsed');
 const db = require("../../models");
+const {GetDashboard} = require('../Dashboard/DashboardIndividualFreelancer')
 
 
+module.exports.DeleteJobApplication = async (req, res, next ) => {
+        let jobId = req.params.id;
 
+        let jobApp_deleted = JobApplication.destroy({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {JobId:jobId}
+                ]
+            }
+        });
+  
+    if(jobApp_deleted !== null) {
+        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
+    }else{
+        GetDashboard(req, res, next , 'error withdrawing you application', '');
+    }
+}
 
-
+   
 module.exports.ApplyJob = async (req, res, next) => {
+
+    console.log(req.body.id)
+
+    let error = '';
+    
     let hostname = req.headers.host;
     let appInfo = {
-        JobId: req.params.id || '00',
-        FreelanceId: res.locals.user.id || '00'
+        JobId: req.body.id,
+        FreelanceId: res.locals.user.id,
+        status:'pending'
     };
-    const job_created= await JobApplication.create(appInfo);
-    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: User });
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: "/user/my-jobs/all",
-        ReceiverId: jobOwnerInfo.ClientId
-    };
+
+    let check_application = await JobApplication.findOne({where:{
+        [Op.and]: [
+
+                {FreelanceId:res.locals.user.id},
+                {JobId:req.body.id }
+        ]
+    }});
+
+
+    console.log(check_application)
+
+    if(check_application !== null){
+
+        error = 'You have already applied for this Job.'
+
+        let sql = "SELECT jobs.id, jobs.details, jobs.title, jobs.createdAt, jobs.price, jobs.skills,  users.firstname, users.city, users.country "+ 
+        "FROM jobs "+
+        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    
+        const [jobs, metadata] = await db.sequelize.query(sql);
+    
+        console.log(jobs)
+        console.log(jobs.id)
+     
+        res.render(
+            'job/jobs',
+            {
+                applyErrorMessage:error,
+                jobs,
+                page: 'all-jobs'
+            }
+        );
+
+    }else{
+
+
+    
+    const job_created= await JobApplication.create(appInfo);
+    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: UserAccount });
+
+    let clientInfo = await User.findOne({ where:{UserId:jobOwnerInfo.UserAccount.id}});
+    let freelancerInfo = await User.findOne({ where:{UserId:res.locals.user.id}});
+
+    // let notifyParts = {
+    //     title: freelancerInfo.firstname +" applied for a job you posted",
+    //     message: "/user/my-jobs/all",
+    //     ReceiverId: jobOwnerInfo.ClientId
+    // };
+
+
     let notifyMailParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
+        title: freelancerInfo.firstname  +" applied for a job you posted",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations, '+req.session.user.firstname+ ' applied for a job you posted.</p>'+
+                 '<p style="font-weight: bold;">Connect.</p>'+ 
+                 '<p>Congratulations,  ' + freelancerInfo.firstname  + '  applied for a job you posted.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: jobOwnerInfo.User.email
+        ReceiverEmail: jobOwnerInfo.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
-    res.redirect('/user/job-view/'+req.params.id);
+
+
+    console.log('job successfully applied')
+
+    error = '';
+    let success = 'job successfully applied'
+
+
+    GetDashboard(req, res, next, error, success)
+
+
+
+}
 };
+
+
 
 
 module.exports.ContactApplyJob = async (req, res, next) => {
@@ -81,10 +169,10 @@ module.exports.GetJobById = async (req, res, next ) => {
 
     
 
-     let sql = "SELECT jobs.id, jobs.title, jobs.price, users.firstname, users.city, users.country "+ 
-     "FROM jobs "+
-     "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-     "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
+        "FROM jobs "+
+        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+        "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
      let user = await User.findOne({where:{UserId:job.ClientId}});
 
@@ -92,6 +180,7 @@ module.exports.GetJobById = async (req, res, next ) => {
   
 
      let job_details = {
+         id:job.id,
         title:job.title,
         firstname:user.firstname,
         lastname:user.lastname,
@@ -103,6 +192,7 @@ module.exports.GetJobById = async (req, res, next ) => {
      res.render(
          'job/jobs',
          {
+            applyErrorMessage:'',
              job_details,
              jobs,
              page: 'single-jobs'
@@ -116,7 +206,7 @@ module.exports.GetJobById = async (req, res, next ) => {
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
 
-    let sql = "SELECT jobs.id, jobs.ClientId, jobs.details, jobs.title, jobs.price, users.firstname, users.city, users.country "+ 
+    let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
@@ -129,6 +219,7 @@ module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
         res.render(
             'job/jobs',
             {
+                applyErrorMessage:'',
                 jobs,
                 page: 'all-jobs'
             }
