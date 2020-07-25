@@ -1,6 +1,6 @@
 <style>
     .sticky-top {
-        top: 70px;
+        top: 60px;
     }
 
 
@@ -95,7 +95,7 @@
                   <% if(individualuser){%>
 
                     <% if(user.RoleId === 2){%>
-                        <a class="nav-link" href="#">Browse Jobs</a>
+                        <a class="nav-link" href="/user/jobs">Browse Jobs</a>
                         <% }else{ %>
 
                             <a class="nav-link" href="/user/individual-post-job">Post Job</a>
@@ -104,7 +104,7 @@
                      <% }else{ %>
 
                     <% if(user.RoleId === 2){%>
-                        <a class="nav-link" href="#">Browse Jobs</a>
+                        <a class="nav-link" href="/user/jobs">Browse Jobs</a>
                         <% }else{ %>
 
                             <a class="nav-link" href="/user/business-post-job">Post Job</a>

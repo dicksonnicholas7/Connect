@@ -229,71 +229,85 @@
                     </div>
                 
                 </div>
-                <div class="card d-flex mb-5 ">
-                    <div class="card-body">
-                        <div class="row ">
 
-                            <div class="col-md-8 mt-3 mb-3 d-flex justify-content-start">
-                                <div>
-                                    <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5" alt="...">
-                                </div>
-                                <div>
-                                    <h4 class="title-job mt-3">Design Mobile App UI</h4>
+
+                <% jobs.map( job => { %>
+                <div id="jobTag" class="card d-flex mb-5 ">
+                        <a href="/user/job/<%=job.id%>">
+                            <div class="card-body">  
+                                <div class="row ">
+        
+                                    <div class="col-md-8 mt-3 mb-3 d-flex justify-content-start">
+                                        <div>
+                                            <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5" alt="...">
+                                        </div>
+                                        <div>
+                                            <h4 class="title-job mt-3"><%=job.title%></h4>
+                                            
+                                            <div class="d-flex justify-content-around">
+                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.firstname%>, Accra</span>
+                                                <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;"></h6>
+                                            </div>
+                                            
+                                        </div>
                                     
-                                    <div class="d-flex justify-content-around">
-                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
-                                        <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted 5 days ago</h6>
                                     </div>
-                                    
+            
+                                    <div class="col-md-2">
+                                        <h6 class="price mt-5">$<%=job.price%></h6>
+                                    </div>
                                 </div>
-                            
+                            </div>
+                        </a>
+                </div>
+                <% }); %>
+
+
+
+            </div>
+
+            <%if(job_1){%>
+
+                <div class="col-md-3 mb-5">
+                    <div class="card default-job text-center">
+                        <div class="card-body  flex-column">
+                            <div class="">
+                                <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
+                            </div>
+                                
+                            <div>
+                                <h5 class="title-job "><%=job_1.title%></h5>
+                                <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
                             </div>
     
-                            <div class="col-md-2">
-                                <h6 class="price mt-5">$300.00</h6>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 mb-5">
-                <div class="card default-job text-center">
-                    <div class="card-body  flex-column">
-                        <div class="">
-                            <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
-                        </div>
-                            
-                        <div>
-                            <h5 class="title-job ">Design Mobile App UI</h5>
-                            <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
-                        </div>
-
-                        <div>
-                            <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
-                        </div>
-
-                        <div>
-                            <h6 class="price-sidebar mb-5 ">$ 300.00</h6>
-                        </div>
-                            <hr/>
-
-                        <div class="">
-                            <h5 class="text-muted" style="float: left; color: #373833;">Description</h5>
-                            <br>
                             <div>
-                                <p class="text-justify mb-5" style="float: left; color: #373833;">
-                                    Incididunt adipisicing do veniam cillum et mollit laboris cillum cupidatat proident minim velit. Occaecat id ex voluptate reprehenderit. Dolor adipisicing dolor aliqua exercitation ut in laboris anim est veniam consequat aliqua reprehenderit occaecat.
-                                </p>
+                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
                             </div>
-                            <h4 class="text-muted" style="float: left; color: #373833;">Skills Required</h4>
-                            <br>
+    
+                            <div>
+                                <h6 class="price-sidebar mb-5 ">$ <%=job_1.price%></h6>
+                            </div>
+                                <hr/>
+    
+                            <div class="">
+                                <h5 class="text-muted" style="float: left; color: #373833;">Description</h5>
+                                <br>
+                                <div>
+                                    <p class="text-justify mb-5" style="float: left; color: #373833;">
+                                        <%=job_1.details%>
+                                    </p>
+                                </div>
+                                <h4 class="text-muted" style="float: left; color: #373833;">Skills Required</h4>
+
+                                <br>
+                            </div>
+                        </div>
+                        <div>
+                            <button name="apply" class="form-control apply-button text-center mb-3" data-toggle="modal" data-target="#exampleModal">Apply</button>
                         </div>
                     </div>
-                    <div>
-                        <a name="apply" class="form-control apply-button text-center mb-3" data-toggle="modal" data-target="#exampleModal">Apply</a>
-                    </div>
                 </div>
-            </div>
+           <% }%>
         </div>
 </div>
 </div>
