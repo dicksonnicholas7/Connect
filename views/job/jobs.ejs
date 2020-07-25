@@ -230,7 +230,7 @@
                 
                 </div>
 
-
+<%if(jobs){%>
                 <% jobs.map( job => { %>
                 <div id="jobTag" class="card d-flex mb-5 ">
                         <a href="/user/job/<%=job.id%>">
@@ -245,8 +245,8 @@
                                             <h4 class="title-job mt-3"><%=job.title%></h4>
                                             
                                             <div class="d-flex justify-content-around">
-                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.firstname%>, Accra</span>
-                                                <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;"></h6>
+                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.city%>,  <%=job.country%>   </span>
+                                                <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted at <%=job.createdAt.toDateString()%></h6>
                                             </div>
                                             
                                         </div>
@@ -261,12 +261,16 @@
                         </a>
                 </div>
                 <% }); %>
+                <%}else{%>
+
+
+                <%}%>
 
 
 
             </div>
 
-            <%if(job_1){%>
+           
 
                 <div class="col-md-3 mb-5">
                     <div class="card default-job text-center">
@@ -276,16 +280,47 @@
                             </div>
                                 
                             <div>
-                                <h5 class="title-job "><%=job_1.title%></h5>
-                                <h6>Posted by <a href="#" style="color: #0c4767;">Fiifi Gordon</a></h6>
+                                <h5 class="title-job ">
+
+                                    <%if(page === "all-jobs"){%>
+                                        <%=jobs[0].title%>
+                                   <% }else{%>
+                                        <%=job_details.title%>
+                                   <% }%>
+
+                                </h5>
+                                <h6>Posted by <a href="#" style="color: #0c4767;">
+                                    <% if(page === "all-jobs"){%>
+                                        <%=jobs[0].firstname%> 
+                                    <%  }else{%>
+                                        <%=job_details.firstname%>
+                                    <%}%>
+                                
+                                </a></h6>
                             </div>
     
                             <div>
-                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;Takoradi, Accra</span>
+                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
+                                    <% if(page === "all-jobs"){%>
+                                        &nbsp;<%=jobs[0].city%>,  <%=jobs[0].country%>
+                                   <% }else{%>
+                                    &nbsp;<%=job_details.city%>,  <%=job_details.country%>
+                                   <%}%>
+                                
+                                
+                                </span>
                             </div>
     
                             <div>
-                                <h6 class="price-sidebar mb-5 ">$ <%=job_1.price%></h6>
+                                <h6 class="price-sidebar mb-5 ">
+
+                                    <%  if(page === "all-jobs"){%>
+                                        $ <%=jobs[0].price%>
+                                 <%   }else{ %>
+                                        <%=job_details.price%>
+                                  <%  }%>
+
+                                </h6>
                             </div>
                                 <hr/>
     
@@ -294,20 +329,38 @@
                                 <br>
                                 <div>
                                     <p class="text-justify mb-5" style="float: left; color: #373833;">
-                                        <%=job_1.details%>
+                                        <% if(page === "all-jobs"){%>
+                                            <%=jobs[0].details%>
+                                       <% }else{%>
+                                        <%=job_details.details%>
+                                       <% } %>
                                     </p>
                                 </div>
-                                <h4 class="text-muted" style="float: left; color: #373833;">Skills Required</h4>
+                                <div>
+                                    <h4 class="text-muted" style="float: left; color: #373833;">Skills Required</h4>
+                                    <p>
+                                        <% if(page === "all-jobs"){%>
+                                            <%=jobs[0].skills%>
+                                       <% }else{%>
+                                        <%=job_details.skills%>
+                                       <% }%>
+                                    </p>
+                                </div>
 
                                 <br>
                             </div>
                         </div>
                         <div>
-                            <button name="apply" class="form-control apply-button text-center mb-3" data-toggle="modal" data-target="#exampleModal">Apply</button>
+                           <% if(page === "all-jobs"){%>
+                                <a href="/user/<%=jobs[0].id%>" class="form-control apply-button text-center mb-3" >Apply</a>
+
+                           <% }else{%>
+                                <a href="/user/<%=job_details.id%>" class="form-control apply-button text-center mb-3" >Apply</a>
+                           <% } %>
                         </div>
                     </div>
                 </div>
-           <% }%>
+    
         </div>
 </div>
 </div>
