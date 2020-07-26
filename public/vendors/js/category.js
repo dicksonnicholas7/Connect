@@ -1,37 +1,9 @@
 var autocomplete = new SelectPure(".autocomplete-select", {
     options: [
       {
-        label: "Barbina",
-        value: "Barbina",
-      },
-      {
-        label: "Bigoli",
-        value: "bg",
-      },
-      {
-        label: "Bucatini",
-        value: "bu",
-      },
-      {
-        label: "Busiate",
-        value: "bus",
-      },
-      {
-        label: "Capellini",
-        value: "cp",
-      },
-      {
-        label: "Fedelini",
-        value: "fe",
-      },
-      {
-        label: "Maccheroni",
-        value: "ma",
-      },
-      {
-        label: "Spaghetti",
-        value: "sp",
-      },
+        label: "Information Technology",
+        value: "Information Technology",
+      }
     ],
     multiple: true,
     autocomplete: true,

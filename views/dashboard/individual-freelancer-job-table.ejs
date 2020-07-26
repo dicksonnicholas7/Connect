@@ -16,12 +16,19 @@
               <% count = 1;
               jobApps.map(j =>{ %>
               <tr>
-                <td><%=j.Job.title%></td>
+                <td><%=j.Job.job_title%></td>
                 <td><%=j.Job.createdAt.toDateString()%></td>
-                <td>$<%=j.Job.price%></td>
-                <td><button class="status-button pending-button">
-                  <%=j.status%>
+                <td>$<%=j.Job.job_price%></td>
+                <%if( j.Job.job_status === 'awarded'){%>
+                  <td><button class="status-button accepted-button">
+                    Awarded
                 </button></td>
+               <% }else{%>
+                <td>
+                  <button class="status-button pending-button">
+                  <%=j.application_status%>
+                </button></td>
+               <% }%>  
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
@@ -52,12 +59,20 @@
               <% count = 1;
               jobsAwarded.map(j =>{ %>
               <tr>
-                <td><%=j.Job.title%></td>
+                <td><%=j.Job.job_title%></td>
                 <td><%=j.Job.createdAt.toDateString()%></td>
-                <td>$<%=j.Job.price%></td>
-                <td><button class="status-button accepted-button">
+                <td>$<%=j.Job.job_price%></td>
+
+                <%if( j.Job.job_status === 'awarded'){%>
+                  <td><button class="status-button accepted-button">
                     Awarded
                 </button></td>
+               <% }else if(j.Job.job_status === 'accepted'){%>
+                  <td><button class="status-button accepted-button">
+                    Accepted
+                </button></td>
+               <% }%>  
+
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
@@ -106,7 +121,7 @@
               <% count++; }); %>
             </tbody>
           </table>
-    </div>
+    </div> 
     
     <div class="col-md-12" id="jobComplete" style="display: none;">
         <p><%=jobCompCount%>  Job completed</p>
@@ -121,8 +136,6 @@
               </tr>
             </thead>
             <tbody>
-              <% count = 1;
-              jobsCompCount.map(j =>{ %>
               <tr>
                 <td>Design Mobile App UI</td>
                 <td>15/07/2020</td>
@@ -140,7 +153,6 @@
                     </div>
                     </div> </td>
               </tr>
-              <% count++; }); %>
             </tbody>
           </table>
     </div>    

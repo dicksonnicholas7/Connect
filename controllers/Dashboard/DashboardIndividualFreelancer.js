@@ -13,7 +13,7 @@ const { QueryTypes } = require('sequelize');
 const SelectedJobs = require('../../models').SelectedJobs;
 
 
-
+  
 
 module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
 
@@ -27,7 +27,7 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
-                {status:'in progress'}
+                {application_status:'in progress'}
             ]
         }
     });
@@ -37,30 +37,36 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
-                {status:'completed'}
+                {application_status:'completed'}
             ]
         }
     });
 
 
 
-    let jobsAwarded = JobApplication.findAll({
+    let jobsAwarded = await JobApplication.findAll({
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
                 {
                     [Op.or]:[
-                        {status: 'awarded'},
-                        {status: 'accepted'}
+                        {application_status: 'awarded'},
+                        {application_status: 'accepted'}
                     ]
                 }
             ]
-        }
+        },
+        include: [
+            {
+                model: Job,
+                as: 'Job'
+            }
+        ]
     });
 
 
+    console.log(" awarded "+jobsAwarded)
 
-    let acc = 'accepted';
 
     let jobApps = await JobApplication.findAll({
         where:{FreelanceId: res.locals.user.id},
@@ -69,12 +75,11 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
                 model: Job,
                 as: 'Job',
             }
-        ],
-        order:[
-            ['createdAt', 'DESC']
-        ],
-          limit: 4
+        ]
     });
+
+
+
 
     let jobAppCount = 0;
     let jobAwarded = 0;
@@ -105,7 +110,7 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
     JobApplication.findAndCountAll({
         where:{
             [Op.and]:[
-                {status: 'pending'},
+                {application_status: 'pending'},
                 {FreelanceId: res.locals.user.id},
             ]
         }
@@ -147,7 +152,7 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
-                {status:'in progress'}
+                {application_status:'in progress'}
             ]
         }
     });
@@ -157,7 +162,7 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
-                {status:'completed'}
+                {application_status:'completed'}
             ]
         }
     });
@@ -170,8 +175,8 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                 {FreelanceId:res.locals.user.id},
                 {
                     [Op.or]:[
-                        {status: 'awarded'},
-                        {status: 'accepted'}
+                        {application_status: 'awarded'},
+                        {application_status: 'accepted'}
                     ]
                 }
             ]
@@ -189,11 +194,7 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                 model: Job,
                 as: 'Job',
             }
-        ],
-        order:[
-            ['createdAt', 'DESC']
-        ],
-          limit: 4
+        ]
     });
 
     let jobAppCount = 0;
@@ -222,16 +223,6 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
 
 
 
-    JobApplication.findAndCountAll({
-        where:{
-            [Op.and]:[
-                {status: 'pending'},
-                {FreelanceId: res.locals.user.id},
-            ]
-        }
-    }).then(result=>{
-        let jobDoneCount = result.count;
-
         res.render(
             'dashboard/dashboard-individual-freelancer',
             {
@@ -248,7 +239,4 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                 jobsAwarded
             }
         )
-    }).catch(err=>{
-        console.log(err);
-    });
 }

@@ -26,7 +26,7 @@ let userExperience = {
     years:req.body.years
 }
 
-let skills = req.body.tagsinput;
+let skills = req.body.skills;
 
 let skillsArr = skills.split(',');
 

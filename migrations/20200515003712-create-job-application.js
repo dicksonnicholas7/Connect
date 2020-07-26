@@ -24,10 +24,10 @@ module.exports = {
           key:'id'
         }
       },
-      status: {
+      application_status: {
         type: Sequelize.STRING
       },
-      message: {
+      application_message: {
         type: Sequelize.STRING
       },
       createdAt: {

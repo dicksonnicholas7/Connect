@@ -22,7 +22,10 @@ const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../contro
 const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
 const {GetJobById, ApplyJob, DeleteJobApplication, GetSingleJobDetail} = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
+const {AwardJob} = require('../controllers/Job/ViewJobClient');
 
+
+router.get('/award-job/:id', AwardJob);
 
 
 router.get('/single-job-details', GetSingleJobDetail);

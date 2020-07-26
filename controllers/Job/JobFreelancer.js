@@ -51,7 +51,7 @@ module.exports.ApplyJob = async (req, res, next) => {
     let appInfo = {
         JobId: req.body.id,
         FreelanceId: res.locals.user.id,
-        status:'pending'
+        application_status:'pending'
     };
 
 
@@ -70,7 +70,7 @@ module.exports.ApplyJob = async (req, res, next) => {
 
         error = 'You have already applied for this Job.'
 
-        let sql = "SELECT jobs.id, jobs.details, jobs.title, jobs.createdAt, jobs.price, jobs.skills,  users.firstname, users.city, users.country "+ 
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.job_createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
@@ -191,15 +191,20 @@ module.exports.GetJobById = async (req, res, next ) => {
   
 
      let job_details = {
-         id:job.id,
-        title:job.title,
+        id:job_id,
+        title:job.job_title,
         firstname:user.firstname,
         lastname:user.lastname,
         country:user.country,
         city:user.city,
-        details:job.details,
-        price:job.price,
+        details:job.job_details,
+        price:job.job_price,
+        skills:job.job_skills
     }
+
+
+    console.log(job_details)
+
      res.render(
          'job/jobs',
          {
