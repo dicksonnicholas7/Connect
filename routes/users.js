@@ -20,13 +20,13 @@ const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
 const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
 const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
-const {GetJobById, ApplyJob, DeleteJobApplication, GetSingleJobDetail} = require('../controllers/Job/JobFreelancer');
+const {GetJobById, ApplyJob, AcceptJob, DeleteJobApplication, GetSingleJobDetail} = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 
 
 router.get('/award-job/:id', AwardJob);
-
+router.get('/accept-job/:id', AcceptJob);
 
 router.get('/single-job-details', GetSingleJobDetail);
 router.get('/job-view/:id', GetSingleJob);

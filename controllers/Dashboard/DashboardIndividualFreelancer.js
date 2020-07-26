@@ -13,7 +13,7 @@ const { QueryTypes } = require('sequelize');
 const SelectedJobs = require('../../models').SelectedJobs;
 
 
-  
+    
 
 module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
 

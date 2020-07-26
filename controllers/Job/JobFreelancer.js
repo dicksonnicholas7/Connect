@@ -140,34 +140,6 @@ module.exports.ApplyJob = async (req, res, next) => {
 
 
 
-module.exports.ContactApplyJob = async (req, res, next) => {
-    let hostname = req.headers.host;
-    let appInfo = {
-        JobId: req.params.id || '00',
-        FreelanceId: res.locals.user.id || '00'
-    };
-    const job_created= await JobApplication.create(appInfo);
-    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: User });
-
-    let notifyParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: "/user/my-jobs/all",
-        ReceiverId: jobOwnerInfo.ClientId
-    };
-    let notifyMailParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations, '+req.session.user.firstname+ ' applied for a job you posted.</p>'+
-                '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: jobOwnerInfo.User.email
-    };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
-    NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
-    res.redirect('/user/message-room/'+jobOwnerInfo.User.id);
-};
-
-
 
 
 module.exports.GetJobById = async (req, res, next ) => {
@@ -409,38 +381,51 @@ module.exports.GetAppliedJobs = async (req, res, next) => {
     )
 };
 
+
+
 module.exports.AcceptJob = async (req, res, next) => {
     let appId = req.params.id;
-    let jobAppStatus = {
-        status:'accepted'
-    };
+
+
+    let applicant_details = await User.findOne({where:{UserId:res.locals.user.id}});
+
+
+
     let hostname = req.headers.host;
-    let job_awarded = await JobApplication.update(jobAppStatus,{where:{id:appId} });
+    let job_awarded = await JobApplication.update({application_status:'accepted'},{where:{id:appId} });
     let job_just_awarded = await JobApplication.findOne({ where:{id:appId} });
-    let job = await Job.findOne({where:{id:job_just_awarded.JobId}, include:User });
+    let job = await Job.findOne({where:{id:job_just_awarded.JobId}, include:UserAccount });
+
+
     let jobContract = {
         JobId: job.id,
-        status: 'start'
+        contract_status: 'start'
     };
+
+
     let job_contract = await Contract.create(jobContract);
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" accepted the job",
-        message: "/user/my-jobs/awarded",
-        ReceiverId: job.ClientId
-    };
+    // let notifyParts = {
+    //     title: res.locals.user.firstname+" accepted the job",
+    //     message: "/user/my-jobs/awarded",
+    //     ReceiverId: job.ClientId
+    // };
+
+
     let notifyMailParts = {
-        title: res.locals.user.firstname+" accepted the job",
+        title: applicant_details.firstname+" accepted the job",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations'+res.locals.user.firstname+ 'accepted the awarded job.</p>'+
+                 '<p style="font-weight: bold;">Connect</p>'+ 
+                 '<p>Congratulations'+applicant_details.firstname+ 'accepted the awarded job.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: job.User.email
+        ReceiverEmail: job.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
-    res.redirect('/user/workspace/'+job_just_awarded.id);
+    res.redirect('/user/dashboard-individual-freelancer');
 };
 
 module.exports.RejectJob = async (req, res, next) => {
