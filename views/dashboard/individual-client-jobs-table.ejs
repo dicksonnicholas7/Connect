@@ -35,7 +35,7 @@
             </tbody>
           </table>
     </div>
-    
+      
     
     <div class="col-md-12" id="jobsAwarded" style="display: none;">
         <p><%=JobsAwardedCount%> Jobs Awarded</p>
@@ -52,7 +52,7 @@
             <tbody>
               <% count = 0;
               jobs_results.map(j =>{ %>
-                <%if(j.job_status === 'awarded'){%>
+                <%if(j.application_status === 'awarded' || j.application_status === 'accepted' ){%>
                   <tr>
                     <td><%=j.job_title%></td>
                     <td><%=j.updatedAt.toDateString()%></td>

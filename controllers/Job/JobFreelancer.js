@@ -70,7 +70,7 @@ module.exports.ApplyJob = async (req, res, next) => {
 
         error = 'You have already applied for this Job.'
 
-        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.job_createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
@@ -400,10 +400,14 @@ module.exports.AcceptJob = async (req, res, next) => {
     let jobContract = {
         JobId: job.id,
         contract_status: 'start'
-    };
+    }; 
 
 
     let job_contract = await Contract.create(jobContract);
+
+    if(job_contract !== null ){
+        Job.update({job_status:'in progress'}, {where:{id:job_contract.JobId}});
+    }
 
     // let notifyParts = {
     //     title: res.locals.user.firstname+" accepted the job",

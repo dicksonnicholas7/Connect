@@ -142,6 +142,7 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
 
 
 module.exports.GetDashboard = async (req, res, next, error, success) => {
+
     let jobsAppCount = JobApplication.findAll({ 
         where:{FreelanceId:res.locals.user.id}
     });
@@ -169,7 +170,7 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
 
 
 
-    let jobsAwarded = JobApplication.findAll({
+    let jobsAwarded = await JobApplication.findAll({
         where:{
             [Op.and]: [
                 {FreelanceId:res.locals.user.id},
@@ -180,12 +181,18 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                     ]
                 }
             ]
-        }
+        },
+        include: [
+            {
+                model: Job,
+                as: 'Job'
+            }
+        ]
     });
 
 
+    console.log(" awarded "+jobsAwarded)
 
-    let acc = 'accepted';
 
     let jobApps = await JobApplication.findAll({
         where:{FreelanceId: res.locals.user.id},
@@ -196,6 +203,9 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
             }
         ]
     });
+
+
+
 
     let jobAppCount = 0;
     let jobAwarded = 0;
@@ -223,10 +233,20 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
 
 
 
+    JobApplication.findAndCountAll({
+        where:{
+            [Op.and]:[
+                {application_status: 'pending'},
+                {FreelanceId: res.locals.user.id},
+            ]
+        }
+    }).then(result=>{
+        let jobDoneCount = result.count;
+
         res.render(
             'dashboard/dashboard-individual-freelancer',
             {
-                error: error,
+                error:error,
                 success:success,
                 page:'dashboard-individual-freelancer',
                 jobAppCount,
@@ -236,7 +256,11 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                 jobApps,
                 jobInproCount,
                 jobsInproCount,
-                jobsAwarded
+                jobsAwarded,
+                jobsCompCount
             }
         )
+    }).catch(err=>{
+        console.log(err);
+    });
 }

@@ -9,7 +9,7 @@
 
         <% if(signUpTypeBusiness){ %>
             <div class="ps-form__header">
-                <h3><%=signUpTypeBusiness%></h3>
+                <h3 hidden><%=signUpTypeBusiness%></h3>
                
             </div>
 
@@ -17,7 +17,7 @@
           
             <% }else if(signUpTypeIndividual){%>
                 <div class="ps-form__header">
-                    <h3><%=signUpTypeIndividual%></h3>
+                    <h3 hidden><%=signUpTypeIndividual%></h3>
                   
                 </div>
                 <form action="/signup/individual" method="post" class="p-5 bg-white" style="margin: auto;text-align: center;">

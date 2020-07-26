@@ -37,11 +37,11 @@ module.exports = {
       contract_client_rating: {
         type: Sequelize.INTEGER
       },
-      contract_createdAt: {
+      createdAt: {
         allowNull: false,
         type: Sequelize.DATEONLY
       },
-      contract_updatedAt: {
+      updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
       }

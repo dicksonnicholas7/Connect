@@ -45,6 +45,9 @@ module.exports.GetFreelancerProfile = async (req, res, next) =>{
     res.send(user_portfolio);
 }
 
+
+
+
 module.exports.AwardJob = async (req, res, next) => {
     let appId = req.params.id;
 

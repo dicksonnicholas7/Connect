@@ -51,7 +51,7 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
     });
 
     jobs_results.map(j => {
-        if(j.job_status === 'awarded'){
+        if(j.application_status === 'awarded' || j.application_status === 'accepted'){
             JobsAwardedCount++
         }
         if(j.job_status === 'in progress'){

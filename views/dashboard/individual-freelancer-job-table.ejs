@@ -32,7 +32,7 @@
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
-                        <a href="/user/job-view/<%=j.Job.id%>">View Details</a>
+                        <a href="#">View Details</a>
                         <a href="/user/delete-job-application/<%=j.Job.id%>">Delete</a>
                     </div>
                     </div> </td>
@@ -63,16 +63,10 @@
                 <td><%=j.Job.createdAt.toDateString()%></td>
                 <td>$<%=j.Job.job_price%></td>
 
-                <%if( j.Job.job_status === 'awarded'){%>
                   <td><button class="status-button accepted-button">
-                    Awarded
+                    <%=j.application_status%>
                 </button></td>
-               <% }else if(j.Job.job_status === 'accepted'){%>
-                  <td><button class="status-button accepted-button">
-                    Accepted
-                </button></td>
-               <% }%>  
-
+   
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
@@ -102,11 +96,11 @@
               <% count = 1;
               jobsInproCount.map(j =>{ %>
               <tr>
-                <td><%=j.Job.title%></td>
-                <td><%=j.Job.createdAt.toDateString()%></td>
-                <td>$<%=j.Job.price%></td>
+                <td><%=j.job_title%></td>
+                <td><%=j.createdAt.toDateString()%></td>
+                <td>$<%=j.job_price%></td>
                 <td><button class="status-button pending-button">
-                    Ongoing
+                  <%=j.job_status%>
                 </button></td>
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>

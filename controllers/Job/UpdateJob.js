@@ -10,7 +10,7 @@ let jobId = req.params.id;
 
 let job = await Job.findOne({where:{id:jobId}});
 
-let sql = "SELECT DISTINCT jobapplications.id, users.firstname, users.lastname, users.jobtitle, users.country, users.city " +
+let sql = "SELECT DISTINCT jobapplications.id, users.firstname, users.lastname, users.UserId, users.jobtitle, users.country, users.city " +
 		"FROM `jobapplications` " +
         	"LEFT JOIN jobs ON jobs.id = jobapplications.JobId " + 
         	" LEFT JOIN useraccounts ON jobapplications.FreelanceId = useraccounts.id  " +
