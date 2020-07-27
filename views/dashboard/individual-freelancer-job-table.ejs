@@ -34,9 +34,10 @@
                 </button></td>
                <% }%>  
                 <td><div class="dropdown">
+                  <input type="text" id="singleJobViewId" value="<%=j.Job.id%>" hidden>
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
-                        <a href="#">View Details</a>
+                        <a href="#" id="viewJob" data-toggle="modal" data-target="#viewjobModal" >View Details</a>
                         <a href="/user/delete-job-application/<%=j.Job.id%>">Delete</a>
                     </div>
                     </div> </td>
@@ -134,7 +135,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
+              <tr>  
                 <td>Design Mobile App UI</td>
                 <td>15/07/2020</td>
                 <td>Alex Amankwa</td>
@@ -162,14 +163,11 @@
 
                   <!-- MODAL FOR VIEWING OF JOB DETAILS COMES HERE -->
 
-
-
-
                   <div class="modal text-center" id="viewjobModal" tabindex="-1" role="dialog">
                     <div class="modal-dialog" role="document">
                       <div class="modal-content">
                         <div class="modal-title">
-                          <h3 class="modal-title mt-2" >Job Details</h3>
+                          <h3 class="modal-title mt-2" id="jobViewTitle" >Job Details</h3>
                          
                         </div>
 
@@ -183,14 +181,14 @@
                                   <img src='../../vendors/img/1.jpg' class="modal-job-view-img mt-3 mb-3" alt="...">
 
                                   <div class="">
-                                    <h5>Micheal Larbo</h5>
+                                    <h5 id="jobViewName"></h5>
                         
                                     <div>
-                                        <h5>Software Developer</h5>
+                                        <h5 id="jobViewJobTitle"></h5>
                                     </div>
                         
                                     <div>
-                                        <span ><i class="fa fa-map-marker mb-5" style="color: red;" ></i>&nbsp;Takoradi, Accra</span>
+                                        <span id="jobViewCityCountry" ><i class="fa fa-map-marker mb-5" style="color: red;" ></i>&nbsp;</span>
                                     </div>
                                 </div>
                                 </div>
@@ -203,22 +201,15 @@
                             </div>
         
                             <div class="col-md-12">
-                                <h6 class="text-muted">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Autem alias sapiente in excepturi sint ab, id ullam voluptatem incidunt placeat dolorem minima doloremque doloribus quisquam?</h6>
+                                <h6 id="jobViewDes" class="text-muted"></h6>
                             </div>
         
                             <h4 class="text-muted col-md-12 mt-5" style="float: left; color: #373833;">Skills Required</h4>
         
                             <div class="col-md-12 justify-content-around mb-5">
                                 <div class="col-md-3 mr-1  badge badge-secondary">
-                                    Java
+                                    <h6 id="jobViewSkills"></h6>
                                 </div>
-                                <div class="col-md-3 mr-1  badge badge-secondary">
-                                    ASP.Net
-                                </div>
-                                <div class="col-md-3 mr-1 badge badge-secondary">
-                                    Python
-                                </div>
-        
                             </div>
         
                             </div>

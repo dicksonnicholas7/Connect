@@ -25,10 +25,13 @@ const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 
 
+
+
+
 router.get('/award-job/:id', AwardJob);
 router.get('/accept-job/:id', AcceptJob);
 
-router.get('/single-job-details', GetSingleJobDetail);
+router.get('/view-single-job/:id', GetSingleJobDetail);
 router.get('/job-view/:id', GetSingleJob);
 
 
