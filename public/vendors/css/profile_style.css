@@ -53,5 +53,10 @@
   .nav-tabs .nav-link:hover{
     border-color: transparent !important;
   }
-  
+  .custom-control-label{
+   
+    margin-bottom:4px !important;
+  }
+ 
+ 
   
