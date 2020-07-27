@@ -1,6 +1,7 @@
 <style>
     .sticky-top {
         top: 60px;
+        z-index: -1;
     }
 
 
@@ -9,22 +10,22 @@
 
 
 
-<div class="  container-fluid sticky-top" >   
+<div class="container-fluid sticky-top" >
     <div class="row">
         <div class="card-header-dash">
             <ul class="nav">
                 <li class="nav-item">
                     <% if(individualuser){%>
                         <% if(user.RoleId === 2){%>
-                  <a class="nav-link active" href="/user/dashboard-individual-freelancer">Dashboard</a>
+                  <a class="nav-link active" href="#">Freelancer Dashboard</a>
                         <% }else{ %>
-                            <a class="nav-link active" href="/user/dashboard-individual-client">Dashboard</a>
+                            <a class="nav-link active" href="#">Client Dashboard</a>
                             <%}%>
                   <% }else{ %>
                     <% if(user.RoleId === 2){%>
-                        <a class="nav-link active" href="/user/dashboard-business-freelancer">Business Freelancer Dashboard</a>
+                        <a class="nav-link active" href="#">Business Freelancer Dashboard</a>
                               <% }else{ %>
-                                  <a class="nav-link active" href="/user/dashboard-business-client">Business Client Dashboard</a>
+                                  <a class="nav-link active" href="#">Business Client Dashboard</a>
                              <%}%>
                   <%}%>
                 </li>
@@ -114,28 +115,3 @@
 </div>
 
 </div>
-
-
-<!-- <div class="container-fluid" >
-    <div class="row">
-        <div class="card-header-dash">
-            <ul class="nav">
-                <li class="nav-item">
-                  <a class="nav-link active" href="#">Dashboard</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Profile</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Messages</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">Wallet</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Browse Jobs</a>
-                  </li>
-              </ul>
-        </div>
-    </div>
-</div> -->
