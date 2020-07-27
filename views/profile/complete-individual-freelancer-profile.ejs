@@ -3,12 +3,36 @@
 
 
 <link rel="stylesheet" type="text/css" media="all" href="/vendors/css/profile_style.css" />
-<link href="pidie-0.0.8.css" rel="stylesheet"/>
+<link rel="stylesheet" href="vendors/css/intlTelInput.css">
+<link rel="stylesheet" href="vendors/css/demo.css">
 
-<script src=""></script>
-<script>
-    new Pidie();
-</script>
+<script src="vendors/js/build/intlTelInput.js"></script>
+  <script>
+    var input = document.querySelector("#phone");
+    window.intlTelInput(input, {
+      // allowDropdown: false,
+      // autoHideDialCode: false,
+      // autoPlaceholder: "off",
+      // dropdownContainer: document.body,
+      // excludeCountries: ["us"],
+      // formatOnDisplay: false,
+      // geoIpLookup: function(callback) {
+      //   $.get("http://ipinfo.io", function() {}, "jsonp").always(function(resp) {
+      //     var countryCode = (resp && resp.country) ? resp.country : "";
+      //     callback(countryCode);
+      //   });
+      // },
+      // hiddenInput: "full_number",
+      // initialCountry: "auto",
+      // localizedCountries: { 'de': 'Deutschland' },
+      // nationalMode: false,
+      // onlyCountries: ['us', 'gb', 'ch', 'ca', 'do'],
+      // placeholderNumberType: "MOBILE",
+      // preferredCountries: ['cn', 'jp'],
+      // separateDialCode: true,
+      utilsScript: "vendors/js/build/utils.js",
+    });
+  </script>
 
 <div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/analog-camera-behind-computer-laptop-3773401.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
@@ -164,12 +188,7 @@
                                                 <div class="form-group col-md-6">
                                                     <label for="phone">Phone</label>
                                                     <div class="row justify-content-start">
-                                                        <div class="col-md-4">
-                                                            <input type="tel" name="phone" id="phone" value="<%=individualuser.phone%>" class="form-control" readonly>
-                                                        </div>
-                                                        <div class="form-group col-md-8">
-                                                            <input type="tel" name="phone" id="phone" value="" class="form-control" required>
-                                                        </div>
+                                                        <input id="phone" name="phone" type="tel">
                                                     </div> 
                                                 </div>
                
