@@ -15325,9 +15325,6 @@ html .bg--parallax {
 label{
   color: #373833 !important;
 }
-body{
-  line-height: 0 !important;
-}
 
 .alert-dismissible .close{
       padding: 0rem 

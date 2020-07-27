@@ -4,18 +4,25 @@
 
 
 <style>
-    .job-title {
+.job-title {
         background-color: #0C4767;
         color: #ffffff;
         font-size: large;
         font-weight: 700;
         padding: 0.5em;
     }
+.custom-control-label{
+    margin-bottom:4px !important;
+    cursor: pointer;
+  }
+ 
 </style>
 
-
+<link rel="stylesheet" type="text/css" media="all" href="/vendors/css/dashboard.css" />
 
 <link rel="stylesheet" type="text/css" href="/vendors/css/category-skills.css" />
+
+
 <div class="ps-page--signin  animated-img"
     style="background-image:url('../../vendors/img/macbookPro.jpg');padding-top: 80px ">
     <div class="container" style="width: fit-content; height: max-content;">
@@ -100,16 +107,21 @@
                                             </div>
                                         </div>
                                     </div>
-                                    <p id="message"></p>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
-                                            <label for="Skills">Select Skills Needed</label>
-                                            <select name="skills" id="skills" class="custom-select form-control"
-                                                required>
-                                                <option value="Software Development">Software Development</option>
-                                                <option value="Mobile App Development">Mobile App Development</option>
-                                                <option value="Photography">Photography</option>
-                                                <option value="Data Analysis">Data Analysis</option>
+                                            <label for="Skills">Skills</label>
+                                            <select name="states" id="states" class="form-control"  multiple="multiple" style="display: none;">
+                                                <option value="AL">Alabama</option>
+                                                <option value="AK">Alaska</option>
+                                                <option value="AZ">Arizona</option>
+                                                <option value="AR">Arkansas</option>
+                                                <option value="CA">California</option>
+                                                <option value="CO">Colorado</option>
+                                                <option value="CT">Connecticut</option>
+                                                <option value="DE">Delaware</option>
+                                                <option value="DC">District Of Columbia</option>
+                                                <option value="FL">Florida</option>
+                                                <option value="GA">Georgia</option>
                                             </select>
                                         </div>
                                         <div class="form-group col-md-6">
@@ -164,4 +176,4 @@
 </div>
 </div>
 <%include ../layout/footer-public.ejs %>
-
+<%include ../layout/skills-footer.ejs %>
