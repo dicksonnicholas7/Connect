@@ -1,4 +1,5 @@
 const UserSkills = require('../../models').UserSkills;
+const Skills = require('../../models').Skills;
 const Experience = require('../../models').Experience;
 const UserAccount = require('../../models').UserAccount;
 
@@ -8,9 +9,15 @@ const UserAccount = require('../../models').UserAccount;
 
 
 module.exports.GetCompleteSkills = async (req, res, next) => {
+
+let skills = Skills.findAll();
+
+console.log(skills)
+
     res.render(
         'skills/complete-individual-skills',
         {
+            skills,
             page: 'complete-individual-skills'
         }
     )
@@ -28,16 +35,15 @@ let userExperience = {
 
 let skills = req.body.skills;
 
-let skillsArr = skills.split(',');
+console.log(skills)
 
-console.log(skillsArr);
 
-for(i=0;i<skillsArr.length;i++){
+for(i=0;i<skills.length;i++){
 
     let userSkills = {
         UserId: req.body.id,
         SkillsCatId:2,
-        name: skillsArr[i]
+        name: skills[i]
     };
 
     UserSkills.create(userSkills);

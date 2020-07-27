@@ -109,7 +109,9 @@ module.exports.GetCompleteFreelancerPortfolio = async (req, res, next) => {
 
 module.exports.GetCompleteFreelancerSkills = async (req, res, next) => {
 
-    let skills = Skills.findAll();
+    let skills = await Skills.findAll();
+
+    console.log(skills)
 
     res.render(
         'profile/complete-individual-freelancer-skills',
