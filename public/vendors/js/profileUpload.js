@@ -16,7 +16,7 @@ function readURL(input) {
                 .width(96)
                 .height(100);
         };
-
+        //clement in the building
         reader.readAsDataURL(input.files[0]);
     }
 }
