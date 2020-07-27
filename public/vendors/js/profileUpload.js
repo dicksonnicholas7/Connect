@@ -11,10 +11,7 @@ function readURL(input) {
                 $('#profile2')
                 .attr('src', e.target.result)
                 .width(96)
-                .height(100); $('#profile')
-                .attr('src', e.target.result)
-                .width(96)
-                .height(100);
+                .height(100); 
         };
 
         reader.readAsDataURL(input.files[0]);
