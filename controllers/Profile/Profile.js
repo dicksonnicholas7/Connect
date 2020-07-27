@@ -192,7 +192,7 @@ module.exports.UpdateProfile = async (req, res, next) => {
                 country: req.body.country,
                 city: req.body.city,
                 email: req.body.email,
-                phone: req.body.phone,
+                phone: req.body.phone1 + " " + req.body.phone2 ,
                 picture: filenameGlobal
             };
 
