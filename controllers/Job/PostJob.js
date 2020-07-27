@@ -42,6 +42,7 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
 
 module.exports.DoIndividualPostJob = async (req, res, next) => {
 
+    let skills = await Skills.findAll();
     let hostname = req.headers.host;
 
     let jobType = 1;
@@ -81,6 +82,7 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
             res.render(
                 'job/individual-post-job',
                 {
+                    skills,
                     category,
                     freelancers,
                     successMessage:'Job Posted successfully',
