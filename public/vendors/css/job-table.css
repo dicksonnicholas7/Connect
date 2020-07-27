@@ -53,3 +53,10 @@
 
 /* Show the dropdown menu on hover */
 .dropdown:hover .dropdown-content {display: block;}
+
+input.custom-control-input{
+  padding: bottom 2px;
+}
+input.custom-checkbox{
+  
+}
