@@ -6,6 +6,22 @@ const Portfolio = require('../../models').Portfolio;
 const Education = require('../../models').Education;
 const Contract = require('../../models').Contract;
 
+
+
+module.exports.GetPublicFreelancers = (req, res, next) => {
+
+    res.render(
+        'find-freelancers',
+        {
+            page:'find-freelancer'
+
+        }
+        )
+
+}
+
+
+
 module.exports.GetFreelancers = async (req, res, next) => {
     let frees = await User.findAll( {
         include: [

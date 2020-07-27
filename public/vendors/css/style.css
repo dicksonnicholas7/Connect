@@ -865,10 +865,10 @@ body {
 
 h1, h2, h3, h4, h5, h6 {
   position: relative;
-  color: #000;
+  color: #373833;
   margin-top: 0;
   margin-bottom: 10px;
-  font-weight: 700;
+  font-weight: lighter;
 }
 
 h1 a, h2 a, h3 a, h4 a, h5 a, h6 a {
@@ -1654,7 +1654,7 @@ button {
   padding: 15px 45px;
   font-size: 14px;
   font-weight: 600;
-  line-height: 20px;
+  line-height: 8px;
   border: none;
   font-weight: 400;
   border-radius: 5px;
@@ -2156,10 +2156,12 @@ textarea.form-control {
   border-color: #595959;
   width: 13px;
   height: 13px;
+  
+  
 }
 
 .ps-checkbox--circle label:after {
-  top: 3px;
+  top: 8px;
   left: 3px;
   width: 13px;
   height: 13px;
@@ -8247,11 +8249,11 @@ textarea.form-control {
 .ps-form--signin .ps-form__header h3 {
   font-size: 36px;
   font-weight: 400;
-  color: #000;
+  color: #373833;
 }
 
 .ps-form--signin .ps-form__header p {
-  color: #000;
+  color: #373833;
   margin-bottom: 15px;
 }
 
@@ -8280,7 +8282,7 @@ textarea.form-control {
 }
 
 .ps-form--signin .ps-form__footer .ps-btn {
-  margin-bottom: 50px;
+  margin-bottom: 30px;
 }
 
 .ps-form--signin .ps-form__footer p {
@@ -15320,65 +15322,46 @@ html .bg--parallax {
   font-weight: 500;
   font-size: 12px;
 }
-
-
-
-.text-center h2 {
-  color: #ffffff;
+label{
+  color: #373833 !important;
+}
+body{
+  line-height: 0 !important;
 }
 
-.text-center p {
-  color: whitesmoke ;
+.alert-dismissible .close{
+      padding: 0rem 
 }
 
-.card {
-  width: 850px;
-  height: 25px;
-  margin: auto;
-  float: none;
+.custom-control-label::after {
+  position: absolute;
+  top: -1px;
+  left: -1.5rem;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  content: "";
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: 50% 50%;
+
+  border-radius: 1rem;
 }
 
-.nav-link h4 {
-  color: #ffffff;
+.custom-control-label::before {
+  position: absolute;
+  top: -1px;
+  left: -1.5rem;
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  pointer-events: none;
+  content: "";
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  background-color: #dee2e6;
+ 
+  border-radius: 1rem;
 }
-
-.nav-tabs {
-  border-bottom: none !important;
-  height: 50px;
-}
-
-.card-business {
-  background-color: #ffffff;
-  width: 849px;
-  height: auto;
-  float: none;
-  margin-left: 2px !important;
-  margin-top: 0px !important;
-
-}
-.profile-btn{
-  width: 150px;
-  margin: auto;
-  color: #fff;
-  background-color: #0c4767
-}
-
-.fa {
- color: #0c4767;
- font-size: 20px;
-}
-
-.image-border {
-  border: 1px solid black;
-}
-.nav-tabs .nav-link.active{
-  text-decoration: underline !important;
-  background-color: transparent !important;
-  color: #ffffff;
-  border-color: transparent !important;
-}
-.nav-tabs .nav-link:hover{
-  color: #ffffff !important;
-  border-color: transparent !important;
-}
-

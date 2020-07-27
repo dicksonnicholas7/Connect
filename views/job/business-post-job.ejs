@@ -1,105 +1,165 @@
 <% include ../layout/header-public.ejs %>
 <% include ../layout/menu-public.ejs %>
+
+
 <style>
-    .job-title{
-        background-color:#0C4767;
-        height: 400px;
+    .job-title {
+        background-color: #0C4767;
         color: #ffffff;
-        font-size: medium;
+        font-size: large;
         font-weight: 700;
+        padding: 0.5em;
     }
 </style>
 
 
-<div class="ps-page--signin  animated-img" style="background-image:url('../../vendors/img/macbookPro.jpg'); padding-bottom: 800px; padding-top: 80px ">
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="text-center justify-content-center">
-                 <h2>Post a Job</h2>
-             <p class="text-center ">What do you need? Post your and get skilled freelancers to work on it for you. You make payment <br> only when you award job a freelancer. </p>
-            </div>
-         </div>
-        <div class="col-md-12">
-            <div class="card">
-                <div class="job-title text-center justify-content-center">
-                    Job Details
+
+<div class="ps-page--signin  animated-img"
+    style="background-image:url('../../vendors/img/macbookPro.jpg');padding-top: 80px ">
+    <div class="container" style="width: fit-content; height: max-content;">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="text-center justify-content-center">
+                    <h2 style="color: #ffffff;">Post a Job</h2>
+                    <p style="color: #ffffff;" class="text-center ">What do you need? Post your and get skilled
+                        freelancers to work on it for you. You make payment <br> only when you award job a freelancer.
+                    </p>
                 </div>
-                <form class="form-row justify-content-center">
-                    <div class="card-business ml-3 mt-1" >
-                        <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
-                            <div class="col-md-9 m-auto">
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                    <label for="businessName">Give your project a name</label>
-                                    <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="job-title text-center justify-content-center">
+                        Job Details
+                    </div>
+
+                    <div>
+                        <% if(errorMessage){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <strong><%=errorMessage%></strong>
+                        </div>
+                        <% }else if(successMessage){%>
+                        <div class="alert alert-success" role="alert">
+                            <strong><%=successMessage%></strong>
+                        </div>
+                        <% } %>
+                    </div>
+
+                    <form action="/user/post-business-job" id="fmjob" method="post"
+                        class="form-row justify-content-center">
+                        <div class="card-business mt-1">
+                            <div class="row-md-9 pt-4" style="padding-left: 5rem; padding-right: 5rem;">
+                                <div class="col-md-12">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="title">Give your project a name</label>
+                                            <input name="title" id="title" placeholder="Eg. Logo Design" type="text"
+                                                class="form-control" required />
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <label for="goldenName">Description</label>
-                                        <textarea type="text" class="form-control" id="goldname" placeholder="Write a description here..."></textarea>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-12">
+                                            <label for="details">Description</label>
+                                            <textarea name="details" id="details" rows="3" placeholder="Job Details"
+                                                class="form-control" required></textarea>
+                                        </div>
                                     </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="serviceName">Estimated Duration</label>
-                                        <div class="row">
-                                            <div class="col">
-                                            <input type="number" class="form-control" min="1" max="7">
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="timeLength">Estimated Duration</label>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="number" name="timeLength_number" id="timeLength_number"
+                                                        class="form-control" min="1" max="7" required>
+                                                </div>
+                                                <div class="col">
+                                                    <select type="text" name="timeLength_period" id="timeLength_period"
+                                                        class="form-control" placeholder="" required>
+                                                        <option value="day(s)">day(s)</option>
+                                                        <option value="weeks">weeks</option>
+                                                        <option value="months">months</option>
+                                                    </select>
+                                                </div>
                                             </div>
-                                            <div class="col">
-                                                <select type="text" name="service" id="avail" class="form-control" placeholder="" required>
-                                                    <option selected>day(s)</option>
-                                                    <option>weeks</option>
-                                                    <option>months</option>
-                                                </select>
+                                        </div>
+
+                                        <div class="form-group col-md-6">
+                                            <label for="price">Price</label>
+                                            <div class="row">
+                                                <div class="col">
+                                                    <input type="text" class="form-control" value="USD" readonly>
+                                                </div>
+                                                <div class="col">
+                                                    <input name="price" id="price" placeholder="price" type="number"
+                                                        min="1" class="form-control" required />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <p id="message"></p>
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <label for="Skills">Select Skills Needed</label>
+                                            <select name="skills" id="skills" class="custom-select form-control"
+                                                required>
+                                                <option value="Software Development">Software Development</option>
+                                                <option value="Mobile App Development">Mobile App Development</option>
+                                                <option value="Photography">Photography</option>
+                                                <option value="Data Analysis">Data Analysis</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group col-md-6">
+                                            <label for="category"> Select Job Catogory</label>
+                                            <select name="category" id="category" class="form-control" required>
+                                                <% category.map(cat =>{ %>
+                                                <option value="<%=cat.id%>"><%=cat.name%></option>
+                                                <% }); %>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <div class="form-group col-md-6">
+                                            <input type="checkbox" onchange="handleChange(this)" id="specific"
+                                                name="specific" value="specific">
+                                            <label for="specific">Send to specific freelancers</label>
+                                        </div>
+                                        <div class="form-row">
+                                            <div class="form-group col-md-12">
+                                                <div class="form-group col-md-12" id="specificFreelancers" style="display: none;">
+                                                    <div class="row" >
+                                                        <div class="col-md-12 m-auto">
+                                                            <div class="form-row">
+                                                                <div class="form-group col-md-12">
+                                                                    <span class="autocomplete-freelancers"></span> 
+                                                                </div>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="form-group col-md-6">
-                                        <label for="serviceName">Price</label>
-                                        <div class="row">
-                                            <div class="col">
-                                            <input type="text" class="form-control" value="USD" readonly>
-                                            </div>
-                                            <div class="col">
-                                            <input type="number" name="amount" class="form-control" min="1">
-                                            </div>
+                                    <div class="form-row justify-content-center">
+                                        <div class="col-md-3 mb-5">
+                                            <button type="submit" name="btnpost" id="btnpost"
+                                                class="form-control profile-btn"
+                                                style="background-color: #0C4767; color: #ffffff;">POST</button>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                    <label for="businessName">Enter Skills Needed</label>
-                                    <input type="text" class="form-control" id="bname" placeholder="Eg: Logo Design">
-                                    </div>
-                                </div>
-                                <div class="form-row">
-                                    <div class="form-group col-md-12">
-                                        <input type="checkbox" onchange="handleChange(this)" id="specific" name="specific" value="specific">
-                                        <label for="specific">Send to specific businesses</label>
-                                    </div>
-                                </div>
-                                <div class="form-row" id="specificFreelancers" style="display: none;">
-                                    <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" id="" placeholder="Eg: Logo Design">
-                                    </div>
-                                </div>
-                                <div class="form-row justify-content-center">
-                                    <div class="col-md-12 mb-5">
-                                        <button name="next" class="form-control profile-btn">POST</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>    
-                </form>
-            </div>
+                    </form>
+                </div>
 
+            </div>
         </div>
     </div>
 </div>
-
-    <%include ../layout/footer-public.ejs %>
+</div>
+<%include ../layout/footer-public.ejs %>

@@ -1,0 +1,186 @@
+
+<% include ../layout/header-public.ejs %>
+<% include ../layout/menu-public.ejs %>
+<% include ../layout/menu-portal.ejs %>
+
+<link rel="stylesheet" type="text/css" media="all" href="/vendors/css/dashboard.css" />
+<style>
+    body{
+        background-color: #E8E8E8;
+    }
+</style>
+
+    
+    <div class="dashboard-background">
+        <div class="container-fluid" style="padding-left: 50px; padding-right: 50px;">
+            
+            <!-- THE JOBS SECTION CARDS GOES HERE -->
+        <div class="row mb-5 ">
+            <div class="col-md-12 mt-3">
+                <h3 class="welcome mt-5">Welcome, Alex!</h3>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-8 clickable" onclick="ShowJobTables();">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body section-card d-flex dash-card justify-content-around">
+                        <div>
+                            <i class="fa fa-list job-icons mt-4" style="color: #A41201;"></i>
+                        </div>
+                        <div class="mt-3 job-types">
+                            Jobs Posted
+                        </div>
+                        <div class="mt-2 numbers-section">
+                            <h3 class="mt-2" style="color: #A41201;">0</h3>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6 col-sm-8 clickable" onclick="ShowAwarded();">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body section-card d-flex dash-card justify-content-around">
+                        <div>
+                            <i class="fa fa-list job-icons mt-4" style="color: #FC6D00;" ></i>
+                        </div>
+                        <div class="mt-3 job-types">
+                            Jobs Awarded
+                        </div>
+                        <div class="mt-2 numbers-section">
+                            <h3 class="mt-2" style="color: #FC6D00;">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-8 clickable" onclick="ShowProgressTables();">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body section-card d-flex dash-card justify-content-around">
+                        <div>
+                            <i class="fa fa-hourglass-half job-icons mt-4" style="color: #DEC109;"></i>
+                        </div>
+                        <div class="mt-3 job-types">
+                            Jobs In Progress
+                        </div>
+                        <div class="mt-2 numbers-section">
+                            <h3 class="mt-2" style="color: #DEC109;">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-8 clickable" onclick="ShowCompleted();">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body section-card d-flex dash-card justify-content-around">
+                        <div>
+                            <i class="fa fa-check-circle job-icons1 mt-4" style="color: #0DC100; font-size: 25px;"></i>
+                        </div>
+                        <div class="mt-3 job-types">
+                            Jobs Completed
+                        </div>
+                        <div class="mt-2 numbers-section" >
+                            <h3 class="mt-2" style="color: #0DC100;">0</h3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>  
+
+        <% include business-client-job-table %>
+
+        <div class="row mb-2">
+            <div class="col-md-9">
+                <p class="para-text">Based on your profile and skills requirements, these are some recommended freelancers...</p>
+                <p class="para-text">do for loop for client skills</p>
+            </div>
+        </div>
+
+            <!-- RECOMMENDED FREEELANCERS GOES HERE -->
+        <div class="row mb-5 ">
+            <div class="col-lg-3 col-md-6 col-sm-8 rec-jobs">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body flex-column dash-card text-center">
+                        <div>
+                            <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                        </div>
+
+                        <div>
+                           <h5 class="mt-4">Charles Ansong</h5>
+                           <h6 class="client-name">Software DEveloper</h5>
+                           <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
+                        </div>
+                       <div>
+                           <button class="form-control rec-buttons">Connect</button>
+                       </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-8 rec-jobs">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body flex-column dash-card text-center">
+                        <div>
+                            <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                        </div>
+
+                        <div>
+                            <h5 class="mt-4">Charles Ansong</h5>
+                            <h6 class="client-name">Software DEveloper</h5>
+                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
+                         </div>
+                        <div>
+                            <button class="form-control rec-buttons">Connect</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-8 rec-jobs">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body flex-column dash-card text-center">
+                        <div>
+                            <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                        </div>
+
+                        <div>
+                            <h5 class="mt-4">Charles Ansong</h5>
+                            <h6 class="client-name">Software DEveloper</h5>
+                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
+                         </div>
+                        <div>
+                            <button class="form-control rec-buttons">Connect</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-6 col-sm-8 rec-jobs">
+                <div class="card mt-3 mb-3 border-0 bg-white">
+                    <div class="card-body flex-column dash-card text-center">
+                        <div>
+                            <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                        </div>
+
+                        <div>
+                            <h5 class="mt-4">Charles Ansong</h5>
+                            <h6 class="client-name">Software DEveloper</h5>
+                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
+                         </div>
+                        <div>
+                            <button class="form-control rec-buttons">Connect</button>
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+                
+            </div> 
+         
+            
+        </div> 
+
+    </div>
+</div>
+    
+
+
+<% include ../layout/footer-public.ejs %>

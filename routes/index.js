@@ -1,25 +1,38 @@
 const express = require('express');
 let router = express.Router();
 const {GetLogin, DoLogin, Logout} = require('../controllers/Auth/Login');
-const { GetSignUp, DoSignUp, GetBusinessSignUp, DoBusinessSignUp } = require('../controllers/Auth/SignUp');
+const { GetSignUp, DoSignUp, GetBusinessSignUp, DoBusinessSignUp, ResendVerificationEmail } = require('../controllers/Auth/SignUp');
 const { GetSignUpPage } = require('../controllers/SignUpPage');
 const {GetForgotPassword, GetResetPassword,
         forgotPasswordEmail, DoResetPassword,GetReset
         } = require('../controllers/Auth/ForgotPassword');
-const {GetIndex, GetAllJobs, GetPageAllJobs, GetJobsCategoryAndSearch, GetJobsFilter, JobDetail} = require('../controllers/Job/JobPublic');
 const { ApplyJob } = require('../controllers/Job/JobFreelancer');
 const {GetVerify, DoVerification, SendVerificationAgain, NotVerified} = require('../controllers/Auth/Verify');
 const {GetHowItWorks} = require('../controllers/Public');
 const {GetComingSoonUpPage} = require('../controllers/ComingSoon');
 const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = require('../controllers/Freelancer/FreelancersPublic');
+const {GetJobs} = require('../controllers/Job/JobPublic');
+const {GetPublicFreelancers} = require('../controllers/Freelancer/FreelancersPublic')
+const {GetPublicClients} = require('../controllers/Client/ClientPublic')
+const {GetPublicJobs} = require('../controllers/Job/JobPublic')
+
+const {GetSkills, GetJobCat} = require('../controllers/temp')
 
 
 //Public routes
 // GET requests
 
+router.get('/jobs', GetJobs);
+router.get('/', GetComingSoonUpPage);
+
+router.get('/find-freelancers', GetPublicFreelancers);
+router.get('/find-clients', GetPublicClients);
+router.get('/find-jobs', GetPublicJobs);
+
+
 router.get('/freelancers', GetFreelancers);
 router.get('/freelancer/:id', GetSingleFreelancer);
-router.get('/', GetIndex);
+
 router.get('/how-it-works', GetHowItWorks);
 router.get('/login', GetLogin);
 router.get('/signup/:type', GetSignUp);
@@ -35,9 +48,19 @@ router.get('/coming-soon', GetComingSoonUpPage);
 
 
 
-router.get('/jobs',GetAllJobs);
-router.get('/jobs/:page',GetPageAllJobs);
-router.get('/job/:id', JobDetail);
+router.get('/skills', GetSkills);
+router.get('/job-category', GetJobCat);
+
+
+
+router.post('/resend-verification', ResendVerificationEmail);
+
+
+
+
+//router.get('/jobs',GetAllJobs);
+//router.get('/jobs/:page',GetPageAllJobs);
+//router.get('/job/:id', JobDetail);
 router.get('/job-apply/:id', ApplyJob);
 
 
@@ -47,9 +70,9 @@ router.post('/signup/:type', DoSignUp);
 router.post('/login', DoLogin);
 router.post('/forgot-password', forgotPasswordEmail);
 router.post('/reset-password', DoResetPassword);
-router.post('/jobs', GetJobsCategoryAndSearch);
-router.post('/freelancers', GetFreelancerCountryAndSearch);
-router.post('/filter-jobs', GetJobsFilter);
+//router.post('/jobs', GetJobsCategoryAndSearch);
+//router.post('/freelancers', GetFreelancerCountryAndSearch);
+//router.post('/filter-jobs', GetJobsFilter);
 
 
 module.exports = router;

@@ -16,25 +16,25 @@ module.exports = {
           key:'id'
         }
       },
-      status: {
+      contract_status: {
         type: Sequelize.STRING
       },
-      acceptance: {
+      contract_acceptance: {
         type: Sequelize.STRING
       },
-      note: {
+      contract_note: {
         type: Sequelize.STRING
       },
-      freelance_review: {
+      contract_freelance_review: {
         type: Sequelize.STRING
       },
-      client_review: {
+      contract_client_review: {
         type: Sequelize.STRING
       },
-      freelance_rating: {
+      contract_freelance_rating: {
         type: Sequelize.INTEGER
       },
-      client_rating: {
+      contract_client_rating: {
         type: Sequelize.INTEGER
       },
       createdAt: {

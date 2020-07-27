@@ -1,13 +1,14 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const Job = sequelize.define('Job', {
-    title: DataTypes.STRING,
-    details: DataTypes.STRING,
-    timeLength: DataTypes.STRING,
-    price: DataTypes.DECIMAL(6, 2),
-    skills: DataTypes.STRING,
-    status: DataTypes.STRING,
-    jobType: DataTypes.INTEGER
+    job_title: DataTypes.STRING,
+    job_details: DataTypes.STRING,
+    job_timeLength: DataTypes.STRING,
+    job_price: DataTypes.DECIMAL(6, 2),
+    job_skills: DataTypes.STRING,
+    job_status: DataTypes.STRING,
+    job_jobType: DataTypes.INTEGER,
+    job_UserType:DataTypes.STRING
   }, {});
   Job.associate = function(models) {
     // associations can be defined here
@@ -21,7 +22,9 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE'
     });
 
+
     Job.hasMany(models.JobApplication,{
+      as:'JobApplication',
       foreignKey:'JobId',
       onDelete: 'CASCADE'
     });

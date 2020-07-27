@@ -1,0 +1,224 @@
+
+<link rel="stylesheet" type="text/css" href="/vendors/css/job-table.css"/>
+<link rel="stylesheet" type="text/css" href="/vendors/css/job-view-modal.css"/>
+
+
+<div class="row mb-2">
+    <div class="col-md-12" id='jobApplied' style="display: none;">
+        <p><%=jobAppCount%> Jobs Applied</p>  
+        <table class="table .table-borderless m-auto">
+            <thead class="thead-blue">
+              <tr>
+                <th scope="col">Job Title</th>
+                <th scope="col">Date Applied</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% count = 1;
+              jobApps.map(j =>{ %>
+              <tr>
+                <td><%=j.Job.job_title%></td>
+                <td><%=j.Job.createdAt.toDateString()%></td>
+                <td>$<%=j.Job.job_price%></td>
+                <%if( j.Job.job_status === 'awarded'){%>
+                  <td><button class="status-button accepted-button">
+                    Awarded
+                </button></td>
+               <% }else{%>
+                <td>
+                  <button class="status-button pending-button">
+                  <%=j.application_status%>
+                </button></td>
+               <% }%>  
+                <td><div class="dropdown">
+                  <input type="text" id="singleJobViewId" value="<%=j.Job.id%>" hidden>
+                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#" id="viewJob" data-toggle="modal" data-target="#viewjobModal" >View Details</a>
+                        <a href="/user/delete-job-application/<%=j.Job.id%>">Delete</a>
+                    </div>
+                    </div> </td>
+              </tr>
+              <% count++; }); %>
+            </tbody>
+          </table>
+    </div>
+    
+    
+    <div class="col-md-12" id="jobAwarded" style="display: none;">
+        <p><%=jobAwarded%> Jobs Awarded</p>
+        <table class="table .table-borderless m-auto">
+            <thead class="thead-blue">
+              <tr>
+                <th scope="col">Job Title</th>
+                <th scope="col">Date Awarded</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% count = 1;
+              jobsAwarded.map(j =>{ %>
+              <tr>
+                <td><%=j.Job.job_title%></td>
+                <td><%=j.Job.createdAt.toDateString()%></td>
+                <td>$<%=j.Job.job_price%></td>
+
+                  <td><button class="status-button accepted-button">
+                    <%=j.application_status%>
+                </button></td>
+   
+                <td><div class="dropdown">
+                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Go to workspace</a>
+                        <a class="text-muted" href="/user/accept-job/<%=j.id%>">Accept</a>
+                        <a class="text-muted" href="#">Decline</a>
+                    </div>
+                    </div> </td>
+              </tr>
+              <% count++; }); %>
+            </tbody>
+          </table>
+    </div>
+    <div class="col-md-12" id="jobProgress" style="display: none;">
+        <p><%=jobInproCount%> Jobs in progress</p>
+        <table class="table .table-borderless m-auto">
+            <thead class="thead-blue">
+              <tr>
+                <th scope="col">Job Title</th>
+                <th scope="col">Date Awarded</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <% count = 1;
+              jobsInproCount.map(j =>{ %>
+              <tr>
+                <td><%=j.job_title%></td>
+                <td><%=j.createdAt.toDateString()%></td>
+                <td>$<%=j.job_price%></td>
+                <td><button class="status-button pending-button">
+                  <%=j.job_status%>
+                </button></td>
+                <td><div class="dropdown">
+                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Mark as Complete</a>
+                        <a href="#">Go to Workspace</a>
+                        <a href="#">Withdraw</a>
+                      
+                    </div>
+                    </div> </td>
+              </tr>
+              <% count++; }); %>
+            </tbody>
+          </table>
+    </div> 
+    
+    <div class="col-md-12" id="jobComplete" style="display: none;">
+        <p><%=jobCompCount%>  Job completed</p>
+        <table class="table .table-borderless m-auto">
+            <thead class="thead-blue">
+              <tr>
+                <th scope="col">Job Title</th>
+                <th scope="col">Date Awarded</th>
+                <th scope="col">Price</th>
+                <th scope="col">Status</th>
+                <th scope="col"></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>  
+                <td>Design Mobile App UI</td>
+                <td>15/07/2020</td>
+                <td>Alex Amankwa</td>
+                <td><button class="status-button accepted-button">
+                    completed
+                </button></td>
+                <td><div class="dropdown">
+                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
+                    <div class="dropdown-content">
+                        <a href="#">Request Payment</a>
+                        <a href="#">Go to Workspace</a>
+                        <a href="#">Delete</a>
+                      
+                    </div>
+                    </div> </td>
+              </tr>
+            </tbody>
+          </table>
+    </div>    
+</div>
+
+
+
+
+
+                  <!-- MODAL FOR VIEWING OF JOB DETAILS COMES HERE -->
+
+                  <div class="modal text-center" id="viewjobModal" tabindex="-1" role="dialog">
+                    <div class="modal-dialog" role="document">
+                      <div class="modal-content">
+                        <div class="modal-title">
+                          <h3 class="modal-title mt-2" id="jobViewTitle" >Job Details</h3>
+                         
+                        </div>
+
+                        <div class="modal-body">
+
+                          <div class="row">
+
+                            <div class="col-md-5">
+                              <div class="card view-modal-card">
+                                <div class="card-body text-center">
+                                  <img src='../../vendors/img/1.jpg' class="modal-job-view-img mt-3 mb-3" alt="...">
+
+                                  <div class="">
+                                    <h5 id="jobViewName"></h5>
+                        
+                                    <div>
+                                        <h5 id="jobViewJobTitle"></h5>
+                                    </div>
+                        
+                                    <div>
+                                        <span id="jobViewCityCountry" ><i class="fa fa-map-marker mb-5" style="color: red;" ></i>&nbsp;</span>
+                                    </div>
+                                </div>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-7">
+                              <div>
+                                <h4 class="text-muted col-md-12 mt-2">Description</h4>
+                            </div>
+        
+                            <div class="col-md-12">
+                                <h6 id="jobViewDes" class="text-muted"></h6>
+                            </div>
+        
+                            <h4 class="text-muted col-md-12 mt-5" style="float: left; color: #373833;">Skills Required</h4>
+        
+                            <div class="col-md-12 justify-content-around mb-5">
+                                <div class="col-md-3 mr-1  badge badge-secondary">
+                                    <h6 id="jobViewSkills"></h6>
+                                </div>
+                            </div>
+        
+                            </div>
+                          </div>
+                          
+                        </div>
+        
+                        
+                       
+                      </div>
+                    </div>
+                </div>

@@ -13,7 +13,7 @@ module.exports.GetSignUp = (req, res, next ) => {
    let  signUpTypeBusiness = ''
     let signUpTypeIndividual = ''
  
-
+  
     if(req.params.type === 'individual'){
 
         signUpTypeBusiness = ''
@@ -129,20 +129,28 @@ module.exports.DoSignUp = async (req, res, next) => {
             )
     
         }else{
+
             let user_Account = await UserAccount.create(userInfo);
+
             if(user_Account.id!==null){
     
                 let individual_info = {
                     UserId: user_Account.id,
-                    username: '',
-                    firstname:'',
+                    firstname: '',
                     lastname:'',
+                    jobtitle:'',
+                    availability:'',
+                    golden_paragraph:'',
                     gender:'',
+                    alpha2code:'',
                     dob:'',
-                    specialization:'',
-                    about:'',
-                    mobile:''
+                    phone:'',
+                    country:'',
+                    city:'',
+                    country_code:''
                 };
+
+
                 let individual_user_details = User.create(individual_info);
     
                 if(individual_user_details.id !== null){
@@ -155,6 +163,8 @@ module.exports.DoSignUp = async (req, res, next) => {
                     }catch(e){
                         console.log(e);
                     }
+
+
                     //send verification email
                     SendMailVerify(userInfo.email, token, hostname);
         
@@ -163,6 +173,9 @@ module.exports.DoSignUp = async (req, res, next) => {
                         "auth/success-register",
                         
                         {
+                            hostname:hostname,
+                            email:userInfo.email,
+                            token:token,
                             page:'signup',
                             signUpSuccessMessage:'An email has been sent to your account to verify.'
                         });
@@ -226,9 +239,14 @@ module.exports.DoSignUp = async (req, res, next) => {
     
                 let business_user_info = {
                     UserId: user_Account.id,
-                    name: '',
-                    location: '',
-                    certificate: ''
+                    businessname: '',
+                    service: '',
+                    availability: '',
+                    golden_paragraph:'',
+                    country:'',
+                    city:'',
+                    alpha2code:'',
+                    phone:''
                 }
     
                 let business_user_details = BusinessUser.create(business_user_info);
@@ -245,7 +263,14 @@ module.exports.DoSignUp = async (req, res, next) => {
     
                                 //send verification email
                 SendMailVerify(userInfo.email, token, hostname);
-                res.render("auth/success-register",{page:'business-signup',signUpSuccessMessage:'An email has been sent to your account to verify.'});
+                res.render("auth/success-register",
+                {
+                    hostname:hostname,
+                    email:userInfo.email,
+                    token:token,
+                    page:'business-signup',
+                    signUpSuccessMessage:'An email has been sent to your account to verify.'
+                });
     
                 }
                
@@ -269,9 +294,16 @@ module.exports.DoSignUp = async (req, res, next) => {
             }
     
         }else{
-            let error = 'Please enter a valid email address';
-            let success = '';
-            res.redirect(req.originalUrl);
+            res.render(
+                'auth/signup',
+                {
+                    signUpTypeBusiness:'',
+                    signUpTypeIndividual:'Individual',
+                    page:'signup',
+                    signUpErrorMessage:'Enter a valid email address',
+                    signUpSuccessMessage:''
+                }
+            )
     
         }
 
@@ -279,6 +311,30 @@ module.exports.DoSignUp = async (req, res, next) => {
    }
 
 };
+
+
+module.exports.ResendVerificationEmail = async (req, res, next ) => {
+                        //send verification email
+
+                        let userInfo = {
+                            email:req.body.email,
+                            token:req.body.token,
+                            hostname:req.body.hostname
+                        }
+
+                        SendMailVerify(userInfo.email, userInfo.token, userInfo.hostname);
+        
+                        res.render(
+                            
+                            "auth/verification-resend",
+                            
+                            {
+                                email:userInfo.email,
+                                token:userInfo.token,
+                                hostname:userInfo.hostname,
+                                page:'verification-resend'
+                            });
+}
 
 
 

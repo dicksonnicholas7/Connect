@@ -4,23 +4,88 @@
 
     </div>  
     <div class="header__right">
+
+       
+            <ul class="menu">
+               
+                <li class="menu-item-has-children mr-3"><a href="/">HOME</a><span class="sub-toggle"></span></li>
+                <li class="menu-item-has-children mr-3"><a href="/about">ABOUT</a><span class="sub-toggle"></span></li>    
+            </ul>
+
+        <% if(user){%>
+        <div class="header__center">
+
+            <div class="dropdown show">
+                <% if(individualuser){%>
+                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <% if(individualuser.picture !== null ){%>
+                    <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
+                    <% }else{ %>
+                </a>
+                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/avatar.png" width="50px" height="50px"  alt="Connect Logo">
+                     <%}%>
+                </a>
+                <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">
+                    <% if(user.RoleId === 1){%>
+                    <a class="dropdown-item homepage-dropdown" href="/user/individual-client-profile">Profile</a>
+                    <% }else if (user.RoleId === 2){ %>
+                        <a class="dropdown-item homepage-dropdown" href="/user/individual-freelancer-profile">Profile</a>
+                    <%}%>
+                    <a class="dropdown-item homepage-dropdown" href="#">Get Support</a>
+                    <a class="dropdown-item homepage-dropdown" href="#">User Settings</a>
+                    <a class="dropdown-item homepage-dropdown" href="/logout">Logout</a>
+                  </div>
+                <% }else{ %>
+                    <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <% if(businessuser.picture !== null ){%>
+                        <img style="border-radius: 50%;" src="../../images/users/business/<%=businessuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
+                        <% }else{ %>
+                            <img style="border-radius: 50%;" src="../../images/users/business/avatar.png" width="50px" height="50px"  alt="Connect Logo">
+                            <%}%>  
+                    </a>
+                    <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">
+                        <% if(user.RoleId === 1){%>
+                        <a class="dropdown-item homepage-dropdown" href="/user/business-client-profile">Profile</a>
+                        <% }else if (user.RoleId === 2){ %>
+                            <a class="dropdown-item homepage-dropdown" href="/user/business-freelancer-profile">Profile</a>
+                        <%}%>
+                        <a class="dropdown-item homepage-dropdown" href="#">Get Support</a>
+                        <a class="dropdown-item homepage-dropdown" href="#">User Settings</a>
+                        <a class="dropdown-item homepage-dropdown" href="/logout">Logout</a>
+                      </div>
+                <%}%>
+            </div>
+        </div>
+        <% }else{ %>
         <ul class="menu">
            
-            <li class="menu-item-has-children"><a href="/login">SIGN IN</a><span class="sub-toggle"></span>
-            <li class="menu-item-has-children"><a href="/signup-page">SIGN UP</a><span class="sub-toggle"></span>
-
+            <li class="menu-item-has-children"><a href="/login">LOG IN</a><span class="sub-toggle"></span></li>
+            <li class="menu-item-has-children"><a href="/signup-page">SIGN UP</a><span class="sub-toggle"></span></li>
+            <li
+                
+                class="menu-item-has-children  fa fa-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><a href="/signup-page">BROWSE</a><span class="sub-toggle"></span></li>
             </li>
 
+            <div class="dropdown-menu index-homepage">
+                <a class="dropdown-item homepage-dropdown" href="/find-freelancers">Freelancers</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item homepage-dropdown" href="/find-jobs">Jobs</a>
+            </div>
+
         </ul>
+
+        <%}%>
         <!--<div class="header__actions"><a class="ps-btn" href="/login">POST A JOB</a></div>-->
     </div>
+
 </header>
 <header class="header header--mobile" data-sticky="false">
     <div class="header__content">
         <div class="header__left"><a class="ps-toggle--sidebar" href="#navigation-mobile"><i class="fa fa-bars"></i></a>
         </div>
-        <div class="header__center"><a class="ps-logo" href="#"><img src="/vendors/img/logo-nav2.svg" width="150px"
-                    height="70px" alt="Connect Logo"></a>
+        <div class="header__center">
+            <a class="ps-logo" href="#"><img src="/vendors/img/logo-nav2.svg" width="150px" height="70px" alt="Connect Logo"></a>
         </div>
         <div class="header__right">
             <div class="header__actions"><a class="ps-search-btn" href=""><i class="fa fa-search"></i></a></div>
@@ -33,7 +98,23 @@
     </div>
     <div class="ps-panel__content">
         <ul class="menu--mobile">
-            <li><a href="/">Freelancers</a></li>
+            <li class="menu-item-has-children"><a href="/">HOME</a><span class="sub-toggle"></span></li>
+            <li class="menu-item-has-children"><a href="/about">ABOUT</a><span class="sub-toggle"></span></li>
+            <li class="menu-item-has-children"><a href="/login">LOG IN</a><span class="sub-toggle"></span></li>
+            <li class="menu-item-has-children"><a href="/signup-page">SIGN UP</a><span class="sub-toggle"></span></li>
+            <li
+                
+                class="menu-item-has-children  fa fa-search" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" ><a href="/signup-page">BROWSE</a><span class="sub-toggle"></span></li>
+            </li>
+
+            <div class="dropdown-menu index-homepage">
+                <a class="dropdown-item homepage-dropdown" href="/find-freelancers">Find Freelancers</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item homepage-dropdown" href="/find-clients">Find Clients</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item homepage-dropdown" href="find-jobs">Browse Jobs</a>
+            </div>
+
 
         </ul>
     </div>

@@ -1,5 +1,34 @@
 const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
+const db = require("../../models");
+const { QueryTypes } = require('sequelize');
+
+
+module.exports.GetSingleJob = async (req, res, next ) => {
+
+let jobId = req.params.id;
+
+let job = await Job.findOne({where:{id:jobId}});
+
+let sql = "SELECT DISTINCT jobapplications.id, users.firstname, users.lastname, users.UserId, users.jobtitle, users.country, users.city " +
+		"FROM `jobapplications` " +
+        	"LEFT JOIN jobs ON jobs.id = jobapplications.JobId " + 
+        	" LEFT JOIN useraccounts ON jobapplications.FreelanceId = useraccounts.id  " +
+            "LEFT JOIN users ON users.UserId = jobapplications.FreelanceId  " + 
+            "WHERE jobapplications.JobId = " + jobId;
+
+            const [applicants, metadata] = await db.sequelize.query(sql);
+
+    res.render(
+        'job/job-view',
+        {
+            applicants,
+            job,
+            page:'job-view'
+        }
+    )
+}
+
 
 module.exports.UpdateJob = async (req, res, next) => {
     let jobInfo = {
