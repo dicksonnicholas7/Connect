@@ -5,8 +5,16 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#profile')
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+                .width(50)
+                .height(50);
+
+                $('#profile2')
+                .attr('src', e.target.result)
+                .width(96)
+                .height(100); $('#profile')
+                .attr('src', e.target.result)
+                .width(96)
+                .height(100);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -19,8 +27,8 @@ function businessLogoUpload(input) {
         reader.onload = function (e) {
             $('#business-logo')
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+                .width(96)
+                .height(100);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -33,8 +41,8 @@ function portfolioProfile1(input) {
         reader.onload = function (e) {
             $('#portfolio-profile1')
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+                .width(96)
+                .height(100);
         };
 
         reader.readAsDataURL(input.files[0]);
@@ -47,8 +55,8 @@ function portfolioProfile2(input) {
         reader.onload = function (e) {
             $('#portfolio-profile2')
                 .attr('src', e.target.result)
-                .width(150)
-                .height(200);
+                .width(96)
+                .height(100);
         };
         reader.readAsDataURL(input.files[0]);
     }
