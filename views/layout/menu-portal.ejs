@@ -9,22 +9,22 @@
 
 
 
-<div class="  container-fluid sticky-top" >
+<div class="  container-fluid sticky-top" >   
     <div class="row">
         <div class="card-header-dash">
             <ul class="nav">
                 <li class="nav-item">
                     <% if(individualuser){%>
                         <% if(user.RoleId === 2){%>
-                  <a class="nav-link active" href="#">Freelancer Dashboard</a>
+                  <a class="nav-link active" href="/user/dashboard-individual-freelancer">Dashboard</a>
                         <% }else{ %>
-                            <a class="nav-link active" href="#">Client Dashboard</a>
+                            <a class="nav-link active" href="/user/dashboard-individual-client">Dashboard</a>
                             <%}%>
                   <% }else{ %>
                     <% if(user.RoleId === 2){%>
-                        <a class="nav-link active" href="#">Business Freelancer Dashboard</a>
+                        <a class="nav-link active" href="/user/dashboard-business-freelancer">Business Freelancer Dashboard</a>
                               <% }else{ %>
-                                  <a class="nav-link active" href="#">Business Client Dashboard</a>
+                                  <a class="nav-link active" href="/user/dashboard-business-client">Business Client Dashboard</a>
                              <%}%>
                   <%}%>
                 </li>

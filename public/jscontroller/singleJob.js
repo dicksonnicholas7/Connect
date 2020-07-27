@@ -4,11 +4,14 @@ $(document).ready(function(){
 
         var jobId = $("#singleJobViewId").val();
 
+        console.log(jobId)
+
         $.ajax({
             type: "GET", 
             url:'/user/view-single-job/' + jobId,
             async: false,
             success:function(response){
+                console.log(response)
                 $("#jobViewTitle").text(response.job.job_title);
                 $("#jobViewName").text(response.user.firstname + "   " + response.user.lastname );
                 $("#jobViewJobTitle").text(response.user.jobtitle);
