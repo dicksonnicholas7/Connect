@@ -5,6 +5,14 @@ function readURL(input) {
         reader.onload = function (e) {
             $('#profile')
                 .attr('src', e.target.result)
+                .width(50)
+                .height(50);
+
+                $('#profile2')
+                .attr('src', e.target.result)
+                .width(96)
+                .height(100); $('#profile')
+                .attr('src', e.target.result)
                 .width(96)
                 .height(100);
         };
