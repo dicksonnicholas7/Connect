@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const Skills = require('../../models').Skills;
 const JobCategory = require('../../models').JobCategory;
 const UserAccount = require('../../models').UserAccount;
 const User = require('../../models').User;
@@ -9,6 +10,8 @@ const User = require('../../models').User;
 
 
 module.exports.GetIndividualPostJob = async (req, res, next) => {
+
+    let skills = await Skills.findAll();
 
     let freelancers = await UserAccount.findAll({
         where: {
@@ -27,6 +30,7 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
         'job/individual-post-job',
         {
             category,
+            skills,
             freelancers,
             successMessage:'',
             errorMessage:''
@@ -48,15 +52,15 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
 
         let jobInfo = {
             ClientId: res.locals.user.id,
-            title: req.body.title,
-            details: req.body.details,
-            timeLength: req.body.timeLength_number + req.body.timeLength_period,
-            price: req.body.price,
-            skills: req.body.skills,
-            CatId: req.body.category,
-            jobType:jobType,
-            UserType:'individual',
-            status:'new'
+            job_title: req.body.title,
+            job_details: req.body.details,
+            job_timeLength: req.body.timeLength_number + req.body.timeLength_period,
+            job_price: req.body.price,
+            job_skills: req.body.skills,
+            job_CatId: req.body.category,
+            job_jobType:jobType,
+            job_UserType:'individual',
+            job_status:'new'
         };
 
         console.log(jobType)
@@ -140,15 +144,15 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
 
                 let jobInfo = {
                     ClientId: res.locals.user.id,
-                    title: req.body.title,
-                    details: req.body.details,
-                    timeLength: req.body.timeLength_number +' '+ req.body.timeLength_period,
-                    price: req.body.price,
-                    skills: req.body.skills,
+                    job_title: req.body.title,
+                    job_details: req.body.details,
+                    job_timeLength: req.body.timeLength_number +' '+ req.body.timeLength_period,
+                    job_price: req.body.price,
+                    job_skills: req.body.skills,
                     CatId: req.body.category,
-                    jobType:jobType,
-                    UserType:'individual',
-                    status:'new'
+                    job_jobType:jobType,
+                    job_UserType:'individual',
+                    job_status:'new'
                 };
         
                 let job_created = await Job.create(jobInfo);

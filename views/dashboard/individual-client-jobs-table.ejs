@@ -1,7 +1,7 @@
 <link rel="stylesheet" type="text/css" href="/vendors/css/job-table.css"/>
 <div class="row mb-2">
     <div class="col-md-12" id='jobPosted' style="display: none;">
-        <p>3 Jobs posted</p>
+        <p><%=allJobsCount%> Jobs posted</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -12,52 +12,33 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 0;
+              jobs.map(j =>{ %>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>3</td>
+                <td><%=j.job_title%></td>
+                <td><%=j.createdAt.toDateString()%></td>
+                 <% if(j.JobApplication!== null){ %>
+                     <td><%=j.JobApplication.length%></td>
+                 <% }else{ %>
+                    <td>0</td>
+                 <% } %>
                 <td><div class="dropdown">
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
-                        <a href="#">View</a>
+                        <a href="/user/job-view/<%=j.id%>">View</a>
                         <a href="#">Edit</a>
                         <a href="#">Delete</a>
                     </div>
                     </div> </td>
               </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>3</td>
-                <td><div class="dropdown">
-                <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
-                <div class="dropdown-content">
-                    <a href="#">View</a>
-                    <a href="#">Edit</a>
-                    <a href="#">Delete</a>
-                </div>
-                </div> </td>
-              </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>10/07/2020</td>
-                <td>3</td>
-                <td><div class="dropdown">
-                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
-                    <div class="dropdown-content">
-                        <a href="#">View</a>
-                        <a href="#">Edit</a>
-                        <a href="#">Delete</a>
-                    </div>
-                    </div> </td>
-              </tr>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
-    
+      
     
     <div class="col-md-12" id="jobsAwarded" style="display: none;">
-        <p>2 Jobs Awarded</p>
+        <p><%=JobsAwardedCount%> Jobs Awarded</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -69,38 +50,34 @@
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>15/07/2020</td>
-                <td>Alex Amankwa</td>
-                <td><button class="status-button accepted-button">
-                    Accepted
-                </button></td>
-                <td><div class="dropdown">
-                    <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
-                    <div class="dropdown-content">
-                        <a href="#">Go to workspace</a>
-                        <a class="text-muted" href="#">Make Payment</a>
-                        <a class="text-muted" href="#">Edit</a>
-                        <a class="text-muted" href="#">Delete</a>
-                        <a href="#">Withdraw</a>
-                    </div>
-                    </div> </td>
-              </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>15/07/2020</td>
-                <td>Ama Brobbey</td>
-                <td><button class="status-button pending-button">
-                    Pending
-                </button></td>
-                <td class="text-muted"><i class="fa fa-ellipsis-v"></i></td>
-              </tr>
+              <% count = 0;
+              jobs_results.map(j =>{ %>
+                <%if(j.application_status === 'awarded' || j.application_status === 'accepted' ){%>
+                  <tr>
+                    <td><%=j.job_title%></td>
+                    <td><%=j.updatedAt.toDateString()%></td>
+                    <td><%=j.firstname%>   <%=j.lastname%></td>
+                    <td><button class="status-button accepted-button">
+                      <%=j.application_status%>
+                    </button></td>
+                    <td><div class="dropdown">
+                        <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
+                        <div class="dropdown-content">
+                            <a href="#">Go to workspace</a>
+                            <a class="text-muted" href="#">Make Payment</a>
+                            <a class="text-muted" href="#">Edit</a>
+                            <a class="text-muted" href="#">Delete</a>
+                            <a href="#">Withdraw</a>
+                        </div>
+                        </div> </td>
+                  </tr>
+               <% } %>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
     <div class="col-md-12" id="jobsProgress" style="display: none;">
-        <p>2 Jobs in progress</p>
+        <p><%=JobsInProgressCount%> Jobs in progress</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -109,11 +86,14 @@
                 <th scope="col">Status</th>
                 <th scope="col"></th>
               </tr>
-            </thead>
+            </thead>  
             <tbody>
+              <% count = 0;
+              jobs_results.map(j =>{ %>
+                <%if(j.job_status === 'in progress'){%>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>Alex Amankwa</td>
+                <td><%=j.job_title%></td>
+                <td><%=j.firstname%>   <%=j.lastname%></td>
                 <td><button class="status-button pending-button">
                     Ongoing
                 </button></td>
@@ -128,20 +108,14 @@
                     </div>
                     </div> </td>
               </tr>
-              <tr>
-                <td>Design Mobile App UI</td>
-                <td>Ama Brobbey</td>
-                <td><button class="status-button accepted-button">
-                    Completed
-                </button></td>
-                <td class="text-muted"><i class="fa fa-ellipsis-v"></i></td>
-              </tr>
+              <% } %>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>
     
     <div class="col-md-12" id="jobsCompleted" style="display: none;">
-        <p>1 Job completed</p>
+        <p><%=JobsCompletedCount%> Job completed</p>
         <table class="table .table-borderless m-auto">
             <thead class="thead-blue">
               <tr>
@@ -152,14 +126,19 @@
               </tr>
             </thead>
             <tbody>
+              <% count = 0;
+              jobs_results.map(j =>{ %>
+                <%if(j.job_status === 'completed'){%>
               <tr>
-                <td>Design Mobile App UI</td>
-                <td>15/07/2020</td>
-                <td>Alex Amankwa</td>
+                <td><%=j.job_title%></td>
+                <td><%=j.updatedAt.toDateString()%></td>
+                <td><%=j.firstname%>   <%=j.lastname%></td>
                 <td><button class="status-button review-button">
                     Review
                 </button></td>
               </tr>
+              <% } %>
+              <% count++; }); %>
             </tbody>
           </table>
     </div>    

@@ -251,7 +251,7 @@ module.exports.UploadBusinessCertificate = async (req, res, next ) => {
         //use multer to upload file to public/images folder
         let filenameGlobal='';
         const storage = multer.diskStorage({
-            destination:'./public/images/users/business/',
+            destination:'./public/files/',
             filename: function(req,file,cb){
                 filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
                 cb(null,filenameGlobal);

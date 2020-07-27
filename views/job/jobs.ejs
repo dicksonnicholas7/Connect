@@ -238,7 +238,7 @@
                     <strong><%=applyErrorMessage%></strong> 
                   </div>
             <% } %>
-
+ 
 
 <%if(jobs){%>
                 <% jobs.map( job => { %>
@@ -252,10 +252,10 @@
                                             <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5" alt="...">
                                         </div>
                                         <div>
-                                            <h4 class="title-job mt-3"><%=job.title%></h4>
+                                            <h4 class="title-job mt-3"><%=job.job_title%></h4>
                                             
                                             <div class="d-flex justify-content-around">
-                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.city%>,  <%=job.country%>   </span>
+                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.job_city%>,  <%=job.job_country%>   </span>
                                                 <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
                                             </div>
                                             
@@ -264,7 +264,7 @@
                                     </div>
             
                                     <div class="col-md-2">
-                                        <h6 class="price mt-5">$<%=job.price%></h6>
+                                        <h6 class="price mt-5">$<%=job.job_price%></h6>
                                     </div>
                                 </div>
                             </div>
@@ -291,7 +291,7 @@
                                 <h5 class="title-job ">
 
                                     <%if(page === "all-jobs"){%>
-                                        <%=jobs[0].title%>
+                                        <%=jobs[0].job_title%>
                                    <% }else if(page === "single-jobs"){%>
                                         <%=job_details.title%>
                                    <% }%>
@@ -310,7 +310,7 @@
                             <div>
                                 <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
                                     <% if(page === "all-jobs"){%>
-                                        &nbsp;<%=jobs[0].city%>,  <%=jobs[0].country%>
+                                        &nbsp;<%=jobs[0].job_city%>,  <%=jobs[0].job_country%>
                                    <% }else if(page === "single-jobs"){%>
                                     &nbsp;<%=job_details.city%>,  <%=job_details.country%>
                                    <%}%>
@@ -323,7 +323,7 @@
                                 <h6 class="price-sidebar mb-5 ">
 
                                     <%  if(page === "all-jobs"){%>
-                                        $ <%=jobs[0].price%>
+                                        $ <%=jobs[0].job_price%>
                                  <%   }else if(page === "single-jobs"){ %>
                                         <%=job_details.price%>
                                   <%  }%>
@@ -338,7 +338,7 @@
                                 <div>
                                     <p class="text-justify mb-5" style="float: left; color: #373833;">
                                         <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].details%>
+                                            <%=jobs[0].job_details%>
                                        <% }else if(page === "single-jobs"){%>
                                         <%=job_details.details%>
                                        <% } %>
@@ -353,7 +353,7 @@
                                 <div>
                                     <p class="text-justify mb-5" style="float: left; color: #373833;">
                                         <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].skills%>
+                                            <%=jobs[0].job_skills%>
                                        <% }else if(page === "single-jobs"){%>
                                         <%=job_details.skills%>
                                        <% }%>
@@ -401,7 +401,7 @@
                                     <h5 class="title-job ">
                                        
                                         <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].title%>
+                                            <%=jobs[0].job_title%>
                                        <% }else if(page === "single-jobs"){%>
                                         <%=job_details.title%>
                                        <% }%>
@@ -422,7 +422,7 @@
                                     <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
                                     
                                         <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].city%>, <%=jobs[0].country%>
+                                            <%=jobs[0].job_city%>, <%=jobs[0].job_country%>
                                        <% }else if(page === "single-jobs"){%>
                                         <%=job_details.city%>, <%=jobs[0].country%>
                                        <% }%>
@@ -433,7 +433,7 @@
                                     <h6 class="price-sidebar mb-5 ">$
                                        
                                         <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].price%>
+                                            <%=jobs[0].job_price%>
                                        <% }else if(page === "single-jobs"){%>
                                         <%=job_details.price%>
                                        <% }%>
