@@ -111,7 +111,7 @@
                                         <div class="form-group col-md-6">
                                             <label for="Skills">Skills</label>
                                             <select name="skills" id="skills" class="form-control"  multiple="multiple" style="display: none;">
-                                                <% skills.map(s =>{ %>
+                                                <% all_skills.map(s =>{ %>
                                                 <option value="<%=s.name%>"><%=s.name%></option>
                                                 <% }); %>
                                             </select>
@@ -148,6 +148,14 @@
                                             </div>
                                         </div>
                                     </div>
+
+
+                                    <!-- <div class="form-row">
+                                        <select name="freelancers" id="freelancers" class="form-control"  multiple="multiple">
+                                            <% freelancers.map(s =>{ %>
+                                            <option value="<%=s.id%>"><%=s.User.firstname%>   <%=s.User.lastname%></option>
+                                            <% }); %>
+                                        </select> -->
 
                                     <div class="form-row justify-content-center">
                                         <div class="col-md-3 mb-5">

@@ -5,7 +5,7 @@ const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteC
 const { GetBusinessFreelancerCompleteProfile,GetBusinessFreelancerCompletePortfolio, GetBusinessFreelancerCompleteSkills, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessProfile, UploadBusinessCertificate, GetBusinessCertificate } = require('../controllers/Profile/BusinessProfile');
 const  { GetBusinessPortfolio } = require('../controllers/Profile/BusinessPortfolio');
 const  { GetBusinessSkills } = require('../controllers/Profile/BusinessSkills');
-const { GetIndividualPostJob, DoIndividualPostJob} = require('../controllers/Job/PostJob');
+const { GetIndividualPostJob, DoIndividualPostJob, GetAllIndividualFreelancers} = require('../controllers/Job/PostJob');
 const { GetBusinessPostJob, DoBusinessPostJob} = require('../controllers/Job/BusinessPostJob');
 const { GetDashboardSwitch } = require('../controllers/Dashboard/DashboardSwitch');
 const {NotVerified} = require('../controllers/Auth/Verify');
@@ -26,6 +26,8 @@ const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
 
   
+
+router.get('/all-freelancers', GetAllIndividualFreelancers);
 
 
 router.get('/award-job/:id', AwardJob);

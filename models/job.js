@@ -5,7 +5,6 @@ module.exports = (sequelize, DataTypes) => {
     job_details: DataTypes.STRING,
     job_timeLength: DataTypes.STRING,
     job_price: DataTypes.DECIMAL(6, 2),
-    job_skills: DataTypes.STRING,
     job_status: DataTypes.STRING,
     job_jobType: DataTypes.INTEGER,
     job_UserType:DataTypes.STRING
@@ -22,6 +21,11 @@ module.exports = (sequelize, DataTypes) => {
       onUpdate: 'CASCADE'
     });
 
+    Job.hasMany(models.JobSkills,{
+      as:'JobSkills',
+      foreignKey:'JobId',
+      onDelete: 'CASCADE'
+    })
 
     Job.hasMany(models.JobApplication,{
       as:'JobApplication',
