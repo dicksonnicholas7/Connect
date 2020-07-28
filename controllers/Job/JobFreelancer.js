@@ -195,7 +195,7 @@ module.exports.GetJobById = async (req, res, next ) => {
      )
 
 }
-
+  
 
    
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
