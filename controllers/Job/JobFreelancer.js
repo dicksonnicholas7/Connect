@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const JobSkills = require('../../models').JobSkills;
 const JobApplication = require('../../models').JobApplication;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
@@ -77,7 +78,7 @@ module.exports.ApplyJob = async (req, res, next) => {
 
         error = 'You have already applied for this Job.'
 
-        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
@@ -157,42 +158,60 @@ module.exports.GetJobById = async (req, res, next ) => {
 
     let job = await Job.findOne({where:{id:job_id}});
 
-    
+    if(job!==null){
 
+
+        let job_skills = await JobSkills.findAll({where:{JobId:job.id}});
+
+
+        if(job_skills !== null ){
+
+            console.log("skills"+job_skills)
+            
     let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
-        "FROM jobs "+
-        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "FROM jobs "+
+    "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+    "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
-     let user = await User.findOne({where:{UserId:job.ClientId}});
+ let user = await User.findOne({where:{UserId:job.ClientId}});
 
-     const [jobs, metadata] = await db.sequelize.query(sql);
-  
+ const [jobs, metadata] = await db.sequelize.query(sql);
 
-     let job_details = {
-        id:job_id,
-        title:job.job_title,
-        firstname:user.firstname,
-        lastname:user.lastname,
-        country:user.country,
-        city:user.city,
-        details:job.job_details,
-        price:job.job_price,
-        skills:job.job_skills
+
+ let job_details = {
+    id:job_id,
+    title:job.job_title,
+    firstname:user.firstname,
+    lastname:user.lastname,
+    country:user.country,
+    city:user.city,
+    details:job.job_details,
+    price:job.job_price
+}
+
+
+console.log(job_details)
+
+ res.render(
+     'job/jobs',
+     {
+        applyErrorMessage:'',
+         job_details,
+         job_skills,
+         jobs,
+         page: 'single-jobs'
+     }
+ )
+
+        }else{
+            console.log('no skills associated with that job')
+        }
+    }else{
+        console.log('job not found')
     }
 
+    
 
-    console.log(job_details)
-
-     res.render(
-         'job/jobs',
-         {
-            applyErrorMessage:'',
-             job_details,
-             jobs,
-             page: 'single-jobs'
-         }
-     )
 
 }
   
@@ -200,25 +219,37 @@ module.exports.GetJobById = async (req, res, next ) => {
    
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
-
+    
     let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
-        "FROM jobs "+
-        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "FROM jobs "+
+    "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+    "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
-        const [jobs, metadata] = await db.sequelize.query(sql);
+    const [jobs, metadata] = await db.sequelize.query(sql);
 
-        console.log(jobs)
-        console.log(jobs.id)
+    let job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});
+
+
+    if(job_skills !== null ){
+
+        console.log("skills"+job_skills)
      
         res.render(
             'job/jobs',
             {
                 applyErrorMessage:'',
                 jobs,
+                job_skills,
                 page: 'all-jobs'
             }
         )
+
+
+    }else{
+
+        console.log('jobs selected have no skills')
+    }
+    
 }
 
 module.exports.GetJobsFilterFreel = async (req, res, next)=>{
