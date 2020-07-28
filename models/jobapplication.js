@@ -1,7 +1,8 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const JobApplication = sequelize.define('JobApplication', {
-    status: DataTypes.STRING
+    application_status: DataTypes.STRING,
+    application_message: DataTypes.STRING
   }, {});
   JobApplication.associate = function(models) {
     // associations can be defined here
@@ -14,6 +15,6 @@ module.exports = (sequelize, DataTypes) => {
       foreignKey:'JobId',
       onDelete: 'CASCADE'
     });
-  };
+  };  
   return JobApplication;
 };

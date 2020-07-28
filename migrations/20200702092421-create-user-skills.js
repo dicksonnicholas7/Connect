@@ -48,15 +48,7 @@ module.exports = {
         references:{
           model: 'UserAccounts',
           key:'id'
-        }
-      },
-      SkillsCatId:{
-        type: Sequelize.INTEGER,
-        onUpdate: 'CASCADE',
-        references:{
-          model: 'JobCategories',
-          key:'id'
-        }
+        },
       },
       name: {
         type: Sequelize.STRING

@@ -24,7 +24,6 @@ module.exports.DoBusinessPostJob = async (req, res, next) => {
 
     let jobType = 1;
 
-    
 
     if(!req.body.freelancers){
 

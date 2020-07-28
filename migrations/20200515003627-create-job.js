@@ -24,28 +24,28 @@ module.exports = {
           key:'id'
         }
       },
-      title: {
+      job_title: {
         type: Sequelize.STRING
       },
-      details: {
+      job_details: {
         type: Sequelize.STRING
       },
-      timeLength: {
+      job_timeLength: {
         type: Sequelize.STRING
       },
-      price: {
+      job_price: {
         type: Sequelize.DECIMAL(6, 2)
       },
-      skills: {
+      job_skills: {
         type: Sequelize.STRING
       },
-      status: {
+      job_status: {
         type: Sequelize.STRING
       },
-      jobType: {
+      job_jobType: {
         type: Sequelize.INTEGER
       },
-      UserType: {
+      job_UserType: {
         type: Sequelize.STRING
       },
       createdAt: {

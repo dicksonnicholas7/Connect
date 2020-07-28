@@ -20,11 +20,23 @@ const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
 const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
 const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
-const {GetJobById} = require('../controllers/Job/JobFreelancer');
+const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, GetSingleJobDetail } = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
+const {AwardJob} = require('../controllers/Job/ViewJobClient');
+const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
+
+  
 
 
-router.get('/job-view', GetSingleJob);
+router.get('/award-job/:id', AwardJob);
+router.get('/accept-job/:id', AcceptJob);
+router.get('/accept-job-business/:id', AcceptJobBusiness);
+
+
+
+router.get('/view-single-job-business/:id', GetSingleJobDetailBusiness);
+router.get('/view-single-job/:id', GetSingleJobDetail);
+router.get('/job-view/:id', GetSingleJob);
 
 
 router.get('/jobcategory', GetJobCat);
@@ -50,6 +62,7 @@ router.get('/dashboard-business-client', GetDashboardBusinessClient);
 router.get('/dashboard-individual-client', GetDashboardIndividualClient);
 router.get('/dashboard-individual-freelancer', GetDashboardIndividualFreelancer);
 router.get('/dashboard-admin', GetDashboardAdmin);
+
 
 
 
@@ -81,7 +94,9 @@ router.get('/business-post-job', GetBusinessPostJob);
 router.get('/individual-post-job', GetIndividualPostJob);
 
 router.get('/jobs', GetAllJobsFreelancer);
+router.get('/jobs-business', GetAllJobsFreelancerBusiness);
 router.get('/job/:id', GetJobById);
+router.get('/job-business/:id', GetJobByIdBusiness);
 
 
 router.get('/individual-client-profile', GetIndividualClientProfile);
@@ -109,6 +124,14 @@ router.post('/add-individual-skill', AddSkills);
 
 router.post('/post-individual-job', DoIndividualPostJob)
 router.post('/post-business-job', DoBusinessPostJob)
+
+
+router.post('/apply-job', ApplyJob);
+router.post('/apply-job-business', ApplyJobBusiness);
+
+router.get('/delete-job-application/:id', DeleteJobApplication);
+
+
 
 
 
