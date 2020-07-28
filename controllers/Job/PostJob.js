@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const Skills = require('../../models').Skills;
 const JobCategory = require('../../models').JobCategory;
 const UserAccount = require('../../models').UserAccount;
 const User = require('../../models').User;
@@ -9,6 +10,8 @@ const User = require('../../models').User;
 
 
 module.exports.GetIndividualPostJob = async (req, res, next) => {
+
+    let skills = await Skills.findAll();
 
     let freelancers = await UserAccount.findAll({
         where: {
@@ -27,6 +30,7 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
         'job/individual-post-job',
         {
             category,
+            skills,
             freelancers,
             successMessage:'',
             errorMessage:''
@@ -38,6 +42,7 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
 
 module.exports.DoIndividualPostJob = async (req, res, next) => {
 
+    let skills = await Skills.findAll();
     let hostname = req.headers.host;
 
     let jobType = 1;
@@ -77,6 +82,7 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
             res.render(
                 'job/individual-post-job',
                 {
+                    skills,
                     category,
                     freelancers,
                     successMessage:'Job Posted successfully',

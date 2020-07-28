@@ -109,7 +109,9 @@ module.exports.GetCompleteFreelancerPortfolio = async (req, res, next) => {
 
 module.exports.GetCompleteFreelancerSkills = async (req, res, next) => {
 
-    let skills = Skills.findAll();
+    let skills = await Skills.findAll();
+
+    console.log(skills)
 
     res.render(
         'profile/complete-individual-freelancer-skills',
@@ -190,7 +192,7 @@ module.exports.UpdateProfile = async (req, res, next) => {
                 country: req.body.country,
                 city: req.body.city,
                 email: req.body.email,
-                phone: req.body.phone,
+                phone: req.body.phone1 + " " + req.body.phone2 ,
                 picture: filenameGlobal
             };
 

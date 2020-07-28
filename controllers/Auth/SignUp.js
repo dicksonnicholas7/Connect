@@ -8,6 +8,10 @@ const {SendMailVerify} = require('./VerificationEmail');
 const validator = require("email-validator");
 
 
+module.exports.EmailVerify = (req, res, next) => {
+    res.render('email-verify')
+}
+
 module.exports.GetSignUp = (req, res, next ) => {
 
    let  signUpTypeBusiness = ''

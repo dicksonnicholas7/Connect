@@ -3,24 +3,36 @@ const Job = require('../../models').Job;
 const JobApplication = require('../../models').JobApplication;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
+const BusinessUser = require('../../models').BusinessUser;
 const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
 const db = require("../../models");
 const {GetDashboard} = require('../Dashboard/DashboardIndividualFreelancer');
+const {GetDashboardB} = require('../Dashboard/DashboardBusinessFreelancer');
 
 
 
-module.exports.GetSingleJobDetail = async (req, res, next ) => {
 
+
+
+
+module.exports.GetSingleJobDetailBusiness = async (req, res, next ) => {
+    
     let response = {
     }
 
     let jobId = req.params.id;
 
-    let jobdetails = await Job.findOne({where:{id:jobId}});
+    let jobdetails = await Job.findOne({where:{
+        [Op.and]: [
 
-    let client = await User.findOne({where:{UserId:jobdetails.ClientId}});
+                {id:jobId},
+                {job_UserType:'business'}
+        ]
+    }});
+
+    let client = await BusinessUser.findOne({where:{UserId:jobdetails.ClientId}});
 
     response = { job:jobdetails, user:client} 
 
@@ -28,27 +40,16 @@ module.exports.GetSingleJobDetail = async (req, res, next ) => {
 }
 
 
-module.exports.DeleteJobApplication = async (req, res, next ) => {
-        let jobId = req.params.id;
 
-        let jobApp_deleted = JobApplication.destroy({ 
-            where:{
-                [Op.and]: [
-                    {FreelanceId:res.locals.user.id},
-                    {JobId:jobId}
-                ]
-            }
-        });
-  
-    if(jobApp_deleted !== null) {
-        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
-    }else{
-        GetDashboard(req, res, next , 'error withdrawing you application', '');
-    }
-}
 
-   
-module.exports.ApplyJob = async (req, res, next) => {
+
+
+
+
+
+
+
+module.exports.ApplyJobBusiness = async (req, res, next) => {
 
     console.log(req.body.id)
 
@@ -77,10 +78,10 @@ module.exports.ApplyJob = async (req, res, next) => {
 
         error = 'You have already applied for this Job.'
 
-        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  businessusers.businessname, businessusers.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+        "LEFT JOIN users ON useraccounts.id = businessusers.UserId ";
     
         const [jobs, metadata] = await db.sequelize.query(sql);
     
@@ -103,8 +104,8 @@ module.exports.ApplyJob = async (req, res, next) => {
     const job_created= await JobApplication.create(appInfo);
     let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: UserAccount });
 
-    let clientInfo = await User.findOne({ where:{UserId:jobOwnerInfo.UserAccount.id}});
-    let freelancerInfo = await User.findOne({ where:{UserId:res.locals.user.id}});
+    let clientInfo = await BusinessUser.findOne({ where:{UserId:jobOwnerInfo.UserAccount.id}});
+    let freelancerInfo = await BusinessUser.findOne({ where:{UserId:res.locals.user.id}});
 
     // let notifyParts = {
     //     title: freelancerInfo.firstname +" applied for a job you posted",
@@ -117,7 +118,7 @@ module.exports.ApplyJob = async (req, res, next) => {
         title: freelancerInfo.firstname  +" applied for a job you posted",
         message: '<div style="background-color:white;color:black;">'+
                  '<p style="font-weight: bold;">Connect.</p>'+ 
-                 '<p>Congratulations,  ' + freelancerInfo.firstname  + '  applied for a job you posted.</p>'+
+                 '<p>Congratulations,  ' + freelancerInfo.businessname  + '  applied for a job you posted.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
         ReceiverEmail: jobOwnerInfo.UserAccount.email
     };
@@ -137,7 +138,7 @@ module.exports.ApplyJob = async (req, res, next) => {
     let success = 'job successfully applied'
 
 
-    GetDashboard(req, res, next, error, success)
+    GetDashboardB(req, res, next, error, success)
 
 
 
@@ -149,20 +150,29 @@ module.exports.ApplyJob = async (req, res, next) => {
 
 
 
-module.exports.GetJobById = async (req, res, next ) => {
+
+
+
+module.exports.GetJobByIdBusiness = async (req, res, next ) => {
 
     let job_id = req.params.id;
 
     
 
-    let job = await Job.findOne({where:{id:job_id}});
+    let job = await Job.findOne({where:{
+        [Op.and]: [
 
-    
+                {id:job_id},
+                {job_UserType:'business'}
+        ]
+    }})
 
-    let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
+
+    let sql = "SELECT jobs.*, businessusers.businessname, businessusers.city, businessusers.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+        "LEFT JOIN users ON useraccounts.id = businessusers.UserId " +
+        "where jobs.job_UserType = 'business'"
 
      let user = await User.findOne({where:{UserId:job.ClientId}});
 
@@ -197,14 +207,14 @@ module.exports.GetJobById = async (req, res, next ) => {
 }
 
 
-   
-module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
+module.exports.GetAllJobsFreelancerBusiness = async (req, res, next) =>{
 
 
-    let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
+    let sql = "SELECT jobs.*,  businessusers.firstname, businessusers.city, businessusers.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+        "LEFT JOIN users ON useraccounts.id = businessusers.UserId " +
+        "where jobs.job_UserType = 'business'";
 
         const [jobs, metadata] = await db.sequelize.query(sql);
 
@@ -220,6 +230,11 @@ module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
             }
         )
 }
+
+
+
+
+
 
 module.exports.GetJobsFilterFreel = async (req, res, next)=>{
     let jobs = {};
@@ -390,11 +405,12 @@ module.exports.GetAppliedJobs = async (req, res, next) => {
 
 
 
-module.exports.AcceptJob = async (req, res, next) => {
+
+module.exports.AcceptJobBusiness = async (req, res, next) => {
     let appId = req.params.id;
 
 
-    let applicant_details = await User.findOne({where:{UserId:res.locals.user.id}});
+    let applicant_details = await BusinessUser.findOne({where:{UserId:res.locals.user.id}});
 
 
 
@@ -424,10 +440,10 @@ module.exports.AcceptJob = async (req, res, next) => {
 
 
     let notifyMailParts = {
-        title: applicant_details.firstname+" accepted the job",
+        title: applicant_details.businessname+" accepted the job",
         message: '<div style="background-color:white;color:black;">'+
                  '<p style="font-weight: bold;">Connect</p>'+ 
-                 '<p>Congratulations'+applicant_details.firstname+ 'accepted the awarded job.</p>'+
+                 '<p>Congratulations'+applicant_details.businessname+ 'accepted the awarded job.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
         ReceiverEmail: job.UserAccount.email
     };
@@ -436,8 +452,17 @@ module.exports.AcceptJob = async (req, res, next) => {
     // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
-    res.redirect('/user/dashboard-individual-freelancer');
+    res.redirect('/user/dashboard-business-freelancer');
 };
+
+
+
+
+
+
+
+
+
 
 module.exports.RejectJob = async (req, res, next) => {
     let hostname = req.headers.host;

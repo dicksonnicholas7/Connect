@@ -3,12 +3,19 @@ var autocomplete = new SelectPure(".autocomplete-select", {
       {
         label: "Information Technology",
         value: "Information Technology",
+      },
+      {
+        label: "Web Development",
+        value: "Web Development",
+      },
+      {
+        label: "Data Science",
+        value: "Data Science",
       }
     ],
     multiple: true,
     autocomplete: true,
     icon: "fa fa-times",
-    placeholder:"Select at least one category",
     onChange: value => {
       console.log(value); 
          },

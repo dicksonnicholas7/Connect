@@ -16,15 +16,15 @@
                 <li class="nav-item">
                     <% if(individualuser){%>
                         <% if(user.RoleId === 2){%>
-                  <a class="nav-link active" href="#">Freelancer Dashboard</a>
+                  <a class="nav-link active" href="/user/dashboard-individual-freelancer">Freelancer Dashboard</a>
                         <% }else{ %>
-                            <a class="nav-link active" href="#">Client Dashboard</a>
+                            <a class="nav-link active" href="/user/dashboard-individual-client">Client Dashboard</a>
                             <%}%>
                   <% }else{ %>
                     <% if(user.RoleId === 2){%>
-                        <a class="nav-link active" href="#">Business Freelancer Dashboard</a>
+                        <a class="nav-link active" href="/user/dashboard-business-freelancer">Business Freelancer Dashboard</a>
                               <% }else{ %>
-                                  <a class="nav-link active" href="#">Business Client Dashboard</a>
+                                  <a class="nav-link active" href="/user/dashboard-business-client">Business Client Dashboard</a>
                              <%}%>
                   <%}%>
                 </li>
