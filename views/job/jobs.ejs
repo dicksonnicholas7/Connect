@@ -272,7 +272,7 @@ max-width: 600px;
                                     <h4 class="title-job mt-3"><%=job.job_title%></h4>
                                     
                                     <div class="d-flex justify-content-around">
-                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.job_city%>,  <%=job.job_country%>   </span>
+                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp; <%=job.city%>, <%=job.country%></span>
                                         <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
                                     </div>
                                     
@@ -375,9 +375,21 @@ max-width: 600px;
                     <div>
                         <p class="text-justify mb-5" style="float: left; color: #373833;">
                             <% if(page === "all-jobs"){%>
-                                <%=jobs[0].job_skills%>
+                                
+                                <% job_skills.map( js => { %>
+
+                                    <%=js.job_skill_name%>
+                                    
+                                    <% }); %>
+
                            <% }else if(page === "single-jobs"){%>
-                            <%=job_details.skills%>
+                            
+                            <% job_skills.map( js => { %>
+
+                                <%=js.job_skill_name%>
+
+                                <% }); %>
+
                            <% }%>
                         </p>
 
