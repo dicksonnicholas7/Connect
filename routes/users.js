@@ -80,7 +80,7 @@ router.get('/complete-individual-freelancer-skills', GetCompleteFreelancerSkills
 
 
 
-//get profile
+//get profile 
 router.get('/business-client-profile', GetBusinessClientProfile);
 router.get('/business-freelancer-profile', GetBusinessFreelancerProfile);
 router.get('/business-portfolio', GetBusinessPortfolio);
@@ -112,7 +112,7 @@ router.post('/update-business-portfolio', UpdateBusinessPortfolio);
 
 router.post('/add-business-portfolio', AddBusinessPortfolio);
 router.post('/add-business-skills', AddBusinessSkills);
-router.post('/upload-business-certificate', UploadBusinessCertificate);
+router.post('/upload-business-certificate', UploadBusinessCertificate); 
 
 
 router.post('/update-individual-profile', UpdateProfile);
