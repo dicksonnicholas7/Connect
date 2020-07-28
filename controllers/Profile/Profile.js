@@ -1,4 +1,5 @@
 const User = require('../../models').User;
+const Skills = require('../../models').Skills;
 const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
 let secret = "connect";
@@ -108,9 +109,14 @@ module.exports.GetCompleteFreelancerPortfolio = async (req, res, next) => {
 
 module.exports.GetCompleteFreelancerSkills = async (req, res, next) => {
 
+    let skills = await Skills.findAll();
+
+    console.log(skills)
+
     res.render(
         'profile/complete-individual-freelancer-skills',
         {
+            skills,
             page: 'complete-individual-freelancer-skills'
         }
     )
@@ -186,7 +192,7 @@ module.exports.UpdateProfile = async (req, res, next) => {
                 country: req.body.country,
                 city: req.body.city,
                 email: req.body.email,
-                phone: req.body.phone,
+                phone: req.body.phone1 + " " + req.body.phone2 ,
                 picture: filenameGlobal
             };
 

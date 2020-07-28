@@ -9,7 +9,7 @@
 
         <% if(signUpTypeBusiness){ %>
             <div class="ps-form__header">
-                <h3><%=signUpTypeBusiness%></h3>
+                <h3 hidden><%=signUpTypeBusiness%></h3>
                
             </div>
 
@@ -17,7 +17,7 @@
           
             <% }else if(signUpTypeIndividual){%>
                 <div class="ps-form__header">
-                    <h3><%=signUpTypeIndividual%></h3>
+                    <h3 hidden><%=signUpTypeIndividual%></h3>
                   
                 </div>
                 <form action="/signup/individual" method="post" class="p-5 bg-white" style="margin: auto;text-align: center;">
@@ -46,7 +46,7 @@
                                pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                                onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');
                             if(this.checkValidity()) form.conpassword.pattern = RegExp.escape(this.value);" required/>
-                    <div id="strengthMessage"></div>
+                   
                 </div>
             </div>
             <div class="row form-group">
@@ -54,7 +54,7 @@
                     <input type="password" autocomplete="off" name="conpassword" id="conpassword" class="form-control input-lg" tabindex="3" placeholder="Confirm Password" tabindex="8"
                            title="Please enter the same Password as above" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                            onchange="this.setCustomValidity(this.validity.patternMismatch ? this.title : '');" required/>
-                    <div id="matchMessage"></div>
+                    
                 </div>
             </div>
 

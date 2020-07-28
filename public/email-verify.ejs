@@ -1,0 +1,68 @@
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+
+<style>
+    .card-header {
+        background-color: #0C4767;
+        color: #ffffff;
+    }
+
+    .card {
+        width: 700px;
+        height: fit-content;
+        margin: auto;
+        border-radius: 0px;
+    }
+
+    .email-verify {
+        background-color: #A41201;
+        color: #ffffff;
+        margin: auto;
+        position: relative;
+        z-index: 300;
+        text-align: center;
+        width: 200px;
+    }
+
+  
+    
+</style>
+
+
+     <div class="container">
+
+        <div class="row mt-5">
+
+            <div class="card" style="background-color: #0C4767;">
+                <div class="card-header" style="height: 60px;">
+                    <img src='../../vendors/img/logo-email-template.svg' class="mt-1" alt="Connect Logo" style="height: 20px;"> 
+                </div>
+                <div class="card-body text-center mail-image" style="background-image:url('../../vendors/img/man-sitting-down-with-overlay.png'); height: 280px; background-size: cover; ">
+                  <h5 class="card-title mb-4 mt-5" style="color: #ffffff;">Welcome to CONNECT</h5>
+                  <p class="card-text mb-5" style="color: #ffffff;">Thank you for signing up on Connect. Click on the <br> button below to verify your account</p>
+                  <a href="http://<%=hostname%>/verification/<%=emailReceiver%>/<%=token%>" class="btn email-verify mt-5 ">Click here to verify</a>
+                </div>
+                
+            </div>
+
+
+            <div class="card mb-5">
+                <div class="card-body" style="margin-left: 20px;">
+
+                    <hr>
+
+                    <div class="row mt-5">
+
+                        <div class="col-md-12">
+                            <h5>Need Help?</h5>
+                            <p class="text-muted">Feel free to send us an email or call us to talk to our support section. We will be<br> happy to resolve all your issues</p>
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+     </div>

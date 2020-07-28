@@ -1,4 +1,6 @@
-const Skills = require('../../models').Skills;
+const UserSkills = require('../../models').UserSkills;
+const Experience = require('../../models').Experience;
+const UserAccount = require('../../models').UserAccount;
 const Certification = require('../../models').Certification;
 
 
@@ -30,8 +32,9 @@ module.exports.GetBusinessSkills = async (req, res, next) => {
 
 module.exports.AddBusinessSkills = async (req, res, next) => {
 
+    console.log(req.body.skills)
     
-let skills = req.body.tagsinput;
+let skills = req.body.skills;
 
 let skillsArr = skills.split(',');
 
@@ -44,26 +47,12 @@ for(i=0;i<skillsArr.length;i++){
         name: skillsArr[i]
     };
 
-    Skills.create(userSkills);
+    UserSkills.create(userSkills);
 }
 
-    user_skills = await Skills.findAll({where:{UserId:req.body.id}});
-
-    if(user_skills!==null){
         console.log('skills added successfully');
 
         if(res.locals.user.firstTime){
             res.redirect('/user/complete-business-certificate')
-        }else{
-
         }
-
-
-    }else{
-        console.log('error adding user skills');
-    }
-
-
-
-
 }

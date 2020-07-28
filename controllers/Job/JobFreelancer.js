@@ -6,67 +6,145 @@ const User = require('../../models').User;
 const UserAccount = require('../../models').UserAccount;
 const Contract = require('../../models').Contract;
 const {Notify, NotifyMail} = require('../../services/Notification');
-const TimeLapsed = require('timelapsed');
 const db = require("../../models");
+const {GetDashboard} = require('../Dashboard/DashboardIndividualFreelancer');
 
 
 
+module.exports.GetSingleJobDetail = async (req, res, next ) => {
+
+    let response = {
+    }
+
+    let jobId = req.params.id;
+
+    let jobdetails = await Job.findOne({where:{id:jobId}});
+
+    let client = await User.findOne({where:{UserId:jobdetails.ClientId}});
+
+    response = { job:jobdetails, user:client} 
+
+    res.send(response);
+}
 
 
+module.exports.DeleteJobApplication = async (req, res, next ) => {
+        let jobId = req.params.id;
+
+        let jobApp_deleted = JobApplication.destroy({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {JobId:jobId}
+                ]
+            }
+        });
+  
+    if(jobApp_deleted !== null) {
+        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
+    }else{
+        GetDashboard(req, res, next , 'error withdrawing you application', '');
+    }
+}
+
+   
 module.exports.ApplyJob = async (req, res, next) => {
+
+    console.log(req.body.id)
+
+    let error = '';
+    
     let hostname = req.headers.host;
     let appInfo = {
-        JobId: req.params.id || '00',
-        FreelanceId: res.locals.user.id || '00'
+        JobId: req.body.id,
+        FreelanceId: res.locals.user.id,
+        application_status:'pending'
     };
-    const job_created= await JobApplication.create(appInfo);
-    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: User });
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: "/user/my-jobs/all",
-        ReceiverId: jobOwnerInfo.ClientId
-    };
+
+    let check_application = await JobApplication.findOne({where:{
+        [Op.and]: [
+
+                {FreelanceId:res.locals.user.id},
+                {JobId:req.body.id }
+        ]
+    }});
+
+
+    console.log(check_application)
+
+    if(check_application !== null){
+
+        error = 'You have already applied for this Job.'
+
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
+        "FROM jobs "+
+        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    
+        const [jobs, metadata] = await db.sequelize.query(sql);
+    
+        console.log(jobs)
+        console.log(jobs.id)
+     
+        res.render(
+            'job/jobs',
+            {
+                applyErrorMessage:error,
+                jobs,
+                page: 'all-jobs'
+            }
+        );
+
+    }else{
+
+
+    
+    const job_created= await JobApplication.create(appInfo);
+    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: UserAccount });
+
+    let clientInfo = await User.findOne({ where:{UserId:jobOwnerInfo.UserAccount.id}});
+    let freelancerInfo = await User.findOne({ where:{UserId:res.locals.user.id}});
+
+    // let notifyParts = {
+    //     title: freelancerInfo.firstname +" applied for a job you posted",
+    //     message: "/user/my-jobs/all",
+    //     ReceiverId: jobOwnerInfo.ClientId
+    // };
+
+
     let notifyMailParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
+        title: freelancerInfo.firstname  +" applied for a job you posted",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations, '+req.session.user.firstname+ ' applied for a job you posted.</p>'+
+                 '<p style="font-weight: bold;">Connect.</p>'+ 
+                 '<p>Congratulations,  ' + freelancerInfo.firstname  + '  applied for a job you posted.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: jobOwnerInfo.User.email
+        ReceiverEmail: jobOwnerInfo.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
-    res.redirect('/user/job-view/'+req.params.id);
+
+
+    console.log('job successfully applied')
+
+    error = '';
+    let success = 'job successfully applied'
+
+
+    GetDashboard(req, res, next, error, success)
+
+
+
+}
 };
 
 
-module.exports.ContactApplyJob = async (req, res, next) => {
-    let hostname = req.headers.host;
-    let appInfo = {
-        JobId: req.params.id || '00',
-        FreelanceId: res.locals.user.id || '00'
-    };
-    const job_created= await JobApplication.create(appInfo);
-    let jobOwnerInfo = await Job.findOne({ where:{id: appInfo.JobId}, include: User });
-
-    let notifyParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: "/user/my-jobs/all",
-        ReceiverId: jobOwnerInfo.ClientId
-    };
-    let notifyMailParts = {
-        title: res.locals.user.firstname+" applied for a job you posted",
-        message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations, '+req.session.user.firstname+ ' applied for a job you posted.</p>'+
-                '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: jobOwnerInfo.User.email
-    };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
-    NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
-    res.redirect('/user/message-room/'+jobOwnerInfo.User.id);
-};
 
 
 
@@ -75,65 +153,70 @@ module.exports.GetJobById = async (req, res, next ) => {
 
     let job_id = req.params.id;
 
+    
+
     let job = await Job.findOne({where:{id:job_id}});
 
-    if(job_id !== null ){
-
-        let jobs = [];
-
-        jobs = await Job.findAll( {
-            include: [
-                { 
-                    model: JobCategory,
-                    as: 'JobCategory'
-                },
-                { 
-                    model: UserAccount,
-                    as: 'UserAccount',
-                }
-            ],
-        });
     
-            res.render(
-                'job/jobs',
-                {
-                    job,
-                    jobs,
-                    page: 'jobs'
-                }
-            )
 
-    }else{
-        console.log('error')
+    let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
+        "FROM jobs "+
+        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+
+     let user = await User.findOne({where:{UserId:job.ClientId}});
+
+     const [jobs, metadata] = await db.sequelize.query(sql);
+  
+
+     let job_details = {
+        id:job_id,
+        title:job.job_title,
+        firstname:user.firstname,
+        lastname:user.lastname,
+        country:user.country,
+        city:user.city,
+        details:job.job_details,
+        price:job.job_price,
+        skills:job.job_skills
     }
+
+
+    console.log(job_details)
+
+     res.render(
+         'job/jobs',
+         {
+            applyErrorMessage:'',
+             job_details,
+             jobs,
+             page: 'single-jobs'
+         }
+     )
 
 }
 
 
-
+   
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
 
-    let sql = "SELECT jobs.id, jobs.title, jobs.price, useraccounts.id, users.firstname, users.city, users.country "+ 
+    let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
         const [jobs, metadata] = await db.sequelize.query(sql);
-        console.log(jobs[0].firstname);
 
-
-    let job_1 = jobs[0];
-
-    console.log(job_1)
-
+        console.log(jobs)
+        console.log(jobs.id)
+     
         res.render(
             'job/jobs',
             {
-
-                job_1,
+                applyErrorMessage:'',
                 jobs,
-                page: 'jobs'
+                page: 'all-jobs'
             }
         )
 }
@@ -305,38 +388,55 @@ module.exports.GetAppliedJobs = async (req, res, next) => {
     )
 };
 
+
+
 module.exports.AcceptJob = async (req, res, next) => {
     let appId = req.params.id;
-    let jobAppStatus = {
-        status:'accepted'
-    };
+
+
+    let applicant_details = await User.findOne({where:{UserId:res.locals.user.id}});
+
+
+
     let hostname = req.headers.host;
-    let job_awarded = await JobApplication.update(jobAppStatus,{where:{id:appId} });
+    let job_awarded = await JobApplication.update({application_status:'accepted'},{where:{id:appId} });
     let job_just_awarded = await JobApplication.findOne({ where:{id:appId} });
-    let job = await Job.findOne({where:{id:job_just_awarded.JobId}, include:User });
+    let job = await Job.findOne({where:{id:job_just_awarded.JobId}, include:UserAccount });
+
+
     let jobContract = {
         JobId: job.id,
-        status: 'start'
-    };
+        contract_status: 'start'
+    }; 
+
+
     let job_contract = await Contract.create(jobContract);
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" accepted the job",
-        message: "/user/my-jobs/awarded",
-        ReceiverId: job.ClientId
-    };
+    if(job_contract !== null ){
+        Job.update({job_status:'in progress'}, {where:{id:job_contract.JobId}});
+    }
+
+    // let notifyParts = {
+    //     title: res.locals.user.firstname+" accepted the job",
+    //     message: "/user/my-jobs/awarded",
+    //     ReceiverId: job.ClientId
+    // };
+
+
     let notifyMailParts = {
-        title: res.locals.user.firstname+" accepted the job",
+        title: applicant_details.firstname+" accepted the job",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Congratulations'+res.locals.user.firstname+ 'accepted the awarded job.</p>'+
+                 '<p style="font-weight: bold;">Connect</p>'+ 
+                 '<p>Congratulations'+applicant_details.firstname+ 'accepted the awarded job.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to login</a></p></div>',
-        ReceiverEmail: job.User.email
+        ReceiverEmail: job.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
-    res.redirect('/user/workspace/'+job_just_awarded.id);
+    res.redirect('/user/dashboard-individual-freelancer');
 };
 
 module.exports.RejectJob = async (req, res, next) => {
