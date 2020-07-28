@@ -96,11 +96,11 @@
             <div class="row mb-2">
                 <div class="col-md-6">
                     <p class="para-text">Based on your profile and skills, these are some recommended jobs...</p>
-                    <p class="para-text">do for loop for client skills</p>
+                    <!-- <p class="para-text">do for loop for client skills</p> -->
                 </div>
 
                 <div class="col-md-3">
-                    <div class="row job-filter d-flex">
+                    <!-- <div class="row job-filter d-flex">
                         <div class="filters col-1">
                             <i class="fa fa-sliders "></i>
                         </div>
@@ -108,77 +108,44 @@
                         <div class="filters col-1">
                             <i class="fa fa-th "></i>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
 
             </div>
 
                 <!-- RECOMMENDED JOBS GOES HERE -->
             <div class="row mb-5 ">
-                <div class="col-md-3 rec-jobs">
-                    <div class="card  mt-3 border-0 bg-white">
-                        <div class="card-body  flex-column dash-card text-center">
-                            <div>
-                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+               <% if(jobs){ %>
+                    <% count = 1;
+                    jobs.map(j =>{ %>
+                        <div class="col-md-3 rec-jobs">
+                            <div class="card  mt-3 border-0 bg-white">
+                                <div class="card-body  flex-column dash-card text-center">
+                                    <div>
+                                        <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
+                                    </div>
+        
+                                    <div>
+                                    <h5 class="mt-4"><%=j.job_title%></h5>
+                                    <h6 class="client-name"><%=j.firstname%>   <%=j.lastname%></h5>
+                                    <h6 class="mt-4 mb-5 price"><%=j.job_price%></h6>
+                                    </div>
+                                <div>
+                                    <a class="form-control rec-buttons" href="/user/jobs">See more</a>
+                                </div>
+                                    
+                                </div>
                             </div>
+                        </div>
+                        <% count++; }); %>
+               <% } %>
 
-                            <div>
-                            <h5 class="mt-4">Design Mobile App UI</h5>
-                            <h6 class="client-name">Fifi Gordon</h5>
-                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
-                            </div>
-                        <div>
-                            <button class="form-control rec-buttons">See more</button>
-                        </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 rec-jobs">
-                    <div class="card  mt-3 border-0 bg-white">
-                        <div class="card-body  flex-column dash-card text-center">
-                            <div>
-                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
-                            </div>
-
-                            <div>
-                            <h5 class="mt-4">Design Mobile App UI</h5>
-                            <h6 class="client-name">Fifi Gordon</h5>
-                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
-                            </div>
-                        <div>
-                            <button class="form-control  rec-buttons">See more</button>
-                        </div>
-                            
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-3 rec-jobs">
-                    <div class="card  mt-3 border-0 bg-white">
-                        <div class="card-body  flex-column dash-card text-center">
-                            <div>
-                                <img src='../../vendors/img/1.jpg' class="card-img-top mt-5" alt="...">
-                            </div>
-
-                            <div>
-                            <h5 class="mt-4">Design Mobile App UI</h5>
-                            <h6 class="client-name">Fifi Gordon</h5>
-                            <h6 class="mt-4 mb-5 price">USD 300.00</h6>
-                            </div>
-                        <div>
-                            <button class="form-control  rec-buttons">See more</button>
-                        </div>
-                            
-                        </div>
-                    </div>
-                </div>
-
-                    <!-- SIDEBAR FOE EARNINGS AND PROFILE VIEW COMES HERE -->
+                    <!-- SIDEBAR FOE EARNINGS AND PROFILE VIEW COMES HERE
                 <div class="col-md-3 rec-jobs">
 
                     <div class="card mt-3 mb-5  border-0 bg-white mb-3">
                         <div class="card-body earnings flex-column dash-card text-center">
-                            <h6 class="mt-1 mb-1 money ">$0.00</h6>
+                            <h6 class="mt-1 mb-1 money ">$5000.00</h6>
                             <p class="">Total Earnings</p>
                         </div>
                     </div>
@@ -186,7 +153,7 @@
                     <div class="card  mb-3 border-0 bg-white">
                         <div class="card-body profile flex-column dash-card ">
                             <h6 class="mt-3 viewed text-center">Profile Viewed By (5)</h6>
-                            <div class="mb-2">
+                             <div class="mb-2">
                                 <img src='../../vendors/img/1.jpg' class="profile-img" alt="...">
                                 
                                     Abdul Manaf Sulley
@@ -201,19 +168,19 @@
                                 
                                     Abdul Manaf Sulley
                                 
-                            </div>
-
+                            </div> -->
+<!-- 
                             <div class=" text-center">
                                 <a class="view-all"  href="#"> View all</a>
-                            </div>
-
+                            </div> -->
+<!-- 
                         </div>
 
                 
                     </div>
-                    </div>
+                    </div> -->
             
-                
+                 
             </div> 
 
     </div>
