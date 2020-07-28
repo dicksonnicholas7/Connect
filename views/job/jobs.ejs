@@ -3,6 +3,12 @@
 
 
 <style>
+    @media (min-width: 992px) {
+.modal-lg {
+
+max-width: 600px;
+}
+}
 
     .dashboard-background {
         background-color: #E8E8E8;
@@ -271,15 +277,7 @@
                         </a>
                 </div>
                 <% }); %>
-               
-   
-
-
-
             </div>
-
-           
-
                 <div class="col-md-3 mb-5">
                     <div class="card default-job text-center">
                         <div class="card-body  flex-column">
@@ -370,82 +368,61 @@
         </div>
 </div>
 </div>
- 
+<%include ../layout/footer-public.ejs %>
 
 
 
-
-<!-- Modal -->
-<div class="modal fade modal-height " id="singleJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- Modal Form -->
+<div class="modal fade modal-height " id="singleJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:150px;">
     <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content">
-        <div class="card">
-            <div class="card-header text-center" style="background-color: #0c4767;">
-                   <h4 style="color: #ffffff;">Appy for this job</h4> 
+        <div class="modal-content">
+            <div class="card">
+                <div class="card-header text-center" style="background-color: #0c4767;">
+                  <h4 style="color: #ffffff;">Appy for this job</h4> 
                 </div>
-
-            <div class="row">
-                 <form action="/user/apply-job" method="POST">
-                    <% if(page === "all-jobs"){%>
-                        <input type="text" name="id" id="id" value="<%=jobs[0].id%>" hidden>
-                        <% }else if(page === "single-jobs"){%>
-                        <input type="text" name="id" id="id" value="<%=job_details.id%>" hidden>
-                        <% }%>
-                    <div class="col-md-5">
-                        <div class="card border-0">
-                            <div class="card-body border-0 flex-column text-center">
-                                <div class="">
-                                    <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
-                                </div>
-                                <div>
-                                    <h5 class="title-job ">
-                                       
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].job_title%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.title%>
-                                       <% }%>
-                                       
-                                    
-                                    </h5>
-                                    <h6>Posted by <a href="#" style="color: #0c4767;">
-                                     
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].firstname%>, <%=jobs[0].lastname%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.firstname%>, <%=jobs[0].lastname%>
-                                       <% }%>
-                                       
-                                    </a></h6>
-                                </div>
-                                <div>
-                                    <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
-                                    
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].job_city%>, <%=jobs[0].job_country%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.city%>, <%=jobs[0].country%>
-                                       <% }%>
-                                      
-                                    </span>
-                                </div>
-                                <div>
-                                    <h6 class="price-sidebar mb-5 ">$
-                                       
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].job_price%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.price%>
-                                       <% }%>
-                                      
-                                    </h6>
-                                </div>
+            </div>
+            
+            <div class="row m-auto">
+                
+                <div class="col-md-5" style="background-color: #E8E8E8;">
+                   <div class="card border-0" >
+                        <div class="card-body border-0 flex-column text-center" style="background-color: #E8E8E8;" >
+                            <div class="">
+                                <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
                             </div>
+                            <div>
+                                <h5 class="title-job ">
+                                    Design Mobile App UI
+                                </h5>
+
+                                <h6>Posted by <a href="#" style="color: #0c4767;">
+                         
+                                   Fiifi Gordon
+                                   
+                                </a></h6>
+                            </div>
+                            <div>
+                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
+                                
+                                    Takoradi,Ghana
+                                  
+                                </span>
+                            </div>
+                            <div>
+                                <h6 class="price-sidebar mb-5 ">$
+                                   
+                                    300.0
+                                </h6>
+                            </div>
+
+
+
                         </div>
-    
-                    </div>
-                        
-                    <div class="col-md-7">
+
+                   </div>
+                </div>
+                <div class="col-md-7 m-auto">
+                    <div class="card border-0">
                         <div class="card border-0 justify-content-center" style="margin-left: 10px;">
                             <div class="card-body border-0 flex-column">
                                 <div>
@@ -453,24 +430,112 @@
                                     <p>Tell the client why you are the best candidate</p>
                                 </div>
                                 <div class="form-row m-auto">
-                                    
-                                        <textarea name="message" id="message" placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
-                                        <div style="float: right;" class="mt-3 ">
-                                            <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
-                                            <button type="submit" class="send-button">Send Application</button>
-                                        </div>
+                                    <textarea name="message" id="message" placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
+                                    <div style="float: right;" class="mt-5 mb-5">
+                                        <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
+                                        <button type="submit" class="send-button">Send Application</button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-    
                     </div>
-
-                 </form>   
+                </div>
             </div>
-        </div>
-        </div>
-      </div>
-    </div>
+        </div>    
+    </div>        
+</div>
 
+
+<!-- Modal
+<div class="modal fade modal-height " id="singleJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+            <div class="card">
+                 <div class="card-header text-center" style="background-color: #0c4767;">
+                   <h4 style="color: #ffffff;">Appy for this job</h4> 
+                 </div>
+                    <div class="row">
+                        <form action="/user/apply-job" method="POST">
+                            <% if(page === "all-jobs"){%>
+                                <input type="text" name="id" id="id" value="<%=jobs[0].id%>" hidden>
+                                <% }else if(page === "single-jobs"){%>
+                                <input type="text" name="id" id="id" value="<%=job_details.id%>" hidden>
+                                <% }%>
+
+                                <div class="col-md-5">
+                                    <div class="card border-0">
+                                        <div class="card-body border-0 flex-column text-center">
+                                            <div class="">
+                                                <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
+                                            </div>
+                                            <div>
+                                                <h5 class="title-job ">
+                                       
+                                                    <% if(page === "all-jobs"){%>
+                                                        <%=jobs[0].job_title%>
+                                                   <% }else if(page === "single-jobs"){%>
+                                                    <%=job_details.title%>
+                                                   <% }%>
+                                                </h5>
+    
+                                                <h6>Posted by <a href="#" style="color: #0c4767;">
+                                         
+                                                    <% if(page === "all-jobs"){%>
+                                                        <%=jobs[0].firstname%>, <%=jobs[0].lastname%>
+                                                   <% }else if(page === "single-jobs"){%>
+                                                    <%=job_details.firstname%>, <%=jobs[0].lastname%>
+                                                   <% }%>
+                                                   
+                                                </a></h6>
+                                            </div>
+                                            <div>
+                                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
+                                                
+                                                    <% if(page === "all-jobs"){%>
+                                                        <%=jobs[0].job_city%>, <%=jobs[0].job_country%>
+                                                   <% }else if(page === "single-jobs"){%>
+                                                    <%=job_details.city%>, <%=jobs[0].country%>
+                                                   <% }%>
+                                                  
+                                                </span>
+                                            </div>
+                                            <div>
+                                                <h6 class="price-sidebar mb-5 ">$
+                                                   
+                                                    <% if(page === "all-jobs"){%>
+                                                        <%=jobs[0].job_price%>
+                                                   <% }else if(page === "single-jobs"){%>
+                                                    <%=job_details.price%>
+                                                   <% }%>
+                                                  
+                                                </h6>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="card border-0 justify-content-center" style="margin-left: 10px;">
+                                        <div class="card-body border-0 flex-column">
+                                            <div>
+                                                <h4 style="color: #0c4767;">We value your interest in this job</h4>
+                                                <p>Tell the client why you are the best candidate</p>
+                                            </div>
+
+
+
+
+                                </div>
+                        </form>
+                    </div>
+           </div>
+        </div>
+    </div>
+</div>
+</div>
     <%}%>
-<%include ../layout/footer-public.ejs %>
+
+
+
+
+ -->
