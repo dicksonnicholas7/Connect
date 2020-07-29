@@ -369,17 +369,21 @@ max-width: 600px;
            
         
             <div class="col-md-7" >
-                <div class="card mb-5 bg-white sticky-top">
-                    <div class="card-body"  style="height: 50px;">
-                        <div class="input-group" >
-                            <div class="input-group-prepend border-0">
-                              <span class="input-group-text border-0 bg-white mt-1 fa fa-search" style="font-size: large;" id="basic-addon1"></span>
-                            </div>
-                            <input type="text" class="form-control border-0 bg-white" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" style="height: 30px;">
-                          </div>
+                <div class="container-fluid">
+                    <div class="card mb-5 bg-white sticky-top">
+                        <div class="card-body"  style="height: 50px;">
+                            <div class="input-group" >
+                                <div class="input-group-prepend border-0">
+                                  <span class="input-group-text border-0 bg-white mt-1 fa fa-search" style="font-size: large;" id="basic-addon1"></span>
+                                </div>
+                                <input type="text" class="form-control border-0 bg-white" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" style="height: 30px;">
+                              </div>
+                        </div>
+                    
                     </div>
-                
+                    
                 </div>
+                
 
 
                 
@@ -398,41 +402,48 @@ max-width: 600px;
 
     <h5>No Jobs Available</h5>
 
-    
-
 
    <% }else{ %>
 
     <% jobs.map( job => { %>
-        <div id="jobTag" class="card d-flex mb-5 ">
-                <a href="/user/job/<%=job.id%>">
-                    <div class="card-body">  
-                        <div class="row ">
 
-                            <div class="col-md-8 mt-3 mb-3 d-flex justify-content-start">
-                                <div>
-                                    <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5" alt="...">
-                                </div>
-                                <div>
-                                    <h4 class="title-job mt-3"><%=job.job_title%></h4>
-                                    
-                                    <div class="d-flex justify-content-around">
-                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp; <%=job.city%>, <%=job.country%></span>
-                                        <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
-                                    </div>
-                                    
-                                </div>
-                            
+        <div class="container ">
+            <a href="/user/job/<%=job.id%>">
+                <table class="table bg-white" style="height:40px;">
+                    
+                    <tbody>
+                    <tr>
+                        
+                        <td>
+                            <div>
+                                <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5 mt-1" alt="...">
                             </div>
-    
+                        </td>
+                        <td>
+                            <div>
+                                <h4 class="title-job mt-1 "><%=job.job_title%></h4>
+                                
+                                <div class="d-flex justify-content-start">
+                                    <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" style="color: #A41201;" ></i>&nbsp; <%=job.city%>, <%=job.country%></span>
+                                    <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
+                                </div>
+                                
+                            </div>
+                        </td>
+                        <td>
                             <div class="col-md-2">
                                 <h6 class="price mt-5">$<%=job.job_price%></h6>
                             </div>
-                        </div>
-                    </div>
-                </a>
+                        </td>
+                    </tr>
+                    
+                    
+                    </tbody>
+                </table>
+            </a>
         </div>
         <% }); %>
+        
             </div>
 
 

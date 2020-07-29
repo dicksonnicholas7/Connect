@@ -50,7 +50,7 @@ module.exports.SendMailVerify = async (emailReceiver, token, hostname)=>{
 
 
 
-    ejs.renderFile('C:\\Users\\AMALITECH-PC\\Documents\\new\\Connect\\controllers\\Auth/email-verify.ejs', { hostname: hostname , emailReceiver:emailReceiver, token:token}, function (err, data) {
+    ejs.renderFile('C:\\Users\\USER\\Desktop\\ConnectAma\\Connect\\views/email-verify.ejs', { hostname: hostname , emailReceiver:emailReceiver, token:token}, function (err, data) {
         if (err) {
             console.log(err);
         } else {
