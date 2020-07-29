@@ -3,6 +3,7 @@
 
 
 <style>
+
     @media (min-width: 992px) {
 .modal-lg {
 
@@ -389,29 +390,6 @@ max-width: 600px;
                   </div>
             <% } %>
  
-<<<<<<< HEAD
-                <div >
-                <%if(jobs){%>
-                <% jobs.map( job => { %>
-                <div id="jobTag" class="card d-flex mb-5 ">
-                        <a href="/user/job/<%=job.id%>">
-                            <div class="card-body jobs-card">  
-                                <div class="row ">
-        
-                                    <div class="col-md-8 mb-3 d-flex justify-content-start">
-                                        <div>
-                                            <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5" alt="...">
-                                        </div>
-                                        <div>
-                                            <h4 class="title-job"><%=job.job_title%></h4>
-                                            
-                                            <div class="d-flex justify-content-around mb-5">
-                                                <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.job_city%>,  <%=job.job_country%>   </span>
-                                                <h6 class="ml-5 mt-1 " style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
-                                            </div>
-                                            
-                                        </div>
-=======
 
 <%if(jobs){%>
 
@@ -437,20 +415,12 @@ max-width: 600px;
                                 </div>
                                 <div>
                                     <h4 class="title-job mt-3"><%=job.job_title%></h4>
->>>>>>> dicksonnicholas
                                     
                                     <div class="d-flex justify-content-around">
                                         <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp; <%=job.city%>, <%=job.country%></span>
                                         <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
                                     </div>
-<<<<<<< HEAD
-            
-                                    <div class="col-md-2">
-                                        <h6 class="price mt-4">$<%=job.job_price%></h6>
-                                    </div>
-=======
                                     
->>>>>>> dicksonnicholas
                                 </div>
                             
                             </div>
@@ -463,7 +433,7 @@ max-width: 600px;
                 </a>
         </div>
         <% }); %>
-    </div>
+            </div>
 
 
 
@@ -503,12 +473,6 @@ max-width: 600px;
                     
                     </a></h6>
                 </div>
-<<<<<<< HEAD
-                <% }); %>
-               
-   
-            </div>
-=======
 
                 <div>
                     <span style="color:#373833;" id="cityCountry"><i class="fa fa-map-marker" ></i>&nbsp;
@@ -570,7 +534,6 @@ max-width: 600px;
                                 <%=js.job_skill_name%>
 
                                 <% }); %>
->>>>>>> dicksonnicholas
 
                            <% }%>
                         </p>
@@ -590,11 +553,6 @@ max-width: 600px;
 <%include ../layout/footer-public.ejs %>
 
 
-<<<<<<< HEAD
-                <div class="col-md-3 mb-5">
-                    <div class="card default-job text-center bg-white sticky-top" >
-                        <div class="card-body bg-white sticky-top  flex-column">
-=======
 
 <!-- Modal Form -->
 <div class="modal fade modal-height " id="singleJob" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="top:150px;">
@@ -611,7 +569,6 @@ max-width: 600px;
                 <div class="col-md-5" style="background-color: #E8E8E8;">
                    <div class="card border-0" >
                         <div class="card-body border-0 flex-column text-center" style="background-color: #E8E8E8;" >
->>>>>>> dicksonnicholas
                             <div class="">
                                 <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
                             </div>
@@ -639,50 +596,6 @@ max-width: 600px;
                                    
                                 </h6>
                             </div>
-<<<<<<< HEAD
-                                <hr/>
-    
-                            <div class="">
-                                <h5 class="text-muted" style="float: left; color: #373833;">Description</h5>
-                                <br>
-                                <div>
-                                    <p class="text-justify mb-5" style="float: left; color: #373833;">
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].job_details%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.details%>
-                                       <% } %>
-                                    </p>
-                                </div>
-                                <br>
-                            </div>
-
-                            <div>
-                                <h5 class="text-muted" style="float: left; color: #373833;">Skills Required</h5>
-                                <br>
-                                <div>
-                                    <p class="text-justify mb-5" style="float: left; color: #373833;">
-                                        <% if(page === "all-jobs"){%>
-                                            <%=jobs[0].job_skills%>
-                                       <% }else if(page === "single-jobs"){%>
-                                        <%=job_details.skills%>
-                                       <% }%>
-                                    </p>
-
-                                </div>  
-                            </div>
-                        </div>
-                        <div>
-                                <button class="form-control apply-button text-center mb-3" data-toggle="modal" data-target="#singleJob" >Apply</button>
-                        </div>
-                    </div>
-                </div>
-        </div>
-    </div>
-</div>
- 
-=======
->>>>>>> dicksonnicholas
 
 
 
