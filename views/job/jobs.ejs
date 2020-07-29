@@ -253,8 +253,6 @@ max-width: 600px;
 
     <h5>No Jobs Available</h5>
 
-
-
     
 
 
@@ -274,7 +272,7 @@ max-width: 600px;
                                     <h4 class="title-job mt-3"><%=job.job_title%></h4>
                                     
                                     <div class="d-flex justify-content-around">
-                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp;<%=job.job_city%>,  <%=job.job_country%>   </span>
+                                        <span style="color:#373833; font-size: 15px;"><i class="fa fa-map-marker" ></i>&nbsp; <%=job.city%>, <%=job.country%></span>
                                         <h6 class="ml-5 mt-1" style="color: #373833; font-size: 15px;">Posted on <%=job.createdAt.toDateString()%></h6>
                                     </div>
                                     
@@ -299,11 +297,20 @@ max-width: 600px;
         <div class="card default-job text-center">
             <div class="card-body  flex-column">
                 <div class="">
-                    <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
+                    <img id="job_image" src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
                 </div>
                     
                 <div>
-                    <h5 class="title-job ">
+                    <h5 id="jobId" hidden>
+                    
+                        <%if(page === "all-jobs"){%>
+                            <%=jobs[0].id%>
+                       <% }else if(page === "single-jobs"){%>
+                            <%=job_details.id%>
+                       <% }%>
+                    
+                    </h5>
+                    <h5 class="title-job "  id="job_title">
 
                         <%if(page === "all-jobs"){%>
                             <%=jobs[0].job_title%>
@@ -312,7 +319,7 @@ max-width: 600px;
                        <% }%>
 
                     </h5>
-                    <h6>Posted by <a href="#" style="color: #0c4767;">
+                    <h6 id="postedBy">Posted by <a href="#" style="color: #0c4767;">
                         <% if(page === "all-jobs"){%>
                             <%=jobs[0].firstname%> 
                         <%  }else if(page === "single-jobs"){%>
@@ -323,7 +330,7 @@ max-width: 600px;
                 </div>
 
                 <div>
-                    <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
+                    <span style="color:#373833;" id="cityCountry"><i class="fa fa-map-marker" ></i>&nbsp;
                         <% if(page === "all-jobs"){%>
                             &nbsp;<%=jobs[0].job_city%>,  <%=jobs[0].job_country%>
                        <% }else if(page === "single-jobs"){%>
@@ -335,7 +342,7 @@ max-width: 600px;
                 </div>
 
                 <div>
-                    <h6 class="price-sidebar mb-5 ">
+                    <h6 class="price-sidebar mb-5 " id="price">
 
                         <%  if(page === "all-jobs"){%>
                             $ <%=jobs[0].job_price%>
@@ -368,9 +375,21 @@ max-width: 600px;
                     <div>
                         <p class="text-justify mb-5" style="float: left; color: #373833;">
                             <% if(page === "all-jobs"){%>
-                                <%=jobs[0].job_skills%>
+                                
+                                <% job_skills.map( js => { %>
+
+                                    <%=js.job_skill_name%>
+                                    
+                                    <% }); %>
+
                            <% }else if(page === "single-jobs"){%>
-                            <%=job_details.skills%>
+                            
+                            <% job_skills.map( js => { %>
+
+                                <%=js.job_skill_name%>
+
+                                <% }); %>
+
                            <% }%>
                         </p>
 
@@ -378,24 +397,12 @@ max-width: 600px;
                 </div>
             </div>
             <div>
-                    <button class="form-control apply-button text-center mb-3" data-toggle="modal" data-target="#singleJob" >Apply</button>
+                    <button class="form-control apply-button text-center mb-3" data-toggle="modal" id="viewJob" data-target="#singleJob" >Apply</button>
             </div>
         </div>
     </div>
-
-
-
-
-
    <% } %>
-
-
-
-
-
-
-
-        </div>
+</div>
 </div>
 </div>
 <%include ../layout/footer-public.ejs %>
@@ -421,27 +428,27 @@ max-width: 600px;
                                 <img src='../../vendors/img/2.jpg' class="default-job-img mt-3 mb-4" alt="...">
                             </div>
                             <div>
-                                <h5 class="title-job ">
-                                    Design Mobile App UI
+                                <h5 class="title-job " id="modal_title">
+                                   
                                 </h5>
 
-                                <h6>Posted by <a href="#" style="color: #0c4767;">
+                                <h6><a href="#" style="color: #0c4767;" id="modal_posted_by">
                          
-                                   Fiifi Gordon
+                                  
                                    
                                 </a></h6>
                             </div>
                             <div>
-                                <span style="color:#373833;"><i class="fa fa-map-marker" ></i>&nbsp;
+                                <span style="color:#373833;"><i class="fa fa-map-marker" id="modal_city_country"></i>&nbsp;
                                 
-                                    Takoradi,Ghana
+                             
                                   
                                 </span>
                             </div>
                             <div>
-                                <h6 class="price-sidebar mb-5 ">$
+                                <h6 class="price-sidebar mb-5 " id="modal_price">$
                                    
-                                    300.0
+                                   
                                 </h6>
                             </div>
 
@@ -459,13 +466,18 @@ max-width: 600px;
                                     <h4 style="color: #0c4767;">We value your interest in this job</h4>
                                     <p>Tell the client why you are the best candidate</p>
                                 </div>
-                                <div class="form-row m-auto">
-                                    <textarea name="message" id="message" placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
-                                    <div style="float: right;" class="mt-5 mb-5">
-                                        <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
-                                        <button type="submit" class="send-button">Send Application</button>
-                                    </div>
-                                </div>
+                                
+                                    <form action="/user/apply-job" method="POST">
+                                        <div class="form-row m-auto">
+                                        <input type="text" id="modal_jobId" name="id" value="" hidden>
+                                        <textarea name="message" id="message" placeholder= "Write your message here ..." class="form-control" name="modal-comment" id="modal-comment" cols="35" rows="4"></textarea>
+                                        <div style="float: right;" class="mt-5 mb-5">
+                                            <button type="button" class="close-button" data-dismiss="modal">Cancel</button>
+                                            <button type="submit" class="send-button">Send Application</button>
+                                        </div> 
+                                    </div>                                  
+                                    </form>
+                                
                             </div>
                         </div>
                     </div>

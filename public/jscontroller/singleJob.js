@@ -2,28 +2,21 @@ $(document).ready(function(){
 
     $("#viewJob").click(function(event){
 
-        var jobId = $("#singleJobViewId").val();
+        var jobId = $("#jobId").text().trim();
 
-        console.log(jobId)
-
-        $.ajax({
-            type: "GET", 
-            url:'/user/view-single-job/' + jobId,
-            async: false,
-            success:function(response){
-                console.log(response)
-                $("#jobViewTitle").text(response.job.job_title);
-                $("#jobViewName").text(response.user.firstname + "   " + response.user.lastname );
-                $("#jobViewJobTitle").text(response.user.jobtitle);
-                $("#jobViewCityCountry").text(response.user.country + ", " + response.user.city );
-                $("#jobViewDes").text(response.job.job_details);
-                $("#jobViewSkills").text(response.job.job_skills);
-            }
-        });
-
+        $("#modal_jobId").val(jobId);
+        $("#modal_title").text($("#job_title").text()) ;
+        $("#modal_posted_by").text($("#postedBy").text());
+        $("#modal_city_country").text($("#cityCountry").text());
+        $("#modal_price").text($("#price").text());
     });
 
+
+    console.log(jobId)
+
 });
+
+
 
 
 

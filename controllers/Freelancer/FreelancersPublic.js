@@ -10,13 +10,14 @@ const Contract = require('../../models').Contract;
 
 module.exports.GetPublicFreelancers = (req, res, next) => {
 
+
+
     res.render(
         'find-freelancers',
         {
             page:'find-freelancer'
 
-        }
-        )
+        });
 
 }
 
