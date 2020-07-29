@@ -220,7 +220,8 @@ res.send(job_details);
    
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
-    let job_skills;
+    let job_skills
+
 
     let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
     "FROM jobs "+
@@ -230,13 +231,15 @@ module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
     const [jobs, metadata] = await db.sequelize.query(sql);
 
 
+    console.log(jobs.length)
+
+
     if(jobs.length === 0){
-
+     console.log('no jobs');
     }else{
-     job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});
+        job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
     }
-
-    
+   
 
 
     if(job_skills !== null ){

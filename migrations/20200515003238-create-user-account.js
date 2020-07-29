@@ -43,6 +43,9 @@ module.exports = {
       token: {
         type: Sequelize.STRING
       },
+      email_hash: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATEONLY

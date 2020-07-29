@@ -24,6 +24,7 @@ module.exports.GetAllIndividualFreelancers = async (req, res, next ) => {
 
 const [freelancers, metadata] = await db.sequelize.query(sql);
 
+
     res.send(freelancers);
 }
 
