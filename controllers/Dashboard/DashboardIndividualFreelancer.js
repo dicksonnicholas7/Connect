@@ -17,7 +17,15 @@ const db = require("../../models");
 
 module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
 
-let sql = "SELECT jobs.*, users.firstname, users.lastname, useraccounts.id " +
+
+    let userRole = res.locals.user.RoleId;
+
+
+    if(userRole === 2){
+
+        
+
+        let sql = "SELECT jobs.*, users.firstname, users.lastname, useraccounts.id " +
 "FROM `jobs` "  +
 "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId " +
 "LEFT JOIN users ON users.UserId = useraccounts.id ";
@@ -146,6 +154,10 @@ const [jobs, metadata] = await db.sequelize.query(sql);
     }).catch(err=>{
         console.log(err);
     });
+
+    }else{
+        console.log('either not completed profile or you are not a freelancer')
+    }
 }
 
 

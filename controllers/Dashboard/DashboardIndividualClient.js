@@ -18,61 +18,75 @@ const SelectedJobs = require('../../models').SelectedJobs;
 
 module.exports.GetDashboardIndividualClient = async (req, res, next) => {
 
+    let userRole = res.locals.user.RoleId;
+
+    let ft = res.locals.user.firstTime;
+
+    if(userRole === 1 && !ft){
+
+        
       let jobs = await Job.findAll({
-          where: {ClientId: res.locals.user.id}, 
-          include: [
-              {  
-                  model:JobApplication,
-                  as: 'JobApplication'
-              }
-            
-            ]
+        where: {ClientId: res.locals.user.id}, 
+        include: [
+            {  
+                model:JobApplication,
+                as: 'JobApplication'
+            }
+          
+          ]
 
-        });
-
-
-      let sql =   "SELECT DISTINCT jobapplications.application_status, users.firstname, users.lastname, jobs.job_title, "+
-      "jobs.job_status, jobs.updatedAt, jobs.id " +
-		"FROM `jobapplications` " +
-        	"LEFT JOIN jobs ON jobs.id = jobapplications.JobId " +
-        	"LEFT JOIN useraccounts ON jobapplications.FreelanceId = useraccounts.id " +
-            "LEFT JOIN users ON users.UserId = jobapplications.FreelanceId ";
-
-            const [jobs_results, metadata] = await db.sequelize.query(sql);
+      });
 
 
-    let allJobsCount = 0;
-    let JobsAwardedCount = 0;
-    let JobsInProgressCount = 0;
-    let JobsCompletedCount =0;
+    let sql =   "SELECT DISTINCT jobapplications.application_status, users.firstname, users.lastname, jobs.job_title, "+
+    "jobs.job_status, jobs.updatedAt, jobs.id " +
+      "FROM `jobapplications` " +
+          "LEFT JOIN jobs ON jobs.id = jobapplications.JobId " +
+          "LEFT JOIN useraccounts ON jobapplications.FreelanceId = useraccounts.id " +
+          "LEFT JOIN users ON users.UserId = jobapplications.FreelanceId ";
 
-    jobs.map(j => {
-        allJobsCount++
-    });
-
-    jobs_results.map(j => {
-        if(j.application_status === 'awarded' || j.application_status === 'accepted'){
-            JobsAwardedCount++
-        }
-        if(j.job_status === 'in progress'){
-            JobsInProgressCount++
-        }
-        if(j.job_status === 'completed'){
-            JobsCompletedCount++
-        }    
-    });
+          const [jobs_results, metadata] = await db.sequelize.query(sql);
 
 
-    res.render(
-        'dashboard/dashboard-individual-client',
-        {
-            jobs,
-            allJobsCount,
-            JobsAwardedCount,
-            JobsInProgressCount,
-            JobsCompletedCount,
-            jobs_results
-        }
-    )
+  let allJobsCount = 0;
+  let JobsAwardedCount = 0;
+  let JobsInProgressCount = 0;
+  let JobsCompletedCount =0;
+
+  jobs.map(j => {
+      allJobsCount++
+  });
+
+  jobs_results.map(j => {
+      if(j.application_status === 'awarded' || j.application_status === 'accepted'){
+          JobsAwardedCount++
+      }
+      if(j.job_status === 'in progress'){
+          JobsInProgressCount++
+      }
+      if(j.job_status === 'completed'){
+          JobsCompletedCount++
+      }    
+  });
+
+
+  res.render(
+      'dashboard/dashboard-individual-client',
+      {
+          jobs,
+          allJobsCount,
+          JobsAwardedCount,
+          JobsInProgressCount,
+          JobsCompletedCount,
+          jobs_results
+      }
+  )
+
+
+    }else{
+
+        console.log('you are not a client ')
+
+    }
 }
 
