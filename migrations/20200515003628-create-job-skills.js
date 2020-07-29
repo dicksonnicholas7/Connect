@@ -1,22 +1,22 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('UserSkills', {
+    return queryInterface.createTable('JobSkills', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      UserId:{
-        type: Sequelize.UUID,
+      JobId:{
+        type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:{
-          model: 'UserAccounts',
+          model: 'Jobs',
           key:'id'
         }
       },
-      name: {
+      job_skill_name: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -30,27 +30,27 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('UserSkills');
+    return queryInterface.dropTable('JobSkills');
   }
 };'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('UserSkills', {
+    return queryInterface.createTable('JobSkills', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      UserId:{
-        type: Sequelize.UUID,
+      JobId:{
+        type: Sequelize.INTEGER,
         onDelete: 'CASCADE',
         references:{
-          model: 'UserAccounts',
+          model: 'Jobs',
           key:'id'
         },
       },
-      skills_name: {
+      job_skill_name: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -64,6 +64,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('UserSkills');
+    return queryInterface.dropTable('JobSkills');
   }
 };

@@ -5,7 +5,7 @@ const { GetIndividualClientProfile, GetIndividualFreelancerProfile, GetCompleteC
 const { GetBusinessFreelancerCompleteProfile,GetBusinessFreelancerCompletePortfolio, GetBusinessFreelancerCompleteSkills, GetBusinessClientCompleteProfile, GetBusinessClientProfile, GetBusinessFreelancerProfile, UpdateBusinessProfile, UploadBusinessCertificate, GetBusinessCertificate } = require('../controllers/Profile/BusinessProfile');
 const  { GetBusinessPortfolio } = require('../controllers/Profile/BusinessPortfolio');
 const  { GetBusinessSkills } = require('../controllers/Profile/BusinessSkills');
-const { GetIndividualPostJob, DoIndividualPostJob} = require('../controllers/Job/PostJob');
+const { GetIndividualPostJob, DoIndividualPostJob, GetAllIndividualFreelancers} = require('../controllers/Job/PostJob');
 const { GetBusinessPostJob, DoBusinessPostJob} = require('../controllers/Job/BusinessPostJob');
 const { GetDashboardSwitch } = require('../controllers/Dashboard/DashboardSwitch');
 const {NotVerified} = require('../controllers/Auth/Verify');
@@ -26,6 +26,8 @@ const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
 
   
+
+router.get('/all-freelancers', GetAllIndividualFreelancers);
 
 
 router.get('/award-job/:id', AwardJob);
@@ -80,7 +82,7 @@ router.get('/complete-individual-freelancer-skills', GetCompleteFreelancerSkills
 
 
 
-//get profile
+//get profile 
 router.get('/business-client-profile', GetBusinessClientProfile);
 router.get('/business-freelancer-profile', GetBusinessFreelancerProfile);
 router.get('/business-portfolio', GetBusinessPortfolio);
@@ -112,7 +114,7 @@ router.post('/update-business-portfolio', UpdateBusinessPortfolio);
 
 router.post('/add-business-portfolio', AddBusinessPortfolio);
 router.post('/add-business-skills', AddBusinessSkills);
-router.post('/upload-business-certificate', UploadBusinessCertificate);
+router.post('/upload-business-certificate', UploadBusinessCertificate); 
 
 
 router.post('/update-individual-profile', UpdateProfile);

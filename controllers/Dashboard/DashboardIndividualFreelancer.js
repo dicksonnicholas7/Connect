@@ -7,15 +7,23 @@ const JobPayment = require('../../models').JobPayment;
 const Chat = require('../../models').Chat;
 const Contract = require('../../models').Contract;
 const JobReport = require('../../models').JobReport;
-const Notification = require('../../models').Notification;
-const db = require("../../models");
+const Notification = require('../../models').Notification;;
 const { QueryTypes } = require('sequelize');
 const SelectedJobs = require('../../models').SelectedJobs;
+const db = require("../../models");
 
 
     
 
 module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
+
+let sql = "SELECT jobs.*, users.firstname, users.lastname, useraccounts.id " +
+"FROM `jobs` "  +
+"LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId " +
+"LEFT JOIN users ON users.UserId = useraccounts.id ";
+
+
+const [jobs, metadata] = await db.sequelize.query(sql);
 
     let jobsAppCount = JobApplication.findAll({ 
         where:{FreelanceId:res.locals.user.id}
@@ -131,7 +139,8 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
                 jobInproCount,
                 jobsInproCount,
                 jobsAwarded,
-                jobsCompCount
+                jobsCompCount,
+                jobs
             }
         )
     }).catch(err=>{
@@ -142,6 +151,15 @@ module.exports.GetDashboardIndividualFreelancer = async (req, res, next) => {
 
 
 module.exports.GetDashboard = async (req, res, next, error, success) => {
+
+    let sql = "SELECT jobs.*, users.firstname, users.lastname, useraccounts.id " +
+    "FROM `jobs` "  +
+    "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId " +
+    "LEFT JOIN users ON users.UserId = useraccounts.id ";
+
+    const [jobs, metadata] = await db.sequelize.query(sql);
+
+    console.log(jobs)
 
     let jobsAppCount = JobApplication.findAll({ 
         where:{FreelanceId:res.locals.user.id}
@@ -257,7 +275,8 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
                 jobInproCount,
                 jobsInproCount,
                 jobsAwarded,
-                jobsCompCount
+                jobsCompCount,
+                jobs
             }
         )
     }).catch(err=>{

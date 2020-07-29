@@ -28,10 +28,13 @@ module.exports.SendVerificationAgain = (req, res, next) =>{
 
 //perform verification process
 module.exports.DoVerification = async (req, res, next) => {
-    let email = req.params.email;
+
+
+
+    let email_hash = req.params.email;
     let token = req.params.token;
 
-    let ret_userAccount = await UserAccount.findOne({where: {email: email}});
+    let ret_userAccount = await UserAccount.findOne({where: {email_hash: email_hash}});
     if(ret_userAccount!==null){
         if(ret_userAccount.token===token){
             let verify_user = UserAccount.update({verified:true}, {where:{id: ret_userAccount.id}});

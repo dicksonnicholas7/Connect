@@ -36,9 +36,6 @@ module.exports = {
       job_price: {
         type: Sequelize.DECIMAL(6, 2)
       },
-      job_skills: {
-        type: Sequelize.STRING
-      },
       job_status: {
         type: Sequelize.STRING
       },

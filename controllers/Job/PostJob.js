@@ -1,17 +1,38 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
 const Skills = require('../../models').Skills;
+const JobSkills = require('../../models').JobSkills;
 const JobCategory = require('../../models').JobCategory;
 const UserAccount = require('../../models').UserAccount;
 const User = require('../../models').User;
+const db = require("../../models");
 
 
+
+module.exports.GetAllIndividualFreelancers = async (req, res, next ) => {
+
+
+   let sql =  "SELECT useraccounts.id, users.firstname, users.lastname " +
+
+"FROM " +
+
+"`useraccounts` " + 
+
+"LEFT JOIN users ON users.UserId = useraccounts.id " +
+
+"WHERE useraccounts.RoleId = 2 AND useraccounts.UserTypeId = 2 " ;
+
+const [freelancers, metadata] = await db.sequelize.query(sql);
+
+
+    res.send(freelancers);
+}
 
 
 
 module.exports.GetIndividualPostJob = async (req, res, next) => {
 
-    let skills = await Skills.findAll();
+    let all_skills = await Skills.findAll();
 
     let freelancers = await UserAccount.findAll({
         where: {
@@ -30,7 +51,7 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
         'job/individual-post-job',
         {
             category,
-            skills,
+            all_skills,
             freelancers,
             successMessage:'',
             errorMessage:''
@@ -42,13 +63,20 @@ module.exports.GetIndividualPostJob = async (req, res, next) => {
 
 module.exports.DoIndividualPostJob = async (req, res, next) => {
 
-    let skills = await Skills.findAll();
+    
+    let skills = req.body.skills;
+    
+    console.log(skills)
+    
+
+    let all_skills = await Skills.findAll();
+
+
     let hostname = req.headers.host;
 
     let jobType = 1;
 
     
-
     if(!req.body.freelancers){
 
         let jobInfo = {
@@ -57,7 +85,6 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
             job_details: req.body.details,
             job_timeLength: req.body.timeLength_number + req.body.timeLength_period,
             job_price: req.body.price,
-            job_skills: req.body.skills,
             job_CatId: req.body.category,
             job_jobType:jobType,
             job_UserType:'individual',
@@ -67,7 +94,24 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
         console.log(jobType)
 
         let job_created = await Job.create(jobInfo);
+
+
         if(job_created!==null){
+
+            console.log('job created')
+
+            for(i=0;i<skills.length;i++){
+    
+                let jobSkills = {
+                    JobId: job_created.id,
+                    job_skill_name: skills[i]
+                };
+            
+                JobSkills.create(jobSkills);
+
+                console.log('skills added')
+            }
+     
             console.log("Job Posted successfully");
             let category = await JobCategory.findAll();
             let freelancers = await UserAccount.findAll( {
@@ -82,13 +126,14 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
             res.render(
                 'job/individual-post-job',
                 {
-                    skills,
+                    all_skills,
                     category,
                     freelancers,
                     successMessage:'Job Posted successfully',
                     errorMessage:''
                 }
             )
+
         }else{
             let category = await JobCategory.findAll();
             let freelancers = await UserAccount.findAll( {
@@ -239,3 +284,51 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
     }
 
 };
+
+
+
+module.exports.AddJobSkills = async (req, res, next ) => {
+
+    let userExperience = {
+        UserId:req.body.id,
+        name:req.body.name,
+        years:req.body.years
+    }
+    
+    let skills = req.body.skills;
+    
+    console.log(skills)
+    
+    
+    for(i=0;i<skills.length;i++){
+    
+        let userSkills = {
+            UserId: req.body.id,
+            SkillsCatId:2,
+            name: skills[i]
+        };
+    
+        UserSkills.create(userSkills);
+    }
+    
+        user_skills = await UserSkills.findAll({where:{UserId:req.body.id}});
+    
+        if(user_skills!==null){
+            console.log('skills added successfully');
+    
+            Experience.create(userExperience);
+    
+         user_experience = await Experience.findAll({where:{UserId:req.body.id}});
+    
+            if(user_experience !== null){
+                UserAccount.update({firstTime:false}, {where:{id:req.body.id}});
+                res.redirect('/user/dashboard-individual-freelancer');
+            }else{
+                console.log('error adding user experience');
+            }
+    
+        }else{
+            console.log('error adding user skills');
+        }
+    
+    }
