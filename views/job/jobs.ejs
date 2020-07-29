@@ -171,7 +171,9 @@ max-width: 600px;
     
 
     }
-
+    /* pagination button styling */
+    #jobs_all_tb_next{
+    }
     
     .sidebar .text {
         color: #0c4767;
@@ -310,7 +312,7 @@ max-width: 600px;
                                                 
                                                 <ul id="category-item" onmouseover="showList('category')" onmouseout="hideList('category')">
                                                     <li>
-                                                        <a href="#">
+                                                        <a href="#" >
                                                             <input type="text" class="form-control border-0" placeholder="Category" aria-label="Category" aria-describedby="basic-addon1" style="height: 30px;">
                                                         </a> 
                                                     </li>
@@ -376,7 +378,7 @@ max-width: 600px;
                                 <div class="input-group-prepend border-0">
                                   <span class="input-group-text border-0 bg-white mt-1 fa fa-search" style="font-size: large;" id="basic-addon1"></span>
                                 </div>
-                                <input type="text" class="form-control border-0 bg-white" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" style="height: 30px;">
+                                <input type="text" id="job_search" class="form-control border-0 bg-white" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1" style="height: 30px;">
                               </div>
                         </div>
                     
@@ -394,30 +396,38 @@ max-width: 600px;
                   </div>
             <% } %>
  
+<div class="container ">
+    <table class="table bg-white" style="height:40px;" id="jobs_all_tb" style="border-bottom: 0px;">
+            <thead style="border-bottom: 0px;">
+                <th hidden>ID</th>
+                <th hidden>Title</th>
+                <th hidden>Title</th>
+                <th hidden>Title</th>
+                <th hidden>Title</th>
+                <th style="border-bottom: 0px;"></th>
+                <th style="border-bottom: 0px;"></th>
+                <th style="border-bottom: 0px;"></th>
+            </thead>
+            <tbody style="border-bottom: 0px;">
+            <%if(jobs){%>
+                <% if(page === "all-jobs" && !jobs[0] ) { %>
+                    <h5>No Jobs Available</h5>
+                <% }else{ %>
 
-<%if(jobs){%>
-
-   <% if(page === "all-jobs" && !jobs[0] ) { %>
-
-
-    <h5>No Jobs Available</h5>
-
-
-   <% }else{ %>
-
-    <% jobs.map( job => { %>
-
-        <div class="container ">
-            <a href="/user/job/<%=job.id%>">
-                <table class="table bg-white" style="height:40px;">
+                <% jobs.map( job => { %>
                     
-                    <tbody>
                     <tr>
-                        
+                        <td hidden><%=job.id%></td>
+                        <td hidden><%=job.job_title%></td>
+                        <td hidden><%=job.job_price%></td>
+                        <td hidden><%=job.city%></td>
+                        <td hidden><%=job.job_details%></td>
                         <td>
+                            <!-- <a href="/user/job/<%=job.id%>"> -->
                             <div>
                                 <img src='../../vendors/img/2.jpg' class="jobs-page-image img-fluid im-responsive mr-5 mt-1" alt="...">
                             </div>
+                        <!-- </a> -->
                         </td>
                         <td>
                             <div>
@@ -435,14 +445,15 @@ max-width: 600px;
                                 <h6 class="price mt-5">$<%=job.job_price%></h6>
                             </div>
                         </td>
+                    </a>
                     </tr>
                     
-                    
-                    </tbody>
-                </table>
-            </a>
+               <% }); %>
+            </tbody>
+        </table>
+            
         </div>
-        <% }); %>
+       
         
             </div>
 
@@ -458,42 +469,16 @@ max-width: 600px;
                     
                 <div>
                     <h5 id="jobId" hidden>
-                    
-                        <%if(page === "all-jobs"){%>
-                            <%=jobs[0].id%>
-                       <% }else if(page === "single-jobs"){%>
-                            <%=job_details.id%>
-                       <% }%>
-                    
                     </h5>
                     <h5 class="title-job "  id="job_title">
 
-                        <%if(page === "all-jobs"){%>
-                            <%=jobs[0].job_title%>
-                       <% }else if(page === "single-jobs"){%>
-                            <%=job_details.title%>
-                       <% }%>
-
                     </h5>
-                    <h6 id="postedBy">Posted by <a href="#" style="color: #0c4767;">
-                        <% if(page === "all-jobs"){%>
-                            <%=jobs[0].firstname%> 
-                        <%  }else if(page === "single-jobs"){%>
-                            <%=job_details.firstname%>
-                        <%}%>
-                    
+                    <h6 id="postedBy">Posted by <a href="#" style="color: #0c4767;">                   
                     </a></h6>
                 </div>
 
                 <div>
                     <span style="color:#373833;" id="cityCountry"><i class="fa fa-map-marker" ></i>&nbsp;
-                        <% if(page === "all-jobs"){%>
-                            &nbsp;<%=jobs[0].job_city%>,  <%=jobs[0].job_country%>
-                       <% }else if(page === "single-jobs"){%>
-                        &nbsp;<%=job_details.city%>,  <%=job_details.country%>
-                       <%}%>
-                    
-                    
                     </span>
                 </div>
 
@@ -514,7 +499,7 @@ max-width: 600px;
                     <h5 class="text-muted" style="float: left; color: #373833;">Description</h5>
                     <br>
                     <div>
-                        <p class="text-justify mb-5" style="float: left; color: #373833;">
+                        <p class="text-justify mb-5" style="float: left; color: #373833;" id="description">
                             <% if(page === "all-jobs"){%>
                                 <%=jobs[0].job_details%>
                            <% }else if(page === "single-jobs"){%>
@@ -529,7 +514,7 @@ max-width: 600px;
                     <h5 class="text-muted" style="float: left; color: #373833;">Skills Required</h5>
                     <br>
                     <div>
-                        <p class="text-justify mb-5" style="float: left; color: #373833;">
+                        <p class="text-justify mb-5" style="float: left; color: #373833;" id="skills">
                             <% if(page === "all-jobs"){%>
                                   
                                 <% job_skills.map( js => { %>
