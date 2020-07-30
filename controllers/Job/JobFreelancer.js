@@ -30,26 +30,29 @@ module.exports.GetSingleJobDetail = async (req, res, next ) => {
 
 
 module.exports.DeleteJobApplication = async (req, res, next ) => {
-        let jobId = req.params.id;
+        let jobId = req.body.id;
 
-        let jobApp_deleted = JobApplication.destroy({ 
+            JobApplication.destroy({ 
             where:{
                 [Op.and]: [
                     {FreelanceId:res.locals.user.id},
                     {JobId:jobId}
                 ]
             }
-        });
-  
-    if(jobApp_deleted !== null) {
-        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
-    }else{
-        GetDashboard(req, res, next , 'error withdrawing you application', '');
-    }
+        }).then(response => {
+            res.json('success')
+        }).catch(error => {
+            res.json(error)
+        })
 }
+
+
+
 
    
 module.exports.ApplyJob = async (req, res, next) => {
+
+    let job_skills;
 
     console.log(req.body.id)
 
@@ -84,6 +87,13 @@ module.exports.ApplyJob = async (req, res, next) => {
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
     
         const [jobs, metadata] = await db.sequelize.query(sql);
+
+        
+    if(jobs.length === 0){
+        console.log('no jobs');
+       }else{
+           job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
+       }
     
         console.log(jobs)
         console.log(jobs.id)
@@ -93,6 +103,7 @@ module.exports.ApplyJob = async (req, res, next) => {
             {
                 applyErrorMessage:error,
                 jobs,
+                job_skills,
                 page: 'all-jobs'
             }
         );
@@ -138,7 +149,7 @@ module.exports.ApplyJob = async (req, res, next) => {
     let success = 'job successfully applied'
 
 
-    GetDashboard(req, res, next, error, success)
+    res.redirect('/user/dashboard-individual-freelancer');
 
 
 

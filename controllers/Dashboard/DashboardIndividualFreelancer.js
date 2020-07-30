@@ -294,4 +294,99 @@ module.exports.GetDashboard = async (req, res, next, error, success) => {
     }).catch(err=>{
         console.log(err);
     });
+};
+
+
+
+module.exports.GetJobCount = async (req, res, next) => {
+    
+        let jobsAppCount = await JobApplication.findAll({ 
+            where:{FreelanceId:res.locals.user.id}
+        });
+    
+    
+    
+        let jobsInproCount = await JobApplication.findAll({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {application_status:'in progress'}
+                ]
+            }
+        });
+    
+    
+        let jobsCompCount = await JobApplication.findAll({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {application_status:'completed'}
+                ]
+            }
+        });
+    
+    
+    
+        let jobsAwarded = await JobApplication.findAll({
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {
+                        [Op.or]:[
+                            {application_status: 'awarded'},
+                            {application_status: 'accepted'}
+                        ]
+                    }
+                ]
+            },
+            include: [
+                {
+                    model: Job,
+                    as: 'Job'
+                }
+            ]
+        });
+    
+    
+        console.log(" awarded "+jobsAwarded)
+    
+    
+    
+        let jobAppCount = 0;
+        let jobAwarded = 0;
+        let jobInproCount = 0;
+        let jobCompCount = 0;
+    
+    
+        jobsCompCount.map(jb=>{
+            jobCompCount++;
+        });
+    
+    
+        jobsInproCount.map(jb=>{
+            jobInproCount++;
+        });
+    
+        jobsAppCount.map(jb=>{
+            jobAppCount++;
+        });
+    
+    
+        jobsAwarded.map(jsa =>{
+            jobAwarded++;
+        });
+
+
+        let jobCount = {
+            jobsAwarded: jobAwarded,
+            jobsCompleted: jobCompCount,
+            jobsInProgress: jobInproCount,
+            jobsApplied: jobAppCount
+        };
+
+
+        res.json(jobCount);
+    
+    
+
 }
