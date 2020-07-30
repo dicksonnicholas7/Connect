@@ -171,13 +171,12 @@ module.exports.GetJobById = async (req, res, next ) => {
     let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
     "FROM jobs "+
     "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-    "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "LEFT JOIN users ON useraccounts.id = users.UserId WHERE jobs.id="+job_id+"";
 
  let user = await User.findOne({where:{UserId:job.ClientId}});
 
  const [jobs, metadata] = await db.sequelize.query(sql);
-
-
+ 
  let job_details = {
     id:job_id,
     title:job.job_title,
@@ -189,31 +188,33 @@ module.exports.GetJobById = async (req, res, next ) => {
     price:job.job_price
 }
 
-
-console.log(job_details)
-
- res.render(
-     'job/jobs',
-     {
-        applyErrorMessage:'',
-         job_details,
-         job_skills,
-         jobs,
-         page: 'single-jobs'
-     }
- )
-
-        }else{
-            console.log('no skills associated with that job')
+res.send(job_details);
         }
-    }else{
-        console.log('job not found')
     }
-
-    
-
-
 }
+
+
+
+// console.log(job_details)
+
+//  res.render(
+//      'job/jobs',
+//      {
+//         applyErrorMessage:'',
+//          job_details,
+//          job_skills,
+//          jobs,
+//          page: 'single-jobs'
+//      }
+//  )
+
+//         }else{
+//             console.log('no skills associated with that job')
+//         }
+//     }else{
+//         console.log('job not found')
+//     }
+
   
 
    
