@@ -17,31 +17,9 @@ module.exports.GetPublicJobs = (req, res, next ) => {
 
 
 module.exports.GetIndex = async (req, res, next) => {
-    let jobs = await Job.findAll( {
-        include: [
-            {
-                model: JobCategory,
-                as: 'JobCategory'
-            },
-            {
-                model: UserAccount,
-                as: 'UserAccount'
-            }
-        ],
-        order:[['createdAt', 'DESC']],
-        limit:5,
-        offset:0
-    });
-    let category = await JobCategory.findAll();
-    let searchResult = "All Jobs";
+
     res.render(
-        'index',
-        {
-            jobs,
-            category,
-            searchResult,
-            page: 'index'
-        }
+        'index'
     )
 };
 
