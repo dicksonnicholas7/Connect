@@ -24,8 +24,11 @@ const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, GetSingleJobDetail 
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
-
+const {GetJobWorkSpace} = require('../controllers/Job/JobWorkSpace');
   
+
+router.get('/job-workspace', GetJobWorkSpace);
+
 
 router.get('/all-freelancers', GetAllIndividualFreelancers);
 
