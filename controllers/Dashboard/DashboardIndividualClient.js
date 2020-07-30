@@ -22,7 +22,7 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
 
     let ft = res.locals.user.firstTime;
 
-    if(userRole === 1 && !ft){
+    if(userRole === 1){
 
         
       let jobs = await Job.findAll({
