@@ -14,7 +14,7 @@ const { GetFreelancers, GetSingleFreelancer, GetFreelancerCountryAndSearch } = r
 const {GetJobs} = require('../controllers/Job/JobPublic');
 const {GetPublicFreelancers} = require('../controllers/Freelancer/FreelancersPublic')
 const {GetPublicClients} = require('../controllers/Client/ClientPublic')
-const {GetPublicJobs} = require('../controllers/Job/JobPublic')
+const {GetPublicJobs, GetIndex} = require('../controllers/Job/JobPublic')
 
 const {GetSkills, GetJobCat} = require('../controllers/temp')
 
@@ -25,7 +25,7 @@ const {GetSkills, GetJobCat} = require('../controllers/temp')
 router.get('/email-verify', EmailVerify);
 
 router.get('/jobs', GetJobs);
-router.get('/', GetComingSoonUpPage);
+router.get('/', GetIndex);
 
 router.get('/find-freelancers', GetPublicFreelancers);
 router.get('/find-clients', GetPublicClients);
