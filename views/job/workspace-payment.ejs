@@ -1,0 +1,138 @@
+
+
+<style>
+
+    .payment {
+        height: 35px;
+        background-color: #ffffff;
+        border: none;
+    }
+
+    .awesome {
+        background-color: #0C4767;
+    }
+
+    .card {
+        box-shadow: none;
+    }
+
+    .payment-logo {
+       font-size: 80px;
+    }
+
+    .payment-logo1 {
+       font-size: 90px;
+    }
+
+    .credit-image {
+        width: 15 0px;
+    }
+
+    .request-payment-button {
+        background-color: #0C4767;
+        color: #ffffff;
+        font-size: 15px;
+        text-align: justify;
+        
+    }
+
+
+</style>
+
+
+<div class="container-fluid">
+            <div class="row mt-4">
+                <div class="col-md-12 d-flex justify-content-end">
+                    <h5 style="color: #0C4767;">Amount Paid By Client:  <span style="color: #0C4767; font-size: 20px;">$ 300.00</span></h5>
+                </div>
+            </div>
+
+
+            <div class="row mt-4">
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header payment">
+                            <h4>Select Payment Method</h4>
+                        </div>
+                        <div class="card-body ">
+                            <div class="row d-flex justify-content-center">
+
+                                <div class="col-md-6 text-center mb-3">
+                                    <div class="card credit-image awesome">
+                                        <i class="fa fa-credit-card payment-logo mt-2 mb-2 " style="color: #ffffff;" alt="Payment Image"></i>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6 text-center">
+                                    <div class="card credit-image image">
+                                        <i class="fa fa-cc-paypal payment-logo1 mt-2 mb-2" alt="Payment Image"></i>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header payment">
+                            <h4>Payment Details</h4>
+                        </div>
+                        <div class="card-body">
+                            <form>
+                                <div class="form-group">
+                                  <label for="card">Name on card</label>
+                                  <input type="cardname" class="form-control" id="cardname" aria-describedby="cardname">
+                                </div>
+                                <label for="card">Card Number</label>
+                                <div class="input-group mb-3">
+                                    <div class="input-group-prepend">
+                                      <span class="input-group-text bg-white" id="basic-addon1"><i class="fa fa-credit-card" style="font-size: 20px; border-right: 0;"></i></span>
+                                    </div>
+                                    <input type="text" class="form-control" style="border-left: 0;" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+
+                               <div class="row">
+                                   <div class="col-md-6">
+                                     <div class="form-group">
+                                        <label for="formGroupExampleInput">Expiration (MM/YY)</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text bg-white" id="basic-addon1"><i class="fa fa-credit-card" style="font-size: 20px;"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" style="border-left-color: #ffffff;" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                      </div>
+                                   </div>
+
+                                   <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="formGroupExampleInput">Security Code</label>
+                                        <div class="input-group mb-3">
+                                            <div class="input-group-prepend">
+                                              <span class="input-group-text bg-white" id="basic-addon1"><i class="fa fa-lock" style="font-size: 20px;"></i></span>
+                                            </div>
+                                            <input type="text" class="form-control" style="border-left-color: #ffffff;" placeholder="" aria-label="Username" aria-describedby="basic-addon1">
+                                        </div>
+                                      </div>
+
+                                   </div>
+                               </div>
+                                
+                                <div class="text-center">
+                                    <button type="submit" class="btn request-payment-button mt-5 mb-3">Request Payment</button>
+                                </div>
+                               
+                              </form>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+    
+    </div>
+
+</div>

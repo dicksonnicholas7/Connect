@@ -3,78 +3,61 @@
 
 
 <style>
-
     @media (min-width: 992px) {
 .modal-lg {
-
 max-width: 600px;
 }
 }
-
     .dashboard-background {
         background-color: #E8E8E8;
     }
-
     .search-jobs {
         color: #0c4767 !important;
         font-weight: 200;
     }
-
     .filter-jobs {
         height: fit-content;
     }
-
     .default-job-img {
         border-radius: 50%;
         height: 100px;
         width: 100px;
     }
-
     .filter-by {
         color: #0c4767;
         font-weight: 150;
         padding-left: 40px;
     }
-
     .filter-contents {
         color: #0c4767;
         line-height: 3.5rem;
     }
-
     .filter-list {
         margin-bottom: 100px;
         font-size: 15px;
     }
-
     .card {
         box-shadow: none;
         border-radius: 0%;
     }
-
-
     .listing-jobs {
         height: 80px;
     }
-
     .jobs-page-image {
         border-radius: 50%;
         height: 50px;
         width: 50px;
     }
-
     .job-name {
         color: #373833;
          
     }
-
     .job-price {
         color: #373833;
     }
-
     .title-job {
         color: #373833;
     }
-
     .apply-button {
         width: 100px;
         margin: auto;
@@ -82,17 +65,14 @@ max-width: 600px;
         color: #ffffff;
         box-shadow: none;
     }
-
     .price {
       font-size: 14px;
       color: #0c4767;
   }
-
   .price-sidebar {
       font-size: 14px;
       color: #0c4767;
   }
-
   .search-filter {
       height: fit-content;
       
@@ -108,12 +88,10 @@ max-width: 600px;
   .modal-col-1{
       background-color: antiquewhite;
   }
-
   .container-jobs {
       margin-left: 5px;
       margin-right: 5px;
   }
-
   .send-button {
     width: 150px;
     margin: auto;
@@ -123,7 +101,6 @@ max-width: 600px;
     border-radius: 4px;
     
   }
-
   .close-button {
     width: 90px;
     margin: auto;
@@ -147,20 +124,16 @@ max-width: 600px;
    .job-details{
        text-align: center;
    }
-
    .jobs-card {
        height: 75px;
    }
-
      .sticky-top {
         background-color: #e8e8e8;
         top: 70px;
     }
-
     .sidebar ul li {
         color: #0c4767;
     }
-
     .sidebar {
         
         width: 200px;
@@ -169,7 +142,6 @@ max-width: 600px;
         background-color: #ffffff;
         
     
-
     }
     /* pagination button styling */
     #jobs_all_tb_next{
@@ -184,8 +156,6 @@ max-width: 600px;
         background: #ffffff;
         
     }
-
-
     nav ul {
         background: #ffffff;
         list-style: none;
@@ -193,12 +163,10 @@ max-width: 600px;
         width: 100%;
     
     }
-
     nav ul li {
         line-height: 40px;
         
     }
-
     nav ul li a {
         position: relative;
         color: #0c4767;
@@ -209,28 +177,23 @@ max-width: 600px;
         width: 100%;
         border-left: 2px solid transparent;
     }
-
     nav ul li a:hover {
         color: #A41201;
         border-left-color: #A41201;
     }
-
     nav ul ul {
         position: static;
         display: none;
     }
-
     nav ul ul li {
         line-height: 30px;
         border-bottom: none;
     }
-
     nav ul ul li a {
         font-size: 12px;
         color: #A41201;
         padding-left: 5px;
     }
-
     nav ul li a span {
         position: absolute;
         top: 40%;
@@ -239,23 +202,18 @@ max-width: 600px;
         font-size: 40px;
         transition: transform 0.1s ;
     }
-
     nav ul li a:hover span {
         transform: translateY(-40%) rotate(-180deg);
     }
-
     .sticky-top {
         background-color: #e8e8e8;
     }
-
 </style>
 
 <script>
     function showList(itemType){
         let itemT = itemType;
-
         console.log(itemT);
-
         if (itemT ==='category' ){
             document.getElementById('category-item').style.display="block";
         }else if(itemT ==='location' ){
@@ -265,9 +223,7 @@ max-width: 600px;
         }else if(itemT === "skills"){
             document.getElementById('skills-item').style.display="block";
         }
-
         
-
     }
     function hideList(itemT){
             if (itemT ==='category' ){
@@ -413,7 +369,6 @@ max-width: 600px;
                 <% if(page === "all-jobs" && !jobs[0] ) { %>
                     <h5>No Jobs Available</h5>
                 <% }else{ %>
-
                 <% jobs.map( job => { %>
                     
                     <tr>
@@ -456,9 +411,6 @@ max-width: 600px;
        
         
             </div>
-
-
-
     
     <div class="col-md-3 mb-5">
         <div class="card default-job text-center">
@@ -471,30 +423,24 @@ max-width: 600px;
                     <h5 id="jobId" hidden>
                     </h5>
                     <h5 class="title-job "  id="job_title">
-
                     </h5>
                     <h6 id="postedBy">Posted by <a href="#" style="color: #0c4767;">                   
                     </a></h6>
                 </div>
-
                 <div>
                     <span style="color:#373833;" id="cityCountry"><i class="fa fa-map-marker" ></i>&nbsp;
                     </span>
                 </div>
-
                 <div>
                     <h6 class="price-sidebar mb-5 " id="price">
-
                         <%  if(page === "all-jobs"){%>
                             $ <%=jobs[0].job_price%>
                      <%   }else if(page === "single-jobs"){ %>
                             <%=job_details.price%>
                       <%  }%>
-
                     </h6>
                 </div>
                     <hr/>
-
                 <div class="">
                     <h5 class="text-muted" style="float: left; color: #373833;">Description</h5>
                     <br>
@@ -509,7 +455,6 @@ max-width: 600px;
                     </div>
                     <br>
                 </div>
-
                 <div>
                     <h5 class="text-muted" style="float: left; color: #373833;">Skills Required</h5>
                     <br>
@@ -518,22 +463,16 @@ max-width: 600px;
                             <% if(page === "all-jobs"){%>
                                   
                                 <% job_skills.map( js => { %>
-
                                     <%=js.job_skill_name%>
                                     
                                     <% }); %>
-
                            <% }else if(page === "single-jobs"){%>
                             
                             <% job_skills.map( js => { %>
-
                                 <%=js.job_skill_name%>
-
                                 <% }); %>
-
                            <% }%>
                         </p>
-
                     </div>  
                 </div>
             </div>
@@ -546,7 +485,8 @@ max-width: 600px;
 </div>
 </div>
 </div>
-<!-- <%include ../layout/footer-public.ejs %> -->
+
+
 
 
 
@@ -572,7 +512,6 @@ max-width: 600px;
                                 <h5 class="title-job " id="modal_title">
                                    
                                 </h5>
-
                                 <h6><a href="#" style="color: #0c4767;" id="modal_posted_by">
                          
                                   
@@ -592,11 +531,7 @@ max-width: 600px;
                                    
                                 </h6>
                             </div>
-
-
-
                         </div>
-
                    </div>
                 </div>
                 <div class="col-md-7 m-auto">
@@ -627,6 +562,7 @@ max-width: 600px;
         </div>    
     </div>        
 </div>
-
-
 <%}%>
+
+
+<%include ../layout/footer-public.ejs %>
