@@ -16,6 +16,7 @@ module.exports = (sequelize, DataTypes) => {
     firstTime: DataTypes.BOOLEAN,
     blocked: DataTypes.BOOLEAN,
     token: DataTypes.STRING,
+    email_hash: DataTypes.STRING
   }, {});
   UserAccount.associate = function(models) {
     // associations can be defined here
@@ -100,7 +101,7 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
 
-    UserAccount.hasMany(models.UserSkills,{
+    UserAccount.hasOne(models.UserSkills,{
       foreignKey: 'UserId',
       onDelete:'CASCADE'
     });

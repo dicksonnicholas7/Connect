@@ -112,6 +112,7 @@ module.exports.DoSignUp = async (req, res, next) => {
                     firstTime: true,
                     blocked: false,
                     token: token,
+                    email_hash: hashPassword(req.body.email)
                 }
     
             //check if email is already used

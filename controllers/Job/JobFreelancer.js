@@ -30,26 +30,29 @@ module.exports.GetSingleJobDetail = async (req, res, next ) => {
 
 
 module.exports.DeleteJobApplication = async (req, res, next ) => {
-        let jobId = req.params.id;
+        let jobId = req.body.id;
 
-        let jobApp_deleted = JobApplication.destroy({ 
+            JobApplication.destroy({ 
             where:{
                 [Op.and]: [
                     {FreelanceId:res.locals.user.id},
                     {JobId:jobId}
                 ]
             }
-        });
-  
-    if(jobApp_deleted !== null) {
-        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
-    }else{
-        GetDashboard(req, res, next , 'error withdrawing you application', '');
-    }
+        }).then(response => {
+            res.json('success')
+        }).catch(error => {
+            res.json(error)
+        })
 }
+
+
+
 
    
 module.exports.ApplyJob = async (req, res, next) => {
+
+    let job_skills;
 
     console.log(req.body.id)
 
@@ -84,6 +87,13 @@ module.exports.ApplyJob = async (req, res, next) => {
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
     
         const [jobs, metadata] = await db.sequelize.query(sql);
+
+        
+    if(jobs.length === 0){
+        console.log('no jobs');
+       }else{
+           job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
+       }
     
         console.log(jobs)
         console.log(jobs.id)
@@ -93,6 +103,7 @@ module.exports.ApplyJob = async (req, res, next) => {
             {
                 applyErrorMessage:error,
                 jobs,
+                job_skills,
                 page: 'all-jobs'
             }
         );
@@ -138,7 +149,7 @@ module.exports.ApplyJob = async (req, res, next) => {
     let success = 'job successfully applied'
 
 
-    GetDashboard(req, res, next, error, success)
+    res.redirect('/user/dashboard-individual-freelancer');
 
 
 
@@ -171,13 +182,12 @@ module.exports.GetJobById = async (req, res, next ) => {
     let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
     "FROM jobs "+
     "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-    "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "LEFT JOIN users ON useraccounts.id = users.UserId WHERE jobs.id="+job_id+"";
 
  let user = await User.findOne({where:{UserId:job.ClientId}});
 
  const [jobs, metadata] = await db.sequelize.query(sql);
-
-
+ 
  let job_details = {
     id:job_id,
     title:job.job_title,
@@ -189,37 +199,41 @@ module.exports.GetJobById = async (req, res, next ) => {
     price:job.job_price
 }
 
-
-console.log(job_details)
-
- res.render(
-     'job/jobs',
-     {
-        applyErrorMessage:'',
-         job_details,
-         job_skills,
-         jobs,
-         page: 'single-jobs'
-     }
- )
-
-        }else{
-            console.log('no skills associated with that job')
+res.send(job_details);
         }
-    }else{
-        console.log('job not found')
     }
-
-    
-
-
 }
+
+
+
+// console.log(job_details)
+
+//  res.render(
+//      'job/jobs',
+//      {
+//         applyErrorMessage:'',
+//          job_details,
+//          job_skills,
+//          jobs,
+//          page: 'single-jobs'
+//      }
+//  )
+
+//         }else{
+//             console.log('no skills associated with that job')
+//         }
+//     }else{
+//         console.log('job not found')
+//     }
+
   
 
    
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
-    
+    let job_skills
+
+
     let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
     "FROM jobs "+
     "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
@@ -227,7 +241,16 @@ module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
     const [jobs, metadata] = await db.sequelize.query(sql);
 
-    let job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});
+
+    console.log(jobs.length)
+
+
+    if(jobs.length === 0){
+     console.log('no jobs');
+    }else{
+        job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
+    }
+   
 
 
     if(job_skills !== null ){
