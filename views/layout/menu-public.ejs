@@ -17,15 +17,21 @@
 
             <div class="dropdown show">
                 <% if(individualuser){%>
-                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    <% if(individualuser.picture !== null ){%>
-                    <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
-                    <% }else{ %>
-                </a>
-                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/avatar.png" width="50px" height="50px" id="profile" alt="Connect Logo">
-                     <%}%>
-                </a>
+                    <div class="d-flex justify-content-start">
+                        <h5 class="mt-4 mr-3" style="font-size:16px; font-style:italic; color: #0C4767;"><%=individualuser.firstname%></h5>
+                        <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <% if(individualuser.picture !== null ){%>
+                            <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
+                            <% }else{ %>
+                        </a>
+                        <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/avatar.png" width="50px" height="50px" id="profile" alt="Connect Logo">
+                             <%}%>
+                        </a>
+
+                    </div>
+                    
+
                 <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">
                     <% if(user.RoleId === 1){%>
                     <a class="dropdown-item homepage-dropdown" href="/user/individual-client-profile">Profile</a>

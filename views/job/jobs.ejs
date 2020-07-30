@@ -172,8 +172,7 @@ max-width: 600px;
 
     }
     /* pagination button styling */
-    #jobs_all_tb_next{
-    }
+ 
     
     .sidebar .text {
         color: #0c4767;
@@ -454,8 +453,7 @@ max-width: 600px;
             
         </div>
        
-        
-            </div>
+</div>
 
 
 
@@ -469,11 +467,31 @@ max-width: 600px;
                     
                 <div>
                     <h5 id="jobId" hidden>
-                    </h5>
-                    <h5 class="title-job "  id="job_title">
+                        <%  if(page === "all-jobs"){%>
+                            <%=jobs[0].id%>
+                     <%   }else if(page === "single-jobs"){ %>
+                            <%=job_details.id%>
+                      <%  }%>
 
                     </h5>
-                    <h6 id="postedBy">Posted by <a href="#" style="color: #0c4767;">                   
+                    <h5 class="title-job "  id="job_title">
+                        <%  if(page === "all-jobs"){%>
+                            $ <%=jobs[0].job_title%>
+                     <%   }else if(page === "single-jobs"){ %>
+                            <%=job_details.title%>
+                      <%  }%>
+
+                    </h5>
+                    <h6 id="postedBy">Posted by   
+                        
+                        <%  if(page === "all-jobs"){%>
+                             <%=jobs[0].firstname%>
+                     <%   }else if(page === "single-jobs"){ %>
+                            <%=job_details.firstname%>
+                      <%  }%>
+
+                        
+                        <a href="#" style="color: #0c4767;">                   
                     </a></h6>
                 </div>
 
@@ -511,23 +529,23 @@ max-width: 600px;
                 </div>
 
                 <div>
+                    
                     <h5 class="text-muted" style="float: left; color: #373833;">Skills Required</h5>
                     <br>
                     <div>
-                        <p class="text-justify mb-5" style="float: left; color: #373833;" id="skills">
+                        <p class="text-justify mb-5" style="color: #373833;" id="skills">
                             <% if(page === "all-jobs"){%>
-                                  
                                 <% job_skills.map( js => { %>
-
-                                    <%=js.job_skill_name%>
-                                    
+                                    <div class="col-md-3 mr-1  badge badge-secondary"><%=js.job_skill_name%></div>       
                                     <% }); %>
 
                            <% }else if(page === "single-jobs"){%>
                             
                             <% job_skills.map( js => { %>
 
-                                <%=js.job_skill_name%>
+                                <div class="col-md-3 mr-1  badge badge-secondary"><%=js.job_skill_name%></div>       
+
+                                
 
                                 <% }); %>
 
@@ -546,7 +564,7 @@ max-width: 600px;
 </div>
 </div>
 </div>
-<!-- <%include ../layout/footer-public.ejs %> -->
+
 
 
 
@@ -630,3 +648,6 @@ max-width: 600px;
 
 
 <%}%>
+
+
+<% include ../layout/footer-public.ejs %>

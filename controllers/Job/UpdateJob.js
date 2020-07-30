@@ -1,4 +1,5 @@
 const Job = require('../../models').Job;
+const JobSkills = require('../../models').JobSkills;
 const JobApplication = require('../../models').JobApplication;
 const db = require("../../models");
 const { QueryTypes } = require('sequelize');
@@ -6,7 +7,15 @@ const { QueryTypes } = require('sequelize');
 
 module.exports.GetSingleJob = async (req, res, next ) => {
 
-let jobId = req.params.id;
+    let jobId = req.params.id;
+
+    let job_skills;
+
+
+    job_skills = await JobSkills.findAll({where:{JobId:jobId}}); 
+
+
+
 
 let job = await Job.findOne({where:{id:jobId}});
 
@@ -18,12 +27,13 @@ let sql = "SELECT DISTINCT jobapplications.id, users.firstname, users.lastname, 
             "WHERE jobapplications.JobId = " + jobId;
 
             const [applicants, metadata] = await db.sequelize.query(sql);
-
+  
     res.render(
         'job/job-view',
         {
             applicants,
             job,
+            job_skills,
             page:'job-view'
         }
     )
