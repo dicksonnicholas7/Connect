@@ -79,9 +79,9 @@
                     <h4 class="text-muted col-md-12 mt-5" style="float: left; color: #373833;">Skills Required</h4>
 
                     <div class="col-md-12 justify-content-around mb-5">
-                        <div class="col-md-3 mr-1  badge badge-secondary">
-                            <%=job.job_skills%>
-                        </div>
+                        <% job_skills.map( js => { %>
+                            <div class="col-md-3 mr-1  badge badge-secondary"> <%=js.job_skill_name%></div>       
+                            <% }); %>
                     </div>
 
                     
