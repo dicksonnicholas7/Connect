@@ -12,7 +12,7 @@ const {NotVerified} = require('../controllers/Auth/Verify');
 const {GetDashboardBusinessClient} = require('../controllers/Dashboard/DashboardBusinessClient');
 const {GetDashboardBusinessFreelancer} = require('../controllers/Dashboard/DashboardBusinessFreelancer');
 const {GetDashboardIndividualClient} = require('../controllers/Dashboard/DashboardIndividualClient');
-const {GetDashboardIndividualFreelancer} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
+const {GetDashboardIndividualFreelancer, GetJobCount} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
 const {AddBusinessPortfolio, UpdateBusinessPortfolio, GetAddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
 const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin');
 const { AddBusinessSkills } = require('../controllers/Profile/BusinessSkills');
@@ -24,8 +24,15 @@ const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, GetSingleJobDetail 
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
-
+const {GetJobWorkSpace} = require('../controllers/Job/JobWorkSpace');
   
+
+router.get('/jobcount', GetJobCount);
+
+
+
+router.get('/job-workspace', GetJobWorkSpace);
+
 
 router.get('/all-freelancers', GetAllIndividualFreelancers);
 
@@ -131,7 +138,7 @@ router.post('/post-business-job', DoBusinessPostJob)
 router.post('/apply-job', ApplyJob);
 router.post('/apply-job-business', ApplyJobBusiness);
 
-router.get('/delete-job-application/:id', DeleteJobApplication);
+router.post('/delete-job-application', DeleteJobApplication);
 
 
 

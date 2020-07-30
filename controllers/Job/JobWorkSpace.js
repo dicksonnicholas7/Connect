@@ -12,6 +12,18 @@ const JobFile = require('../../models').JobFiles;
 const multer = require('multer');
 const path = require('path');
 
+
+
+module.exports.GetJobWorkSpace = async (req, res, next ) => {
+
+    res.render('job/workspace');
+
+}
+
+
+
+
+
 module.exports.GetWorkSpaceInfo = async (req, res, next) =>{
     let jobAppId = req.params.id;
     let jobAppDetail = await JobApplication.findOne({ where:{id:jobAppId}, include:User });
