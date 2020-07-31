@@ -11,9 +11,6 @@ $(document).ready(function(){
         $("#modal_price").text($("#price").text());
     });
 
-
-    console.log(jobId)
-
 });
 
 

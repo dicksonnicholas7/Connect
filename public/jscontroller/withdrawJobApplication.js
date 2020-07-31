@@ -1,9 +1,11 @@
 $(document).ready(function(){
 
 
-    var jobId = $("#singleJobViewId").val().trim();
+   
 
     $("#deleteJobApplication").click(function(event){
+
+       var jobId = $("#singleJobViewId").val().trim();
 
  
     $.ajax({
@@ -11,7 +13,7 @@ $(document).ready(function(){
         type:'post',
         data:{id: jobId},
         success:function(response){
-          if(response === 'success'){
+      
 
             $.ajax({
                 url:'/user/jobcount',
@@ -30,7 +32,7 @@ $(document).ready(function(){
                 }
             });
 
-          }
+
         },
         error:function(response){
            alert(error)
@@ -38,6 +40,10 @@ $(document).ready(function(){
     });
 
 });
+
+
+
+
 
 
 });

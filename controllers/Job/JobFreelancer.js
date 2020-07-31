@@ -32,18 +32,19 @@ module.exports.GetSingleJobDetail = async (req, res, next ) => {
 module.exports.DeleteJobApplication = async (req, res, next ) => {
         let jobId = req.body.id;
 
-            JobApplication.destroy({ 
+         let response =   JobApplication.destroy({ 
             where:{
                 [Op.and]: [
                     {FreelanceId:res.locals.user.id},
                     {JobId:jobId}
                 ]
             }
-        }).then(response => {
-            res.json('success')
-        }).catch(error => {
-            res.json(error)
-        })
+        });
+
+
+        if(response !== null ){
+            res.json(response);
+        }
 }
 
 
