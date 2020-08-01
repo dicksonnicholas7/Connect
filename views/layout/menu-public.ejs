@@ -29,19 +29,17 @@
                              <%}%>
                         </a>
 
+                        <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">
+                            <% if(user.RoleId === 1){%>
+                            <a class="dropdown-item homepage-dropdown" href="/user/individual-client-profile">Profile</a>
+                            <% }else if (user.RoleId === 2){ %>
+                                <a class="dropdown-item homepage-dropdown" href="/user/individual-freelancer-profile">Profile</a>
+                            <%}%>
+                            <a class="dropdown-item homepage-dropdown" href="#">Get Support</a>
+                            <a class="dropdown-item homepage-dropdown" href="#">User Settings</a>
+                            <a class="dropdown-item homepage-dropdown" href="/logout">Logout</a>
+                        </div>
                     </div>
-                    
-
-                <div class="dropdown-menu index-homepage" aria-labelledby="dropdownMenuButton">
-                    <% if(user.RoleId === 1){%>
-                    <a class="dropdown-item homepage-dropdown" href="/user/individual-client-profile">Profile</a>
-                    <% }else if (user.RoleId === 2){ %>
-                        <a class="dropdown-item homepage-dropdown" href="/user/individual-freelancer-profile">Profile</a>
-                    <%}%>
-                    <a class="dropdown-item homepage-dropdown" href="#">Get Support</a>
-                    <a class="dropdown-item homepage-dropdown" href="#">User Settings</a>
-                    <a class="dropdown-item homepage-dropdown" href="/logout">Logout</a>
-                  </div>
                 <% }else{ %>
                     <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <% if(businessuser.picture !== null ){%>
@@ -59,7 +57,7 @@
                         <a class="dropdown-item homepage-dropdown" href="#">Get Support</a>
                         <a class="dropdown-item homepage-dropdown" href="#">User Settings</a>
                         <a class="dropdown-item homepage-dropdown" href="/logout">Logout</a>
-                      </div>
+                    </div>
                 <%}%>
             </div>
         </div>
