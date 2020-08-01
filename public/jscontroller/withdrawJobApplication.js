@@ -43,7 +43,41 @@ $(document).ready(function(){
 
 
 
+    $("#btndeclineJob").click(function(event){
 
+       var appId = $("#declineJobId").val().trim();
+
+ 
+    $.ajax({
+        url:'/user/reject-job',
+        type:'post',
+        data:{id: appId},
+        success:function(response){
+    
+                $.ajax({
+                url:'/user/jobcount',
+                type:'get',
+                async: false,
+                success:function(response){
+                    
+                    $("#jobsApplied").text(response.jobsApplied);
+                    $("#jobsAwarded").text(response.jobsAwarded);
+                    $("#jobsInProgress").text(response.jobsInProgress);
+                    $("#jobsCompleted").text(response.jobsCompleted);  
+                    location.reload();
+                },
+                error:function(response){
+                    
+                }
+            });
+
+        },
+        error:function(response){
+           alert(error)
+        }
+    });
+
+});
 
 
 });
