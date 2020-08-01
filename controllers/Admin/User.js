@@ -3,26 +3,7 @@ const UserAccount = require('../../models').UserAccount;
 const nodeMailer = require('nodemailer');
 
 module.exports.GetUsers = async (req, res, next) => {
-    let userCat = req.params.category;
-    let title = "All Users";
-    let users = await UserAccount.findAll({include: User});
-    if (userCat === "all") {
-        users = await UserAccount.findAll({include: User});
-    } else if (userCat === "client") {
-        users = await UserAccount.findAll({ where:{RoleId:1}, include: User});
-        title = "Clients";
-    } else if (userCat === "freelancer") {
-        users = await UserAccount.findAll({ where:{RoleId:2}, include: User});
-        title = "Freelancers";
-    }
-    console.log(users);
-    res.render(
-        'admin/users',
-        {
-            users,
-            title
-        }
-    )
+res.render('admin/users')
 };
 
 module.exports.Accept = async (req, res, next)  =>{

@@ -80,7 +80,7 @@ module.exports.GetDashboardSwitch = async (req, res, next) =>{
         }
     
         if(res.locals.user.RoleId===3){
-            res.redirect('/admin/dashboard-admin');
+            res.redirect('/user/dashboard-admin');
         }else{
     
         }

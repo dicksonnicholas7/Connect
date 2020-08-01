@@ -1,5 +1,10 @@
 const JobCategory = require('../../models').JobCategory;
 
+
+module.exports.GetCategories = async (req, res, next ) => {
+    res.render('admin/jobcategories')
+}
+
 module.exports.GetJobCategories = async (req, res, next) => {
     let categories = await JobCategory.findAll();
     res.render(
