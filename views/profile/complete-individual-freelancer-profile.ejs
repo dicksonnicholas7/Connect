@@ -35,41 +35,43 @@
                                 <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
+                                    
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
                                         <%if(individualuser.picture!==null && user.RoleId === 2){%>
-                                        <div class="col-md-3 mt-5">
-                                            <div class="row">
-                                                <div class="col-md-12">
-                                                    <img src="../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="170" height="100">
-                                                </div>  
-                                            </div>
-                                            <div class="row">
-                                                <div class="col-md-12" style="color:#0c4767;">
-                                                    <label class="">
-                                                        <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                        Add Photo
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <% }else{ %>
-
                                             <div class="col-md-3 mt-5">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <img src="../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="170" height="100">
+                                                        <img class="image-border" src="../../images/users/individual/<%=individualuser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
                                                     </div>
                                                 </div>
                                                 <div class="row">
-                                                    <div class="col-md-12" style="color:#0c4767;">
+                                                    <div class="col-md-12" style="color:blue;">
                                                         <label class="">
                                                             <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                            Add Photo
+                                                            Upload Picture
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <% } %> 
+                                            <% }else{ %>
+    
+                                                <div class="col-md-3 mt-5">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <img class="image-border" src="../../images/users/individual/avatar.png" alt="Profile Photo" id="profile2" width="120" height="120">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="color:blue;">
+                                                            <label class="">
+                                                                <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                                Upload Picture
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %> 
+
 
                                         <div class="col-md-9">
 

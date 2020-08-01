@@ -49,32 +49,53 @@ module.exports.GetFreelancerProfile = async (req, res, next) =>{
 
 
 module.exports.AwardJob = async (req, res, next) => {
+
+    let jobAwardedStatus = false;
+
+
     let appId = req.params.id;
 
-    let hostname = req.headers.host;
-    let job_awarded = JobApplication.update({application_status:'awarded'},{where:{id:appId} });
-    let JobApp = await JobApplication.findOne({where:{id:appId}, include:UserAccount });
-    let job_updated = Job.update({job_status:'awarded'}, {where: {id:JobApp.JobId} });
-    let jobOwnerInfo = await Job.findOne({ where:{id:JobApp.JobId}, include: UserAccount });
 
-    // let notifyParts = {
-    //     title: jobOwnerInfo.title+" has been awarded to you",
-    //     message: "/user/freelancer-jobs/awarded",
-    //     ReceiverId: JobApp.FreelanceId
-    // };
+  await JobApplication.findOne({where:{id:appId}}).then(response => {
 
-    let notifyMailParts = {
-        title: jobOwnerInfo.job_title+" has been awarded to you",
-        message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Connect</p>'+ 
-                 '<p>Congratulations, '+jobOwnerInfo.job_title+ ' has been awarded to you. Click on the following link to see.</p>'+
-                '<p><a href="http://'+hostname+'/login/'+'">Login to accept</a></p></div>',
-        ReceiverEmail: JobApp.UserAccount.email
-    };
-    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
-    NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
+    console.log(response)
+        if(response.application_status === 'awarded'){
+            jobAwardedStatus = true;
+        }
+    });
 
-    console.log('job awarded successfully');
+console.log(jobAwardedStatus)
+if(!jobAwardedStatus){
+        let hostname = req.headers.host;
+        let job_awarded = JobApplication.update({application_status:'awarded'},{where:{id:appId} });
+        let JobApp = await JobApplication.findOne({where:{id:appId}, include:UserAccount });
+        let job_updated = Job.update({job_status:'awarded'}, {where: {id:JobApp.JobId} });
+        let jobOwnerInfo = await Job.findOne({ where:{id:JobApp.JobId}, include: UserAccount });
+    
+        // let notifyParts = {
+        //     title: jobOwnerInfo.title+" has been awarded to you",
+        //     message: "/user/freelancer-jobs/awarded",
+        //     ReceiverId: JobApp.FreelanceId
+        // };
+    
+        let notifyMailParts = {
+            title: jobOwnerInfo.job_title+" has been awarded to you",
+            message: '<div style="background-color:white;color:black;">'+
+                     '<p style="font-weight: bold;">Connect</p>'+ 
+                     '<p>Congratulations, '+jobOwnerInfo.job_title+ ' has been awarded to you. Click on the following link to see.</p>'+
+                    '<p><a href="http://'+hostname+'/login/'+'">Login to accept</a></p></div>',
+            ReceiverEmail: JobApp.UserAccount.email
+        };
+        // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+        NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
+    
+        console.log('job awarded successfully');
+    
+        res.redirect('/user/dashboard-individual-client');
+    
+    }else{
+        console.log('job awarded already')
+    }
+    
 
-    res.redirect('/user/dashboard-individual-client');
 };

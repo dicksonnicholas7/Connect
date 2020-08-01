@@ -207,25 +207,6 @@ res.send(job_details);
 
 
 
-// console.log(job_details)
-
-//  res.render(
-//      'job/jobs',
-//      {
-//         applyErrorMessage:'',
-//          job_details,
-//          job_skills,
-//          jobs,
-//          page: 'single-jobs'
-//      }
-//  )
-
-//         }else{
-//             console.log('no skills associated with that job')
-//         }
-//     }else{
-//         console.log('job not found')
-//     }
 
   
 
@@ -492,34 +473,59 @@ module.exports.AcceptJob = async (req, res, next) => {
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
     res.redirect('/user/dashboard-individual-freelancer');
+
+
+
 };
+
+
+
+
+
 
 module.exports.RejectJob = async (req, res, next) => {
+
     let hostname = req.headers.host;
-    let appId = req.params.id;
+    let appId = req.body.id;
     let jobAppStatus = {
-        status:''
+        job_status:''
     };
    
-    let job = await JobApplication.findOne({where:{id:appId},include:User });
+    let job = await JobApplication.findOne({where:{id:appId},include:UserAccount });
     let job_updated = await Job.update(jobAppStatus, {where: {id:job.JobId} });
-    let jobApp_rejected = await JobApplication.destroy({where:{id:appId} });
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" rejected the job",
-        message: "/user/my-jobs/all",
-        ReceiverId: job.ClientId
-    };
-    let notifyMailParts = {
-        title: res.locals.user.firstname+" rejected the job",
+         
+         let response = JobApplication.destroy({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {JobId:job.JobId}
+                ]
+            }
+        });
+
+
+        if(response !== null ){
+                     
+             let notifyMailParts = {
+        title: res.locals.user.User.firstname+" rejected the job offer",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Sorry '+res.locals.user.firstname+ ' rejected the awarded job.</p>'+
+                 '<p style="font-weight: bold;">Connect.</p>'+ 
+                 '<p>Sorry '+res.locals.user.User.firstname+ ' rejected the awarded job.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to see other applicants</a></p></div>',
-        ReceiverEmail: job.User.email
+        ReceiverEmail: job.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
-    res.redirect('/job/'+job.JobId);
+
+
+            res.json(response);
+        }
+     
+
 };
+

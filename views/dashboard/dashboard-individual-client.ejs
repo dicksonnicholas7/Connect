@@ -26,7 +26,7 @@
                             Jobs Posted
                         </div>
                         <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #A41201;"><%=allJobsCount%></h3>
+                            <h3 class="mt-2" style="color: #A41201;" id="allJobsClient"><%=allJobsCount%></h3>
                         </div>
                         
                     </div>
@@ -43,7 +43,7 @@
                             Jobs Awarded
                         </div>
                         <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #FC6D00;"><%=JobsAwardedCount%></h3>
+                            <h3 class="mt-2" style="color: #FC6D00;" id="jobsAwardedClient" ><%=JobsAwardedCount%></h3>
                         </div>
                     </div>
                 </div>
@@ -58,7 +58,7 @@
                             Jobs In Progress
                         </div>
                         <div class="mt-2 numbers-section">
-                            <h3 class="mt-2" style="color: #DEC109;"><%=JobsInProgressCount%></h3>
+                            <h3 class="mt-2" style="color: #DEC109;" id="jobsInprogressClient"><%=JobsInProgressCount%></h3>
                         </div>
                     </div>
                 </div>
@@ -73,7 +73,7 @@
                             Jobs Completed
                         </div>
                         <div class="mt-2 numbers-section" >
-                            <h3 class="mt-2" style="color: #0DC100;"><%=JobsCompletedCount%></h3>
+                            <h3 class="mt-2" style="color: #0DC100;" id="jobsCompeletedClient"><%=JobsCompletedCount%></h3>
                         </div>
                     </div>
                 </div>
@@ -87,26 +87,29 @@
         <div class="row mb-2 mt-5">
             <div class="col-md-9">
                 <p class="para-text">Based on your profile and skills requirements, these are some recommended freelancers...</p>
-                <p class="para-text">do for loop for client skills</p>
             </div>
 
             
 
         </div>
 
+
+<%if(freelancers){%>
             <!-- RECOMMENDED JOBS GOES HERE -->
         <div class="row mb-5 ">
+       
+                    <%freelancers.map(f =>{ %>
             <div class="col-md-3 rec-jobs">
                 <div class="card mt-3 mb-3 border-0 bg-white">
                     <div class="card-body flex-column dash-card text-center">
                         <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
+                            <img src="../../images/users/individual/<%=f.User.picture%>" class="card-img-top" alt="...">
                         </div>
 
                         <div>
-                           <h5 class="mt-4">Charles Ansong</h5>
-                           <h6 class="client-name">Software DEveloper</h5>
-                           <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
+                           <h5 class="mt-4"><%=f.User.firstname%></h5>
+                           <h6 class="client-name"><%=f.User.jobtitle%></h5>
+                           <h6 class="mt-4 mb-5 price"><%=f.User.city%>, <%=f.User.country%></h6>
                         </div>
                        <div>
                            <button class="form-control rec-buttons">Connect</button>
@@ -115,67 +118,16 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                            <h5 class="mt-4">Charles Ansong</h5>
-                            <h6 class="client-name">Software DEveloper</h5>
-                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
-                         </div>
-                        <div>
-                            <button class="form-control rec-buttons">Connect</button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                            <h5 class="mt-4">Charles Ansong</h5>
-                            <h6 class="client-name">Software DEveloper</h5>
-                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
-                         </div>
-                        <div>
-                            <button class="form-control rec-buttons">Connect</button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-md-3 rec-jobs">
-                <div class="card mt-3 mb-3 border-0 bg-white">
-                    <div class="card-body flex-column dash-card text-center">
-                        <div>
-                            <img src='../../vendors/img/1.jpg' class="card-img-top" alt="...">
-                        </div>
-
-                        <div>
-                            <h5 class="mt-4">Charles Ansong</h5>
-                            <h6 class="client-name">Software DEveloper</h5>
-                            <h6 class="mt-4 mb-5 price">Takoradi, Accra</h6>
-                         </div>
-                        <div>
-                            <button class="form-control rec-buttons">Connect</button>
-                        </div>
-                        
-                    </div>
-                </div>
-            </div>
-         
-            
+                <%  }); %>
         </div> 
+
+        <%}else{%>
+
+
+        <h3>No Freelancers Available</h3>
+
+
+        <% } %>
 
     </div>
 </div>
