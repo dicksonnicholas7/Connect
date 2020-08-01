@@ -1,0 +1,53 @@
+<style>
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd}
+
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {display:block;}
+</style>
+<header class="header header--2 dark page" data-sticky="true">
+    <div class="header__left">
+        <a class="ps-logo" href="/"><img src="/vendors/img/logo-nav-edited.svg" width="200px" height="70px" alt="Connect Logo" ></a>
+    </div>  
+
+<div class="header__right">   
+    <div class="header__center">
+        <div class="dropdown">
+            <div class="d-flex justify-content-start">
+                <h5 class="mt-4 mr-3" style="font-size:16px; font-style:italic; color: #0C4767;">Admin</h5>
+                <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img style="border-radius: 50%; cursor: pointer;" src="../../images/users/individual/avatar.png" width="50px" height="50px" id="profile" alt="Connect Logo">
+                </a>
+            
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item" href="#">Add User</a>
+                <a class="dropdown-item" href="/logout">Log out</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</header>
