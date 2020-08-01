@@ -5,14 +5,14 @@ const UserAccount = require('../../models').UserAccount;
 const crypto = require('crypto');
 let secret = "connect";
 const path = require('path');
-const multer = require('multer');
+const multer = require('multer'); 
 const axios = require('axios');
 
 //render profile page. Also get list of countries from an external api
 module.exports.GetIndividualClientProfile = async (req, res, next) => {
 
             res.render(
-                'profile/individual-client-profile',
+                'profile/individual-client',
                 {
                     page: 'individual-client-profile'
                 }
