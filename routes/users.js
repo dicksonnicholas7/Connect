@@ -11,7 +11,7 @@ const { GetDashboardSwitch } = require('../controllers/Dashboard/DashboardSwitch
 const {NotVerified} = require('../controllers/Auth/Verify');
 const {GetDashboardBusinessClient} = require('../controllers/Dashboard/DashboardBusinessClient');
 const {GetDashboardBusinessFreelancer} = require('../controllers/Dashboard/DashboardBusinessFreelancer');
-const {GetDashboardIndividualClient} = require('../controllers/Dashboard/DashboardIndividualClient');
+const {GetDashboardIndividualClient, GetClientDashboardStats} = require('../controllers/Dashboard/DashboardIndividualClient');
 const {GetDashboardIndividualFreelancer, GetJobCount} = require('../controllers/Dashboard/DashboardIndividualFreelancer');
 const {AddBusinessPortfolio, UpdateBusinessPortfolio, GetAddBusinessPortfolio} = require('../controllers/Profile/BusinessPortfolio');
 const { GetDashboardAdmin } = require('../controllers/Dashboard/DashboardAdmin');
@@ -20,13 +20,17 @@ const { AddPortfolio } = require('../controllers/Profile/Portfolio');
 const { AddSkills } = require('../controllers/Profile/Skills');
 const { GetJobCat, GetSkills, PostSkills, PostJobCategory } = require('../controllers/temp');
 const {GetAllJobsFreelancer} = require('../controllers/Job/JobFreelancer');
-const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, GetSingleJobDetail } = require('../controllers/Job/JobFreelancer');
+const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, RejectJob, GetSingleJobDetail } = require('../controllers/Job/JobFreelancer');
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
 const {GetJobWorkSpace} = require('../controllers/Job/JobWorkSpace');
-  
 
+
+
+
+  
+router.get('/client-stats', GetClientDashboardStats);
 router.get('/jobcount', GetJobCount);
 
 
@@ -39,6 +43,7 @@ router.get('/all-freelancers', GetAllIndividualFreelancers);
 
 router.get('/award-job/:id', AwardJob);
 router.get('/accept-job/:id', AcceptJob);
+router.post('/reject-job', RejectJob);
 router.get('/accept-job-business/:id', AcceptJobBusiness);
 
 
