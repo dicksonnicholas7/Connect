@@ -38,6 +38,19 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
       });
 
 
+      let freelancers = await UserAccount.findAll({
+                      where:{
+                [Op.and]: [
+                    {RoleId:2},
+                    {UserTypeId:2}
+                ]
+            },
+            include:User
+      });
+
+      console.log(freelancers)
+
+
     let sql =   "SELECT DISTINCT jobapplications.application_status, users.firstname, users.lastname, jobs.job_title, "+
     "jobs.job_status, jobs.updatedAt, jobs.id " +
       "FROM `jobapplications` " +
@@ -55,7 +68,7 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
 
   jobs.map(j => {
       allJobsCount++
-  });
+  }); 
 
   jobs_results.map(j => {
       if(j.application_status === 'awarded' || j.application_status === 'accepted'){
@@ -76,6 +89,7 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
           jobs,
           allJobsCount,
           JobsAwardedCount,
+          freelancers,
           JobsInProgressCount,
           JobsCompletedCount,
           jobs_results
@@ -88,5 +102,67 @@ module.exports.GetDashboardIndividualClient = async (req, res, next) => {
         console.log('you are not a client ')
 
     }
-}
+};
+
+
+
+module.exports.GetClientDashboardStats = async (req, res, next ) => {
+
+ 
+      let jobs = await Job.findAll({
+        where: {ClientId: res.locals.user.id}, 
+        include: [
+            {  
+                model:JobApplication,
+                as: 'JobApplication'
+            }
+          
+          ]
+
+      });
+
+
+      
+    let sql =   "SELECT DISTINCT jobapplications.application_status, users.firstname, users.lastname, jobs.job_title, "+
+    "jobs.job_status, jobs.updatedAt, jobs.id " +
+      "FROM `jobapplications` " +
+          "LEFT JOIN jobs ON jobs.id = jobapplications.JobId " +
+          "LEFT JOIN useraccounts ON jobapplications.FreelanceId = useraccounts.id " +
+          "LEFT JOIN users ON users.UserId = jobapplications.FreelanceId ";
+
+          const [jobs_results, metadata] = await db.sequelize.query(sql);
+
+
+  let allJobsCount = 0;
+  let JobsAwardedCount = 0;
+  let JobsInProgressCount = 0;
+  let JobsCompletedCount =0;
+
+  jobs.map(j => {
+      allJobsCount++
+  }); 
+
+  jobs_results.map(j => {
+      if(j.application_status === 'awarded' || j.application_status === 'accepted'){
+          JobsAwardedCount++
+      }
+      if(j.job_status === 'in progress'){
+          JobsInProgressCount++
+      }
+      if(j.job_status === 'completed'){
+          JobsCompletedCount++
+      }    
+  });
+
+  let clientStats = {
+      allJobs:allJobsCount,
+      jobsAwarded:JobsAwardedCount,
+      jobsInprogress:JobsInProgressCount,
+      jobsCompeleted:JobsCompletedCount
+  }
+
+
+res.send(clientStats)
+
+};
 
