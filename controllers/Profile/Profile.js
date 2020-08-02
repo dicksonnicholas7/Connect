@@ -1,4 +1,6 @@
+const UserSkills = require('../../models').UserSkills;
 const User = require('../../models').User;
+const Experience = require('../../models').Experience;
 const Portfolio = require('../../models').Portfolio;
 const Skills = require('../../models').Skills;
 const UserAccount = require('../../models').UserAccount;
@@ -21,9 +23,23 @@ module.exports.GetIndividualClientProfile = async (req, res, next) => {
 
 module.exports.GetIndividualFreelancerProfile = async (req, res, next) => {
 
+    let userId = res.locals.user.id;
+
+    let userDetails = await UserAccount.findOne({
+
+
+        where:{id:userId}, 
+        include: [User, UserSkills, Portfolio, Experience]
+
+    });
+
+    console.log(userDetails.Portfolios)
+    
+
     res.render(
         'profile/individual-freelancer',
         {
+            userDetails,
             page: 'individual-freelancer'
         }
     )

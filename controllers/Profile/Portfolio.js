@@ -48,7 +48,7 @@ module.exports.AddPortfolio = async (req, res, next) =>{
     
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/images/users/individual/',
+        destination:'./public/images/portfolio/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
