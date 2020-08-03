@@ -25,21 +25,11 @@ module.exports = (sequelize, DataTypes) => {
         foreignKey: 'RoleId',
         onDelete: 'SET NULL'
       });
-  
-      UserAccount.belongsTo(models.UserType,{
-        foreignKey: 'UserTypeId',
-        onDelete: 'CASCADE'
-      });
 
     UserAccount.hasOne(models.User,{
       foreignKey: 'UserId',
       onDelete: 'CASCADE'
     });
-
-    UserAccount.hasOne(models.BusinessUser,{
-        foreignKey: 'UserId',
-        onDelete: 'CASCADE'
-      });
 
     UserAccount.hasMany(models.Job, {
       foreignKey: 'ClientId',
@@ -111,10 +101,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete:'CASCADE'
     });
 
-    UserAccount.hasOne(models.TwoFactorAuth,{
-      foreignKey: 'UserId',
-      onDelete:'CASCADE'
-    });
   };
   return UserAccount;
 };
