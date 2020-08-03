@@ -97,11 +97,15 @@ module.exports.SendMessage = async (req, res, next) =>{
   res.send("success");
 };
 
+
+
+
+
 module.exports.UploadFile = async (req, res, next) =>{
 
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/jobfiles/',
+        destination:'./public/files/jobfiles/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
