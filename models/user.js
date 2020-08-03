@@ -9,6 +9,7 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     alpha2code: DataTypes.STRING,
     dob: DataTypes.DATEONLY,
+    country_code: DataTypes.STRING,
     phone: {
       type: DataTypes.STRING
     },
