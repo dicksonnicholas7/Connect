@@ -42,7 +42,6 @@ var users = new Users();
  io.on('connection', function (socket) {
   console.log('New user joined');
 
-  /* ********************** New User Join Chat *************************** */
 
  
   socket.on('join', (param) => {
@@ -59,7 +58,9 @@ var users = new Users();
 
   });
 
-  /* ********************** User Send Chat *************************** */
+
+
+  
 
   socket.on('createMessage', (message) => {
       var user = users.getUser(socket.id);
