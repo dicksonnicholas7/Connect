@@ -32,14 +32,6 @@ module.exports = {
           key:'id'
         }
       },
-      UserTypeId:{
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'UserTypes',
-          key:'id'
-        }
-      },
       token: {
         type: Sequelize.STRING
       },
