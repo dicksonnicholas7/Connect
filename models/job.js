@@ -6,7 +6,8 @@ module.exports = (sequelize, DataTypes) => {
     job_timeLength: DataTypes.STRING,
     job_price: DataTypes.DECIMAL(6, 2),
     job_status: DataTypes.STRING,
-    job_jobType: DataTypes.INTEGER
+    job_jobType: DataTypes.INTEGER,
+    job_UserType:DataTypes.STRING
   }, {});
   Job.associate = function(models) {
     // associations can be defined here

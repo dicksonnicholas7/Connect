@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Jobs', {
+    return queryInterface.createTable('BusinessUsers', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ClientId:{
+      UserId:{
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
@@ -16,33 +16,34 @@ module.exports = {
           key:'id'
         }
       },
-      CatId:{
-        type: Sequelize.INTEGER,
-        onUpdate: 'CASCADE',
-        references:{
-          model: 'JobCategories',
-          key:'id'
-        }
-      },
-      job_title: {
+      businessname: {
         type: Sequelize.STRING
       },
-      job_details: {
+      service: {
         type: Sequelize.STRING
       },
-      job_timeLength: {
+      availability: {
         type: Sequelize.STRING
       },
-      job_price: {
-        type: Sequelize.DECIMAL(6, 2)
-      },
-      job_status: {
+      golden_paragraph: {
         type: Sequelize.STRING
       },
-      job_jobType: {
-        type: Sequelize.INTEGER
+      country: {
+        type: Sequelize.STRING
       },
-      job_UserType: {
+      city: {
+        type: Sequelize.STRING
+      },
+      alpha2code: {
+        type: Sequelize.STRING
+      },
+      phone: {
+        type: Sequelize.STRING
+      },
+      picture: {
+        type: Sequelize.STRING
+      },
+      certificate: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -56,6 +57,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Jobs');
+    return queryInterface.dropTable('BusinessUsers');
   }
 };

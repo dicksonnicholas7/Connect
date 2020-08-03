@@ -1,14 +1,14 @@
 'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Jobs', {
+    return queryInterface.createTable('TwoFactorAuths', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      ClientId:{
+      UserId: {
         type: Sequelize.UUID,
         onDelete: 'CASCADE',
         references:{
@@ -16,33 +16,10 @@ module.exports = {
           key:'id'
         }
       },
-      CatId:{
-        type: Sequelize.INTEGER,
-        onUpdate: 'CASCADE',
-        references:{
-          model: 'JobCategories',
-          key:'id'
-        }
-      },
-      job_title: {
+      AuthyId: {
         type: Sequelize.STRING
       },
-      job_details: {
-        type: Sequelize.STRING
-      },
-      job_timeLength: {
-        type: Sequelize.STRING
-      },
-      job_price: {
-        type: Sequelize.DECIMAL(6, 2)
-      },
-      job_status: {
-        type: Sequelize.STRING
-      },
-      job_jobType: {
-        type: Sequelize.INTEGER
-      },
-      job_UserType: {
+      mobile: {
         type: Sequelize.STRING
       },
       createdAt: {
@@ -56,6 +33,6 @@ module.exports = {
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Jobs');
+    return queryInterface.dropTable('TwoFactorAuths');
   }
 };
