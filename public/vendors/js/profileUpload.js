@@ -136,3 +136,13 @@ $(document).ready(function () {
        
     });
 });
+
+
+$(document).ready(function () {
+    var maxLength = 250;
+$('#details').keyup(function() {
+var length = $(this).val().length;
+var length = maxLength-length;
+$('#chars').text(length);
+});
+});
