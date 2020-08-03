@@ -24,7 +24,7 @@ const {GetJobById, ApplyJob,AcceptJob, DeleteJobApplication, RejectJob, GetSingl
 const {GetSingleJob} = require('../controllers/Job/UpdateJob');
 const {AwardJob} = require('../controllers/Job/ViewJobClient');
 const {GetJobByIdBusiness, AcceptJobBusiness, GetAllJobsFreelancerBusiness, ApplyJobBusiness,GetSingleJobDetailBusiness} = require('../controllers/Job/JobFreelancerBusiness');
-const {GetJobWorkSpace} = require('../controllers/Job/JobWorkSpace');
+const {GetJobWorkSpace, UploadFile} = require('../controllers/Job/JobWorkSpace');
 
 
 
@@ -144,6 +144,11 @@ router.post('/apply-job', ApplyJob);
 router.post('/apply-job-business', ApplyJobBusiness);
 
 router.post('/delete-job-application', DeleteJobApplication);
+
+
+
+router.post('/upload-job-file', UploadFile);
+
 
 
 

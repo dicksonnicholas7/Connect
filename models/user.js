@@ -9,12 +9,12 @@ module.exports = (sequelize, DataTypes) => {
     gender: DataTypes.STRING,
     alpha2code: DataTypes.STRING,
     dob: DataTypes.DATEONLY,
+    country_code: DataTypes.STRING,
     phone: {
       type: DataTypes.STRING
     },
     country: DataTypes.STRING,
     city: DataTypes.STRING,
-    country_code: DataTypes.STRING,
     picture: DataTypes.STRING
   }, {});
   User.associate = function(models) {

@@ -18,9 +18,12 @@ const path = require('path');
 
 module.exports.GetJobWorkSpace = async (req, res, next ) => {
 
-    let jobId = req.params.id;
+    let userId = res.locals.user.id;
+
+    let jobId = req.params.id; 
 
     let jobApplication_status = await JobApplication.findOne({where:{JobId:jobId}});
+
 
     console.log(jobApplication_status.application_status)
 
@@ -40,7 +43,9 @@ module.exports.GetJobWorkSpace = async (req, res, next ) => {
             {
                 client_details,
                 job_details,
-                job_skills
+                job_skills,
+                userId,
+                jobApplication_status
             }
             );
     }else{
@@ -92,11 +97,15 @@ module.exports.SendMessage = async (req, res, next) =>{
   res.send("success");
 };
 
+
+
+
+
 module.exports.UploadFile = async (req, res, next) =>{
 
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/jobfiles/',
+        destination:'./public/files/jobfiles/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -118,13 +127,20 @@ module.exports.UploadFile = async (req, res, next) =>{
                 filename: filenameGlobal
             };
             JobFile.create(jobFileInfo).then(response =>{
-                res.redirect("/user/workspace/"+req.body.JobAppId);
+                res.redirect("/user/workspace/"+req.body.JobId);
             });
 
         }
     });
 
 };
+
+
+
+
+
+
+
 
 module.exports.ViewFile = async (req, res, next) =>{
     let filename = req.params.filename;

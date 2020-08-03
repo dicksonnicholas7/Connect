@@ -76,7 +76,7 @@
                   <input type="text" id="declineJobId" value="<%=j.id%>" hidden >
                     <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                     <div class="dropdown-content">
-                        <a href="#">Go to workspace</a>
+                        <a href="/user/job-workspace/<%=j.Job.id%>">Go to workspace</a>
                         <a class="text-muted" href="/user/accept-job/<%=j.id%>">Accept</a>
                         <a class="text-muted" href="" id="btndeclineJob">Decline</a>
                     </div>

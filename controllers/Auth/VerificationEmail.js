@@ -38,7 +38,7 @@ module.exports.SendMailVerify = async (emailReceiver, token, hostname)=>{
         }
     });
 
-    ejs.renderFile('C:\\Users\\AMALITECH-PC\\Documents\\new\\Connect\\views\\email-verify.ejs', { hostname: hostname , emailReceiver:emailHash, token:token}, function (err, data) {
+    ejs.renderFile('C:\\Users\\AMALITECH-PC\\Documents\\amalitech projects\\Connect\\views\\email-verify.ejs', { hostname: hostname , emailReceiver:emailHash, token:token}, function (err, data) {
         if (err) {
             console.log(err);
         } else {

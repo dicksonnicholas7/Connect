@@ -1,6 +1,6 @@
 const User = require('../../models').User;
 const Portfolio = require('../../models').Portfolio;
-const { GetCompleteFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerSkills, GetIndividualFreelancerProfile } = require('../Profile/Profile')
+const { GetCompleteFreelancerProfile, GetCompleteClientProfile, GetCompleteFreelancerSkills , GetCompleteFreelancerPortfolio} = require('../Profile/Profile')
 const { GetBusinessClientCompleteProfile, GetBusinessFreelancerCompleteProfile } = require('../Profile/BusinessProfile')
 
 
