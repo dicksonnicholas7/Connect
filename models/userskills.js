@@ -1,7 +1,7 @@
 'use strict';
 module.exports = (sequelize, DataTypes) => {
   const UserSkills = sequelize.define('UserSkills', {
-    name: DataTypes.STRING
+    skills_name: DataTypes.STRING
   }, {});
   UserSkills.associate = function(models) {
     // associations can be defined here

@@ -5,14 +5,31 @@ const UserAccount = require('../../models').UserAccount;
 const Portfolio = require('../../models').Portfolio;
 const Education = require('../../models').Education;
 const Contract = require('../../models').Contract;
+const db = require("../../models");
 
 
 
-module.exports.GetPublicFreelancers = (req, res, next) => {
+module.exports.GetPublicFreelancers = async (req, res, next) => {
+
+
+   let sql = "SELECT   users.UserId,   users.firstname, users.lastname, users.jobtitle, " +
+ 
+  " userskills.skills_name, users.country, users.city, users.golden_paragraph, users.availability " +
+   
+  " FROM  `useraccounts` " +
+   
+     "LEFT JOIN users ON users.UserId = useraccounts.id  " +
+     "LEFT JOIN userskills ON userskills.UserId = useraccounts.id  " +
+     "WHERE useraccounts.RoleId = 2 AND useraccounts.UserTypeId = 2  ";
+
+     const [freelancers, metadata] = await db.sequelize.query(sql);
+
+     console.log(freelancers);
 
     res.render(
         'find-freelancers',
         {
+            freelancers,
             page:'find-freelancer'
 
         }

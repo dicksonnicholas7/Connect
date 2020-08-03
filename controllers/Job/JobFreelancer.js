@@ -1,5 +1,6 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const JobSkills = require('../../models').JobSkills;
 const JobApplication = require('../../models').JobApplication;
 const JobCategory = require('../../models').JobCategory;
 const User = require('../../models').User;
@@ -29,9 +30,9 @@ module.exports.GetSingleJobDetail = async (req, res, next ) => {
 
 
 module.exports.DeleteJobApplication = async (req, res, next ) => {
-        let jobId = req.params.id;
+        let jobId = req.body.id;
 
-        let jobApp_deleted = JobApplication.destroy({ 
+         let response =   JobApplication.destroy({ 
             where:{
                 [Op.and]: [
                     {FreelanceId:res.locals.user.id},
@@ -39,16 +40,20 @@ module.exports.DeleteJobApplication = async (req, res, next ) => {
                 ]
             }
         });
-  
-    if(jobApp_deleted !== null) {
-        GetDashboard(req, res, next , '' , 'successfully withdrawn your application');
-    }else{
-        GetDashboard(req, res, next , 'error withdrawing you application', '');
-    }
+
+
+        if(response !== null ){
+            res.json(response);
+        }
 }
+
+
+
 
    
 module.exports.ApplyJob = async (req, res, next) => {
+
+    let job_skills;
 
     console.log(req.body.id)
 
@@ -77,12 +82,19 @@ module.exports.ApplyJob = async (req, res, next) => {
 
         error = 'You have already applied for this Job.'
 
-        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price, jobs.job_skills,  users.firstname, users.city, users.country "+ 
+        let sql = "SELECT jobs.id, jobs.job_details, jobs.job_title, jobs.createdAt, jobs.job_price,  users.firstname, users.city, users.country "+ 
         "FROM jobs "+
         "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
         "LEFT JOIN users ON useraccounts.id = users.UserId ";
     
         const [jobs, metadata] = await db.sequelize.query(sql);
+
+        
+    if(jobs.length === 0){
+        console.log('no jobs');
+       }else{
+           job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
+       }
     
         console.log(jobs)
         console.log(jobs.id)
@@ -92,6 +104,7 @@ module.exports.ApplyJob = async (req, res, next) => {
             {
                 applyErrorMessage:error,
                 jobs,
+                job_skills,
                 page: 'all-jobs'
             }
         );
@@ -137,7 +150,7 @@ module.exports.ApplyJob = async (req, res, next) => {
     let success = 'job successfully applied'
 
 
-    GetDashboard(req, res, next, error, success)
+    res.redirect('/user/dashboard-individual-freelancer');
 
 
 
@@ -157,68 +170,91 @@ module.exports.GetJobById = async (req, res, next ) => {
 
     let job = await Job.findOne({where:{id:job_id}});
 
-    
+    if(job!==null){
 
+
+        let job_skills = await JobSkills.findAll({where:{JobId:job.id}});
+
+
+        if(job_skills !== null ){
+
+            console.log("skills"+job_skills)
+            
     let sql = "SELECT jobs.*, users.firstname, users.city, users.country "+ 
-        "FROM jobs "+
-        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "FROM jobs "+
+    "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+    "LEFT JOIN users ON useraccounts.id = users.UserId WHERE jobs.id="+job_id+"";
 
-     let user = await User.findOne({where:{UserId:job.ClientId}});
+ let user = await User.findOne({where:{UserId:job.ClientId}});
 
-     const [jobs, metadata] = await db.sequelize.query(sql);
-  
-
-     let job_details = {
-        id:job_id,
-        title:job.job_title,
-        firstname:user.firstname,
-        lastname:user.lastname,
-        country:user.country,
-        city:user.city,
-        details:job.job_details,
-        price:job.job_price,
-        skills:job.job_skills
-    }
-
-
-    console.log(job_details)
-
-     res.render(
-         'job/jobs',
-         {
-            applyErrorMessage:'',
-             job_details,
-             jobs,
-             page: 'single-jobs'
-         }
-     )
-
+ const [jobs, metadata] = await db.sequelize.query(sql);
+ 
+ let job_details = {
+    id:job_id,
+    title:job.job_title,
+    firstname:user.firstname,
+    lastname:user.lastname,
+    country:user.country,
+    city:user.city,
+    details:job.job_details,
+    price:job.job_price
 }
 
+res.send(job_details);
+        }
+    }
+}
+
+
+
+
+  
 
    
 module.exports.GetAllJobsFreelancer = async (req, res, next) =>{
 
+    let job_skills
+
 
     let sql = "SELECT jobs.*,  users.firstname, users.city, users.country "+ 
-        "FROM jobs "+
-        "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
-        "LEFT JOIN users ON useraccounts.id = users.UserId ";
+    "FROM jobs "+
+    "LEFT JOIN useraccounts ON useraccounts.id = jobs.ClientId "+
+    "LEFT JOIN users ON useraccounts.id = users.UserId ";
 
-        const [jobs, metadata] = await db.sequelize.query(sql);
+    const [jobs, metadata] = await db.sequelize.query(sql);
 
-        console.log(jobs)
-        console.log(jobs.id)
+
+    console.log(jobs.length)
+
+
+    if(jobs.length === 0){
+     console.log('no jobs');
+    }else{
+        job_skills = await JobSkills.findAll({where:{JobId:jobs[0].id}});   
+    }
+   
+
+
+    if(job_skills !== null ){
+
+        console.log("skills"+job_skills)
      
         res.render(
             'job/jobs',
             {
                 applyErrorMessage:'',
                 jobs,
+                job_skills,
                 page: 'all-jobs'
             }
         )
+
+
+    }else{
+
+        console.log('jobs selected have no skills')
+    }
+    
 }
 
 module.exports.GetJobsFilterFreel = async (req, res, next)=>{
@@ -437,34 +473,59 @@ module.exports.AcceptJob = async (req, res, next) => {
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
     res.redirect('/user/dashboard-individual-freelancer');
+
+
+
 };
+
+
+
+
+
 
 module.exports.RejectJob = async (req, res, next) => {
+
     let hostname = req.headers.host;
-    let appId = req.params.id;
+    let appId = req.body.id;
     let jobAppStatus = {
-        status:''
+        job_status:''
     };
    
-    let job = await JobApplication.findOne({where:{id:appId},include:User });
+    let job = await JobApplication.findOne({where:{id:appId},include:UserAccount });
     let job_updated = await Job.update(jobAppStatus, {where: {id:job.JobId} });
-    let jobApp_rejected = await JobApplication.destroy({where:{id:appId} });
 
-    let notifyParts = {
-        title: res.locals.user.firstname+" rejected the job",
-        message: "/user/my-jobs/all",
-        ReceiverId: job.ClientId
-    };
-    let notifyMailParts = {
-        title: res.locals.user.firstname+" rejected the job",
+         
+         let response = JobApplication.destroy({ 
+            where:{
+                [Op.and]: [
+                    {FreelanceId:res.locals.user.id},
+                    {JobId:job.JobId}
+                ]
+            }
+        });
+
+
+        if(response !== null ){
+                     
+             let notifyMailParts = {
+        title: res.locals.user.User.firstname+" rejected the job offer",
         message: '<div style="background-color:white;color:black;">'+
-                 '<p style="font-weight: bold;">Group 3 freelancer.</p>'+ 
-                 '<p>Sorry '+res.locals.user.firstname+ ' rejected the awarded job.</p>'+
+                 '<p style="font-weight: bold;">Connect.</p>'+ 
+                 '<p>Sorry '+res.locals.user.User.firstname+ ' rejected the awarded job.</p>'+
                 '<p><a href="http://'+hostname+'/login/'+'">Click here to see other applicants</a></p></div>',
-        ReceiverEmail: job.User.email
+        ReceiverEmail: job.UserAccount.email
     };
-    Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
+
+
+
+    // Notify(notifyParts.title, notifyParts.message, notifyParts.ReceiverId);
     NotifyMail(notifyMailParts.title, notifyMailParts.message, notifyMailParts.ReceiverEmail);
 
-    res.redirect('/job/'+job.JobId);
+
+
+            res.json(response);
+        }
+     
+
 };
+

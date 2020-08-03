@@ -3,14 +3,9 @@
 
 
 <link rel="stylesheet" type="text/css" media="all" href="/vendors/css/profile_style.css" />
-<link href="pidie-0.0.8.css" rel="stylesheet"/>
 
-<script src=""></script>
-<script>
-    new Pidie();
-</script>
 
-<div class=" " style="background-image:url('../../vendors/img/laptop-with-overlay.png'); padding-bottom: 800px; padding-top: 80px ">
+<div class=" " style="background-image:url('../../vendors/img/laptop-with-overlay.png'); padding-bottom: 850px; padding-top: 10px ">
 
     <div class="container" style="width: fit-content; height: max-content;">
             <div class="col-md-12">
@@ -30,8 +25,8 @@
                     <nav>
                         <div class="nav nav-tabs" id="nav-tab" role="tablist">
                             <p class="nav-item nav-link mr-5 ml-5 active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Personal Details</a>
-                            <p class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" aria-selected="false">Portfolio</a>
-                                <p class="nav-item nav-link mr-5 ml-5" id="nav-contact-tab" aria-selected="false">Skills & Certificate</a>
+                            <p class="nav-item nav-link mr-5 ml-5 text-muted" id="nav-contact-tab" aria-selected="false">Portfolio</a>
+                            <p class="nav-item nav-link mr-5 ml-5 text-muted" id="nav-contact-tab" aria-selected="false">Skills & Certificate</a>
                         </div>
                     </nav>
                     <div class="tab-content" id="nav-tabContent">
@@ -40,41 +35,43 @@
                                 <input name="id" id="id" placeholder="" type="text" class="form-control" value="<%=user.id%>" hidden><br />
                                 <div class="card-business ml-3 mt-1" >
 
+                                    
                                     <div class="row pt-4" style="padding-left: 5rem; padding-right: 5rem;">
                                         <%if(individualuser.picture!==null && user.RoleId === 2){%>
-                                        <div class="col-md-3 mt-5">
-                                            <div class="row ">
-                                                <div class="col-md-12">
-                                                    <img src="../vendors/img/profile-avatar-ss.png" alt="Profile Photo" id="profile" width="96" height="98">
-                                                </div>  
-                                            </div>
-                                            <div class="row m-auto">
-                                                <div class="col-md-12 mt-5" style="color:#0c4767;">
-                                                    <label class="">
-                                                        <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                        Add Photo
-                                                    </label>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <% }else{ %>
-
                                             <div class="col-md-3 mt-5">
                                                 <div class="row">
                                                     <div class="col-md-12">
-                                                        <img src="../vendors/img/profile-avatar-ss.png" alt="Profile Photo" id="profile2" width="96" height="98">
+                                                        <img class="image-border" src="../../images/users/individual/<%=individualuser.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
                                                     </div>
                                                 </div>
-                                                <div class="row m-auto">
-                                                    <div class="col-md-12 mt-5" style="color:#0c4767;">
-                                                        <label class="" style="cursor: pointer;">
+                                                <div class="row">
+                                                    <div class="col-md-12" style="color:blue;">
+                                                        <label class="">
                                                             <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
-                                                            Add Photo
+                                                            Upload Picture
                                                         </label>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <% } %> 
+                                            <% }else{ %>
+    
+                                                <div class="col-md-3 mt-5">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <img class="image-border" src="../../images/users/individual/avatar.png" alt="Profile Photo" id="profile2" width="120" height="120">
+                                                        </div>
+                                                    </div>
+                                                    <div class="row">
+                                                        <div class="col-md-12" style="color:blue;">
+                                                            <label class="">
+                                                                <input class="text-center m-auto" hidden type="file" id="picture" name="picture" onchange="readURL(this)" value="Add Photo" accept="image/*">
+                                                                Upload Picture
+                                                            </label>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <% } %> 
+
 
                                         <div class="col-md-9">
 
@@ -174,6 +171,8 @@
                                                 </div>
                
                                             </div>
+
+                                            
 
                                            
                                         </div>  

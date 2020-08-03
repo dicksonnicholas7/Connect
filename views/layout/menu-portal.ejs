@@ -1,6 +1,7 @@
 <style>
     .sticky-top {
         top: 60px;
+        z-index: 0!important;
     }
 
 
@@ -16,9 +17,9 @@
                 <li class="nav-item">
                     <% if(individualuser){%>
                         <% if(user.RoleId === 2){%>
-                  <a class="nav-link active" href="/user/dashboard-individual-freelancer">Freelancer Dashboard</a>
+                  <a class="nav-link active" href="/user/dashboard-individual-freelancer"> Dashboard</a>
                         <% }else{ %>
-                            <a class="nav-link active" href="/user/dashboard-individual-client">Client Dashboard</a>
+                            <a class="nav-link active" href="/user/dashboard-individual-client">Dashboard</a>
                             <%}%>
                   <% }else{ %>
                     <% if(user.RoleId === 2){%>

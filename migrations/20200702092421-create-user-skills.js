@@ -50,7 +50,7 @@ module.exports = {
           key:'id'
         },
       },
-      name: {
+      skills_name: {
         type: Sequelize.STRING
       },
       createdAt: {

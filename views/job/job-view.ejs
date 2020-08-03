@@ -79,9 +79,9 @@
                     <h4 class="text-muted col-md-12 mt-5" style="float: left; color: #373833;">Skills Required</h4>
 
                     <div class="col-md-12 justify-content-around mb-5">
-                        <div class="col-md-3 mr-1  badge badge-secondary">
-                            <%=job.job_skills%>
-                        </div>
+                        <% job_skills.map( js => { %>
+                            <div class="col-md-3 mr-1  badge badge-secondary"> <%=js.job_skill_name%></div>       
+                            <% }); %>
                     </div>
 
                     
@@ -104,7 +104,7 @@
                         <div class="card mb-5">
                             <div class="card-body appliants-card text-center">
                                 <div>
-                                    <img src='../../vendors/img/1.jpg' class="applicants-img mt-3 mb-3" alt="...">
+                                    <img src='../../images/users/individual/<%=j.picture%>' class="applicants-img mt-3 mb-3" alt="...">
                                 </div>
                         
                                 <div class="">

@@ -27,6 +27,8 @@ console.log(skills)
 
 module.exports.AddSkills = async (req, res, next ) => {
 
+    let userskills = '';
+
 let userExperience = {
     UserId:req.body.id,
     name:req.body.name,
@@ -38,16 +40,20 @@ let skills = req.body.skills;
 console.log(skills)
 
 
-for(i=0;i<skills.length;i++){
+userskills = skills.join(", ");
 
-    let userSkills = {
-        UserId: req.body.id,
-        SkillsCatId:2,
-        name: skills[i]
-    };
 
-    UserSkills.create(userSkills);
-}
+console.log(userskills)
+
+
+let userSkills = {
+    UserId: req.body.id,
+    SkillsCatId:2,
+    skills_name:userskills 
+};
+
+
+UserSkills.create(userSkills);
 
     user_skills = await UserSkills.findAll({where:{UserId:req.body.id}});
 
