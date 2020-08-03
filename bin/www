@@ -43,7 +43,7 @@ var users = new Users();
   console.log('New user joined');
 
 
- 
+//create a private room for client and freelancer based on JobID 
   socket.on('join', (param) => {
 
       socket.join(param.room);
@@ -52,7 +52,7 @@ var users = new Users();
       
       io.to(param.room).emit('updateUserList', users.getUserList(param.room));
       
-      socket.emit('newMessage', generateMessage('Admin', 'Welcome to the discussion platform'));
+      socket.emit('newMessage', generateMessage('Connect!', 'Welcome to the discussion platform'));
       socket.broadcast.to(param.room).emit('newMessage', generateMessage('Admin', `${param.name} has Joined`));
 
 

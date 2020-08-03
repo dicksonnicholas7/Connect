@@ -20,6 +20,10 @@ module.exports.GetJobWorkSpace = async (req, res, next ) => {
 
     let userId = res.locals.user.id;
 
+    let user_details = await User.findOne({where:{UserId:userId}});
+
+    let username = user_details.firstname;
+
     let jobId = req.params.id; 
 
     let jobApplication_status = await JobApplication.findOne({where:{JobId:jobId}});
@@ -45,6 +49,7 @@ module.exports.GetJobWorkSpace = async (req, res, next ) => {
                 job_details,
                 job_skills,
                 userId,
+                username,
                 jobApplication_status
             }
             );

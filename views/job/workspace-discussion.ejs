@@ -2,16 +2,45 @@
 
 <div class="container-fluid">
 
-    <div class="container">
-       
-    </div>
+  <div class="chat__main">
 
-
-    <div class="input-group mb-3 mt-5">
-        <input type="text" class="form-control" placeholder="Write a message" aria-label="Recipient's username" aria-describedby="basic-addon2">
-        <div class="input-group-append">
-          <button class="btn request-payment-button text-center" style="width: 70px;" id="basic-addon2">Send</button>
-        </div>
-    </div>
+    <ol id="messages" class="chat__messages">
+      
+    </ol>
+  
+    <div class="chat__footer">
+      <form id="message-form">
+        <input style="display: none;" name="room" id="room" type="text" value="<%=job_details.id%>" hidden/>
+        <input style="display: none;" name="name" id="name" type="text" value="<%=username%>" hidden/>
+        <input style="display: none;" name="username" id="username" type="text" value="<%=username%>" />
+        <input name="message" id="message" type="text" placeholder="Enter Message" autofocus autocomplete="off" />
+        <button class="btn request-payment-button text-center" style="width: 70px;" id="basic-addon2">Send</button>
+      </form>
+  </div>
+  </div>
 
 </div> 
+
+<script id="message-temp" type="text/template">
+  <li class="message">
+    <div class="message__title">
+      <h4>{{from}}</h4>
+      <span>{{createdAt}}</span>
+    </div>
+    <div class="message__body">
+      <p>{{text}}</p>
+    </div>
+  </li>
+</script>
+
+
+
+<script src="../../socket.io/socket.io.js"></script>
+<script src="/js/jquery-3.3.1.min.js"></script>
+<script src="/js/moment.js"></script>
+<script src="/js/mustache.js"></script>
+<script src="/js/deparam.js"></script>
+<script src="/js/chat.js"></script>
+
+
+
