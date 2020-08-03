@@ -2,6 +2,8 @@
     .user-img:hover {
         border: 2px solid #A42101;
     }
+
+    
 </style>
 
 
@@ -23,10 +25,10 @@
         <% if(user){%>
         <div class="header__center">
 
-            <div class="dropdown show" style="z-index: ;">
+            <div class="dropdown show">
                 <% if(individualuser){%>
                     <div class="d-flex justify-content-start">
-                        <h5 class="mt-4 mr-3" style="font-size:16px; color: #0C4767;"><%=individualuser.firstname%></h5>
+                        <h5 class="mt-4 mr-3 user-name" style="font-size:16px; color: #0C4767;"><%=individualuser.firstname%></h5>
                         <a class="ps-logo"  id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <% if(individualuser.picture !== null ){%>
                             <img style="border-radius: 50%; cursor: pointer;" class="user-img" src="../../images/users/individual/<%=individualuser.picture%>" width="50px" height="50px"  alt="Connect Logo">
