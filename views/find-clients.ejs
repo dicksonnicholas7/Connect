@@ -1,0 +1,67 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Socket.io</title>
+    </head>
+    <body>
+        <h1>Connect Discussion Platform</h1>
+        <input type="text" id="messagefromclient" placeholder="enter message">
+        <button id="btnSend">Send Message</button>
+        <div id="messagebox"></div>
+
+
+
+
+
+        <script src="../socket.io/socket.io.js"></script>
+        <script>
+
+
+                    var name = prompt("name");
+                    var room = prompt("room");
+
+                    var param = {
+                        name:name,
+                        room:room
+                    };
+
+
+                    var socket = io('http://192.168.2.85:3000');
+
+                    var div = document.getElementById("messagebox");
+
+            socket.on('connect', function() {
+          
+                 socket.emit('join', param);
+                
+                });
+
+
+        
+            var button = document.getElementById("btnSend");
+
+            button.addEventListener("click", function (params) {
+
+                var from = param.name;
+                var text = document.getElementById("messagefromclient").value;
+
+
+                socket.emit('createMessage', {
+                                       from,
+                                       text,
+                                       createdAt:'now'
+                                     }, function (data) {
+                                    
+                                     document.getElementById("messagefromclient").value = "";
+                         });
+                });
+
+
+                socket.on('newMessage', function(data) {
+                    div.innerHTML += "<h3>" + data.from + ' ' + data.text +  "</h3><br>";
+                    });
+
+ 
+        </script>
+    </body>
+</html>

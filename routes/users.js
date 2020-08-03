@@ -35,7 +35,7 @@ router.get('/jobcount', GetJobCount);
 
 
 
-router.get('/job-workspace', GetJobWorkSpace);
+router.get('/job-workspace/:id', GetJobWorkSpace);
 
 
 router.get('/all-freelancers', GetAllIndividualFreelancers);

@@ -1,8 +1,10 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const JobSkills = require('../../models').JobSkills;
 const JobCategory = require('../../models').JobCategory;
 const JobApplication = require('../../models').JobApplication;
 const User = require('../../models').User;
+const UserAccount = require('../../models').UserAccount;
 const JobPayment = require('../../models').JobPayment;
 const UserPaymentInfo = require('../../models').UserPaymentInfo;
 const Chat = require('../../models').Chat;
@@ -16,7 +18,36 @@ const path = require('path');
 
 module.exports.GetJobWorkSpace = async (req, res, next ) => {
 
-    res.render('job/workspace');
+    let jobId = req.params.id;
+
+    let jobApplication_status = await JobApplication.findOne({where:{JobId:jobId}});
+
+    console.log(jobApplication_status.application_status)
+
+    if(jobApplication_status.application_status === 'accepted'){
+
+        let job_details = await Job.findOne({where:{id:jobId}, include:UserAccount});
+
+        console.log(job_details)
+
+        let job_skills = await JobSkills.findAll({where:{JobId:jobId}});
+
+        let client_details = await User.findOne({where:{UserId:job_details.UserAccount.id}});
+
+        console.log(client_details)
+        res.render(
+            'job/workspace',
+            {
+                client_details,
+                job_details,
+                job_skills
+            }
+            );
+    }else{
+        console.log('Job not accepted yet by freelancer');
+    }
+
+    
 
 }
 

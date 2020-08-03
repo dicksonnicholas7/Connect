@@ -59,11 +59,12 @@
                     <td><%=j.firstname%>   <%=j.lastname%></td>
                     <td><button class="status-button accepted-button">
                       <%=j.application_status%>
-                    </button></td>
+                    </button></td> 
                     <td><div class="dropdown">
+                      <input type="text" value="" id="clientJobId" hidden>
                         <button class="dropbtn"><i class="fa fa-ellipsis-v"></i></button>
                         <div class="dropdown-content">
-                            <a href="#">Go to workspace</a>
+                            <a href="/user/job-workspace/<%=j.id%>" id="btnClientWorkspace">Go to workspace</a>
                             <a class="text-muted" href="#">Make Payment</a>
                             <a class="text-muted" href="#">Edit</a>
                             <a class="text-muted" href="#">Delete</a>

@@ -190,14 +190,13 @@
 
                                                 <div class="form-group col-md-6">
                                                     <label for="phone">Phone</label>
-                                                    <div class="row justify-content-start">
-                                                        <div class="col-md-5">
-                                                            <input type="tel" name="phone1" id="phone1" class="form-control" readonly>
+                                                    <div class="input-group mb-3">
+                                                        <div class="input-group-prepend">
+                                                          <span class="input-group-text" style="font-size: 15px;" id="basic-addon1">+233</span>
                                                         </div>
-                                                        <div class="form-group col-md-7">
-                                                            <input type="tel" name="phone2" id="phone2" placeholder="000-000-000" class="form-control" required>
-                                                        </div>
-                                                    </div> 
+                                                        <input type="text" class="form-control" placeholder="eg: 000-000-000" aria-label="phonenumber" maxlength="9" aria-describedby="basic-addon1">
+                                                    </div>
+                                                    <!-- <input type="text" name="phone" id="phone" value="<%=individualuser.phone%>" class="form-control" required> -->
                                                 </div>
                                             </div>
                                         </div>
@@ -219,4 +218,9 @@
 
 </div>
 
+
+
   <% include ../layout/footer-public.ejs %>
+
+
+

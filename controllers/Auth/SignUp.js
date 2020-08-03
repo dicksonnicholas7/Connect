@@ -9,7 +9,7 @@ const validator = require("email-validator");
 
 
 module.exports.EmailVerify = (req, res, next) => {
-    res.render('email-verify')
+    res.render('email-verify', {hostname:'', emailReceiver:'', token:''})
 }
 
 module.exports.GetSignUp = (req, res, next ) => {
