@@ -147,7 +147,7 @@ router.post('/delete-job-application', DeleteJobApplication);
 
 
 
-router.post('/upload-jobfile', UploadFile);
+router.post('/upload-job-file', UploadFile);
 
 
 
