@@ -41,6 +41,9 @@ module.exports = {
       dob: {
         type: Sequelize.DATEONLY
       },
+      country_code: {
+        type: Sequelize.STRING
+      },
       phone: {
         type: Sequelize.STRING
       },
