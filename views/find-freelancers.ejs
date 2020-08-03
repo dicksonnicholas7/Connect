@@ -45,6 +45,16 @@
         background-color: #e8e8e8;
         top: 70px;
     }
+
+    .truncate-golden-para {
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+        max-width: 300px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        
+    }
    
 
 </style>
@@ -173,7 +183,7 @@
                                             </div>
                                                       <br>
                                             <div>
-                                                <p><%=f.golden_paragraph%></p>
+                                                <p class="truncate-golden-para"><%=f.golden_paragraph%></p>
                                             </div>
                                         </div>
                 
@@ -183,9 +193,9 @@
                                             </div>
                                         </div>
             
-                                        <div class="row mb-5 justify-content-around ">
+                                        <div class="row mb-5 justify-content-start ">
                                             <% skills_arr.map(sk=>{ %>
-                                            <div class="col-md-3 mr-1  badge badge-secondary">
+                                            <div class="ml-4  badge badge-secondary" style="font-size: 13px;">
                                                 <%=sk%>
                                             </div>
                                            <% }); %>
