@@ -448,9 +448,9 @@ module.exports.AcceptJob = async (req, res, next) => {
 
     let job_contract = await Contract.create(jobContract);
 
-    if(job_contract !== null ){
-        Job.update({job_status:'in progress'}, {where:{id:job_contract.JobId}});
-    }
+    // if(job_contract !== null ){
+    //     Job.update({job_status:'in progress'}, {where:{id:job_contract.JobId}});
+    // }
 
     // let notifyParts = {
     //     title: res.locals.user.firstname+" accepted the job",
