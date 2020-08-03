@@ -17,7 +17,9 @@
                         <img src="../../vendors/img/Icon feather-check-circle.png" style="width: 30px;height: 30px;">
                         <p style="text-align: center;font-weight: bold;font-size: 20px;">Account Verification Successful</p>
                         <p style="text-align: center;">You're all set! Log in now to experience the best of all that Connect offers.</p><br>
-                        <p name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient"><a href="/login">Log In</a></p>
+                        <a href="/login">
+                            <p name="login-user" class="ps-btn ps-btn--fullwidth ps-btn--gradient">Log In</p>
+                        </a>   
                     <% }else{ %>
                         <h4 style="text-align: center;font-weight: bold;">Error</h4>
                         <p style="text-align: center;"><%=verify%></p>
