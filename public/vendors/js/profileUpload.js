@@ -124,7 +124,7 @@ function AgeValidate(){
 
 
 $(document).ready(function () {
-    $("#phoneNum").keyup(function () {
+    $("#phone").keyup(function () {
         if ($(this).val().length == 3) {
         $(this).val($(this).val() + "-");
     }
