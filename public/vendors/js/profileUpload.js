@@ -121,3 +121,18 @@ function AgeValidate(){
         document.getElementById("dob").required = true;
     }
 }
+
+
+$(document).ready(function () {
+    $("#phoneNum").keyup(function () {
+        if ($(this).val().length == 3) {
+        $(this).val($(this).val() + "-");
+    }
+    else if ($(this).val().length == 7) {
+    $(this).val($(this).val() + "-");
+    }
+
+    $(this).val($(this).val().replace(/[^\d.-]/g, ''));
+       
+    });
+});
