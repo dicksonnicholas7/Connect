@@ -53,9 +53,6 @@ module.exports = {
       city: {
         type: Sequelize.STRING
       },
-      country_code: {
-        type: Sequelize.STRING
-      },
       picture:{
         type: Sequelize.STRING
       },
