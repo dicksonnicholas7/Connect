@@ -73,10 +73,9 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="details">Description</label>
-                                            <textarea name="details" id="details" maxlength="250" rows="2" placeholder="Job brief description" class="form-control" required>
-                                                <span id="chars">100</span>
-                                            </textarea>
-                                            <span class="mr-2" style="float: right;" id="chars">100</span>
+                                            <textarea name="details" id="details" maxlength="250" rows="2" placeholder="Job brief description" class="form-control" required></textarea>
+                                            
+                                            <span class="mr-2" style="float: right;" id="chars">250</span>
                                         </div>
                                        
                                     </div>
@@ -183,12 +182,7 @@
 
 
     <script>
-        var maxLength = 250;
-    $('details').keyup(function() {
-    var length = $(this).val().length;
-    var length = maxLength-length;
-    $('#chars').text(length);
-    });
+        
     </script>
 <%include ../layout/footer-public.ejs %>
 <%include ../layout/skills-footer.ejs %>
