@@ -63,7 +63,12 @@
       ul, li {
         list-style-position: inside;
       }
-    
+      
+      h3 {
+        font-weight: 600;
+        text-align: center;
+        font-size: 1.5rem;
+      }
       
       button {
         border: none;
@@ -164,7 +169,7 @@
       .chat__main {
         display: flex;
         flex-direction: column;
-        height: 55vh;
+        height: 57vh;
         width: 100%;
       }
       
