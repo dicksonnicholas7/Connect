@@ -4,7 +4,7 @@
     .sidebar {
         margin: 0;
         padding-top: 70px;
-        width: 200px;
+        width: 250px;
         background-color: #0C4767;
         position: fixed;
         height: 100%;
@@ -15,9 +15,9 @@
 
       .sidebar-img {
           border-radius: 50%;
-          height: 120px;
-          width: 120px;
-          margin-bottom: 40px;
+          height: 100px;
+          width: 100px;
+          margin-bottom: 50px;
       }
       
       /* Sidebar links */
@@ -42,7 +42,7 @@
       
       /* Page content. The value of the margin-left property should match the value of the sidebar's width property */
       div.content {
-        margin-left: 200px;
+        margin-left: 250px;
         padding: 1px 16px;
         height: 1000px;
       }

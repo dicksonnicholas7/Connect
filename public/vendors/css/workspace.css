@@ -1,0 +1,51 @@
+
+    .workspace-page-image {
+        border-radius: 50%;
+        height: 100px;
+        width: 100px;
+    }
+
+    .workspace-header {
+        color: #ffffff;
+        background-color: #0C4767;
+        background-size: cover;
+        height: 55px;
+
+    }
+
+    .workspace-header-title {
+        color: #ffffff;
+        text-align: center;
+        
+    }
+
+    .workspace-header-chat {
+        color: #ffffff;
+        background-color: #0C4767;
+        background-size: cover;
+        height: 55px;
+        
+    }
+
+    .nav-tabs .nav-link {
+        font-size: 15px;
+        margin-top: 0px;
+       
+    }
+
+    .nav-tabs .nav-link.active{
+        text-decoration: underline !important;
+        background-color: transparent !important;
+        color: #ffffff;
+        border-color: transparent !important;
+        font-size: large;
+}
+    .nav-tabs .nav-link:hover{
+         border-color: transparent !important;
+         color: #ffffff;
+    }
+
+    .support {
+        color: #0C4767;
+        margin-right: 50px;
+    }
