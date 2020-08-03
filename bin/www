@@ -44,7 +44,7 @@ var users = new Users();
 
 
 //create a private room for client and freelancer based on JobID 
-  socket.on('join', (param) => {
+  socket.on('join', (param, callback) => {
 
       socket.join(param.room);
       users.removeUser(socket.id);
@@ -56,15 +56,20 @@ var users = new Users();
       socket.broadcast.to(param.room).emit('newMessage', generateMessage('Admin', `${param.name} has Joined`));
 
 
+      callback('');
   });
 
 
 
   
 
-  socket.on('createMessage', (message) => {
+  socket.on('createMessage', (message, callback) => {
       var user = users.getUser(socket.id);
       io.to(user.room).emit('newMessage', generateMessage(message.from, message.text));
+      callback({
+        err: 0,
+        msg: 'Done'
+    });
   });
 
 

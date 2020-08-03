@@ -1,5 +1,5 @@
 
-var socket = io('http://192.168.2.85:3000');
+var socket = io('http://172.20.10.2:3000');
 
 function scrollToBottom() {
   var messages = $('#messages');
