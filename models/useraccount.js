@@ -56,16 +56,6 @@ module.exports = (sequelize, DataTypes) => {
       onDelete: 'CASCADE'
     });
 
-    UserAccount.hasMany(models.Chat, {
-      foreignKey: 'SenderId',
-      onDelete: 'CASCADE'
-    });
-
-    UserAccount.hasMany(models.Chat, {
-      foreignKey: 'ReceiverId',
-      onDelete: 'CASCADE'
-    });
-
     UserAccount.hasMany(models.Notification, {
       foreignKey: 'ReceiverId',
       onDelete: 'CASCADE'
