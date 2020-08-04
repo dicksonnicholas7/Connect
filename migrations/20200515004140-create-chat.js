@@ -16,22 +16,6 @@ module.exports = {
           key:'id'
         }
       },
-      SenderId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'UserAccounts',
-          key:'id'
-        }
-      },
-      ReceiverId:{
-        type: Sequelize.UUID,
-        onDelete: 'CASCADE',
-        references:{
-          model: 'UserAccounts',
-          key:'id'
-        }
-      },
       message: {
         type: Sequelize.STRING
       },
