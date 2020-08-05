@@ -5,6 +5,11 @@
 
     .btn{
       background-color: #0C4747;
+      border: none;
+    }
+
+    .btn:hover{
+      background-color: #0C4747;
     }
   
   .card {
@@ -135,7 +140,7 @@
 
 }
 .paragraph-right{
-    color: white;
+    color: black;
     line-height: 2em;
     text-align: left;
     padding-left: 60px;
@@ -182,74 +187,60 @@
 
   <div id="indexCarousel" class="carousel slide" data-ride="carousel" >
     <div class="carousel-inner">
-        <div class="carousel-item">
-            <img src="vendors/img/home-1-text-on.jpg" class="d-block w-100" alt="home1">
+        <div class="carousel-item active">
+            <img src="vendors/img/home-slider1.jpg" class="d-block w-100" alt="home1">
             <div class="carousel-caption d-none d-md-block">
-                    <a href="/signup-page"> <button class="pa-btn">Connect now</button></a>
+                    <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
               </div>
           </div>
-      <div class="carousel-item active">
-          <img src="vendors/img/home1.jpg" class="d-block w-100" alt="home1">
-          <div class="carousel-caption d-none d-md-block">
-                <h1>Get your job done by <br>Expert Freelancers</h1>
-                  <h5>Connect with thousands of freelancers all over the world <br>who are ready to offer top quality services</h5>
-                  <a href="/signup-page"> <button class="pa-btn">Connect now</button></a>
-              
+
+          <div class="carousel-item">
+            <img src="vendors/img/home-slider2.jpg" class="d-block w-100" alt="home1">
+            <div class="carousel-caption d-none d-md-block">
+                    <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
+              </div>
           </div>
-      </div>
-     
-      <!--div class="carousel-item">
-        <img src="vendors/img/home2.jpg" class="d-block w-100" alt="home2"  style="height: 600px;">
-        <div class="carousel-caption d-none d-md-block">
-            <form class="ps-form&#45;&#45;home-find-job" action="/jobs" method="post">
-                <h1>Simple, secure, collaborative <br>workspace</h1>
-                <h5>Enjoy our secure, easy to use workspace created <br>for client-freelancer collaboration</h5>
-              </form>
+
+          <div class="carousel-item">
+            <img src="vendors/img/home-slider3.jpg" class="d-block w-100" alt="home1">
+            <div class="carousel-caption d-none d-md-block" style="padding-top: 0px;">
+                    <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
+              </div>
           </div>
-      </div>
-      <div class="carousel-item">
-        <img src="vendors/img/home3.jpg" class="d-block w-100" alt="home3"  style="height: 600px;">
-        <div class="carousel-caption d-none d-md-block">
-            <form class="ps-form&#45;&#45;home-find-job" action="/jobs" method="post">
-                <h1>Find exciting jobs from <br>clients all over the world</h1>
-                <h5>Apply for top freelance jobs posted by clients <br>from all over the world</h5>
-              </form>
-          </div>
-      </div-->
     </div>
   </div>
 
 <div class="row d-flex justify-content-around" style="background-color: #e8e8e8;">
   <h2 class="font-weight-bold text-black" data-aos="fade" >Browse Categories</h2>
   <div class="card-group d-flex justify-content-around" style="margin-left: auto;margin-right: auto;">
-      <div class="col-md-2">
+      <div class="col-lg-3 col-md-6 col-sm-8 ">
               <img src='../../vendors/img/graphic design.jpg' class="card-img-top" alt="..." style="width: 45rem; background-size: cover; ">
               <div class="card-body">
                   <h5 class="card-title1 text-center" id="vanish">Graphic Design</h5>
               </div>
       </div>
 
-      <div class="col-md-2">
+      <div class="col-lg-3 col-md-6 col-sm-8">
        <img src='../../vendors/img/programming and technology.jpg' class="card-img-top" alt="..." style="width: 45rem; background-size: cover; ">
             <div class="card-body">
                 <h5 class="card-title1 text-center" id="vanish">Programming and Technology</h5>
             </div>
     </div>
 
-    <div class="col-md-2">
+    <div class="col-lg-3 col-md-6 col-sm-8 ">
           <img src='../../vendors/img/digital marketing.jpg' class="card-img-top" alt="..." style="width: 45rem; background-size: cover; ">
           <div class="card-body">
               <h5 class="card-title1 text-center" id="vanish">Digital Marketing and Sales</h5>
           </div>
   </div>
 
-  <div class="col-md-2">
+  <div class="col-lg-3 col-md-6 col-sm-8 ">
         <img src='../../vendors/img/business.jpg' class="card-img-top" alt="..." style="width: 45rem; background-size: cover; ">
         <div class="card-body">
             <h5 class="card-title1 text-center" id="vanish">Business</h5>
         </div>
 </div>
-      <div class="col-md-2">
+      <div class="col-lg-3 col-md-6 col-sm-8 ">
               <img src='../../vendors/img/writing.jpg' class="card-img-top" alt="..." style="width: 45rem; background-size: cover;  ">
               <div class="card-body" >
                   <h5 class="card-title1 text-center">Writing</h5>
@@ -409,9 +400,9 @@
     <div class="carousel-item active">
       <div class="row">
         <div class="column">
-          <div class="card" style="width: 20rem;">
+          <div class="card" >
             <div class="card-body">
-              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;"> 
               <p class="card-title">Design Mobile App UI</p>
               <h5 class="card-text" style="color: black;">USD 300.oo</h5>
               <h6 class="card-text">5 Applicants</h6>
@@ -421,9 +412,9 @@
         </div>
       
         <div class="column">
-          <div class="card" style="width: 20rem;">
+          <div class="card" >
             <div class="card-body">
-              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
               <p class="card-title">Design Mobile App UI</p>
               <h5 class="card-text" style="color: black;">USD 300.oo</h5>
               <h6 class="card-text">5 Applicants</h6>
@@ -433,9 +424,9 @@
         </div>
         
         <div class="column">
-          <div class="card" style="width: 20rem;">
+          <div class="card" >
             <div class="card-body">
-              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
               <p class="card-title">Design Mobile App UI</p>
               <h5 class="card-text" style="color: black;">USD 300.oo</h5>
               <h6 class="card-text">5 Applicants</h6>
@@ -445,9 +436,9 @@
         </div>
         
         <div class="column">
-          <div class="card" style="width: 20rem;">
+          <div class="card" >
             <div class="card-body">
-              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
               <p class="card-title">Design Mobile App UI</p>
               <h5 class="card-text" style="color: black;">USD 300.oo</h5>
               <h6 class="card-text">5 Applicants</h6>
@@ -457,9 +448,9 @@
         </div>
       
         <div class="column">
-          <div class="card" style="width: 20rem;">
+          <div class="card" >
             <div class="card-body">
-              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+              <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
               <p class="card-title">Design Mobile App UI</p>
               <h5 class="card-text" style="color: black;">USD 300.oo</h5>
               <h6 class="card-text">5 Applicants</h6>
@@ -472,9 +463,9 @@
         <div class="carousel-item">
           <div class="row">
             <div class="column">
-              <div class="card" style="width: 20rem;">
+              <div class="card">
                 <div class="card-body">
-                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                   <p class="card-title">Design Mobile App UI</p>
                   <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                   <h6 class="card-text">5 Applicants</h6>
@@ -484,9 +475,9 @@
             </div>
           
             <div class="column">
-              <div class="card" style="width: 20rem;">
+              <div class="card" >
                 <div class="card-body">
-                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                   <p class="card-title">Design Mobile App UI</p>
                   <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                   <h6 class="card-text">5 Applicants</h6>
@@ -496,9 +487,9 @@
             </div>
             
             <div class="column">
-              <div class="card" style="width: 20rem;">
+              <div class="card" >
                 <div class="card-body">
-                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                   <p class="card-title">Design Mobile App UI</p>
                   <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                   <h6 class="card-text">5 Applicants</h6>
@@ -508,9 +499,9 @@
             </div>
             
             <div class="column">
-              <div class="card" style="width: 20rem;">
+              <div class="card" >
                 <div class="card-body">
-                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                   <p class="card-title">Design Mobile App UI</p>
                   <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                   <h6 class="card-text">5 Applicants</h6>
@@ -520,9 +511,9 @@
             </div>
           
             <div class="column">
-              <div class="card" style="width: 20rem;">
+              <div class="card">
                 <div class="card-body">
-                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                  <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap"  style="width: 45rem;">
                   <p class="card-title">Design Mobile App UI</p>
                   <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                   <h6 class="card-text">5 Applicants</h6>
@@ -536,9 +527,9 @@
             <div class="carousel-item">
               <div class="row">
                 <div class="column">
-                  <div class="card" style="width: 20rem;">
+                  <div class="card">
                     <div class="card-body">
-                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                       <p class="card-title">Design Mobile App UI</p>
                       <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                       <h6 class="card-text">5 Applicants</h6>
@@ -548,9 +539,9 @@
                 </div>
               
                 <div class="column">
-                  <div class="card" style="width: 20rem;">
+                  <div class="card" >
                     <div class="card-body">
-                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                       <p class="card-title">Design Mobile App UI</p>
                       <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                       <h6 class="card-text">5 Applicants</h6>
@@ -560,9 +551,9 @@
                 </div>
                 
                 <div class="column">
-                  <div class="card" style="width: 20rem;">
+                  <div class="card" >
                     <div class="card-body">
-                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                       <p class="card-title">Design Mobile App UI</p>
                       <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                       <h6 class="card-text">5 Applicants</h6>
@@ -572,9 +563,9 @@
                 </div>
                 
                 <div class="column">
-                  <div class="card" style="width: 20rem;">
+                  <div class="card" >
                     <div class="card-body">
-                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap" style="width: 45rem;">
                       <p class="card-title">Design Mobile App UI</p>
                       <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                       <h6 class="card-text">5 Applicants</h6>
@@ -584,9 +575,9 @@
                 </div>
               
                 <div class="column">
-                  <div class="card" style="width: 20rem;">
+                  <div class="card">
                     <div class="card-body">
-                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap">
+                      <img class="card-img-top" src="../../vendors/img/writing.jpg" alt="Card image cap"  style="width: 45rem;">
                       <p class="card-title">Design Mobile App UI</p>
                       <h5 class="card-text" style="color: black;">USD 300.oo</h5>
                       <h6 class="card-text">5 Applicants</h6>
