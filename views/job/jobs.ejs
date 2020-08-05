@@ -385,9 +385,6 @@ max-width: 600px;
                     
                 </div>
                 
-
-
-                
             <% if(applyErrorMessage){ %>
                 <div class="alert alert-danger alert-dismissible">
                     <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
@@ -476,7 +473,7 @@ max-width: 600px;
                     </h5>
                     <h5 class="title-job "  id="job_title">
                         <%  if(page === "all-jobs"){%>
-                            $ <%=jobs[0].job_title%>
+                             <%=jobs[0].job_title%>
                      <%   }else if(page === "single-jobs"){ %>
                             <%=job_details.title%>
                       <%  }%>
@@ -497,6 +494,11 @@ max-width: 600px;
 
                 <div>
                     <span style="color:#373833;" id="cityCountry"><i class="fa fa-map-marker" ></i>&nbsp;
+                        <%  if(page === "all-jobs"){%>
+                            <%=jobs[0].city%>, <%=jobs[0].country%>
+                    <%   }else if(page === "single-jobs"){ %>
+                        <%=job_details.city%>, <%=job_details.country%>
+                     <%  }%>
                     </span>
                 </div>
 
@@ -506,7 +508,7 @@ max-width: 600px;
                         <%  if(page === "all-jobs"){%>
                             $ <%=jobs[0].job_price%>
                      <%   }else if(page === "single-jobs"){ %>
-                            <%=job_details.price%>
+                        $<%=job_details.price%>
                       <%  }%>
 
                     </h6>
@@ -593,7 +595,7 @@ max-width: 600px;
                             <div>
                                 <h5 class="title-job " id="modal_title">
                                    
-                                </h5>
+                                </h5> 
 
                                 <h6><a href="#" style="color: #0c4767;" id="modal_posted_by">
                          
