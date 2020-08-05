@@ -430,8 +430,26 @@ module.exports.AcceptJob = async (req, res, next) => {
     let appId = req.params.id;
 
 
-    let applicant_details = await User.findOne({where:{UserId:res.locals.user.id}});
 
+    let check = await JobApplication.findOne({
+        where:{
+            [Op.and]: [
+                {FreelanceId:res.locals.user.id},
+                {application_status:'accepted'} 
+            ]
+        }
+    });
+
+    console.log(check)
+
+    if(check !== null ) {
+
+        console.log('you have already accepted this job offer')
+
+    }else{
+
+        
+    let applicant_details = await User.findOne({where:{UserId:res.locals.user.id}});
 
 
     let hostname = req.headers.host;
@@ -447,17 +465,6 @@ module.exports.AcceptJob = async (req, res, next) => {
 
 
     let job_contract = await Contract.create(jobContract);
-
-    if(job_contract !== null ){
-        Job.update({job_status:'in progress'}, {where:{id:job_contract.JobId}});
-    }
-
-    // let notifyParts = {
-    //     title: res.locals.user.firstname+" accepted the job",
-    //     message: "/user/my-jobs/awarded",
-    //     ReceiverId: job.ClientId
-    // };
-
 
     let notifyMailParts = {
         title: applicant_details.firstname+" accepted the job",
@@ -475,7 +482,7 @@ module.exports.AcceptJob = async (req, res, next) => {
     res.redirect('/user/dashboard-individual-freelancer');
 
 
-
+    }
 };
 
 

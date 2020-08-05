@@ -15,6 +15,8 @@
     margin-bottom:4px !important;
     cursor: pointer;
   }
+
+ 
  
 </style>
 
@@ -71,9 +73,11 @@
                                     <div class="form-row">
                                         <div class="form-group col-md-12">
                                             <label for="details">Description</label>
-                                            <textarea name="details" id="details" rows="3" placeholder="Job Details"
-                                                class="form-control" required></textarea>
+                                            <textarea name="details" id="details" maxlength="250" rows="2" placeholder="Job brief description" class="form-control" required></textarea>
+                                            
+                                            <span class="mr-2" style="float: right;" id="chars">250</span>
                                         </div>
+                                       
                                     </div>
                                     <div class="form-row">
                                         <div class="form-group col-md-6">
@@ -91,19 +95,16 @@
                                                         <option value="months">months</option>
                                                     </select>
                                                 </div>
-                                            </div>
+                                            </div>  
                                         </div>
 
                                         <div class="form-group col-md-6">
                                             <label for="price">Price</label>
-                                            <div class="row">
-                                                <div class="col">
-                                                    <input type="text" class="form-control" value="USD" readonly>
+                                            <div class="input-group mb-3">
+                                                <div class="input-group-prepend">
+                                                  <span class="input-group-text bg-white" id="basic-addon1"><i class="" style="font-size: 15px;">USD $</i></span>
                                                 </div>
-                                                <div class="col">
-                                                    <input name="price" id="price" placeholder="price" type="number"
-                                                        min="1" class="form-control" required />
-                                                </div>
+                                                <input type="text" class="form-control" name="price" id="price" placeholder="Amount" aria-label="Username" aria-describedby="basic-addon1">
                                             </div>
                                         </div>
                                     </div>
@@ -175,5 +176,10 @@
     </div>
 </div>
 </div>
+
+
+    <script>
+        
+    </script>
 <%include ../layout/footer-public.ejs %>
 <%include ../layout/skills-footer.ejs %>

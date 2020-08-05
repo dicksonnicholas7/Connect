@@ -18,9 +18,14 @@ const {GetPublicJobs, GetIndex} = require('../controllers/Job/JobPublic')
 
 const {GetSkills, GetJobCat} = require('../controllers/temp')
 
-
+const {GetWelcome} = require('../controllers/Welcome')
 //Public routes
 // GET requests
+
+
+
+router.get('/welcome', GetWelcome);
+
 
 router.get('/email-verify', EmailVerify);
 

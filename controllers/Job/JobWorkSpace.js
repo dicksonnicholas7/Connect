@@ -1,8 +1,10 @@
 const { Op } = require("sequelize");
 const Job = require('../../models').Job;
+const JobSkills = require('../../models').JobSkills;
 const JobCategory = require('../../models').JobCategory;
 const JobApplication = require('../../models').JobApplication;
 const User = require('../../models').User;
+const UserAccount = require('../../models').UserAccount;
 const JobPayment = require('../../models').JobPayment;
 const UserPaymentInfo = require('../../models').UserPaymentInfo;
 const Chat = require('../../models').Chat;
@@ -16,7 +18,46 @@ const path = require('path');
 
 module.exports.GetJobWorkSpace = async (req, res, next ) => {
 
-    res.render('job/workspace');
+    let userId = res.locals.user.id;
+
+    let user_details = await User.findOne({where:{UserId:userId}});
+
+    let username = user_details.firstname;
+
+    let jobId = req.params.id; 
+
+    let jobApplication_status = await JobApplication.findOne({where:{JobId:jobId}});
+
+
+    console.log(jobApplication_status.application_status)
+
+    if(jobApplication_status.application_status === 'accepted'){
+
+        let job_details = await Job.findOne({where:{id:jobId}, include:UserAccount});
+
+        console.log(job_details)
+
+        let job_skills = await JobSkills.findAll({where:{JobId:jobId}});
+
+        let client_details = await User.findOne({where:{UserId:job_details.UserAccount.id}});
+
+        console.log(client_details)
+        res.render(
+            'job/workspace',
+            {
+                client_details,
+                job_details,
+                job_skills,
+                userId,
+                username,
+                jobApplication_status
+            }
+            );
+    }else{
+        console.log('Job not accepted yet by freelancer');
+    }
+
+    
 
 }
 
@@ -61,11 +102,15 @@ module.exports.SendMessage = async (req, res, next) =>{
   res.send("success");
 };
 
+
+
+
+
 module.exports.UploadFile = async (req, res, next) =>{
 
     let filenameGlobal='';
     const storage = multer.diskStorage({
-        destination:'./public/jobfiles/',
+        destination:'./public/files/jobfiles/',
         filename: function(req,file,cb){
             filenameGlobal=file.fieldname+'-'+Date.now()+path.extname(file.originalname);
             cb(null,filenameGlobal);
@@ -87,13 +132,20 @@ module.exports.UploadFile = async (req, res, next) =>{
                 filename: filenameGlobal
             };
             JobFile.create(jobFileInfo).then(response =>{
-                res.redirect("/user/workspace/"+req.body.JobAppId);
+                res.redirect("/user/workspace/"+req.body.JobId);
             });
 
         }
     });
 
 };
+
+
+
+
+
+
+
 
 module.exports.ViewFile = async (req, res, next) =>{
     let filename = req.params.filename;

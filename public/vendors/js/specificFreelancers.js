@@ -1,5 +1,22 @@
 $(document).ready(function(){
 
+
+  
+
+
+    var mydate =  $("#momentDate").text();
+     
+
+    var newdate = moment(mydate).fromNow();
+
+
+    
+    $("#momentDate").text(newdate);
+      
+
+
+
+
   $.ajax({
     url:'/user/all-freelancers',
     type:'get',

@@ -1,0 +1,55 @@
+
+<div class="container-fluid">
+
+    <div class="row">
+        <div class="col-md-12">
+            <form action="/user/upload-job-file" method="post" enctype = "multipart/form-data" >
+                <div class="text-center">
+                    <input type="text" id="SenderId" name="SenderId" class="form-control" value="<%=userId%>"  hidden>
+                    <input type="text" id="JobId" name="JobId" class="form-control" value="<%=job_details.id%>" hidden >
+                    <input type="text" id="JobAppId" name="JobAppId" class="form-control" value="<%=jobApplication_status.id%>" hidden >
+                    <p>Note: Only upload pdf and image files</p>
+                    <div class="input-group">
+                        <input type="file" id="jobfile" name="jobfile" class="form-control" accept="application/pdf,image/*" />
+                    </div>
+                </div>
+                <div class="text-center">
+                    <button type="submit" id="btnupload" name="btnupload" class="btn request-payment-button mt-5 mb-3">Upload File</button>                       
+                </div>
+            </form>
+        </div>
+    </div>
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>

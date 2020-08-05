@@ -121,3 +121,28 @@ function AgeValidate(){
         document.getElementById("dob").required = true;
     }
 }
+
+
+$(document).ready(function () {
+    $("#phone").keyup(function () {
+        if ($(this).val().length == 3) {
+        $(this).val($(this).val() + "-");
+    }
+    else if ($(this).val().length == 7) {
+    $(this).val($(this).val() + "-");
+    }
+
+    $(this).val($(this).val().replace(/[^\d.-]/g, ''));
+       
+    });
+});
+
+
+$(document).ready(function () {
+    var maxLength = 250;
+$('#details').keyup(function() {
+var length = $(this).val().length;
+var length = maxLength-length;
+$('#chars').text(length);
+});
+});

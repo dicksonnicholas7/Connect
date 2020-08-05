@@ -123,16 +123,7 @@ module.exports.DoIndividualPostJob = async (req, res, next) => {
                 },
                 include: [User]
             });
-            res.render(
-                'job/individual-post-job',
-                {
-                    all_skills,
-                    category,
-                    freelancers,
-                    successMessage:'Job Posted successfully',
-                    errorMessage:''
-                }
-            )
+            res.redirect("/user/dashboard-individual-client");
 
         }else{
             let category = await JobCategory.findAll();

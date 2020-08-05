@@ -44,12 +44,16 @@ h3,h4{
 </style>
     
 
+<%if(userDetails){
+    
+    let skills_arr = userDetails.UserSkill.skills_name.split(','); %>
+
 <div class="site-section" style="background-color: #e8e8e8;" >
             <div class="row pt-4" style="padding-left: 5rem;">
                 <div class="col-md-3 mt-5">
                     <div class="row">
                         <div class="col-md-12">
-                            <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="250" height="150">
+                            <img class="image-border" src="../../images/users/individual/<%=userDetails.User.picture%>" alt="Profile Photo" id="profile" width="250" height="150">
                             <div class="bottom"><span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
                                 <span class="fa fa-star checked"></span>
@@ -61,7 +65,7 @@ h3,h4{
                     <div class="row">
                       <div class="col-md-12" style="left:13%;color:#0C4767;">
                         <label >
-                            <a href="../users/complete-individual-freelancer-profile" class="ps-btn ps-btn--fullwidth ps-btn--gradient" style="width: 250px;height: 10px;margin-left: 5px;">Edit Profile</a>
+                            <a href="" class="ps-btn ps-btn--fullwidth ps-btn--gradient" style="width: 250px;height: 10px;margin-left: 5px;">Edit Profile</a>
                         </label>    
                     </div>
                     </div>
@@ -70,17 +74,14 @@ h3,h4{
 
                 <div class="col-md-5">
                     <div class="header">
-                        <h3>Alex Owusu Amankwa</h3>
-                        <p>UI/UX Designer</p>
-                        <h5><i class="fa fa-map-marker-alt"></i>Takoradi, Ghana &nbsp; &nbsp; &nbsp; &nbsp; <i class="fa fa-clock"></i>Part-time</h5>
+                        <h3><%=userDetails.User.firstname%> <%=userDetails.User.lastname%></h3>
+                        <p><%=userDetails.User.jobtitle%></p>
+                        <h5><i class="fa fa-map-marker-alt"></i><%=userDetails.User.city%>, <%=userDetails.User.country%> &nbsp; &nbsp; &nbsp; &nbsp; <i class="fa fa-clock"></i><%=userDetails.User.availability%></h5>
                       </div>
 
                       <div class="body">
-                          But I must explain to you how all this mistaken idea of denouncing pleasure and praising pain was born and i will give
-                          you a complete account of the system, and expound the actual teachings of the great explorer of truth, the master-builder 
-                          of human happiness. No one rejects, dislikes or avoids pleasure itself, because it is pleasure, but because those who do not 
-                          know how to pursue pleasure rationally encounter consequences that are extremely painful.
-                      </div>
+                        <%=userDetails.User.golden_paragraph%>
+                       </div>
                 </div>
 
                 <div class="col-md-2">
@@ -90,14 +91,10 @@ h3,h4{
 
                     <div class="body">
                         <ul>
-                            <li>UI/UX Designer</li>
-                            <p>2 years</p>
-                            <li>Graphic Designer</li>
-                            <p>2 years</p>
-                            <li>Web Developer</li>
-                            <p>2 years</p>
-                            <li>Digital Marketer</li>
-                            <p>2 years</p>
+                            <% userDetails.Experiences.map(e =>{ %>
+                            <li><%=e.name%></li>
+                            <p><%=e.years%> years</p>
+                            <% }); %>
                         </ul>
                         <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view all</a>
                     </div>
@@ -111,12 +108,9 @@ h3,h4{
 
                     <div class="body">
                        <ul>
-                        <li>Adobe XD</li>
-                        <li>Photoshop</li>
-                        <li>HTML</li>
-                        <li>CSS</li>
-                        <li>JavaScript</li>
-                        <li>Java</li>
+                        <% skills_arr.map(sk=>{ %>
+                        <li><%=sk%></li>
+                        <% }); %>
                        </ul>
                        <a href="#">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;view all</a>
                     </div>
@@ -212,25 +206,14 @@ h3,h4{
 
             <div class="body">
                 <div class="row">
-                <div class="col-md-3">
-                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="120" height="120">
-                    <div class="bottom-right">Bottom</div>
-                </div>
+                    <% userDetails.Portfolios.map(p =>{ %>
 
                 <div class="col-md-3">
-                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="120" height="120">
-                    <div class="bottom-right">Bottom</div>
+                    <img class="image-border" src="../../images/portfolio/<%=p.picture%>" alt="Profile Photo" id="profile" width="120" height="120">
+                    <div class="bottom-right"><%=p.projectLinks%></div>
                 </div>
 
-                <div class="col-md-3">
-                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="120" height="120">
-                    <div class="bottom-right">Bottom</div>
-                </div>
-
-                <div class="col-md-3">
-                    <img class="image-border" src="../../vendors/img/profile-avatar.png" alt="Profile Photo" id="profile" width="120" height="120">
-                    <div class="bottom-right">Bottom</div>
-                </div>
+                <% }); %>
             </div>
                 
             </div>
@@ -238,5 +221,7 @@ h3,h4{
           </div>
     </div>
 </div>
+
+<%}%>
 
 <%include ../layout/footer-public.ejs %> 

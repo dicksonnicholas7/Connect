@@ -1,0 +1,36 @@
+
+
+.payment {
+    height: 35px;
+    background-color: #ffffff;
+    border: none;
+}
+
+.awesome {
+    background-color: #0C4767;
+}
+
+.card {
+    box-shadow: none;
+}
+
+.payment-logo {
+   font-size: 80px;
+}
+
+.payment-logo1 {
+   font-size: 90px;
+}
+
+.credit-image {
+    width: 15 0px;
+}
+
+.request-payment-button {
+    background-color: #0C4767;
+    color: #ffffff;
+    font-size: 15px;
+    text-align: justify;
+
+    
+}
