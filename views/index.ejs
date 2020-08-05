@@ -2,6 +2,11 @@
 <% include ./layout/menu-public.ejs %>
 
   <style>
+    .left {
+  position: absolute;
+  top: 8px;
+  left: 16px;
+}
 
     .btn{
       background-color: #0C4747;
@@ -63,7 +68,6 @@
         color: rgb(255, 255, 255);
         cursor: pointer;
         border:1px solid;
-        color: #A41201; 
         background-color: transparent;
         width: 196px;
       }
@@ -188,21 +192,22 @@
   <div id="indexCarousel" class="carousel slide" data-ride="carousel" >
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img src="vendors/img/home-slider1.jpg" class="d-block w-100" alt="home1">
+            <img src="vendors/img/home-slider-1.jpg" class="d-block w-100" alt="home1">
+            <div class="left">Top Left</div>
             <div class="carousel-caption d-none d-md-block">
                     <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
               </div>
           </div>
 
           <div class="carousel-item">
-            <img src="vendors/img/home-slider2.jpg" class="d-block w-100" alt="home1">
+            <img src="vendors/img/home-slider-2.jpg" class="d-block w-100" alt="home1">
             <div class="carousel-caption d-none d-md-block">
                     <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
               </div>
           </div>
 
           <div class="carousel-item">
-            <img src="vendors/img/home-slider3.jpg" class="d-block w-100" alt="home1">
+            <img src="vendors/img/home-slider-3.jpg" class="d-block w-100" alt="home1">
             <div class="carousel-caption d-none d-md-block" style="padding-top: 0px;">
                     <a href="/signup-page"> <button class="pa-btn" style="padding-top: 10px;">Connect now</button></a>
               </div>
@@ -248,7 +253,7 @@
       </div>
   </div>
 
-  <div class="row-mb col-md-12" style="padding-top: 30px;">
+  <div class="row-mb col-md-12" style="padding-top: 30px; padding-bottom: 40px;">
     <p style="text-align: center;">Not finding what you want? <a href="#" style="color: #0c4767;">See all categories</a></p>
 </div>
 </div>
