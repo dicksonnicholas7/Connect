@@ -56,12 +56,20 @@
     font-weight: 400;
 }
 
+.ps-form--signin .ps-form__actions a:hover{
+    color: #A41201;
+}
+
 .ps-form__footer a{
     color:#0c4767;
 }
 
 .ps-form--signin .ps-form__footer p a{
     color:#0c4767;
+}
+
+.ps-form--signin .ps-form__footer p a:hover{
+    color:#A41201;
 }
 
 .ps-footer{
