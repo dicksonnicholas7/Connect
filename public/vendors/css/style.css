@@ -8292,7 +8292,7 @@ textarea.form-control {
 
 .ps-form--signin .ps-form__footer p a {
   color: #0c4767;
-  font-weight: 700;
+  
 }
 
 @media (max-width: 479px) {
@@ -15338,8 +15338,7 @@ label{
   background-repeat: no-repeat;
   background-position: center center;
   background-size: 50% 50%;
-
-  border-radius: 1rem;
+  border-radius: 100px;
 }
 
 .custom-control-label::before {
@@ -15357,5 +15356,5 @@ label{
   user-select: none;
   background-color: #dee2e6;
  
-  border-radius: 1rem;
+  border-radius: 100px;
 } 
